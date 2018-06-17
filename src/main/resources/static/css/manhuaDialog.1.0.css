@@ -1,0 +1,52 @@
+*{padding:0; margin:0}
+a{
+	color: black;
+}
+#detail_header{
+/*	border: 1px solid blue;*/
+/*	height: 600px;*/
+}
+#detail_submit{
+/*	position:fixed;*/
+	background: #C4EEF4;
+	margin-top: 420px;
+	width: 100%;
+	border: 1px solid red;
+	height: 98px;
+}
+#detail_form{
+	background: #fff;
+	margin: 10px;
+	border: 1px solid blue;
+	height: 80%;
+	widows: 80%;
+	
+}
+
+#detail_header{
+	margin-left: 20px;
+	margin-top: 10px;
+}
+#detail_header_img{
+	width: 20px;
+	
+}
+#detail_header_word{
+	margin-left: 5px;
+	padding-left: 5px;	
+	font-size: 1.25em;	
+	width: 94%;
+/*	border:1px solid red;*/
+	background: #fff;
+}
+/*弹出层插件样式开始*/
+.floatBoxBg{display:none;width:100%;height:100%;background:  #484747;position:fixed !important;/*ie7 ff*/position:absolute;top:0;left:0;filter:alpha(opacity=0);opacity:0; z-index:999;}
+.floatBox{border:#FFF 5px solid;position:fixed !important;/*ie7 ff*/position:absolute;top:0;left:0;background:#fff; display:none; z-index:1000;}
+.floatBox .title{height:23px;padding:7px 10px 0;color:#000;font-weight: 100;background-attachment: scroll;background:#FFF;background-repeat: repeat-x;background-position: 0px 0px; cursor:move;}
+.floatBox .title h4{float:left;padding:0;margin:0;font-size:14px;line-height:16px; font-weight:bold; display:inline;}
+.floatBox .title span{float:right;cursor:pointer;display:inline;}
+.floatBox .title span img{cursor:pointer; margin:-5px -5px;display:inline;}
+.floatBox .content{padding:0;background:#fff;overflow-x:hidden;overflow-y: auto;display:inline;}
+.closeDialog{ font-size:20px; font-weight:bold; color:#a6a6a6; margin-top:-5px;margin-left: 400px;}
+.closeDialog:hover{ font-size:20px; font-weight:bold; color:#4eb0f6; margin-top:-5px; position: relative fixed absolute;}
+/*弹出层插件样式结束*/

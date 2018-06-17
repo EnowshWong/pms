@@ -1,0 +1,86 @@
+﻿
+h1, h2, h3, h4, h5, h6, b, strong {
+	font-weight: 500
+}
+a {
+	text-decoration: none
+}
+
+
+
+#teams-dashboards-show .page-title {
+	margin: 30px 0;
+	text-align: center;
+	font-size: 32px
+}
+
+
+#teams-dashboards-show .boxes .box {
+	display: block;
+	float: left;
+	width: 288px;
+	height: 258px;
+	margin: 0;
+	border-radius: 4px;
+	text-align: center;
+	border: 1px solid #fff;
+	color: #000
+}
+#teams-dashboards-show .boxes .box:hover {
+	border-color: #eaeaea;
+	background-color: #f9f9f9
+}
+#teams-dashboards-show .boxes .box__statistics {
+	display: block;
+	width: 90px;
+	height: 90px;
+	padding: 2px;
+	margin: 28px auto 0;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 46px
+}
+#teams-dashboards-show .boxes .box__statistics>span {
+	display: block;
+	width: 86px;
+	height: 86px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	font-family: Tahoma, sans-serif;
+	line-height: 86px
+}
+#teams-dashboards-show .boxes .box__statistics--upcoming {
+	background-color: #5bc4c8
+}
+
+
+
+#teams-dashboards-show .boxes .box__statistics--warn {
+	background-color: #f66139
+}
+
+#teams-dashboards-show .boxes .box__statistics--not-arranged {
+	background-color: #f6aa39
+}
+
+#teams-dashboards-show .boxes .box__icon {
+	display: block;
+	width: 90px;
+	height: 90px;
+	margin: 28px auto 0
+}
+#teams-dashboards-show .boxes .box__title {
+	margin-top: 25px;
+	font-size: 24px
+}
+
+#teams-dashboards-show .boxes .box__title__weeks {
+	font-size: 18px
+}
+
+#teams-dashboards-show .boxes .box__subtitle {
+	display: block;
+	margin: 6px auto 0;
+	font-size: 14px;
+	color: #999
+}
