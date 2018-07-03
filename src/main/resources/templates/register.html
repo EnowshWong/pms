@@ -44,7 +44,7 @@ window._prum = [['id', '520b907babe53db940000001'],
     s.parentNode.insertBefore(p, s);
 })();
 </script>
-
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>
 <script>
   window._sqspvat = true;
   window._sqspcookiebanner = true;
@@ -63,18 +63,6 @@ window._prum = [['id', '520b907babe53db940000001'],
     return now > start && now < end;
   }();
 </script>
-	
-	
-	
-<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>
-	
-<link href="css/style.css" rel="stylesheet" type="text/css">
-
-<!--<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>-->
-<script src="js/ion.checkRadio.min.js"></script>
-	
-	
-	
     <script id='build-stamp' data-build-id='033bc1fc953e5b04ae7e040463fd2d63'>window.__templateVersion = '033bc1fc953e5b04ae7e040463fd2d63'</script>
 
     <meta property="og:image" content="../static/images/squarespace.jpg" />
@@ -252,28 +240,196 @@ window._prum = [['id', '520b907babe53db940000001'],
     <div class="cta-wrapper">
 	<div class="main-agileits">
 			<div class="form-w3-agile" style="width: 400px;	">
-			<form action="tea_home.html" target="_self" name="regForm" id="" method="post">
-					<input type="text" name="username" placeholder="用户" required="" />
-					<input type="password" name="password" placeholder="密码" required="" />
+			<form action="" target="_self" name="regForm" id="regForm1" method="post" style="">
 <!--					<input type="radio" >-->
-					<div id="identity">
-						<span id="identity_title">您的身份</span><br>
-						<span class="identity"><input type="radio" name="identity"  required=""/>导师</span>
-						<span class="identity"><input type="radio" name="identity"  required=""/>学生	</span>
-						<div><label class="error" for="identity" style="display:none">请选择身份</label></div>
+					
+				<div class="submit-w3l" >
+					<div>
+						<h2 style="color: aliceblue;text-align: center;font-size:1.4em;font-weight: 500;">您  的  身  份</h2>
+						<input id="submit-w3l-tea" type="submit" style="font-size: 1.4em;" onClick="test" value="老          师"/>
+						<input id="submit-w3l-stu" type="submit" style="font-size: 1.4em;" value="学          生"/>
+					</div>
+				</div>
+			
+			</form>
+				
+				
+			<form action="" target="_self" name="regForm" id="regForm2" method="post" style="display: none;">
+					<input type="text" name="nickname" id="nickname1" placeholder="昵称" required="" />
+					<input type="text" name="username" id="username1" placeholder="账号" required="" />
+					<input type="password" name="password" id="password1" placeholder="密码" required="" />
+					<input type="text" name="email" id="email1" placeholder="邮箱" required=""/>
+					
+		
+				<div class="submit-w3l" >
+					<div>
+						<input id="submit-w3l-reg1" type="submit" style="font-size: 1.4em;" value="注          册"/>
 						
 					</div>
+				</div>
+			</form>
+				<script type="text/javascript" >
+					
+		var reg1=document.getElementById("submit-w3l-reg1");
+		reg1.onclick=function(){
+			
+		if(window.ActiveXObject&&!window.XMLHttpRequest){
+			window.XMLHttpRequest=function(){
+				xmlHttp=null;
+				try{
+					xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+					
+				}catch(e){
+					try{
+						xmlHttp=new ActiveXObject("Microsoft.XMLHTTP")
+					}catch(el){
+						
+					}
+				}
+				return xmlHttp;
+			}
+		}
+		
+		var user={
+			nickname:"1",
+			account:"2",
+			password:"3",
+			email:"4"
+		}
+		
+		function prepareJSON(){
+			var nicknameInfo=document.getElementById("nickname1").value;
+			var accountInfo=document.getElementById("account1").value;
+			var passwordInfo=document.getElementById("pa1ssword1").value;
+			var emailInfo=document.getElementById("email1").value;
+			user.account=accountInfo;
+			user.password=passwordInfo;
+			user.nickname=nicknameInfo;
+			user.email=emailInfo;
+			return user.toJSONString();
+		}
+		
+		
+		var xmlHttp=new XMLHttpRequest();
+		xmlHttp.open("POST","",true);
+		
+		xmlHttp.onreadystatechange==function(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					alert("1")
+				}
+			}
+		}
+		
+		var userJson=prepareJSON();
+		xmlHttp.send(userJson);
+		
+		}
+					
+				</script>
+					
+					
+				
+				
+				
+			<form action="" target="_self" name="regForm" id="regForm3" method="post" style="display: none;">
+					<input type="text" name="nickname" id="nickname2" placeholder="昵称" required="" />
+					<input type="text" name="username" id="username2" placeholder="用户" required="" />
+					<input type="password" name="password" id="password2" placeholder="密码" required="" />
 
 				
 				
 		
 				<div class="submit-w3l" >
 					<div>
-						<input type="submit" style="font-size: 1.4em;" value="注          册"/>
+						<input id="submit-w3l-reg2" type="submit" style="font-size: 1.4em;" value="注          册"/>
 						
 					</div>
 				</div>
 			</form>
+				
+				
+				<script type="text/javascript" >
+					
+		var reg2=document.getElementById("submit-w3l-reg2");
+		reg2.onclick=function(){
+			
+		if(window.ActiveXObject&&!window.XMLHttpRequest){
+			window.XMLHttpRequest=function(){
+				xmlHttp=null;
+				try{
+					xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+					
+				}catch(e){
+					try{
+						xmlHttp=new ActiveXObject("Microsoft.XMLHTTP")
+					}catch(el){
+						
+					}
+				}
+				return xmlHttp;
+			}
+		}
+		
+		var user={
+			nickname:"1",
+			account:"2",
+			password:"3"
+		}
+		
+		function prepareJSON(){
+			var nicknameInfo=document.getElementById("nickname2").value;
+			var accountInfo=document.getElementById("account2").value;
+			var passwordInfo=document.getElementById("password2").value;
+			user.account=accountInfo;
+			user.password=passwordInfo;
+			user.nickname=nicknameInfo;
+			return user.toJSONString();
+		}
+		
+		var xmlHttp=new XMLHttpRequest();
+		xmlHttp.open("POST","",true);
+		
+		xmlHttp.onreadystatechange==function(){
+			if(xmlHttp.readyState==4){
+				if(xmlHttp.status==200){
+					alert("1")
+				}
+			}
+		}
+		
+		var userJson=prepareJSON();
+		xmlHttp.send(userJson);
+		
+		}
+					
+				</script>
+					
+				
+				
+					<script type="text/javascript" >
+					
+					var cho1=document.getElementById("submit-w3l-tea");
+					var cho2=document.getElementById("submit-w3l-stu");
+					var form1=document.getElementById("regForm1");
+					var form2=document.getElementById("regForm2");
+					var form3=document.getElementById("regForm3");
+					
+					cho1.onclick=function(){
+//						alert("efds");
+						form1.style.display="none";
+//						alert("23")
+						form2.style.display="block";
+					}
+					cho2.onclick=function(){
+//						alert("efds");
+						form1.style.display="none";
+//						alert("23")
+						form3.style.display="block";
+					}
+				
+				</script>
+					
 		</div>
 		</div>	
 		<div style="visibility: hidden">
@@ -283,7 +439,6 @@ window._prum = [['id', '520b907babe53db940000001'],
   </div>
 
   </div>
-	
 
 </section>
 
