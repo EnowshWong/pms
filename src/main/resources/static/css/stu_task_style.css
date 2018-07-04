@@ -91,10 +91,9 @@
 /*	margin: 13px;*/
 	margin-top: 15px;
 	width: 30.6%;
-	background: #ECECEC;
-	height: 290px;
+	background: url(../images/2222.png);
+	height: 590px;
 	-webkit-border-radius:10px;
-	
 }
 .verticleAlign{
 	vertical-align: middle;
@@ -112,7 +111,7 @@
 	width: 90%;
 	height: 30px;
 	color: #a5a5a5;
-	margin-bottom: 2em;
+	margin-bottom: 3em;
 }
 .deadline{
 	float: right;
@@ -131,10 +130,13 @@
 	margin-left: 20px;
 	height: 30px;
 	margin-top: 20px;
-	font-size: 1.4em;
+	font-size: 1.8em;
 }
 .title_word{
 	vertical-align: middle;
+	text-align: center;
+	padding: 0 auto;
+/*	margin-left:200px;*/
 }
 .title_circle{
 	height: 21px;
@@ -201,3 +203,67 @@
 .position{
 	position: absolute;
 }
+.icon_temp{
+	width: 80px;
+	margin-top: 1.4em;
+	height: auto;
+	float: right;
+}
+.modify{
+	display: inline-block;
+	width: 38px;
+	height: 18px;
+	background: #98d8f6;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+	z-index: 1;
+}
+.delete{
+	z-index: 1;
+/*	margin-left: 20px;*/
+	display: inline-block;
+	width: 38px;
+	height: 18px;
+	background: #ff5252;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+}
+.judge{
+	float: left;
+	width: 48px;
+	height: 18px;
+	background: #3DDED0;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+	margin-top: 0.4em;
+}
+.delete_doing{
+	margin-top: 0.4em;
+	float: right;
+	width: 38px;
+	height: 18px;
+	background: #ff5252;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+}
+.judge_self{
+	margin-top: 0.4em;
+	float: right;
+	width: 38px;
+	height: 18px;
+	background: #a1d4ac;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+	
+}
+
