@@ -10,21 +10,19 @@
 	height: 60px;
 }
 #banner_left{
-	width: 34%;
-	display:inline-block;
-/*	border: 1px solid red;*/
+	width: 32%;
 	margin-left: 20px;
 	margin-top: 10px;
 	
 }
 #banner_mid{
-	width: 28%;
-/*	border: 1px solid red;*/
+	width:33%;
 	
 }
 #banner_right{
-	width: auto;
-/*	border: 1px solid red;*/
+	width: 26%;
+	right: 0;
+/*	float: right;*/
 	
 }
 #guidance{
@@ -37,11 +35,29 @@
 /*	padding-bottom: 15px*/
 	margin-top: 15px;
 }
+
 #left{
 	 font-size: 1.1em;
 	font-weight: 500;
 	margin-left: 20px;
+	width: 38%;
 	
+}
+#mid{
+	display: inline-block;
+/*	margin-left: 500px;*/
+/*	margin: 0 auto;*/
+	height: inherit;
+	width: auto;
+	width: 30%;
+/*	border: 1px solid blue;*/
+		
+}
+#temp{
+	width: 17%;
+}
+#right{
+	width:10%;
 }
 #left_origin a:hover{
 	color: #4eb0f6;
@@ -50,15 +66,6 @@
 #left_name a:hover{
 	color: #000;
 	text-decoration: none;
-}
-#mid{
-	display: inline-block;
-	margin-left: 500px;
-/*	margin: 0 auto;*/
-	height: inherit;
-	width: auto;
-/*	border: 1px solid blue;*/
-		
 }
 #task,#file,#resource,#eye{
 /*	margin-left: 10px;*/

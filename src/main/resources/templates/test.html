@@ -1,0 +1,280 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"><head>
+<meta charset="utf-8">
+	<title>无标题文档</title>
+	<link rel="stylesheet" href="../static/css/task_style.css">
+	<script src="../static/js/jquery-2.2.4.min.js"></script>
+<!--	<script src="../static/js/reflect.js"></script>-->
+
+<style type="text/css">
+/**{margin:0;padding:0;list-style-type:none;}*/
+/**{margin:0;padding:0;list-style-type:none;}*/
+a,img{border:0;}
+</style>
+
+<style type="text/css">
+/* tablescroll */
+.tablescroll{font:12px normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;background-color:#fff;}
+.tablescroll td,.tablescroll_wrapper,.tablescroll_head,.tablescroll_foot{border:1px solid #ccc;}
+.tablescroll td{padding:5px;}
+.tablescroll_wrapper{border-left:0;}
+.tablescroll_head{font-size:12px;font-weight:bold;background-color:#eee;border-left:0;border-top:0;margin-bottom:3px;}
+.tablescroll thead td{border-right:0;border-bottom:0;}
+.tablescroll tbody td{border-right:0;border-bottom:0;}
+.tablescroll tbody tr.first td{border-top:0;}
+.tablescroll_foot{font-weight:bold;background-color:#eee;border-left:0;border-top:0;margin-top:3px;}
+.tablescroll tfoot td{border-right:0;border-bottom:0;}
+</style>
+
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/manhuaDialog.1.0.css">
+	<link rel="stylesheet" type="text/css" href="../static/images/style_select.css">
+	<script type="text/javascript" src="../static/js/common.js"></script>
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../static/js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$(".test1").manhuaDialog({
+		Event : "click",								//触发响应事件
+		title : "什么是任务",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 590,									//弹出层的宽度
+		height : 660,									//弹出层的高度
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true
+	});
+});
+</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var ll1=document.getElementById("task");
+		ll1.style.borderBottom="3px solid #4eb0f6";
+		var ll2=document.getElementById("file");
+		ll2.onmouseover=function(){
+			ll2.style.borderBottom="3px solid #4eb0f6";
+		}
+		ll2.onmouseout=function(){
+			ll2.style.borderBottom="0px";
+		}
+		var ll3=document.getElementById("resource");
+		ll3.onmouseover=function(){
+			ll3.style.borderBottom="3px solid #4eb0f6";
+		}
+		ll3.onmouseout=function(){
+			ll3.style.borderBottom="0px";
+		}
+		var ll4=document.getElementById("eye");
+		ll4.onmouseover=function(){
+			ll4.style.borderBottom="3px solid #4eb0f6";
+		}
+		ll4.onmouseout=function(){
+			ll4.style.borderBottom="0px";
+		}
+	});
+	</script>
+</head>
+
+
+
+
+
+
+<body>
+<h1 th:each="cookie:${#httpServletRequest.getCookies()}" />
+<h2 th:each="cookie:${#httpServletRequest.getCookies()}"></h2>
+	<div id="banner">
+		<div id="banner_left" class="display"><div class="display" style="width: 70%">
+				<form class="form form-group" name="" method="post">
+				<input class="display form-control" style="border: 0px solid #ccc;" type="text"  placeholder="搜索个人项目">
+			</form>
+			</div>
+			<div class="display" style="width: 10%" >
+			<img class="display" style="width:25px;margin-left: 10px;" alt="" src="../static/images/add.png"></div>
+		</div>
+		<div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;"><center>师生项目交互平台</center></div>
+		<div  style="width: 6%" class="display"></div>
+		<div id="banner_right" style="padding: 0;" class="display">
+			<div class="display" style="width: 35%;"><div class="display" style="color: #808080;font-size: 1.1em;">我的</div>
+			<div class="display" style="color: #e5e5e5;margin-left: 10px;margin-left: 10px">|</div>
+			<div class="display" style="color: #808080;font-size: 1.1em;margin-left: 10px;">日历</div>
+			<div class="display" style="color: #e5e5e5;margin-left: 10px;">|</div></div>
+			<div style="width: 60%;" class="display">
+			<img src="../static/images/question.png" style="width:25px;margin-left: 20px;">
+			<img src="../static/images/ring.png" style="width: 25px;margin-left: 20px;">
+			<img src="../static/images/message.png" style="width:25px;margin-left: 20px;">
+			<img src="#" style="width:25px;margin-left: 20px;border: 1px solid red;"></div>
+		</div>
+	</div>
+	<div id="guidance">
+		<div id="left" class="display">
+			<span id="left_origin"><a href="tea_home.html">首页</a></span>
+			<img src="../static/images/bigger.png" style="width: 15px;">
+			<span id="left_name"><a href="tea_task.html">项目名</a></span>
+		</div>
+		<div id="mid" class="display">
+<!--			<span id="guidance_logo"><img src="#"></span>-->
+			<a href="tea_task.html"><div id="task" class="display"><span class="left_length"><span>任务</span></span></div></a>
+			<a href="tea_file.html"><div id="file" class="display"><span class="left_length"><span>文件</span></span></div></a>
+			<a href="tea_resource.html"><div id="resource" class="display"><span class="left_length"><span>资源</span></span></div></a>
+			<a href="tea_eye.html"><div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div></a>
+
+		</div>
+		<div id="temp" class="display"></div>
+		<div id="right" class="display ">
+			<img src="../static/images/people.png" style="width: 20px;">
+			<span style="color: #808080;">1</span>
+			<img src="../static/images/menu.png" style="width: 20px;margin-left: 30px;">
+			<span style="color: #808080">菜单</span>
+			</div>
+
+	</div>
+
+	<script>
+		$(document).ready(function(){
+		  var zindex = 10;
+
+		  $("div.main_style_tip").click(function(e){
+			e.preventDefault();
+
+			var isShowing = false;
+
+			if ($(this).hasClass("show")) {
+			  isShowing = true
+			}
+
+			if ($("div.main").hasClass("showing")) {
+			  // a card is already in view
+			  $("div.main_style_tip.show")
+				.removeClass("show");
+
+			  if (isShowing) {
+				// this card was showing - reset the grid
+				$("div.main_style_tip")
+				  .removeClass("showing");
+			  } else {
+				// this card isn't showing - get in with it
+				$(this)
+				  .css({zIndex: zindex})
+				  .addClass("show");
+
+			  }
+
+			  zindex++;
+
+			} else {
+			  // no cards in view
+			  $("div.main_style_tip")
+				.addClass("showing");
+			  $(this)
+				.css({zIndex:zindex})
+				.addClass("show");
+
+			  zindex++;
+			}
+
+		  });
+		});
+	</script>
+
+	<div id="detail" style="display:none;">
+		<div id="detail_header">
+			<div class="display"><img src="../static/images/tip.png" id="detail_header_img"></div>
+			<div class="display" id="detail_header_word">
+			<span style="vertical-align:sub;">这是一条已完成的任务</span></div>
+			<div id="detail_header_choice" style=" margin-top: 30px;">
+
+				<div class="display" style="color: #808080;margin-left: 4px;"><span><img src="../static/images/package.png" style="width: 20px;"></span><span style="margin-left: 10px;vertical-align:sub;">设置截止时间</span></div>
+				<div class="display" style="margin-left: 30px;"><img class="display" src="../static/images/clock.png" style="width: 20px;"></div>
+			</div>
+		</div>
+		<hr width="98%" style="margin-left: 15px;margin-bottom: 5px;">
+		<div id="detail_belly">
+			<div id="belly_top">
+				<div id="belly_top_ext" style=";margin-top: 20px;">
+					<img src="../static/images/extra.png" style="width: 15px; margin-left: 20px;">
+					<span style="color: #a6a6a6 ;margin-left: 4px; vertical-align:sub;">备注</span>
+					<div id="wait_add" class="display" style="color: #808080;margin-left:70px;">
+						待添加
+					</div>
+				</div>
+				<div id="belly_top_pri" style=";margin-top: 30px;">
+					<img src="../static/images/circle.png" style="width: 15px; margin-left: 20px;">
+					<span style="color: #a6a6a6 ;margin-left: 4px; margin-top: 20px; vertical-align:sub;">优先级</span>
+					<div  class="display" style="color: #808080;margin-left:56px;">
+						普通
+					</div>
+
+				</div>
+				<div id="belly_top_note" style="margin-top: 30px;">
+					<img src="../static/images/label.png" style="width: 20px; margin-left: 16px;">
+					<span style="color: #a6a6a6 ;margin-left: 4px ;vertical-align:sub;">标签</span>
+					<div  class="display" style="color: #808080;margin-left:70px;">
+						待添加
+					</div>
+
+				</div>
+			</div>
+			<hr width="98%" style="margin-left: 15px;margin-bottom: 5px;">
+			<div id="belly_mid">
+				<div style="margin-top: 20px;">
+					<img src="../static/images/menu1.png" style="width: 20px; margin-left: 20px;">
+					<span style="color: #a6a6a6 ;margin-left: 4px; vertical-align:sub;">子任务</span>
+
+				</div>
+
+				<div class=" display" style=" margin-top:20px;margin-left: 23px;color:#4eb0f6;"	><img src="../static/images/add.png" style="width: 17px; " >
+				&nbsp;<span style=" vertical-align:sub;">添加子任务</span></div>
+
+			</div>
+			<hr width="98%" style="margin-left: 15px;margin-bottom: 5px;">
+			<div id="belly_mid">
+				<div style="margin-top: 20px;">
+					<img src="../static/images/connection.png" style="width: 20px; margin-left: 20px;">
+					<span style="color: #a6a6a6 ;margin-left: 4px">关联任务</span>
+
+				</div>
+
+				<div class=" display" style=" margin-top:20px;margin-left: 23px;color:#4eb0f6;"	><img src="../static/images/add.png" style="width: 17px; " >
+				&nbsp;<span style=" vertical-align:sub;">添加关联</span></div>
+
+			</div>
+
+		</div>
+			<hr width="98%" style="margin-left: 15px;margin-bottom: 5px;">
+
+		<div class="form" id="detail_footer" style="background:#e5e5e5;height: 120px;width: 100%;">
+			<div  style="height: 20px;"></div>
+			<form style="background: #fff;margin-left: 10px;width: 96%; height:80px; padding-top: 13px;">
+				<div style="height: 7px;">
+					<span style="font-size: 14px; color: #cccccc;margin-left: 10px;">@提及他人，按Enter快速发布</span>
+				</div>
+				<hr>
+				<div class="display"><img src="../static/images/connection1.png" style="margin-left: 8px;width: 15px;	margin-top: -20px;"></div>
+				<div class="display"><img src="../static/images/smile.png" style="margin-left: 18px;width: 20px;	margin-top: -20px;"></div>
+<!--					<img src="../static/images/tip.png">-->
+				
+				
+				
+				<div class="display"><button class="btn-block" href="#" style="width: 80px;height: 30px;margin-left: 340px;margin-top: -20px;">发布</button></div>
+				
+			</form>
+		</div>
+		
+	</div>
+<script type="text/javascript" src="js/jquery.tablescroll.js"></script>
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#thetable').tableScroll({
+		width:80,
+		height:250
+	});
+});
+</script>
+</body>
+</html>
