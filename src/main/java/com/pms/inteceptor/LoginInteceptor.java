@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class LoginInteceptor implements HandlerInterceptor{
 
-    @Value("${COOKIE_USERNAME}")
-    private String COOKIE_USERNAME;
+    @Value("${COOKIE_NICKNAME}")
+    private String COOKIE_NICKNAME;
     @Value("${LOGIN_PAGE_URL}")
     private String LOGIN_PAGE_URL;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //直接从cookie中取username
-        String username=CookieUtils.getCookieValue(request,COOKIE_USERNAME);
+        String username=CookieUtils.getCookieValue(request,COOKIE_NICKNAME);
         //判断其是否为空
         if (StringUtils.isBlank(username)){
             //是空的话强制跳转到首页登陆页面

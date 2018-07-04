@@ -5,6 +5,8 @@ import java.util.Date;
 public class PmsJoin {
     private Long id;
 
+    private String nickname;
+
     private Long stuId;
 
     private Long expId;
@@ -21,6 +23,14 @@ public class PmsJoin {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public Long getStuId() {

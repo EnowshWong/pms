@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author:wong
@@ -43,5 +44,19 @@ public class UserController {
     public PmsResult login(String username, String password, @PathVariable int identity, HttpServletRequest request, HttpServletResponse response){
         PmsResult pmsResult = userService.login(username, password, identity, request, response);
         return pmsResult;
+    }
+
+    @RequestMapping("/sucJoin")
+    @ResponseBody
+    public PmsResult sucJoin(long stuId,long expId,long tutorId){
+        PmsResult pmsResult = userService.sucJoin(stuId, expId, tutorId);
+        return pmsResult;
+    }
+
+    @RequestMapping("/stulist/{expId}")
+    @ResponseBody
+    public List<PmsUserStu> getStuListByExpId(@PathVariable long expId){
+        List<PmsUserStu> list = userService.getStulistByExpId(expId);
+        return list;
     }
 }

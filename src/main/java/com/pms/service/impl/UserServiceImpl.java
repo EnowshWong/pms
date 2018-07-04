@@ -33,10 +33,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PmsUserTeaMapper pmsUserTeaMapper;
 
-    @Value("${COOKIE_USERNAME}")
-    private String COOKIE_USERNAME;
+    @Value("${COOKIE_NICKNAME}")
+    private String COOKIE_NICKNAME;
     @Value("${COOKIE_IDENTITY}")
     private String COOKIE_IDENTITY;
+    @Value("${COOKIE_ID}")
+    private String COOKIE_ID;
 
     @Override
     public PmsResult stuRegister(PmsUserStu pmsUserStu) {
@@ -93,9 +95,11 @@ public class UserServiceImpl implements UserService {
                 return PmsResult.build(400,"密码错误");
             }
             //存入用户信息
-            CookieUtils.setCookie(request,response,COOKIE_USERNAME,pmsUserStu.getUsername());
+            CookieUtils.setCookie(request,response,COOKIE_NICKNAME,pmsUserStu.getNickname());
+            //存入用户id
+            CookieUtils.setCookie(request,response,COOKIE_ID,pmsUserStu.getId()+"");
             //存入用户身份
-            CookieUtils.setCookie(request,response,COOKIE_IDENTITY,String.valueOf(identity));
+            CookieUtils.setCookie(request,response,COOKIE_IDENTITY,identity+"");
             return PmsResult.ok(identity);
         }
         else if (identity==2){//教师登陆
@@ -112,11 +116,32 @@ public class UserServiceImpl implements UserService {
                 return PmsResult.build(400,"密码错误");
             }
             //存入用户信息
-            CookieUtils.setCookie(request,response,COOKIE_USERNAME,pmsUserTea.getUsername());
+            CookieUtils.setCookie(request,response,COOKIE_NICKNAME,pmsUserTea.getNickname());
+            //存入用户id
+            CookieUtils.setCookie(request,response,COOKIE_ID,pmsUserTea.getId()+"");
             //存入用户身份
             CookieUtils.setCookie(request,response,COOKIE_IDENTITY,String.valueOf(identity));
             return PmsResult.ok(identity);
         }
         return PmsResult.build(400,"未传入参数identity");
+    }
+
+    @Override
+    public PmsResult sucJoin(long stuId, long expId, long tutorId) {
+        PmsUserStu userStu=new PmsUserStu();
+        userStu.setId(stuId);
+        userStu.setExpId(expId);
+        userStu.setTutorId(tutorId);
+        pmsUserStuMapper.updateByPrimaryKeySelective(userStu);
+        return PmsResult.ok();
+    }
+
+    @Override
+    public List<PmsUserStu> getStulistByExpId(long expId) {
+        PmsUserStuExample example=new PmsUserStuExample();
+        PmsUserStuExample.Criteria criteria=example.createCriteria();
+        criteria.andExpIdEqualTo(expId);
+        List<PmsUserStu> list = pmsUserStuMapper.selectByExample(example);
+        return list;
     }
 }
