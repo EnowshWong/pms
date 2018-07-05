@@ -76,18 +76,37 @@ $(function (){
 		}
 	});
 	</script>
+	<script type="text/javascript">
+		$(function(){
+			var sear=document.getElementById("search_tea");
+			sear.onclick=function(){
+				
+			}
+		})
+	</script>
 </head>
 	
-	
-
-
-	
-
 <body>
 	<div id="banner">
-		<div id="banner_left" class="display"><div class="display" style="width: 70%">
+		<div id="banner_left" class="display">
+			<div class="display" style="width: 70%">
 				<form class="form form-group" name="" method="post">
-				<input class="display form-control" style="border: 0px solid #ccc;" type="text"  placeholder="搜索个人项目">
+				<input class="display form-control" id="search_tea" style="border: 0px solid #ccc;" type="text"  placeholder="搜索老师">
+				<div id="sear_around">
+				<div id="sear_float" class="display">
+					<ul id="float_ul">
+						<li class="float_ul_li float_ul_under">
+							<span class="float_li_img"></span>
+						</li>
+						<li class="float_ul_li float_ul_under">
+							<span class="float_li_img"></span>
+						</li>
+						<li class="float_ul_li">
+							<span class="float_li_img"></span>
+						</li>
+					</ul>
+					</div>
+					</div>
 			</form>
 			</div>
 			<div class="display" style="width: 10%" >
@@ -107,7 +126,7 @@ $(function (){
 			<img src="#" style="width:25px;margin-left: 20px;border: 1px solid red;"></div>
 		</div>
 	</div>
-	<div id="guidance">
+	<div id="guidance" style="z-index: 1;">
 		<div id="left" class="display">
 			<span id="left_origin"><a href="tea_home.html">首页</a></span>
 			<img src="../static/images/bigger.png" style="width: 15px;">
@@ -131,7 +150,7 @@ $(function (){
 
 	</div>
 
-	<div id="main thetable" >
+	<div id="main thetable" style="z-index: 1;" >
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
 			<span style="width:40%;display: inline-block;"></span>

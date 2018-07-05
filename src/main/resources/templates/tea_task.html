@@ -78,6 +78,21 @@ $(function (){
 		}
 	});
 	</script>
+	<script type="text/javascript">
+		$(function(){
+			var disp1=document.getElementById("main_disp");
+			var disp2=document.getElementById("main_none");
+			var num=document.getElementsByClassName("main_style").length;
+			if(num==0){
+				disp1.style.display="none";
+				disp2.style.display="";
+			}
+			else{
+				disp1.style.display="";
+				disp2.style.display="none";
+			}
+		})
+	</script>
 </head>
 
 
@@ -115,7 +130,7 @@ $(function (){
 		<div id="left" class="display">
 			<span id="left_origin"><a href="tea_home.html">首页</a></span>
 			<img src="../static/images/bigger.png" style="width: 15px;">
-			<span id="left_name"><a href="tea_task.html">项目名</a></span>
+			<span id="left_name"><a href="tea_task.html">实验室名</a></span>
 		</div>
 		<div id="mid" class="display">
 <!--			<span id="guidance_logo"><img src="#"></span>-->
@@ -134,8 +149,8 @@ $(function (){
 			</div>
 
 	</div>
-
-	<div id="main thetable" >
+	<div id="main_disp">
+	<div id="main thetable" style="display: ;">
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
 
@@ -426,7 +441,12 @@ $(function (){
 			</div>
 			</div>
 	</div>
-
+		</div>
+	<div id="main_none" style="display: ">
+		<div id="none_text">
+			当前暂无学生，赶紧添加一个吧
+		</div>
+	</div>
 	<script>
 		$(document).ready(function(){
 		  var zindex = 10;

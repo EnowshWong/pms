@@ -87,6 +87,13 @@
 #main{
 	margin-left: 5px;
 }
+#none_text{
+	text-align: center;
+	font-size: 3em;
+	color: #ddd;
+	margin-top: 5em;
+	
+}
 .display{
 	display: inline-block;
 }
