@@ -79,9 +79,13 @@ $(function (){
 	<script type="text/javascript">
 		$(function(){
 			var sear=document.getElementById("search_tea");
+			var plot=document.getElementById("sear_around");
+//			var sear=document.getElementById("search_tea");
 			sear.onclick=function(){
-				
+				plot.style.display="";
 			}
+			
+			
 		})
 	</script>
 </head>
@@ -92,18 +96,20 @@ $(function (){
 			<div class="display" style="width: 70%">
 				<form class="form form-group" name="" method="post">
 				<input class="display form-control" id="search_tea" style="border: 0px solid #ccc;" type="text"  placeholder="搜索老师">
-				<div id="sear_around">
+				<div id="sear_around" style="display: none;">
 				<div id="sear_float" class="display">
 					<ul id="float_ul">
 						<li class="float_ul_li float_ul_under">
-							<span class="float_li_img"></span>
-							<span class="float_li_name">1</span>
+							<div class="float_li_img"></div>
+							<span class="float_li_name">戴华</span>
 						</li>
 						<li class="float_ul_li float_ul_under">
-							<span class="float_li_img"></span>
+							<div class="float_li_img"></div>
+							<span class="float_li_name">叶军</span>
 						</li>
 						<li class="float_ul_li">
-							<span class="float_li_img"></span>
+							<div class="float_li_img"></div>
+							<span class="float_li_name">陈龙</span>
 						</li>
 					</ul>
 					</div>
@@ -113,6 +119,7 @@ $(function (){
 			<div class="display" style="width: 10%" >
 			<img class="display" style="width:25px;margin-left: 10px;" alt="" src="../static/images/add.png"></div>
 		</div>
+		<div class="display" style="width: 10%"></div>
 		<div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;"><center>师生项目交互平台</center></div>
 		<div  style="width: 6%" class="display"></div>
 		<div id="banner_right" style="padding: 0;" class="display">
@@ -148,9 +155,7 @@ $(function (){
 			<img src="../static/images/menu.png" style="width: 20px;margin-left: 30px;">
 			<span style="color: #808080">菜单</span>
 			</div>
-
 	</div>
-
 	<div id="main thetable" style="z-index: 1;" >
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
@@ -160,7 +165,9 @@ $(function (){
 				<div class="main_style_tip" style="border-left: 10px solid #ef4e4e ">
 				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
 				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<p class="tip_word_title"><b>我的任务</b>
+						<a class="test1" href="javascript:void(0)"><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></a>
+					</p>
 					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
 					
 					<div class="icon_temp">

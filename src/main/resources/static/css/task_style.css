@@ -27,6 +27,10 @@
 }
 #banner_left,#banner_mid,#banner_right{
 }
+#message{
+	display: none;
+	
+}
 #guidance{
 	
 	height: 50px;
@@ -93,6 +97,72 @@
 	color: #ddd;
 	margin-top: 5em;
 	
+	
+}
+.mess_cont{
+	height: 55px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.mess_top{
+	margin-top: 10px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.mess_cont_word{
+	margin-top: 10px;
+	margin-left: 15px;
+}
+.mess_cont_btn{
+	margin-top: 5px;
+	margin-left: 190px;
+}
+.cont_btn_agree{
+	height: 16px;
+	width:30px;
+	color: #fff;
+	padding-left: 2px;
+	border-radius: 3px;
+	background: #8db1be;
+	display: inline-block;
+	font-size: 0.9em;
+	
+}
+.cont_btn_refuse{
+	padding-left: 2px;
+	margin-left: 5px;
+	height: 16px;
+	width:30px;
+	color: #fff;
+	border-radius: 3px;
+	background: #c6c6c6;
+	display: inline-block;
+	font-size: 0.9em;
+	
+}
+.cont_word_pic1{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #7e99b0;
+}
+.cont_word_pic2{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #888787;
+}
+.cont_word{
+	color: #8d8d8d;
+}
+.divide_date{
+	background: #fff;
+/*	text-align: center;*/
+	margin-left: 110px;
+	width: 52px;
+	font-size: 0.8em;
+	margin-top: 3px;
+	color: #c4c5c7;
 }
 .display{
 	display: inline-block;
