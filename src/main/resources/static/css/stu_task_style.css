@@ -209,6 +209,8 @@
 	-webkit-border-radius:10px;
 	position: relative;
 	z-index: 1;
+	border-left: 10px solid #ef4e4e;
+	background: red;
 	
 }
 .word_title_img{
@@ -229,6 +231,7 @@
 }
 .main_style_tip_word{
 	margin-top: 5px;
+	display: inline-block;
 	
 	margin-left: 35px;
 /*	font-size: 1.2em;*/
@@ -243,6 +246,10 @@
 .main_style_footer_word{
 	margin-top: 15px;
 	margin-left: 35px;
+}
+.main_style_tip_img{
+	width:20px; 
+	margin-top: -5px;
 }
 .main_style_footer_word a{
 	

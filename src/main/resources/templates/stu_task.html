@@ -4,7 +4,6 @@
 	<title>无标题文档</title>
 	<link rel="stylesheet" href="../static/css/stu_task_style.css">
 	<script src="../static/js/jquery-2.2.4.min.js"></script>
-<!--	<script src="../static/js/reflect.js"></script>-->
 	
 <style type="text/css">
 a,img{border:0;}
@@ -88,6 +87,9 @@ $(function (){
 			
 		})
 	</script>
+	<style type="text/css">
+		
+	</style>
 </head>
 	
 <body>
@@ -156,30 +158,64 @@ $(function (){
 			<span style="color: #808080">菜单</span>
 			</div>
 	</div>
-
-
 	<div id="main thetable" style="z-index: 1;" >
+		
+			<script type="text/javascript">
+				$(function(){
+					function addImg1(aSpan){
+						var aImg=document.createAttribute("img");
+						aImg.setAttribute("class","main_style_tip_img");
+						aImg.setAttribute("src","../static/images/tip.png");
+						aSpan.appendChild(aImg);
+					}
+					function addSpan(aLi){
+						var aSpan=document.createAttribute("span");
+						aLi.appendChild(aSpan);
+					}
+					function addDiv1(aLi){
+						var aDiv=document.createAttribute("div");
+						aDiv.setAttribute("class","main_style_tip_word");
+						ali.appendChild(aDiv);
+					}
+					function addLi(){
+						var aLi=document.createAttribute("li");
+						var aUl=document.getElementById("addLi");
+//						aLi.setAttribute("class","main_style_tip");
+						aLi.class="main_style_tip";
+						aUl.appendChild(aLi);
+						alert("2")
+						addSpan(aLi);
+						addDiv1(aLi);
+					}
+					var test=document.getElementById("test12");
+					test.onclick=function(){
+						addLi();
+					}
+				})
+			</script>
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
 			<span style="width:40%;display: inline-block;"></span>
 			<span class="title" style=""><strong class="title_word">暂存</strong></span>
-			<ul class="pre-scrollable" style="height:500px;list-style:none;">
-				<li class="main_style_tip" style="border-left: 10px solid #ef4e4e ">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b>
-						<a class="test1" href="javascript:void(0)"><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></a>
-					</p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-					
-					<div class="icon_temp">
-						<div class="modify">修改</div>
-						<div class="delete">删除</div>
+			<ul class="pre-scrollable" id="addLi" style="height:500px;list-style:none;">
+				<button id="test12" style="border: 1px solid red;z-index: 100;width: 30px;height: 40px;"></button>
+				<li class="main_style_tip">
+					<span><img src="../static/images/tip.png" class="main_style_tip_img"></span>
+					<div class="main_style_tip_word">
+						<p class="tip_word_title"><b>我的任务</b>
+							<a class="test1" href="javascript:void(0)"><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></a>
+						</p>
+						<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+						<div class="icon_temp">
+							<div class="modify">修改</div>
+							<div class="delete">删除</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</li>
+				</li>
 			</ul>
+			
 			</div>
 		<div class="main_style_leng display"></div>
 		<div class="main_style display " >
