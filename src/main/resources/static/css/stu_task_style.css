@@ -159,6 +159,7 @@
 	height: 30px;
 	color: #a5a5a5;
 	margin-bottom: 3em;
+	display: inline-block;
 }
 .deadline{
 	float: right;
@@ -210,7 +211,6 @@
 	position: relative;
 	z-index: 1;
 	border-left: 10px solid #ef4e4e;
-	background: red;
 	
 }
 .word_title_img{
