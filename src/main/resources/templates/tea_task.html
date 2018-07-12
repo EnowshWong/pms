@@ -62,7 +62,11 @@ $(function (){
 	});
 });
 </script>
-
+<style type="text/css">
+	ul,li{
+		list-style: none;
+	}
+	</style>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -155,7 +159,7 @@ $(function (){
 		</div>
 		<div id="temp" class="display"></div>
 		<div id="right" class="display ">
-			<img src="../static/images/people.png" style="width: 20px;">
+			<img id="test11" src="../static/images/people.png" style="width: 20px;">
 			<span style="color: #808080;">1</span>
 			<img src="../static/images/menu.png" style="width: 20px;margin-left: 30px;">
 			<span style="color: #808080">菜单</span>
@@ -163,7 +167,7 @@ $(function (){
 
 	</div>
 	<div id="main_disp">
-	<div id="main thetable" style="display: ;">
+	<ul id="main thetable addOutLi " style="display: ;">
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
 
@@ -360,102 +364,112 @@ $(function (){
 			</div>
 			</div>
 		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
+		<li class="main_style display " >
 
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
+			<span class="title"><span class="title_circle"></span><strong class="title_word" id="test22">张三</strong></span>
+			<ul class="pre-scrollable" id="addLi" style="height: 200px;">
+				<li class="main_style_tip">
 				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
+				<div class="main_style_tip_word">
 					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+					<div class="main_style_belly">基于微信服务的师生项目交互平台基于微信服务的师生项目......
 
-					<div class="deadline">2018-9-16截止</div>
+						<div class="deadline">2018-9-16截止</div>
 					</div>
 				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+				</li>
 
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+			</ul>
+			
+			<script type="text/javascript">
+				$(function(){
+					function addImg1(aSpan){
+						var aImg=document.createElement("img");
+						aImg.setAttribute("src","../static/images/tip.png");
+						aImg.setAttribute("style","width:20px; margin-top: -5px;");
+						aSpan.appendChild(aImg);
+					}
+					function addSpan(aLi){
+						var aSpan=document.createElement("span");
+						addImg1(aSpan);
+						aLi.appendChild(aSpan);
+					}
+					function addB(aP){
+						var aB=document.createElement("b");
+						aB.innerHTML="我的任务";
+						aP.appendChild(aB);
+					}
+					function addImg2(aP){
+						var aImg2=document.createElement("img");
+						aImg2.setAttribute("class","word_title_img");
+						aImg2.setAttribute("alt","查看详情");
+						aImg2.setAttribute("src","../static/images/document.png");
 
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
+						aP.appendChild(aImg2);
+					}
+					function addP(aDiv1){
+						var aP=document.createElement("p");
+						aP.setAttribute("class","tip_word_title");
+						addB(aP);
+						addImg2(aP);
+						aDiv1.appendChild(aP);
+					}
+					function addDiv3(aDiv2){
+						var aDiv3=document.createElement("div");
+						aDiv3.setAttribute("class","deadline");
+						aDiv3.innerHTML="2018-9-16截止";
+						aDiv2.appendChild(aDiv3);
+					}
+					function addDiv2(aDiv1){
+						var aDiv2=document.createElement("div");
+						aDiv2.setAttribute("class","main_style_belly");
+						aDiv2.innerHTML="基于微信服务的师生项目交互平台基于微信服务的师生项目......";
+						addDiv3(aDiv2);
+						aDiv1.appendChild(aDiv2);
+					}
+					function addDiv1(aLi){
+						var aDiv1=document.createElement("div");
+						aDiv1.setAttribute("class","main_style_tip_word");
+						addP(aDiv1);
+						addDiv2(aDiv1);
+						aLi.appendChild(aDiv1);
+					}
+					function addLi(){
+						var aLi=document.getElementById("addLi");
+						var al=document.createElement("li");
+						al.setAttribute("class","main_style_tip");
+						addSpan(al);
+						addDiv1(al);
+						aLi.appendChild(al);
+					}
+					
+					var test=document.getElementById("test22");
+					test.onclick=function(){
+						addLi();
+					}
+				})
+			</script>
+		</li>
+		<script type="text/javascript">
+			$(function(){
+				function addOutLi(){
+					var aol=document.getElementById("addOutLi");
+					var aLi=document.createElement("li");
+					
+					
+					aol.appendChild(aLi);
+				}
+				var test=document.getElementById("test11");
+				test.onclick=function(){
+					addOutLi();
+				}
+			})
+		</script>
+		
 		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
-
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
-	</div>
+		<li></li>
+		<div class="main_style_leng display"></div>
+	</ul>
 		</div>
 	<div id="main_none" style="display: ">
 		<div id="none_text">
