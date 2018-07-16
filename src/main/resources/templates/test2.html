@@ -39,7 +39,7 @@
         clearInterval(ele.timer);//使用定时器之前先清除
         ele.timer = setInterval(function () {
             var speed = (target - ele.offsetLeft) / 10;//步长
-            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
             ele.style.left = ele.offsetLeft + speed + "px";
             if (Math.abs(target - ele.offsetLeft) <= Math.abs(speed)) {
                 //处理小数赋值
