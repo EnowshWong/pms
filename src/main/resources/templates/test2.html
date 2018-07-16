@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+
+
+<button>运动到200</button>
+<button>运动到400</button>
+
+
+<div></div>
+</body>
+
+
+<script>
+
+    var div = document.getElementsByTagName("div")[0];
+    var btn = document.getElementsByTagName("button");
+    btn[0].onclick = function () {
+        ani(div, 200);
+    };
+    btn[1].onclick = function () {
+        ani(div, 400);
+    };
+
+    function ani(ele, target) {
+        clearInterval(ele.timer);//使用定时器之前先清除
+        ele.timer = setInterval(function () {
+            var speed = (target - ele.offsetLeft) / 10;//步长
+            speed = speed > 0 ? Math.ceil(speed):Math.floor(speed);
+            ele.style.left = ele.offsetLeft + speed + "px";
+            if (Math.abs(target - ele.offsetLeft) <= Math.abs(speed)) {
+                //处理小数赋值
+                ele.style.left = target + "px";
+                clearInterval(timer);
+            }
+        }, 30);
+    }
+
+</script>
+
+</html>

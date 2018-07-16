@@ -47,9 +47,26 @@ $(function (){
 		isClose : false,  								//是否自动关闭
 		timeOut : 5000									//设置自动关闭时间，前提是isClose=true
 	});
+	$(".test2").manhuaDialog({
+		Event : "click",								//触发响应事件
+		title : "通知",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "message",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 290,									//弹出层的宽度
+		height : 270,									//弹出层的高度
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true
+	});
 });
 </script>
-
+<style type="text/css">
+	ul,li{
+		list-style: none;
+	}
+	</style>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -78,6 +95,21 @@ $(function (){
 		}
 	});
 	</script>
+	<script type="text/javascript">
+		$(function(){
+			var disp1=document.getElementById("main_disp");
+			var disp2=document.getElementById("main_none");
+			var num=document.getElementsByClassName("main_style").length;
+			if(num==0){
+				disp1.style.display="none";
+				disp2.style.display="";
+			}
+			else{
+				disp1.style.display="";
+				disp2.style.display="none";
+			}
+		})
+	</script>
 </head>
 
 
@@ -86,34 +118,36 @@ $(function (){
 
 
 <body>
-<h1 th:each="cookie:${#httpServletRequest.getCookies()}"" />
+<h1 th:each="cookie:${#httpServletRequest.getCookies()}" />
 <h2 th:each="cookie:${#httpServletRequest.getCookies()}"></h2>
 	<div id="banner">
-		<div id="banner_left"><div class="display">
+		<div id="banner_left" class="display"><div class="display" style="width: 70%">
 				<form class="form form-group" name="" method="post">
-				<input class="display form-control" style="width: 270px;border: 0px solid #ccc;" type="text"  placeholder="搜索个人项目">
+				<input class="display form-control" style="border: 0px solid #ccc;" type="text"  placeholder="搜索个人项目">
 			</form>
 			</div>
-			<div class="display" >
+			<div class="display" style="width: 10%" >
 			<img class="display" style="width:25px;margin-left: 10px;" alt="" src="../static/images/add.png"></div>
 		</div>
 		<div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;"><center>师生项目交互平台</center></div>
-		<div id="banner_right" style="margin-left:240px;margin-top: 10px;padding-top: 5px;" class="display">
-			<span style="color: #808080;font-size: 1.1em;">我的</span>
-			<span style="color: #e5e5e5;margin-left: 10px;margin-left: 10px;">|</span>
-			<span style="color: #808080;font-size: 1.1em;margin-left: 10px;">日历</span>
-			<span style="color: #e5e5e5;margin-left: 10px;">|</span>
-			<img src="../static/images/question.png" style="width: 20px;margin-left: 20px;">
-			<img src="../static/images/ring.png" style="width: 20px;margin-left: 20px;">
-			<img src="../static/images/message.png" style="width: 20px;margin-left: 20px;">
-			<img src="#" style="width: 30px;margin-left: 20px;border: 1px solid red;">
+		<div  style="width: 6%" class="display"></div>
+		<div id="banner_right" style="padding: 0;" class="display">
+			<div class="display" style="width: 35%;"><div class="display" style="color: #808080;font-size: 1.1em;">我的</div>
+			<div class="display" style="color: #e5e5e5;margin-left: 10px;margin-left: 10px">|</div>
+			<div class="display" style="color: #808080;font-size: 1.1em;margin-left: 10px;">日历</div>
+			<div class="display" style="color: #e5e5e5;margin-left: 10px;">|</div></div>
+			<div style="width: 60%;" class="display">
+			<img src="../static/images/question.png" style="width:25px;margin-left: 20px;">
+			<img src="../static/images/ring.png" style="width: 25px;margin-left: 20px;">
+			<a class="test2" href="javascript:void(0)"><img src="../static/images/message.png" style="width:25px;margin-left: 20px;"></a>
+			<img src="#" style="width:25px;margin-left: 20px;border: 1px solid red;"></div>
 		</div>
 	</div>
 	<div id="guidance">
 		<div id="left" class="display">
 			<span id="left_origin"><a href="tea_home.html">首页</a></span>
 			<img src="../static/images/bigger.png" style="width: 15px;">
-			<span id="left_name"><a href="tea_task.html">项目名</a></span>
+			<span id="left_name"><a href="tea_task.html">实验室名</a></span>
 		</div>
 		<div id="mid" class="display">
 <!--			<span id="guidance_logo"><img src="#"></span>-->
@@ -123,16 +157,164 @@ $(function (){
 			<a href="tea_eye.html"><div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div></a>
 
 		</div>
+		<div id="temp" class="display"></div>
 		<div id="right" class="display ">
-			<img src="../static/images/people.png" style="width: 20px;margin-left: 390px;">
+			<img id="test11" src="../static/images/people.png" style="width: 20px;">
 			<span style="color: #808080;">1</span>
 			<img src="../static/images/menu.png" style="width: 20px;margin-left: 30px;">
 			<span style="color: #808080">菜单</span>
 			</div>
 
 	</div>
+	<div id="main_disp">
+	<ul id="main thetable addOutLi " style="display: ;">
+		<div class="main_style_left display"></div>
+		<div class="main_style display " >
 
-	<div id="main thetable" >
+			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
+			<div class="pre-scrollable" style="height: 200px;">
+			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b>
+						<a class="test1" href="javascript:void(0)"><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></a>
+					</p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+			</div>
+		<div class="main_style_leng display"></div>
+		<div class="main_style display " >
+
+			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
+			<div class="pre-scrollable" style="height: 200px;">
+			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+			</div>
+		<div class="main_style_leng display"></div>
+		<div class="main_style display " >
+
+			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
+			<div class="pre-scrollable" style="height: 200px;">
+			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+				<div class="main_style_tip" style="">
+				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
+				<div class="main_style_tip_word display">
+					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
+					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+
+					<div class="deadline">2018-9-16截止</div>
+					</div>
+				</div>
+			</div>
+
+			</div>
+			</div>
+		<div class="main_style_left display"></div>
 		<div class="main_style_left display"></div>
 		<div class="main_style display " >
 
@@ -182,248 +364,118 @@ $(function (){
 			</div>
 			</div>
 		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
+		<li class="main_style display " >
 
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
+			<span class="title"><span class="title_circle"></span><strong class="title_word" id="test22">张三</strong></span>
+			<ul class="pre-scrollable" id="addLi" style="height: 200px;">
+				<li class="main_style_tip">
 				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
+				<div class="main_style_tip_word">
 					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+					<div class="main_style_belly">基于微信服务的师生项目交互平台基于微信服务的师生项目......
 
-					<div class="deadline">2018-9-16截止</div>
+						<div class="deadline">2018-9-16截止</div>
 					</div>
 				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+				</li>
 
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
+			</ul>
+			
+			<script type="text/javascript">
+				$(function(){
+					function addImg1(aSpan){
+						var aImg=document.createElement("img");
+						aImg.setAttribute("src","../static/images/tip.png");
+						aImg.setAttribute("style","width:20px; margin-top: -5px;");
+						aSpan.appendChild(aImg);
+					}
+					function addSpan(aLi){
+						var aSpan=document.createElement("span");
+						addImg1(aSpan);
+						aLi.appendChild(aSpan);
+					}
+					function addB(aP){
+						var aB=document.createElement("b");
+						aB.innerHTML="我的任务";
+						aP.appendChild(aB);
+					}
+					function addImg2(aP){
+						var aImg2=document.createElement("img");
+						aImg2.setAttribute("class","word_title_img");
+						aImg2.setAttribute("alt","查看详情");
+						aImg2.setAttribute("src","../static/images/document.png");
 
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
+						aP.appendChild(aImg2);
+					}
+					function addP(aDiv1){
+						var aP=document.createElement("p");
+						aP.setAttribute("class","tip_word_title");
+						addB(aP);
+						addImg2(aP);
+						aDiv1.appendChild(aP);
+					}
+					function addDiv3(aDiv2){
+						var aDiv3=document.createElement("div");
+						aDiv3.setAttribute("class","deadline");
+						aDiv3.innerHTML="2018-9-16截止";
+						aDiv2.appendChild(aDiv3);
+					}
+					function addDiv2(aDiv1){
+						var aDiv2=document.createElement("div");
+						aDiv2.setAttribute("class","main_style_belly");
+						aDiv2.innerHTML="基于微信服务的师生项目交互平台基于微信服务的师生项目......";
+						addDiv3(aDiv2);
+						aDiv1.appendChild(aDiv2);
+					}
+					function addDiv1(aLi){
+						var aDiv1=document.createElement("div");
+						aDiv1.setAttribute("class","main_style_tip_word");
+						addP(aDiv1);
+						addDiv2(aDiv1);
+						aLi.appendChild(aDiv1);
+					}
+					function addLi(){
+						var aLi=document.getElementById("addLi");
+						var al=document.createElement("li");
+						al.setAttribute("class","main_style_tip");
+						addSpan(al);
+						addDiv1(al);
+						aLi.appendChild(al);
+					}
+					
+					var test=document.getElementById("test22");
+					test.onclick=function(){
+						addLi();
+					}
+				})
+			</script>
+		</li>
+		<script type="text/javascript">
+			$(function(){
+				function addOutLi(){
+					var aol=document.getElementById("addOutLi");
+					var aLi=document.createElement("li");
+					
+					
+					aol.appendChild(aLi);
+				}
+				var test=document.getElementById("test11");
+				test.onclick=function(){
+					addOutLi();
+				}
+			})
+		</script>
+		
 		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
-
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
-		<div class="main_style_left display"></div>
-		<div class="main_style_left display"></div>
-		<div class="main_style display " >
-
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
+		<li></li>
 		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
-
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
-		<div class="main_style_leng display"></div>
-		<div class="main_style display " >
-
-			<span class="title"><span class="title_circle"></span><strong class="title_word">张三</strong></span>
-			<div class="pre-scrollable" style="height: 200px;">
-			<div class="main_style_tip" style="border-left: 10px solid #ef4e4e">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-				<div class="main_style_tip" style="">
-				<span><img src="../static/images/tip.png" style="width:20px; margin-top: -5px;"></span>
-				<div class="main_style_tip_word display">
-					<p class="tip_word_title"><b>我的任务</b><img class="word_title_img" alt="查看详情" src="../static/images/document.png" ></p>
-					<div class="main_style_belly display">基于微信服务的师生项目交互平台基于微信服务的师生项目......
-
-					<div class="deadline">2018-9-16截止</div>
-					</div>
-				</div>
-			</div>
-
-			</div>
-			</div>
+	</ul>
+		</div>
+	<div id="main_none" style="display: ">
+		<div id="none_text">
+			当前暂无学生，赶紧添加一个吧
+		</div>
 	</div>
-
 	<script>
 		$(document).ready(function(){
 		  var zindex = 10;
@@ -471,6 +523,39 @@ $(function (){
 		});
 	</script>
 
+	<div id="message">
+		<div class="mess_top"></div>
+		<ul>
+			<li class="mess_cont">
+				<div class="mess_cont_word">
+					<span class="cont_word_pic1"></span>
+					<span class="cont_word">B18080808张三申请加入您的实验室</span>
+				</div>
+				<div class="mess_cont_btn">
+					<span class="cont_btn_agree">同意</span>
+					<span class="cont_btn_refuse">拒绝</span>
+				</div>
+				<div class="divide_date">
+					&nbsp;2018-7-6
+				</div>
+			</li>
+			<li class="mess_cont">
+				<div class="mess_cont_word">
+					<span class="cont_word_pic2"></span>
+					<span class="cont_word">B18080808张三申请加入您的实验室</span>
+				</div>
+				<div class="mess_cont_btn">
+					<span class="cont_btn_agree">同意</span>
+					<span class="cont_btn_refuse">拒绝</span>
+				</div>
+				<div class="divide_date">
+					&nbsp;2018-7-6
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	
 	<div id="detail" style="display:none;">
 		<div id="detail_header">
 			<div class="display"><img src="../static/images/tip.png" id="detail_header_img"></div>
