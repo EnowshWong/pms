@@ -5,6 +5,7 @@ import com.pms.mapper.PmsUserTeaMapper;
 import com.pms.pojo.PmsTempPlanExample;
 import com.pms.pojo.PmsUserTea;
 import com.pms.pojo.PmsUserTeaExample;
+import com.pms.pojo.TeaExp;
 import com.pms.service.TeaService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,9 @@ public class TeaServiceImpl implements TeaService {
         return list;
     }
 
+    @Override
+    public List<TeaExp> findTeaExpList() {
+        List<TeaExp> teaExpList = pmsUserTeaMapper.findTeaExpList();
+        return teaExpList;
+    }
 }

@@ -44,7 +44,13 @@ public class TemplanServiceImpl implements TemplanService {
 
     @Override
     public PmsResult updateTemplan(PmsTempPlan pmsTempPlan) {
-        pmsTempPlanMapper.updateByPrimaryKeyWithBLOBs(pmsTempPlan);
+        pmsTempPlanMapper.updateByPrimaryKeySelective(pmsTempPlan);
         return PmsResult.ok();
+    }
+
+    @Override
+    public PmsTempPlan getById(long id) {
+        PmsTempPlan pmsTempPlan = pmsTempPlanMapper.selectByPrimaryKey(id);
+        return pmsTempPlan;
     }
 }

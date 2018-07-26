@@ -32,8 +32,16 @@ public class StuServiceImpl implements StuService {
         pmsJoin.setCreated(date);
         //默认设置一星期过期
         pmsJoin.setExpired(new Date(date.getYear(),date.getMonth(),date.getDate()+7));
-        pmsJoin.setNickname(pmsUserStu.getNickname());
         pmsJoinMapper.insert(pmsJoin);
+        return PmsResult.ok();
+    }
+
+    @Override
+    public PmsResult updateJoinStatus(long id, Byte status) {
+        PmsJoin pmsJoin=new PmsJoin();
+        pmsJoin.setId(id);
+        pmsJoin.setStatus(status);
+        pmsJoinMapper.updateByPrimaryKeySelective(pmsJoin);
         return PmsResult.ok();
     }
 

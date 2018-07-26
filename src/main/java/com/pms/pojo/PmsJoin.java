@@ -5,11 +5,11 @@ import java.util.Date;
 public class PmsJoin {
     private Long id;
 
-    private String nickname;
-
     private Long stuId;
 
     private Long expId;
+
+    private String stuName;
 
     private Date created;
 
@@ -23,14 +23,6 @@ public class PmsJoin {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public Long getStuId() {
@@ -47,6 +39,14 @@ public class PmsJoin {
 
     public void setExpId(Long expId) {
         this.expId = expId;
+    }
+
+    public String getStuName() {
+        return stuName;
+    }
+
+    public void setStuName(String stuName) {
+        this.stuName = stuName == null ? null : stuName.trim();
     }
 
     public Date getCreated() {

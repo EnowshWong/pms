@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.pms.mapper.PmsAssessMapper" >
-  <resultMap id="BaseResultMap" type="com.pms.pojo.PmsAssess" >
+<mapper namespace="com.pms.mapper.PmsStuAssessMapper" >
+  <resultMap id="BaseResultMap" type="com.pms.pojo.PmsStuAssess" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="plan_id" property="planId" jdbcType="BIGINT" />
-    <result column="isPassed" property="ispassed" jdbcType="TINYINT" />
-    <result column="grade" property="grade" jdbcType="TINYINT" />
+    <result column="stu_id" property="stuId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
-    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsAssessWithBLOBs" extends="BaseResultMap" >
-    <result column="tut_before_judge" property="tutBeforeJudge" jdbcType="LONGVARCHAR" />
-    <result column="tut_after_judge" property="tutAfterJudge" jdbcType="LONGVARCHAR" />
+  <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsStuAssess" extends="BaseResultMap" >
     <result column="self_judge" property="selfJudge" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -73,12 +69,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, plan_id, isPassed, grade, created, updated
+    id, plan_id, stu_id, created
   </sql>
   <sql id="Blob_Column_List" >
-    tut_before_judge, tut_after_judge, self_judge
+    self_judge
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsAssessExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsStuAssessExample" >
     select
     <if test="distinct" >
       distinct
@@ -86,7 +82,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from pms_assess
+    from pms_stu_assess
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -94,13 +90,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pms.pojo.PmsAssessExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pms.pojo.PmsStuAssessExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from pms_assess
+    from pms_stu_assess
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -113,31 +109,27 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from pms_assess
+    from pms_stu_assess
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from pms_assess
+    delete from pms_stu_assess
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pms.pojo.PmsAssessExample" >
-    delete from pms_assess
+  <delete id="deleteByExample" parameterType="com.pms.pojo.PmsStuAssessExample" >
+    delete from pms_stu_assess
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pms.pojo.PmsAssessWithBLOBs" >
-    insert into pms_assess (id, plan_id, isPassed, 
-      grade, created, updated, 
-      tut_before_judge, tut_after_judge, 
-      self_judge)
-    values (#{id,jdbcType=BIGINT}, #{planId,jdbcType=BIGINT}, #{ispassed,jdbcType=TINYINT}, 
-      #{grade,jdbcType=TINYINT}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
-      #{tutBeforeJudge,jdbcType=LONGVARCHAR}, #{tutAfterJudge,jdbcType=LONGVARCHAR}, 
-      #{selfJudge,jdbcType=LONGVARCHAR})
+  <insert id="insert" parameterType="com.pms.pojo.PmsStuAssess" >
+    insert into pms_stu_assess (id, plan_id, stu_id, 
+      created, self_judge)
+    values (#{id,jdbcType=BIGINT}, #{planId,jdbcType=BIGINT}, #{stuId,jdbcType=BIGINT}, 
+      #{created,jdbcType=TIMESTAMP}, #{selfJudge,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.pms.pojo.PmsAssessWithBLOBs" >
-    insert into pms_assess
+  <insert id="insertSelective" parameterType="com.pms.pojo.PmsStuAssess" >
+    insert into pms_stu_assess
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -145,23 +137,11 @@
       <if test="planId != null" >
         plan_id,
       </if>
-      <if test="ispassed != null" >
-        isPassed,
-      </if>
-      <if test="grade != null" >
-        grade,
+      <if test="stuId != null" >
+        stu_id,
       </if>
       <if test="created != null" >
         created,
-      </if>
-      <if test="updated != null" >
-        updated,
-      </if>
-      <if test="tutBeforeJudge != null" >
-        tut_before_judge,
-      </if>
-      <if test="tutAfterJudge != null" >
-        tut_after_judge,
       </if>
       <if test="selfJudge != null" >
         self_judge,
@@ -174,37 +154,25 @@
       <if test="planId != null" >
         #{planId,jdbcType=BIGINT},
       </if>
-      <if test="ispassed != null" >
-        #{ispassed,jdbcType=TINYINT},
-      </if>
-      <if test="grade != null" >
-        #{grade,jdbcType=TINYINT},
+      <if test="stuId != null" >
+        #{stuId,jdbcType=BIGINT},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null" >
-        #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="tutBeforeJudge != null" >
-        #{tutBeforeJudge,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="tutAfterJudge != null" >
-        #{tutAfterJudge,jdbcType=LONGVARCHAR},
       </if>
       <if test="selfJudge != null" >
         #{selfJudge,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pms.pojo.PmsAssessExample" resultType="java.lang.Integer" >
-    select count(*) from pms_assess
+  <select id="countByExample" parameterType="com.pms.pojo.PmsStuAssessExample" resultType="java.lang.Integer" >
+    select count(*) from pms_stu_assess
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update pms_assess
+    update pms_stu_assess
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -212,23 +180,11 @@
       <if test="record.planId != null" >
         plan_id = #{record.planId,jdbcType=BIGINT},
       </if>
-      <if test="record.ispassed != null" >
-        isPassed = #{record.ispassed,jdbcType=TINYINT},
-      </if>
-      <if test="record.grade != null" >
-        grade = #{record.grade,jdbcType=TINYINT},
+      <if test="record.stuId != null" >
+        stu_id = #{record.stuId,jdbcType=BIGINT},
       </if>
       <if test="record.created != null" >
         created = #{record.created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updated != null" >
-        updated = #{record.updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.tutBeforeJudge != null" >
-        tut_before_judge = #{record.tutBeforeJudge,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.tutAfterJudge != null" >
-        tut_after_judge = #{record.tutAfterJudge,jdbcType=LONGVARCHAR},
       </if>
       <if test="record.selfJudge != null" >
         self_judge = #{record.selfJudge,jdbcType=LONGVARCHAR},
@@ -239,55 +195,37 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update pms_assess
+    update pms_stu_assess
     set id = #{record.id,jdbcType=BIGINT},
       plan_id = #{record.planId,jdbcType=BIGINT},
-      isPassed = #{record.ispassed,jdbcType=TINYINT},
-      grade = #{record.grade,jdbcType=TINYINT},
+      stu_id = #{record.stuId,jdbcType=BIGINT},
       created = #{record.created,jdbcType=TIMESTAMP},
-      updated = #{record.updated,jdbcType=TIMESTAMP},
-      tut_before_judge = #{record.tutBeforeJudge,jdbcType=LONGVARCHAR},
-      tut_after_judge = #{record.tutAfterJudge,jdbcType=LONGVARCHAR},
       self_judge = #{record.selfJudge,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update pms_assess
+    update pms_stu_assess
     set id = #{record.id,jdbcType=BIGINT},
       plan_id = #{record.planId,jdbcType=BIGINT},
-      isPassed = #{record.ispassed,jdbcType=TINYINT},
-      grade = #{record.grade,jdbcType=TINYINT},
-      created = #{record.created,jdbcType=TIMESTAMP},
-      updated = #{record.updated,jdbcType=TIMESTAMP}
+      stu_id = #{record.stuId,jdbcType=BIGINT},
+      created = #{record.created,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pms.pojo.PmsAssessWithBLOBs" >
-    update pms_assess
+  <update id="updateByPrimaryKeySelective" parameterType="com.pms.pojo.PmsStuAssess" >
+    update pms_stu_assess
     <set >
       <if test="planId != null" >
         plan_id = #{planId,jdbcType=BIGINT},
       </if>
-      <if test="ispassed != null" >
-        isPassed = #{ispassed,jdbcType=TINYINT},
-      </if>
-      <if test="grade != null" >
-        grade = #{grade,jdbcType=TINYINT},
+      <if test="stuId != null" >
+        stu_id = #{stuId,jdbcType=BIGINT},
       </if>
       <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated != null" >
-        updated = #{updated,jdbcType=TIMESTAMP},
-      </if>
-      <if test="tutBeforeJudge != null" >
-        tut_before_judge = #{tutBeforeJudge,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="tutAfterJudge != null" >
-        tut_after_judge = #{tutAfterJudge,jdbcType=LONGVARCHAR},
       </if>
       <if test="selfJudge != null" >
         self_judge = #{selfJudge,jdbcType=LONGVARCHAR},
@@ -295,25 +233,19 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pms.pojo.PmsAssessWithBLOBs" >
-    update pms_assess
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pms.pojo.PmsStuAssess" >
+    update pms_stu_assess
     set plan_id = #{planId,jdbcType=BIGINT},
-      isPassed = #{ispassed,jdbcType=TINYINT},
-      grade = #{grade,jdbcType=TINYINT},
+      stu_id = #{stuId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP},
-      tut_before_judge = #{tutBeforeJudge,jdbcType=LONGVARCHAR},
-      tut_after_judge = #{tutAfterJudge,jdbcType=LONGVARCHAR},
       self_judge = #{selfJudge,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pms.pojo.PmsAssess" >
-    update pms_assess
+  <update id="updateByPrimaryKey" parameterType="com.pms.pojo.PmsStuAssess" >
+    update pms_stu_assess
     set plan_id = #{planId,jdbcType=BIGINT},
-      isPassed = #{ispassed,jdbcType=TINYINT},
-      grade = #{grade,jdbcType=TINYINT},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP}
+      stu_id = #{stuId,jdbcType=BIGINT},
+      created = #{created,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

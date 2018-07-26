@@ -9,4 +9,5 @@ import com.pms.pojo.PmsJoin;
 public interface StuService {
     PmsResult saveJoin(PmsJoin pmsJoin);
     PmsResult delJoin(long stuId);
+    PmsResult updateJoinStatus(long id,Byte status);
 }

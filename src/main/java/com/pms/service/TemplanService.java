@@ -13,4 +13,5 @@ public interface TemplanService {
     List<PmsTempPlan> getTempPlanListByStuId(long stuId);
     PmsResult delTemplanById(long id);
     PmsResult updateTemplan(PmsTempPlan pmsTempPlan);
+    PmsTempPlan getById(long id);
 }

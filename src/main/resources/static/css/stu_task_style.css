@@ -4,27 +4,33 @@
 	margin: 0;
 	padding: 0;
 }
-
+#modal-1{
+	background:#fff;
+	box-shadow:3px 3px 3px #333;
+	border: 1px solid #E2D6D6;
+	border-radius: 10px;
+	width: 540px;
+	height: auto;
+	
+}
 #banner{
 	border-bottom: 2px solid #e5e5e5;
 	height: 60px;
 }
 #banner_left{
-	width: 34%;
-	display:inline-block;
-/*	border: 1px solid red;*/
+	width: 22%;
 	margin-left: 20px;
 	margin-top: 10px;
 	
 }
 #banner_mid{
-	width: 28%;
-/*	border: 1px solid red;*/
-	
+	width:33%;
+	color: #000;
 }
 #banner_right{
-	width: auto;
-/*	border: 1px solid red;*/
+	width: 26%;
+	right: 0;
+/*	float: right;*/
 	
 }
 #guidance{
@@ -37,11 +43,29 @@
 /*	padding-bottom: 15px*/
 	margin-top: 15px;
 }
+
 #left{
 	 font-size: 1.1em;
 	font-weight: 500;
 	margin-left: 20px;
+	width: 38%;
 	
+}
+#mid{
+	display: inline-block;
+/*	margin-left: 500px;*/
+/*	margin: 0 auto;*/
+	height: inherit;
+	width: auto;
+	width: 30%;
+/*	border: 1px solid blue;*/
+		
+}
+#temp{
+	width: 17%;
+}
+#right{
+	width:10%;
 }
 #left_origin a:hover{
 	color: #4eb0f6;
@@ -50,15 +74,6 @@
 #left_name a:hover{
 	color: #000;
 	text-decoration: none;
-}
-#mid{
-	display: inline-block;
-	margin-left: 500px;
-/*	margin: 0 auto;*/
-	height: inherit;
-	width: auto;
-/*	border: 1px solid blue;*/
-		
 }
 #task,#file,#resource,#eye{
 /*	margin-left: 10px;*/
@@ -77,6 +92,81 @@
 #main{
 	margin-left: 5px;
 }
+#sear_around{
+	margin-left: -18px;
+/*	display: none;*/
+}
+#sear_float{
+	z-index: 5;
+	background: #f8f8f8;
+	position: absolute;
+	margin: 10px;
+	width: 16%;
+	height: auto;
+	border-radius: 10px;
+	float: left;
+}
+#float_ul{
+	list-style-type: none;
+}
+.date_word{
+	
+}
+.add_task{
+	margin-left: 40px;
+	
+}
+.add_icon{
+	width: 20px;
+	vertical-align: middle;
+}
+.add_task_word{
+	color: #3da8f5;
+	vertical-align: middle;
+}
+.float_li_ul{
+	height: auto;
+}
+.float_li_li{
+	margin-left: 30px;
+	margin-top: 10px;
+/*	border: 1px solid blue;*/
+	
+/*	display: block;*/
+}
+.float_li_btn{
+	width: 30px;
+	height: 20px;
+	background: #98d8f6;
+	border-radius: 5px;
+	font-size: 0.8em;
+	margin-left: 40px;
+}
+.float_ul_li{
+	height: auto;
+	padding-top: 13px;
+	padding-bottom: 13px;
+	display: block;
+}
+.float_li_img{
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;	
+	background: url(../images/nightfall.jpg) ;
+	margin-left: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.float_li_name{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.1em;
+	color: #8db2c1;
+	margin-left: 0.8em;
+}
+.float_ul_under{
+	border-bottom: 1px solid #cfcece;
+}
 .display{
 	display: inline-block;
 }
@@ -86,7 +176,7 @@
 }
 .main_style{
 	
-	
+/*	box-shadow:5px 5px 5px #333;*/
 /*	border: 1px solid blue;*/
 /*	margin: 13px;*/
 	margin-top: 15px;
@@ -106,12 +196,6 @@
 }
 .main_style_right{
 	width: 1%;
-}
-.main_style_belly{
-	width: 90%;
-	height: 30px;
-	color: #a5a5a5;
-	margin-bottom: 3em;
 }
 .deadline{
 	float: right;
@@ -151,23 +235,6 @@
 .menu_color{
 	color: #000;
 }
-.main_style_tip{
-	
-	margin: 10px;
-	margin-left: 20px;
-	margin-right: 20px;
-	padding-left: 10px;
-	background:#fff;
-	height: auto;
-	-webkit-border-radius:10px;
-	position: relative;
-	
-}
-.word_title_img{
-	float: right;
-	margin-right: 2em;	
-	width: 30px;
-}
 .main_style_tip span{
 	margin-left: 5px;
 	margin-top: 10px;
@@ -181,12 +248,14 @@
 }
 .main_style_tip_word{
 	margin-top: 5px;
+	display: inline-block;
 	
 	margin-left: 35px;
 /*	font-size: 1.2em;*/
 /*	font-weight: 590;*/
 	vertical-align: middle;
 /*	position: absolute;*/
+	z-index: 1;
 }
 .tip_word_title{
 	font-size: 1.2em;
@@ -196,6 +265,10 @@
 	margin-top: 15px;
 	margin-left: 35px;
 }
+.main_style_tip_img{
+	width:20px; 
+	margin-top: -5px;
+}
 .main_style_footer_word a{
 	
 	color: #4eb0f6;
@@ -203,67 +276,31 @@
 .position{
 	position: absolute;
 }
-.icon_temp{
-	width: 80px;
-	margin-top: 1.4em;
-	height: auto;
-	float: right;
-}
-.modify{
-	display: inline-block;
-	width: 38px;
-	height: 18px;
-	background: #98d8f6;
-	-webkit-border-radius:6px;
-	color: #fff;
-	text-align: center;
-	font-size: 0.9em;
-	z-index: 1;
-}
-.delete{
-	z-index: 1;
-/*	margin-left: 20px;*/
-	display: inline-block;
-	width: 38px;
-	height: 18px;
-	background: #ff5252;
-	-webkit-border-radius:6px;
-	color: #fff;
-	text-align: center;
-	font-size: 0.9em;
-}
-.judge{
-	float: left;
-	width: 48px;
-	height: 18px;
-	background: #3DDED0;
-	-webkit-border-radius:6px;
-	color: #fff;
-	text-align: center;
-	font-size: 0.9em;
-	margin-top: 0.4em;
-}
 .delete_doing{
 	margin-top: 0.4em;
 	float: right;
 	width: 38px;
 	height: 18px;
+	line-height: 18px;
 	background: #ff5252;
 	-webkit-border-radius:6px;
 	color: #fff;
 	text-align: center;
 	font-size: 0.9em;
+	margin-top: -1px;
 }
 .judge_self{
 	margin-top: 0.4em;
 	float: right;
 	width: 38px;
 	height: 18px;
+	line-height: 18px;
 	background: #a1d4ac;
 	-webkit-border-radius:6px;
 	color: #fff;
 	text-align: center;
 	font-size: 0.9em;
+	margin-top: -1px;
 	
 }
 

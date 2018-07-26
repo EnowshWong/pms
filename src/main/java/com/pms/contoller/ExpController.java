@@ -17,40 +17,39 @@ import java.util.List;
  * @author:wong
  */
 @Controller
-@RequestMapping("/exp")
 public class ExpController {
     @Autowired
     private ExpService expService;
 
-    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    @RequestMapping(value = "/exp/create",method = RequestMethod.POST)
     @ResponseBody
     public PmsResult create(PmsExp pmsExp){
         PmsResult pmsResult = expService.create(pmsExp);
         return pmsResult;
     }
 
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("/exp/delete/{id}")
     @ResponseBody
     public PmsResult delete(@PathVariable long id){
         PmsResult pmsResult = expService.delete(id);
         return pmsResult;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/exp/list")
     @ResponseBody
     public List<PmsExp> getExpList(){
         List<PmsExp> pmsList = expService.getPmsList();
         return pmsList;
     }
 
-    @RequestMapping("/getByTeaId/{id}")
+    @RequestMapping("/exp/getByTeaId/{id}")
     @ResponseBody
     public List<PmsExp> getByTeaId(@PathVariable long id){
         List<PmsExp> list = expService.getExpByTeaId(id);
         return list;
     }
 
-    @RequestMapping("/getJoin/{expId}")
+    @RequestMapping("/exp/getJoin/{expId}")
     @ResponseBody
     public List<PmsJoin> getJoin(@PathVariable long expId){
         List<PmsJoin> list = expService.getJoin(expId);

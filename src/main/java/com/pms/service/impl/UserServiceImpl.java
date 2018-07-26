@@ -81,9 +81,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PmsResult login(String username, String password, int identity, HttpServletRequest request, HttpServletResponse response) {
-        if (identity==1){//学生登陆
+            if (identity==1){//学生登陆
             PmsUserStuExample example=new PmsUserStuExample();
             PmsUserStuExample.Criteria criteria=example.createCriteria();
+            if (username==null)
+                return PmsResult.build(400,"用户名为空");
             criteria.andUsernameEqualTo(username);
             List<PmsUserStu> list = pmsUserStuMapper.selectByExample(example);
             if (list==null||list.size()==0){
@@ -105,6 +107,8 @@ public class UserServiceImpl implements UserService {
         else if (identity==2){//教师登陆
             PmsUserTeaExample example=new PmsUserTeaExample();
             PmsUserTeaExample.Criteria criteria=example.createCriteria();
+            if (username==null)
+                return PmsResult.build(400,"用户名为空");
             criteria.andUsernameEqualTo(username);
             List<PmsUserTea> list = pmsUserTeaMapper.selectByExample(example);
             if (list==null||list.size()==0){

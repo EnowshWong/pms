@@ -3,9 +3,9 @@
 <mapper namespace="com.pms.mapper.PmsJoinMapper" >
   <resultMap id="BaseResultMap" type="com.pms.pojo.PmsJoin" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="stu_id" property="stuId" jdbcType="BIGINT" />
     <result column="exp_id" property="expId" jdbcType="BIGINT" />
+    <result column="stu_name" property="stuName" jdbcType="VARCHAR" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="TINYINT" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, nickname, stu_id, exp_id, created, expired, status
+    id, stu_id, exp_id, stu_name, created, expired, status
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pms.pojo.PmsJoinExample" >
     select
@@ -102,11 +102,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pms.pojo.PmsJoin" >
-    insert into pms_join (id, nickname, stu_id, 
-      exp_id, created, expired, 
+    insert into pms_join (id, stu_id, exp_id, 
+      stu_name, created, expired, 
       status)
-    values (#{id,jdbcType=BIGINT}, #{nickname,jdbcType=VARCHAR}, #{stuId,jdbcType=BIGINT}, 
-      #{expId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{expired,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=BIGINT}, #{stuId,jdbcType=BIGINT}, #{expId,jdbcType=BIGINT}, 
+      #{stuName,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{expired,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.pms.pojo.PmsJoin" >
@@ -115,14 +115,14 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="nickname != null" >
-        nickname,
-      </if>
       <if test="stuId != null" >
         stu_id,
       </if>
       <if test="expId != null" >
         exp_id,
+      </if>
+      <if test="stuName != null" >
+        stu_name,
       </if>
       <if test="created != null" >
         created,
@@ -138,14 +138,14 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="nickname != null" >
-        #{nickname,jdbcType=VARCHAR},
-      </if>
       <if test="stuId != null" >
         #{stuId,jdbcType=BIGINT},
       </if>
       <if test="expId != null" >
         #{expId,jdbcType=BIGINT},
+      </if>
+      <if test="stuName != null" >
+        #{stuName,jdbcType=VARCHAR},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -170,14 +170,14 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.nickname != null" >
-        nickname = #{record.nickname,jdbcType=VARCHAR},
-      </if>
       <if test="record.stuId != null" >
         stu_id = #{record.stuId,jdbcType=BIGINT},
       </if>
       <if test="record.expId != null" >
         exp_id = #{record.expId,jdbcType=BIGINT},
+      </if>
+      <if test="record.stuName != null" >
+        stu_name = #{record.stuName,jdbcType=VARCHAR},
       </if>
       <if test="record.created != null" >
         created = #{record.created,jdbcType=TIMESTAMP},
@@ -196,9 +196,9 @@
   <update id="updateByExample" parameterType="map" >
     update pms_join
     set id = #{record.id,jdbcType=BIGINT},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
       stu_id = #{record.stuId,jdbcType=BIGINT},
       exp_id = #{record.expId,jdbcType=BIGINT},
+      stu_name = #{record.stuName,jdbcType=VARCHAR},
       created = #{record.created,jdbcType=TIMESTAMP},
       expired = #{record.expired,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=TINYINT}
@@ -209,14 +209,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pms.pojo.PmsJoin" >
     update pms_join
     <set >
-      <if test="nickname != null" >
-        nickname = #{nickname,jdbcType=VARCHAR},
-      </if>
       <if test="stuId != null" >
         stu_id = #{stuId,jdbcType=BIGINT},
       </if>
       <if test="expId != null" >
         exp_id = #{expId,jdbcType=BIGINT},
+      </if>
+      <if test="stuName != null" >
+        stu_name = #{stuName,jdbcType=VARCHAR},
       </if>
       <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
@@ -232,9 +232,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pms.pojo.PmsJoin" >
     update pms_join
-    set nickname = #{nickname,jdbcType=VARCHAR},
-      stu_id = #{stuId,jdbcType=BIGINT},
+    set stu_id = #{stuId,jdbcType=BIGINT},
       exp_id = #{expId,jdbcType=BIGINT},
+      stu_name = #{stuName,jdbcType=VARCHAR},
       created = #{created,jdbcType=TIMESTAMP},
       expired = #{expired,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=TINYINT}

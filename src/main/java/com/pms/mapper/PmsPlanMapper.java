@@ -1,5 +1,7 @@
 package com.pms.mapper;
 
+import com.pms.pojo.PlanAllAssess;
+import com.pms.pojo.PlanAssess1;
 import com.pms.pojo.PmsPlan;
 import com.pms.pojo.PmsPlanExample;
 import org.apache.ibatis.annotations.Param;
@@ -34,4 +36,10 @@ public interface PmsPlanMapper {
     int updateByPrimaryKeyWithBLOBs(PmsPlan record);
 
     int updateByPrimaryKey(PmsPlan record);
+
+    List<PlanAssess1> findPlanAssess1ByStuId(Long stuId);
+
+    List<PlanAllAssess> findPlanAllAssessByStuId(Long stuId);
+
+    PlanAssess1 findPlanAssess1ById(Long id);
 }

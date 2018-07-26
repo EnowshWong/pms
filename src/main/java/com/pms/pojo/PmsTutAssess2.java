@@ -2,18 +2,18 @@ package com.pms.pojo;
 
 import java.util.Date;
 
-public class PmsAssess {
+public class PmsTutAssess2 {
     private Long id;
 
     private Long planId;
 
-    private Byte ispassed;
+    private Long tutorId;
 
     private Byte grade;
 
     private Date created;
 
-    private Date updated;
+    private String assess;
 
     public Long getId() {
         return id;
@@ -31,12 +31,12 @@ public class PmsAssess {
         this.planId = planId;
     }
 
-    public Byte getIspassed() {
-        return ispassed;
+    public Long getTutorId() {
+        return tutorId;
     }
 
-    public void setIspassed(Byte ispassed) {
-        this.ispassed = ispassed;
+    public void setTutorId(Long tutorId) {
+        this.tutorId = tutorId;
     }
 
     public Byte getGrade() {
@@ -55,11 +55,11 @@ public class PmsAssess {
         this.created = created;
     }
 
-    public Date getUpdated() {
-        return updated;
+    public String getAssess() {
+        return assess;
     }
 
-    public void setUpdated(Date updated) {
-        this.updated = updated;
+    public void setAssess(String assess) {
+        this.assess = assess == null ? null : assess.trim();
     }
 }

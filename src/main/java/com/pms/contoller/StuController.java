@@ -13,19 +13,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author:wong
  */
 @Controller
-@RequestMapping("/stu")
 public class StuController {
     @Autowired
     private StuService stuService;
 
-    @RequestMapping("/join")
+    @RequestMapping("/stu/join")
     @ResponseBody
     public PmsResult saveJoin(PmsJoin pmsJoin){
         PmsResult pmsResult = stuService.saveJoin(pmsJoin);
         return pmsResult;
     }
 
-    @RequestMapping("/delJoin/{stuId}")
+    @RequestMapping("/stu/updateJoinStatus")
+    @ResponseBody
+    public PmsResult updateJoinStatus(long id,Byte status){
+        PmsResult pmsResult = stuService.updateJoinStatus(id, status);
+        return pmsResult;
+    }
+
+    @RequestMapping("/stu/delJoin/{stuId}")
     @ResponseBody
     public PmsResult delJoin(@PathVariable long stuId){
         PmsResult pmsResult = stuService.delJoin(stuId);

@@ -2,6 +2,7 @@ package com.pms.contoller;
 
 import com.pms.common.pojo.PmsResult;
 import com.pms.pojo.PmsUserTea;
+import com.pms.pojo.TeaExp;
 import com.pms.service.TeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,23 +15,29 @@ import java.util.List;
  * @author:wong
  */
 @Controller
-@RequestMapping("/tea")
 public class TeaController {
 
     @Autowired
     private TeaService teaService;
 
-    @RequestMapping("/searchByName")
+    @RequestMapping("/tea/searchByName")
     @ResponseBody
     public PmsResult searchByName(String nickname){
         PmsResult pmsResult = teaService.searchByName(nickname);
         return pmsResult;
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/tea/list")
     @ResponseBody
     public List<PmsUserTea> getList(){
         List<PmsUserTea> list = teaService.getList();
         return list;
+    }
+
+    @RequestMapping("/tea/teaExpList")
+    @ResponseBody
+    public List<TeaExp> getTeaExpList(){
+        List<TeaExp> teaExpList = teaService.findTeaExpList();
+        return teaExpList;
     }
 }

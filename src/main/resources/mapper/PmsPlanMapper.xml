@@ -8,6 +8,32 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="planAssess1ResultMap" type="com.pms.pojo.PlanAssess1">
+    <id column="id" property="id"/>
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="assessCreated" property="assessDate" jdbcType="TIMESTAMP"/>
+    <result column="assess" property="assess" jdbcType="LONGVARCHAR"/>
+  </resultMap>
+  <resultMap id="planAllAssessResultMap" type="com.pms.pojo.PlanAllAssess">
+    <id column="id" property="id"/>
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="assess1" property="assess1" jdbcType="LONGVARCHAR"/>
+    <result column="assess2" property="assess2" jdbcType="LONGVARCHAR"/>
+    <result column="self_judge" property="selfJudge" jdbcType="LONGVARCHAR"/>
+    <result column="created1" property="created1" jdbcType="TIMESTAMP"/>
+    <result column="created2" property="created2" jdbcType="TIMESTAMP"/>
+    <result column="created3" property="created3" jdbcType="TIMESTAMP"/>
+    <result column="grade" property="grade" jdbcType="TINYINT"/>
+
+  </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsPlan" extends="BaseResultMap" >
     <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -75,6 +101,61 @@
   <sql id="Blob_Column_List" >
     plan_desc
   </sql>
+  <select id="findPlanAssess1ById" parameterType="java.lang.Long" resultMap="planAssess1ResultMap">
+SELECT DISTINCT
+pms_plan.title,
+pms_plan.plan_desc,
+pms_plan.created,
+pms_plan.expired,
+pms_plan.stu_id,
+pms_plan.id,
+pms_tut_assess1.created AS assessCreated,
+pms_tut_assess1.assess
+FROM
+pms_plan
+LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+WHERE pms_plan.id=#{id,jdbcType=BIGINT}
+  </select>
+  <select id="findPlanAllAssessByStuId" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
+    SELECT DISTINCT
+    pms_plan.id,
+    pms_plan.title,
+    pms_plan.stu_id,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_tut_assess1.assess AS assess1,
+    pms_tut_assess1.created AS created1,
+    pms_tut_assess2.assess AS assess2,
+    pms_tut_assess2.grade,
+    pms_tut_assess2.created AS created2,
+    pms_stu_assess.self_judge,
+    pms_stu_assess.created AS created3
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+    LEFT JOIN pms_tut_assess2 ON pms_plan.id=pms_tut_assess2.plan_id
+    LEFT JOIN pms_stu_assess ON pms_plan.id=pms_stu_assess.plan_id
+    WHERE pms_plan.stu_id=#{stuId,jdbcType=BIGINT}
+    AND pms_plan.expired&lt;CURDATE()
+
+  </select>
+  <select id="findPlanAssess1ByStuId" parameterType="java.lang.Long" resultMap="planAssess1ResultMap">
+SELECT DISTINCT
+pms_plan.title,
+pms_plan.plan_desc,
+pms_plan.created,
+pms_plan.expired,
+pms_plan.stu_id,
+pms_plan.id,
+pms_tut_assess1.created AS assessCreated,
+pms_tut_assess1.assess
+FROM
+pms_plan
+LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+WHERE pms_plan.stu_id = #{stuId,jdbcType=BIGINT}
+AND pms_plan.expired>=CURDATE()
+  </select>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsPlanExample" >
     select
     <if test="distinct" >

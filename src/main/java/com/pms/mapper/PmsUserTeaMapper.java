@@ -2,6 +2,7 @@ package com.pms.mapper;
 
 import com.pms.pojo.PmsUserTea;
 import com.pms.pojo.PmsUserTeaExample;
+import com.pms.pojo.TeaExp;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface PmsUserTeaMapper {
     int updateByPrimaryKeySelective(PmsUserTea record);
 
     int updateByPrimaryKey(PmsUserTea record);
+
+    List<TeaExp> findTeaExpList();
 }

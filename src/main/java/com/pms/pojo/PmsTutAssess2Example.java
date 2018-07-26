@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PmsAssessExample {
+public class PmsTutAssess2Example {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public PmsAssessExample() {
+    public PmsTutAssess2Example() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -225,63 +225,63 @@ public class PmsAssessExample {
             return (Criteria) this;
         }
 
-        public Criteria andIspassedIsNull() {
-            addCriterion("isPassed is null");
+        public Criteria andTutorIdIsNull() {
+            addCriterion("tutor_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedIsNotNull() {
-            addCriterion("isPassed is not null");
+        public Criteria andTutorIdIsNotNull() {
+            addCriterion("tutor_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedEqualTo(Byte value) {
-            addCriterion("isPassed =", value, "ispassed");
+        public Criteria andTutorIdEqualTo(Long value) {
+            addCriterion("tutor_id =", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedNotEqualTo(Byte value) {
-            addCriterion("isPassed <>", value, "ispassed");
+        public Criteria andTutorIdNotEqualTo(Long value) {
+            addCriterion("tutor_id <>", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedGreaterThan(Byte value) {
-            addCriterion("isPassed >", value, "ispassed");
+        public Criteria andTutorIdGreaterThan(Long value) {
+            addCriterion("tutor_id >", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedGreaterThanOrEqualTo(Byte value) {
-            addCriterion("isPassed >=", value, "ispassed");
+        public Criteria andTutorIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("tutor_id >=", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedLessThan(Byte value) {
-            addCriterion("isPassed <", value, "ispassed");
+        public Criteria andTutorIdLessThan(Long value) {
+            addCriterion("tutor_id <", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedLessThanOrEqualTo(Byte value) {
-            addCriterion("isPassed <=", value, "ispassed");
+        public Criteria andTutorIdLessThanOrEqualTo(Long value) {
+            addCriterion("tutor_id <=", value, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedIn(List<Byte> values) {
-            addCriterion("isPassed in", values, "ispassed");
+        public Criteria andTutorIdIn(List<Long> values) {
+            addCriterion("tutor_id in", values, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedNotIn(List<Byte> values) {
-            addCriterion("isPassed not in", values, "ispassed");
+        public Criteria andTutorIdNotIn(List<Long> values) {
+            addCriterion("tutor_id not in", values, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedBetween(Byte value1, Byte value2) {
-            addCriterion("isPassed between", value1, value2, "ispassed");
+        public Criteria andTutorIdBetween(Long value1, Long value2) {
+            addCriterion("tutor_id between", value1, value2, "tutorId");
             return (Criteria) this;
         }
 
-        public Criteria andIspassedNotBetween(Byte value1, Byte value2) {
-            addCriterion("isPassed not between", value1, value2, "ispassed");
+        public Criteria andTutorIdNotBetween(Long value1, Long value2) {
+            addCriterion("tutor_id not between", value1, value2, "tutorId");
             return (Criteria) this;
         }
 
@@ -402,66 +402,6 @@ public class PmsAssessExample {
 
         public Criteria andCreatedNotBetween(Date value1, Date value2) {
             addCriterion("created not between", value1, value2, "created");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedIsNull() {
-            addCriterion("updated is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedIsNotNull() {
-            addCriterion("updated is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedEqualTo(Date value) {
-            addCriterion("updated =", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedNotEqualTo(Date value) {
-            addCriterion("updated <>", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedGreaterThan(Date value) {
-            addCriterion("updated >", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedGreaterThanOrEqualTo(Date value) {
-            addCriterion("updated >=", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedLessThan(Date value) {
-            addCriterion("updated <", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedLessThanOrEqualTo(Date value) {
-            addCriterion("updated <=", value, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedIn(List<Date> values) {
-            addCriterion("updated in", values, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedNotIn(List<Date> values) {
-            addCriterion("updated not in", values, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedBetween(Date value1, Date value2) {
-            addCriterion("updated between", value1, value2, "updated");
-            return (Criteria) this;
-        }
-
-        public Criteria andUpdatedNotBetween(Date value1, Date value2) {
-            addCriterion("updated not between", value1, value2, "updated");
             return (Criteria) this;
         }
     }

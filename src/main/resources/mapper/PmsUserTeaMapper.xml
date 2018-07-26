@@ -10,6 +10,14 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="TeaExpListResultMap" type="com.pms.pojo.TeaExp">
+    <id column="teaId" property="id" jdbcType="BIGINT"/>
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <collection property="pmsExps" ofType="com.pms.pojo.PmsExp">
+      <id property="id" column="expId"/>
+      <result column="expName" property="expName"/>
+    </collection>
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -71,6 +79,18 @@
   <sql id="Base_Column_List" >
     id, username, password, nickname, email, created, updated
   </sql>
+
+  <select id="findTeaExpList" resultMap="TeaExpListResultMap">
+    SELECT DISTINCT
+pms_user_tea.id AS teaId,
+pms_user_tea.nickname,
+pms_exp.exp_name AS expName,
+pms_exp.id AS expId
+FROM
+	pms_user_tea ,pms_exp
+WHERE pms_user_tea.id=pms_exp.tutor_id
+
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pms.pojo.PmsUserTeaExample" >
     select
     <if test="distinct" >

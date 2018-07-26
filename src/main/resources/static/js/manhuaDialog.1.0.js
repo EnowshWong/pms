@@ -15,8 +15,8 @@ $(function() {
 			title : "title",								//弹出层的标题
 			type : "text",									//弹出层类型(text、容器ID、URL、Iframe)
 			content : "content",							//弹出层的内容(text文本、容器ID名称、URL地址、Iframe的地址)
-			width : 500,									//弹出层的宽度
-			height : 400,									//弹出层的高度
+			//width : 500,									//弹出层的宽度
+			//height : 400,									//弹出层的高度
 			closeID : "closeId",							//关闭对话框的ID
 			isAuto : false,									//是否自动弹出
 			time : 2000,									//设置自动弹出层时间，前提是isAuto=true

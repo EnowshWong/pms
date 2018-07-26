@@ -1,0 +1,245 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="stylesheet" href="/css/task_style.css">
+	<script src="/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="/js/common.js"></script>
+		
+<style type="text/css">	
+a,img{border:0;}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+	
+<script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$("#test").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "新建实验室",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 490,									//弹出层的宽度
+		height : 360,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+});
+</script>
+	<script type="text/javascript" >
+		window.onload=function(){
+			var pic_hidden=document.getElementById("pic_hidden");
+			var engine=document.getElementById("engine");
+			engine.onclick=function(){
+				pic_hidden.style.display="";
+			}
+//			engine.onclick=function(){
+//				
+//				pic_hidden.style.display="none";
+//			}
+		}
+	
+	</script>
+
+</head>
+
+<body>
+
+	<div id="banner">
+		<div id="banner_left"><div class="display">
+				<form class="form form-group" name="" method="post">
+				<input class="display form-control" style="width: 270px;border: 0px solid #ccc;" type="text"  placeholder="搜索个人项目">
+			</form>
+			</div>
+			<div class="display" >
+			<img class="display" style="width:25px;margin-left: 10px;" alt="" src="/images/add.png"></div>
+		</div>
+		<div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;"><center>师生项目交互平台</center></div>
+		<div id="banner_right" style="margin-left:240px;margin-top: 10px;padding-top: 5px;" class="display">
+			<span style="color: #808080;font-size: 1.1em;">我的</span>
+			<span style="color: #e5e5e5;margin-left: 10px;margin-left: 10px;">|</span>
+			<span style="color: #808080;font-size: 1.1em;margin-left: 10px;">日历</span>
+			<span style="color: #e5e5e5;margin-left: 10px;">|</span>
+			<img src="/images/question.png" style="width: 20px;margin-left: 20px;">
+			<img src="/images/ring.png" style="width: 20px;margin-left: 20px;">
+			<img src="/images/message.png" style="width: 20px;margin-left: 20px;">	
+			<img src="#" style="width: 30px;margin-left: 20px;border: 1px solid red;">	
+		</div>
+	</div>
+	<div id="guidance">
+		<div id="left" class="display">
+			<span id="left_origin"><a href="tea_home_backup.html">首页</a></span>
+			<img src="/images/bigger.png" style="width: 15px;">
+			<span id="left_name"><a href="tea_task.html">实验室名</a></span>
+		</div>
+		<div id="mid" class="display">
+<!--			<span id="guidance_logo"><img src="#"></span>-->
+			<a href="tea_task.html"><div id="task" class="display"><span class="left_length"><span>任务</span></span></div></a>
+			<a href="tea_file.html"><div id="file" class="display"><span class="left_length"><span>文件</span></span></div></a>
+			<a href="tea_eye.html"><div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div></a>
+			
+		</div>
+		<div id="right" class="display ">
+			<img src="/images/people.png" style="width: 20px;margin-left: 390px;">
+			<span style="color: #808080;">1</span>
+			<img src="/images/menu.png" style="width: 20px;margin-left: 30px;">
+			<span style="color: #808080">菜单</span>
+			</div>
+	
+	</div>
+		
+	<div class="model">
+		<div class="program">
+			<span>我拥有的实验室</span>
+			<div class="pic">
+				<div id="expList">
+
+				</div>
+				<script type="text/javascript" th:inline="javascript" >
+					function getExpList() {
+					    var html="";
+                        var tea_id=GetCookie("COOKIE_ID");
+                        $.ajax({
+                            type:"get",
+							async:false,//同步请求
+                            url:"/exp/getByTeaId/"+tea_id,
+                            success:function (data,success) {
+                                var inf="";
+                                for(var i=0;i<data.length;i++){
+                                    //已经能去到数据了，下一步解决数据如何嵌入html代码
+									html+="<a href=\"/tea_page?expId="+data[i].id+"&expName="+data[i].expName+"\">\n" +
+                                        "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(/images/1.png)\">\n" +
+                                        "\t\t\t\t\t\t<h4>"+data[i].expName+"</h4>\n" +
+                                        "\t\t\t\t\t</div>\n" +
+                                        "\t\t\t\t</a>";
+                                }
+                                $("#expList").html(html);
+                            }
+                        });
+                    }
+                    getExpList();
+				</script>
+			</div>
+
+		</div>
+		<div class="program " > 
+			<span >新建</span>
+			<div class="pic test">
+				<a id="test"  href="javascript:void(0)">
+				<div class="program_pic" style="background: url(/images/4.png)">
+						<h3></h3>
+					</div>
+				</a>
+			</div>
+			
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+		  var zindex = 10;
+
+		  $("div.test").click(function(e){
+			e.preventDefault();
+
+			var isShowing = false;
+
+			if ($(this).hasClass("show")) {
+			  isShowing = true
+			}
+
+			if ($("div.main").hasClass("showing")) {
+			  // a card is already in view
+			  $("div.test.show")
+				.removeClass("show");
+
+			  if (isShowing) {
+				// this card was showing - reset the grid
+				$("div.test")
+				  .removeClass("showing");
+			  } else {
+				// this card isn't showing - get in with it
+				$(this)
+				  .css({zIndex: zindex})
+				  .addClass("show");
+
+			  }
+
+			  zindex++;
+
+			} else {
+			  // no cards in view
+			  $("div.test")
+				.addClass("showing");
+			  $(this)
+				.css({zIndex:zindex})
+				.addClass("show");
+
+			  zindex++;
+			}
+
+		  });
+		});
+	</script>
+	
+	<div id="detail" style="display:none;">
+		<div id="detailImage">
+			
+		</div>
+		<div id="detailForm">
+			
+<!--
+			<form role="form">
+  <div class="form-group">
+    <input type="email" class="form-control" placeholder="Enter email">
+    
+  </div>
+</form>  
+-->
+
+			<form method="post" id="expForm" class="form form-group" role="form" onsubmit="return false">
+				<input type="text"  name="expName"  placeholder="实验室名称" class="form-control detailForm_cho">
+				<input type="text"  name="expDesc" placeholder="实验室简介" class="form-control detailForm_cho">
+				<input id="expCreateSubmit" type="button" style="width: 100%;" value="完成并创建" class="btn btn-primary detailForm_cho">
+				<input type="hidden" name="tutorId" th:each="cookie:${#httpServletRequest.getCookies()}"
+					   th:if="${cookie.getName().equals('COOKIE_ID')}"
+					   th:value="${cookie.getValue()}"/>
+			</form>
+			<script type="text/javascript">
+				//要用一个变量包裹函数，否则函数不生效
+                function submitForm(){
+                    $.ajax({
+                        type:"post",
+                        async:false, //同步请求
+						url:"/exp/create",
+                        data:$("#expForm").serialize(),
+                        error:function(XMLHttpRequest,textStatus,errorThrown){
+                            alert(XMLHttpRequest.status);
+                            alert("异常信息:"+XMLHttpRequest.responseText);
+						},
+						success:function (data) {
+                            if (data.status == 200) {
+                                alert("创建成功");
+                            }
+                        }
+                    });
+				}
+                //到dom文档加载完毕后执行$(function)
+                $(function () {
+					$("#expCreateSubmit").click(function () {
+						submitForm();
+                        getExpList();
+                    })
+                })
+			</script>
+		</div>
+	</div>
+</body>
+</html>

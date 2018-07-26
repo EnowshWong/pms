@@ -20,7 +20,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginInteceptor()).addPathPatterns("/aab/*");
+        registry.addInterceptor(loginInteceptor()).addPathPatterns("/plan/**","/exp/**","/tea/**","/stu/**","/templan/**");
         super.addInterceptors(registry);
     }
 

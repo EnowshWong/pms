@@ -15,36 +15,42 @@ import java.util.List;
  * @author:wong
  */
 @Controller
-@RequestMapping("/templan")
 public class TemplanController {
     @Autowired
     private TemplanService templanService;
 
-    @RequestMapping("/create")
+    @RequestMapping("/templan/create")
     @ResponseBody
     public PmsResult createTemplan(PmsTempPlan pmsTempPlan){
         PmsResult pmsResult = templanService.createTemplan(pmsTempPlan);
         return pmsResult;
     }
 
-    @RequestMapping("/list/{stuId}")
+    @RequestMapping("/templan/list/{stuId}")
     @ResponseBody
     public List<PmsTempPlan> getTempPlanByStuId(@PathVariable long stuId){
         List<PmsTempPlan> list = templanService.getTempPlanListByStuId(stuId);
         return list;
     }
 
-    @RequestMapping("/del/{id}")
+    @RequestMapping("/templan/del/{id}")
     @ResponseBody
     public PmsResult delTempPlanById(@PathVariable long id){
         PmsResult pmsResult = templanService.delTemplanById(id);
         return pmsResult;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/templan/update")
     @ResponseBody
     public PmsResult updateTemplanById(PmsTempPlan pmsTempPlan){
         PmsResult pmsResult = templanService.updateTemplan(pmsTempPlan);
         return pmsResult;
+    }
+
+    @RequestMapping("/templan/get/{id}")
+    @ResponseBody
+    public PmsTempPlan getById(@PathVariable long id){
+        PmsTempPlan byId = templanService.getById(id);
+        return byId;
     }
 }

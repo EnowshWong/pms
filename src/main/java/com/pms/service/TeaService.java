@@ -2,6 +2,7 @@ package com.pms.service;
 
 import com.pms.common.pojo.PmsResult;
 import com.pms.pojo.PmsUserTea;
+import com.pms.pojo.TeaExp;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ import java.util.List;
 public interface TeaService {
     PmsResult searchByName(String nickname);
     List<PmsUserTea> getList();
+    List<TeaExp> findTeaExpList();
 }

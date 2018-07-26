@@ -58,6 +58,8 @@ public class ExpServiceImpl implements ExpService {
     public List<PmsJoin> getJoin(long expId) {
         PmsJoinExample example=new PmsJoinExample();
         PmsJoinExample.Criteria criteria=example.createCriteria();
+        Date date=new Date();
+        criteria.andExpiredGreaterThan(date);
         criteria.andExpIdEqualTo(expId);
         List<PmsJoin> list = pmsJoinMapper.selectByExample(example);
         return list;
