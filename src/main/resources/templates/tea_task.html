@@ -862,6 +862,11 @@
                 var planId=$("#fjPlanId").val();
                 //首先讲该plan添加到temp_plan表
                 var title=$("#fjTitle").text();
+
+
+                // var strContent=data.planDesc;
+                // var det=document.getElementById('detailedPlanDesc');
+                // det.innerHTML=strContent;
                 var planDesc=$("#fjPlanDesc").text();
                 //截取字符串
                 var createdString=$("#fjCreated").text();
@@ -992,7 +997,10 @@
                 $("#fjTitle").text(title);
                 $("#fjCreated").text(created + "开始");
                 $("#fjExpired").text(expired + "截止");
-                $("#fjPlanDesc").text(data.planDesc);
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#fjPlanDesc").text(data.planDesc);
                 $("#fjPlanId").attr("value", planId);
                 $("#fjStuId").attr("value", data.stuId);
                 clearPreWindow5();
@@ -1239,16 +1247,25 @@
                 $("#sjTitle").text(title);
                 $("#sjCreated").text(created + "开始");
                 $("#sjExpired").text(expired + "截止");
-                $("#sjPlanDesc").text(data.planDesc);
+                var strContent=data.planDesc;
+                var det=document.getElementById('sjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#sjPlanDesc").text(data.planDesc);
                 $("#sjStuId").attr("value", data.stuId);
                 if (data.firstJudge != null) {
-                    $("#sjFjContent").text(data.firstJudge);
+                    var strContent1=data.firstJudge;
+                    var det1=document.getElementById('sjFjContent');
+                    det1.innerHTML=strContent1;
+                    // $("#sjFjContent").text(data.firstJudge);
                 }
                 else {
                     $("#sjFjContent").text("老师还没进行初评哦~_~");
                 }
                 if (data.status == 1) {
-                    $("#sjSelfJudge").text(data.selfJudge);
+                    var strContent2=data.selfJudge;
+                    var det2=document.getElementById('sjSelfJudge');
+                    det2.innerHTML=strContent2;
+                    // $("#sjSelfJudge").text(data.selfJudge);
                 }
                 else {
                     $("#sjSelfJudge").text("学生好像还没有自评哦~_~");
@@ -1266,6 +1283,10 @@
         var planId = $("#sjPlanId").attr("value");
         var tutorId = GetCookie("COOKIE_ID");
         var assess = $("#sjContent").attr("value");
+
+        assess = assess.replace(/\r\n/g, '<br/>');
+        assess = assess.replace(/\n/g, '<br/>');
+        assess = assess.replace(/\s/g, ' ');
         var grade = $("#remark").text();
         var stuId = $("#sjStuId").attr("value");
         $.post("/tut_assess2/create", {
@@ -1378,10 +1399,18 @@
                 $("#fjinfTitle").text(title);
                 $("#fjinfCreated").text(created + "开始");
                 $("#fjinfExpired").text(expired + "截止");
-                $("#fjinfDesc").text(data.planDesc);
+
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjinfDesc');
+                det.innerHTML=strContent;
+
+                // $("#fjinfDesc").text(data.planDesc);
                 $("#fjinfStuId").attr("value", data.stuId);
                 if (data.assess != null) {
-                    $("#fjinfAssess").text(data.assess);
+                    var strContent1=data.assess;
+                    var det1=document.getElementById('fjinfAssess');
+                    det1.innerHTML=strContent1;
+                    // $("#fjinfAssess").text(data.assess);
                 }
                 else {
                     $("#fjinfAssess").text("老师还没进行初评哦~_~");
@@ -1475,9 +1504,9 @@
                 <img class="display detail_title_img " src="/images/star0.png">
                 <span style="vertical-align: middle;" class="display  detail_title_word">自评</span>
                 <span  class="preJudgeWord" id="hsCreated3"></span>
-                <div class="detail_word" id="hsSelfContent">
-                    挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
-                </div>
+            </div>
+            <div class="detail_word" id="hsSelfContent">
+                挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
             </div>
         </div>
         <div>
@@ -1507,12 +1536,18 @@
                 var created3 = dateFormat(new Date(data.created3));
                 var title="周报("+created+"到"+expired+")";
                 $("#hsTitle").text(title);
-                $("#hsPlanDesc").text(data.planDesc);
+                var strContent1=data.planDesc;
+                var det1=document.getElementById('hsPlanDesc');
+                det1.innerHTML=strContent1;
+                // $("#hsPlanDesc").text(data.planDesc);
                 $("#hsCreated").text(created + "开始");
                 $("#hsExpired").text(expired + "截止");
                 if (data.status1 == 1) {
                     $("#hsCreated1").text("评价时间:" + created1);
-                    $("#hsFjContent").text(data.assess1);
+                    var strContent2=data.assess1;
+                    var det2=document.getElementById('hsFjContent');
+                    det2.innerHTML=strContent2;
+                    // $("#hsFjContent").text(data.assess1);
                 }
                 else {
                     $("#hsCreated1").text("");
@@ -1520,7 +1555,10 @@
                 }
                 if (data.status2==1) {
                     $("#hsCreated2").text("评价时间:" + created2);
-                    $("#hsSjContent").text(data.assess2);
+                    var strContent4=data.assess2;
+                    var det4=document.getElementById('hsSjContent');
+                    det4.innerHTML=strContent4;
+                    // $("#hsSjContent").text(data.assess2);
                     $("#hsGrade").text(data.grade);
                 }
                 else {
@@ -1530,7 +1568,10 @@
                 }
                 if (data.status == 1) {
                     $("#hsCreated3").text("评价时间:" + created3);
-                    $("#hsSelfContent").text(data.selfJudge);
+                    var strContent3=data.selfJudge;
+                    var det3=document.getElementById('hsSelfContent');
+                    det3.innerHTML=strContent3;
+                    // $("#hsSelfContent").text(data.selfJudge);
                 }
                 else {
                     $("#hsCreated3").text("");
