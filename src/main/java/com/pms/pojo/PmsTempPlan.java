@@ -13,8 +13,6 @@ public class PmsTempPlan {
 
     private Long stuId;
 
-    private String planDesc;
-
     public Long getId() {
         return id;
     }
@@ -53,13 +51,5 @@ public class PmsTempPlan {
 
     public void setStuId(Long stuId) {
         this.stuId = stuId;
-    }
-
-    public String getPlanDesc() {
-        return planDesc;
-    }
-
-    public void setPlanDesc(String planDesc) {
-        this.planDesc = planDesc == null ? null : planDesc.trim();
     }
 }

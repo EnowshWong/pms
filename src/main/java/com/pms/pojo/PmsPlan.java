@@ -13,6 +13,14 @@ public class PmsPlan {
 
     private Date expired;
 
+    private Byte status1;
+
+    private Byte status2;
+
+    private Byte status;
+
+    private Date optime;
+
     private String planDesc;
 
     public Long getId() {
@@ -53,6 +61,38 @@ public class PmsPlan {
 
     public void setExpired(Date expired) {
         this.expired = expired;
+    }
+
+    public Byte getStatus1() {
+        return status1;
+    }
+
+    public void setStatus1(Byte status1) {
+        this.status1 = status1;
+    }
+
+    public Byte getStatus2() {
+        return status2;
+    }
+
+    public void setStatus2(Byte status2) {
+        this.status2 = status2;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Date getOptime() {
+        return optime;
+    }
+
+    public void setOptime(Date optime) {
+        this.optime = optime;
     }
 
     public String getPlanDesc() {

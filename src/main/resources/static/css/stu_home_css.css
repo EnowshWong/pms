@@ -1,0 +1,133 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#body{
+
+}
+#main_btn{
+    width: 30%;
+    /*position: absolute;*/
+    margin-top: 80px;
+    /*margin: 0 auto;*/
+    font-size: 1.5em;
+    color: #629185;
+    text-shadow: 1px 1px 3px #fff;
+    background-color: transparent;;
+    border: 0;
+    margin-left: 35%;
+    height: 28px;
+    border-bottom: 10px solid #fff;
+}
+#main{
+
+    /*background: #f5f5f5;*/
+    height:100%;
+    /*background: red;*/
+    width: 100%;
+    /*position: absolute;*/
+}
+.display{
+    display: inline-block;;
+}
+#main_div_title{
+
+    width: 20%;
+    position: absolute;;
+    margin-left:5%;
+    /*margin-top: 50px;*/
+
+
+}
+#title_first{
+    font-size: 2em;
+    text-align: center;
+}
+#title_two{
+    font-size: 2em;
+    text-align: center;
+
+}
+#title_three{
+    font-size: 1.2em;
+    text-align: center;
+
+}
+#main_div{
+    background-color: rgba(255,255,255,0.5);
+    width: 20%;
+    height:380px;
+    border-radius:10px;
+    margin-left: 70%;
+    margin-top: 80px;
+}
+.display{
+    display: inline-block;
+}
+#main_div_btn{
+
+}
+#main_div_tea{
+    width: 70%;
+    margin: 0 auto;
+    /*border-right: 1px solid red;*/
+    /*height: 80px;*/
+
+}
+#main_div_lab{
+    width: 70%;
+    margin: 0 auto;
+    /*margin-top: 30px;*/
+    /*height: 80px;*/
+}
+#cd-dropdown1{
+
+    width:100%;
+    margin-top:60px;
+    height: 40px;
+
+    color: #535353;
+    font-size: 1.4em;
+    border: 0;
+    border-bottom: 1px solid #8e908e;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../images/retriangle.png") no-repeat  scroll right center transparent;
+    background-size: 17px 17px;
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+
+}
+#main_div_tea select option{
+
+    height: 60px;
+    outline: none;
+}
+#cd-dropdown2{
+
+    width:100%;
+    margin-top:60px;
+    height: 40px;
+
+    color: #535353;
+    font-size: 1.4em;
+    border: 0;
+    border-bottom: 1px solid #8e908e;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../images/retriangle.png") no-repeat  scroll right center transparent;
+    background-size: 17px 17px;
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+}
+
+.option_back{
+    /*height: 70px;*/
+    color: #000;
+    display: none;
+    background-color: transparent;
+    border: 0;
+    /*opacity: 0;*/
+}

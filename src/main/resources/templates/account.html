@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/account.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <style>
+        a:hover,a,a:visited,a:link{
+            text-decoration: none;
+        }
+    </style>
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body id="back">
+    <div id="banner">
+        <div id="banner_left" class="display">师生项目交互平台</div>
+        <div id="banner_right" class="display">
+            <div class="port display" >张</div>
+            <div class="nickname display">指尖跳跃的阳光</div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="cont">
+            <div id="cont-left" class="display">
+                <div id="cont-left-top">
+                    <!--<div id="left-top-port" class="display">张</div>-->
+                    <!--<strong id="left-top-nickname" class="display">指尖跳跃的阳光</strong>-->
+                    <script>
+                        var nickname=GetCookie("COOKIE_NICKNAME");
+                        var html="<div id=\"left-top-port\" class=\"display\">"+nickname[0]+"</div>\n" +
+                            "                    <strong id=\"left-top-nickname\" class=\"display\">"+nickname+"</strong>";
+                        $("#cont-left-top").html(html);
+                    </script>
+                </div>
+                <div id="cont-left-bottom">
+                    <a href="#"> <div id="self-mesg" class="bottom-set" style="font-weight: 700;color:#000;;">个人信息</div></a>
+                    <a href="#"><div id="account-password" class="bottom-set">账号密码</div></a>
+                    <a href="#"><div id="account-state" class="bottom-set">账号状态</div></a>
+                </div>
+            </div>
+            <div id="cont-right-self1" style="display: inline-block;" class="display">
+                <div id="self_mesg_div">
+                    <div class="mesg_title">
+                        个人信息
+                    </div>
+                    <form role="form" id="selfDtForm">
+                        <div class="form_list">
+                            <strong class="form_span display">姓名</strong>
+                            <div  class="display name_input">
+                                <input id="nickname_input" type="text" class="form-control display form_style">
+                            </div>
+                        </div>
+                        <div class="form_list">
+                            <strong class="form_span display">职位</strong>
+                            <div id="job_input" class="display name_input">
+                                <input type="text" class="form-control display form_style">
+                            </div>
+                        </div>
+                        <div class="form_list">
+                            <strong class="form_span display">联系电话</strong>
+                            <div id="phone_input" class="display name_input">
+                                <input type="text" class="form-control display form_style">
+                            </div>
+                        </div>
+                        <div class="form_list">
+                            <strong class="form_span display">生日</strong>
+                            <div id="birth_input" class="display name_input">
+                                <select id="year" class="form-control display">
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                    <option>2009</option>
+                                    <option>2008</option>
+                                    <option>2007</option>
+                                    <option>2006</option>
+                                    <option>2005</option>
+                                    <option>2004</option>
+                                    <option>2003</option>
+                                    <option>2002</option>
+                                    <option>2001</option>
+                                    <option>2000</option>
+                                    <option>1999</option>
+                                    <option>1998</option>
+                                    <option>1997</option>
+                                    <option>1996</option>
+                                    <option>1995</option>
+                                    <option>1994</option>
+                                    <option>1993</option>
+                                    <option>1992</option>
+                                    <option>1991</option>
+                                    <option>1990</option>
+                                    <option>1989</option>
+                                    <option>1988</option>
+                                    <option>1987</option>
+                                    <option>1986</option>
+                                    <option>1985</option>
+                                    <option>1984</option>
+                                    <option>1983</option>
+                                    <option>1982</option>
+                                    <option>1981</option>
+                                    <option>1980</option>
+                                    <option>1979</option>
+                                    <option>1978</option>
+                                    <option>1977</option>
+                                    <option>1976</option>
+                                    <option>1975</option>
+                                    <option>1974</option>
+                                    <option>1973</option>
+                                    <option>1972</option>
+                                    <option>1971</option>
+                                    <option>1970</option>
+                                    <option>1969</option>
+                                    <option>1968</option>
+                                    <option>1967</option>
+                                    <option>1966</option>
+                                    <option>1965</option>
+                                    <option>1964</option>
+                                    <option>1963</option>
+                                    <option>1962</option>
+                                    <option>1961</option>
+                                    <option>1960</option>
+                                    <option>1959</option>
+                                    <option>1958</option>
+                                    <option>1957</option>
+                                    <option>1956</option>
+                                    <option>1955</option>
+                                    <option>1954</option>
+                                    <option>1953</option>
+                                    <option>1952</option>
+                                    <option>1951</option>
+                                    <option>1950</option>
+                                    <option>1949</option>
+                                </select>
+                                <select id="month" class="form-control display">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <select id="day" class="form-control display">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>31</option>
+                                    <option>32</option>
+                                    <option>33</option>
+                                    <option>34</option>
+                                    <option>35</option>
+                                    <option>36</option>
+                                    <option>37</option>
+                                    <option>38</option>
+                                    <option>39</option>
+                                    <option>30</option>
+                                    <option>31</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form_list">
+                            <strong class="form_span display">所在地</strong>
+                            <div id="addr_input" class="display name_input">
+                                <input type="text" class="form-control display form_style">
+                            </div>
+                        </div>
+                        <div class="form_list">
+                            <div id="btn_input" class="display name_input">
+                                <button type="button" id="btn_input_txt" class="btn btn-info display form_style" onclick="doSubmitSelfDt()">保&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</button>
+                            </div>
+                        </div>
+                    </form>
+                    <script type="text/javascript">
+                        function doSubmitSelfDt() {
+                            //校验是否填写完成
+                            var flag=true;
+                            var nickname=$("#nickname_input").val();
+                            var stuId=GetCookie("COOKIE_ID");
+                            if (flag){
+                                $.post("/user/stu/update",{id:stuId,nickname:nickname},function (data) {
+                                    if (data.status==200)
+                                        alert("更改成功");
+                                })
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+            <div id="cont-right-self2" style="display: none;" class="display">
+                <div id="">
+                    <div class="account_title">
+                        登录账号
+                        <!--<span id="mesg_title_bottom">所有登录帐号都可用于登录，主邮箱帐号可收取通知。</span>-->
+                    </div>
+
+                    <form role="form">
+                        <div class="account_info">
+                            <strong class="form_span display">邮箱账号</strong>
+                            <div  class="display name_input1">
+                                <input type="text" class="form-control display form_style" placeholder="请输入邮箱地址">
+                            </div>
+                            <button type="button" class="display btn btn-info tie_conf" >确认绑定</button>
+                        </div>
+                        <div class="account_info">
+                            <strong class="form_span display">手机账号</strong>
+                            <div  class="display name_input1">
+                                <input type="text" class="form-control display form_style" placeholder="请输入手机号">
+                            </div>
+                            <button type="button" class="display btn btn-info tie_conf" >确认绑定</button>
+                        </div>
+
+                    </form>
+                    <!--<script type="text/javascript">-->
+                        <!--function doSubmit() {-->
+                            <!---->
+                        <!--}-->
+                    <!--</script>-->
+                </div>
+            </div>
+            <div id="cont-right-self3" style="display: none;" class="display">
+                <div id="">
+                    <div class="account_title">
+                        账号状态
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var cho1=document.getElementById('self-mesg');
+            var cho2=document.getElementById('account-password');
+            var cho3=document.getElementById('account-state');
+            var blo1=document.getElementById('cont-right-self1');
+            var blo2=document.getElementById('cont-right-self2');
+            var blo3=document.getElementById('cont-right-self3');
+            cho1.onclick=function () {
+                // alert('')
+                blo1.style.display='inline-block';
+                blo2.style.display='none';
+                blo3.style.display='none';
+                // cho1.style.font-weight='700';
+                cho1.style.color='#000';
+                cho1.style.fontWeight='700';
+                cho2.style.color='';
+                cho2.style.fontWeight='';
+                cho3.style.color='';
+                cho3.style.fontWeight='';
+
+            }
+            cho2.onclick=function () {
+                blo1.style.display='none';
+                blo2.style.display='inline-block';
+                blo3.style.display='none';
+                cho1.style.color='';
+                cho1.style.fontWeight='';
+                cho2.style.color='#000';
+                cho2.style.fontWeight='700';
+                cho3.style.color='';s
+                cho3.style.fontWeight='';
+
+            }
+            cho3.onclick=function () {
+                blo1.style.display='none';
+                blo2.style.display='none';
+                blo3.style.display='inline-block';
+                cho1.style.color='';
+                cho1.style.fontWeight='';
+                cho2.style.color='';
+                cho2.style.fontWeight='';
+                cho3.style.color='#000';
+                cho3.style.fontWeight='700';
+
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -2,6 +2,8 @@ package com.pms.mapper;
 
 import com.pms.pojo.PmsUserStu;
 import com.pms.pojo.PmsUserStuExample;
+import com.pms.pojo.StuInfo;
+import com.pms.pojo.StuPlan;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +30,10 @@ public interface PmsUserStuMapper {
     int updateByPrimaryKeySelective(PmsUserStu record);
 
     int updateByPrimaryKey(PmsUserStu record);
+
+    List<StuPlan> findStuPlanListByExpId(Long expId);
+
+    Long insertReturnId(PmsUserStu record);
+
+    StuInfo findStuInfoById(Long id);
 }

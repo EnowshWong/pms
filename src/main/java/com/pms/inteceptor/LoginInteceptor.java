@@ -17,17 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class LoginInteceptor implements HandlerInterceptor{
 
-    @Value("${COOKIE_NICKNAME}")
-    private String COOKIE_NICKNAME;
+    @Value("COOKIE_ID")
+    private String COOKIE_ID;
     @Value("${LOGIN_PAGE_URL}")
     private String LOGIN_PAGE_URL;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //用户权限问题
+
         //直接从cookie中取username
-        String username=CookieUtils.getCookieValue(request,COOKIE_NICKNAME);
+        String id=CookieUtils.getCookieValue(request,COOKIE_ID);
         //判断其是否为空
-        if (StringUtils.isBlank(username)){
+        if (StringUtils.isBlank(id)){
             //是空的话强制跳转到首页登陆页面
             response.sendRedirect(LOGIN_PAGE_URL);
             return false;

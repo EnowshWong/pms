@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="/css/stu_task_style.css">
+    <script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
+    <!--    <script type="text/javascript" src="/js/addLi.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_select.css">
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+
+    <!--<html lang="en" class="no-ie" style="overflow:hidden;">-->
+
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/component.css"/>
+
+    <script src="/js/modernizr.custom.js"></script>
+
+
+
+
+    <!--<link href="/css/sweet-alert.css" type="text/css" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="/js/sweet-alert.min.js"></script>-->
+    <script src="/js/BeAlert.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/BeAlert.css">
+
+    <link rel="stylesheet" href="/css/history.css">
+
+    <style>
+        #mine{
+            width:25px;
+            margin-left: 20px;
+            height: 90%;
+
+        }
+        .searchTea{
+            color: #000;
+            /*border:#ebebeb solid 1px;*/
+            width: 160px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+
+    <style>
+
+        #test1111 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #log_History {
+            width:540px;
+            height:600px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/set_1.css"/>
+    <script>
+        // $(function () {
+        function cancel_shield11() {
+
+            var s = document.getElementById("test1111");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_History");
+            l.style.display = "none";
+        }
+
+        function shield1(){
+            var s = document.getElementById("test1111");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_History");
+            l.style.display = "block";
+        }
+        // })
+    </script>
+
+
+</head>
+<body id="back" >
+
+<div id="banner">
+    <div id="banner_left" class="display">
+        <div class="display" style="width: 70%;height: auto">
+            <form class="form form-group" name="" method="post" style="height: auto">
+                <div class="display searchTea" id="search_tea"  ><a href="#" class="set_1_btn Vbtn-4 ">申请加入实验室</a></div>
+                <div id="sear_around" style="display: none;height: auto">
+                    <div id="sear_float" class="display" style="box-shadow: 3px 3px 10px #686363;height: auto">
+                        <div class="content_left">
+                            <div class="left_nav">
+                                <ul class="pre-scrollable" id="searchUl" style="height: 300px;">
+                                    <li>
+                                        <div class="t"><i></i>
+                                            <div class="float_li_img"></div>
+                                            <span class="float_li_name">薛景</span>
+                                        </div>
+                                        <div class="txt">
+                                            <p class='bnam'>
+                                                <span class='nword'>实验室一</span>
+                                                <input type='button' value='申请加入' class='bbut'>
+                                            </p>
+                                            <p class='bnam'>
+                                                <span class='nword'>实验室二</span>
+                                                <input type='button' value='申请加入' class='bbut'>
+                                            </p>
+                                            <p class='bnam'>
+                                                <span class='nword'>实验室三</span>
+                                                <input type='button' value='申请加入' class='bbut'>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="t"><i></i>
+                                            <div class="float_li_img"></div>
+                                            <span class="float_li_name">戴华</span>
+                                        </div>
+                                        <div class="txt">
+                                            <p class='bnam'>
+                                                <span class='nword'>实验室一</span>
+                                                <input type='button' value='申请加入' class='bbut'>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <script type="text/javascript">
+                $b = $("#sear_around");
+                var sea=document.getElementById("sear_around")
+                $("#search_tea").on({
+                    "click": function(){
+                        $b.toggle();
+                        return false;
+                    }
+                });
+                $(document).bind('click', function(e) {
+                    var e = e || window.event;
+                    var elem = e.target || e.srcElement;
+                    while (elem) {
+                        if (elem.id && elem.id == 'sear_around') {
+                            return;
+                        }
+                        elem = elem.parentNode;
+                    }
+                    $('#sear_around').css('display', 'none');
+                });
+            </script>
+            <script type="text/javascript">
+                var stuId = null;
+                var mebu_length = 0;
+                $.ajax({
+                    type: "get",
+                    async: false, //同步请求
+                    url: "/tea/teaExpList",
+                    success: function (data) {
+                        var html = "";
+                        for (var i = 0; i < data.length; i++) {
+                            //拼凑html串
+                            html += " <li>\n" +
+                                "                <div class=\"t\"><i></i>\n" +
+                                "\t\t\t\t\n" +
+                                "\t\t\t\t\t\t\t\t<div class=\"float_li_img\"></div>\n" +
+                                "\t\t\t\t\t\t\t\t<span class=\"float_li_name\">" + data[i].nickname + "</span>\n" +
+                                "\t\t\t\t</div>\n" +
+                                "                <div class=\"txt\">";
+                            var expList = data[i].pmsExps;
+                            for (var j = 0; j < expList.length; j++) {
+                                html += "<p class='bnam'>" + "<span class='nword'>"+expList[j].expName +"</span>"+ "<input type='button' value='申请加入' class='bbut'>" +
+                                    "<input type='hidden' value='" + expList[j].id + "' class='expIdClass'/> </p>";
+                            }
+                            html += " </div>\n" +
+                                "            </li>";
+                        }
+                        $("#searchUl").html(html);
+                        // //给每一个button绑定点击事件
+                        // $(".float_li_btn").each(function (k) {
+                        //     $(this).click(function () {
+                        //         alert(k);
+                        //     })
+                        // })
+                    }
+                    // I_CLICK.addClick();
+                })
+            </script>
+        </div>
+        <div class="display" style="width: 10%">
+
+        </div>
+    </div>
+    <div class="display" style="width: 10%"></div>
+    <div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;">
+        <center>师生项目交互平台</center>
+    </div>
+    <div style="width: 6%" class="display"></div>
+    <div id="banner_right" style="padding: 0;" class="display">
+        <div class="display" style="width: 35%;">
+        </div>
+        <div style="width: 60%;" class="display">
+            <img src="/images/question.png" style="width:25px;margin-left: 20px;">
+            <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
+            <img src="/images/message.png" style="width:25px;margin-left: 20px;">
+            <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+        </div>
+        <div id="self_around" >
+            <div id="self_float" class="display">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="/showAccountStu"> <div class="self_mesg" id="self_account_set">
+                        <span id="account_set">账号设置</span>
+                    </div></a>
+                    <a href="/showIndex"><div class="self_mesg" id="self_turn_out">
+                        <span id="turn_out">退出登录</span>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            $b1 = $("#self_around");
+            var sea1=document.getElementById("self_around")
+            $("#self_info_a").on({
+                "click": function(){
+                    $b1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function(e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'self_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#self_around').css('display', 'none');
+            });
+        </script>
+    </div>
+</div>
+<div id="guidance" style="z-index: 1;">
+    <div id="left" class="display">
+    </div>
+    <div id="mid" class="display">
+        <!--			<span id="guidance_logo"><img src="#"></span>-->
+        <a href="/showTaskStu">
+            <div id="task" class="display"><span class="left_length"><span>任务</span></span></div>
+        </a>
+        <a href="#">
+            <div id="file" class="display"><span class="left_length"><span>文件</span></span></div>
+        </a>
+
+        <a href="#">
+            <div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div>
+        </a>
+        <a href="/showHistory">
+            <div id="history" class="display"><span class="left_length"><span>记录</span></span></div>
+        </a>
+
+    </div>
+    <div id="temp" class="display"></div>
+    <div id="right" class="display ">
+        <img src="/images/people.png" style="width: 20px;">
+        <span style="color: #808080;">1</span>
+        <img src="/images/menu.png" style="width: 20px;margin-left: 30px;">
+        <span style="color: #808080">菜单</span>
+    </div>
+</div>
+<div id="main">
+    <div id="main_block" >
+        <span id="cont_title" class="display">
+            <span class="display" id="history_title">历史记录</span>
+            <a href="#"><span class="display nowadays">近期</span></a>
+            <a href="#"><span class="display allover">所有</span></a>
+        </span>
+        <ul id="cont_ul_now" class="pre-scrollable"  style="width: 100%;">
+            <li class="cont_li_top">
+                <span class="cont_li_top_circle display"><span class="display" id="cont_circle"></span> </span>
+                <span class="cont_li_top_time display">时间 </span>
+                <span class="cont_li_top_name display">名称</span>
+                <span class="cont_li_top_desp display">任务描述</span>
+                <span class="cont_li_top_judge display">评价 </span>
+            </li>
+
+        </ul>
+        <script type="text/javascript">
+            function dateFormat(date) {
+                return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+            }
+            function getRecentPlanList() {
+                var stuId=GetCookie("COOKIE_ID");
+                var html="";
+                $.ajax({
+                    type:"get",
+                    url:"/plan/recentPlan/"+stuId,
+                    async:false,
+                    success:function (data) {
+                        for(var i=0;i<data.length;i++){
+                            var created=dateFormat(new Date(data[i].created));
+                            var expired=dateFormat(new Date(data[i].expired));
+                            html+="<li class=\"cont_li\">\n" +
+                                "\n" +
+                                "                <a href=\"#\" class='dtPlanClass'>\n" +
+                                "                <span class=\"cont_li_circle display\"><span class=\"display cont_circle\" ></span> </span>\n" +
+                                "                <span class=\"cont_li_time display\">\n" +
+                                "                    <div class=\" cont_li_begintime\">"+created+"</div>\n" +
+                                "                    <div class=\" cont_li_temp\">~</div>\n" +
+                                "                    <div class=\" cont_li_overtime\">"+expired+"</div>\n" +
+                                "\n" +
+                                "                </span>\n" +
+                                "                <span class=\"cont_li_name display\">"+data[i].title+"</span>\n" +
+                                "                <span class=\"cont_li_desc display\">"+data[i].planDesc+"</span>\n" +
+                                "<input type='hidden' class='planIdClass' value='"+data[i].id+"' />"+
+                                "                <span class=\"cont_li_judge display\">\n";
+                            var grade=data[i].grade;
+                            for(var j=0;j<grade;j++) {
+                                html += "<span class=\"cont_li_star display\"></span>";
+                            }
+                            html+="                </span>\n" +
+                                "                </a>\n" +
+                                "                <!--<span class=\"cont_li_time display\">时间 </span>-->\n" +
+                                "            </li>";
+                        }
+
+                    }
+                });
+                $("#cont_ul_now").append(html);
+            }
+            getRecentPlanList();
+        </script>
+
+        <ul id="cont_ul_all" class="pre-scrollable"  style="display: none;width: 100%;">
+            <li class="cont_li_top">
+                <span class="cont_li_top_circle display"><span class="display" id="cont_circle1"></span> </span>
+                <span class="cont_li_top_time display">时间 </span>
+                <span class="cont_li_top_name display">名称</span>
+                <span class="cont_li_top_desp display">任务描述</span>
+                <span class="cont_li_top_judge display">评价 </span>
+            </li>
+        </ul>
+        <script type="text/javascript">
+            function getAllPlanList() {
+                var stuId=GetCookie("COOKIE_ID");
+                var html="";
+                $.ajax({
+                    type:"get",
+                    url:"/plan/allPlan/"+stuId,
+                    async:false,
+                    success:function (data) {
+                        for(var i=0;i<data.length;i++){
+                            var created=dateFormat(new Date(data[i].created));
+                            var expired=dateFormat(new Date(data[i].expired));
+                            html+="<li class=\"cont_li\">\n" +
+                                "\n" +
+                                "                <a href=\"#\" class='dtPlanClass'>\n" +
+                                "                <span class=\"cont_li_circle display\"><span class=\"display cont_circle\" ></span> </span>\n" +
+                                "                <span class=\"cont_li_time display\">\n" +
+                                "                    <div class=\" cont_li_begintime\">"+created+"</div>\n" +
+                                "                    <div class=\" cont_li_temp\">~</div>\n" +
+                                "                    <div class=\" cont_li_overtime\">"+expired+"</div>\n" +
+                                "<input type='hidden' class='planIdClass' value='"+data[i].id+"' />"+
+                                "                </span>\n" +
+                                "                <span class=\"cont_li_name display\">"+data[i].title+"</span>\n" +
+                                "                <span class=\"cont_li_desc display\">"+data[i].planDesc+"</span>\n"+
+                                "                <span class=\"cont_li_judge display\">\n";
+                            var grade=data[i].grade;
+                            for(var j=0;j<grade;j++) {
+                                html += "<span class=\"cont_li_star display\"></span>";
+                            }
+                            html+="                </span>\n" +
+                                "                </a>\n" +
+                                "                <!--<span class=\"cont_li_time display\">时间 </span>-->\n" +
+                                "            </li>";
+                        }
+
+                    }
+                });
+                $("#cont_ul_all").append(html);
+            }
+            getAllPlanList();
+        </script>
+    </div>
+
+</div>
+
+
+<script>
+    $(function () {
+        var now=document.getElementsByClassName('nowadays');
+        var all=document.getElementsByClassName('allover');
+        var ul_now=document.getElementById('cont_ul_now');
+        var ul_all=document.getElementById('cont_ul_all');
+        now[0].onclick=function () {
+            ul_now.style.display='inline-block';
+            ul_all.style.display='none';
+        }
+        all[0].onclick=function () {
+            ul_all.style.display='inline-block';
+            ul_now.style.display='none';
+        }
+    })
+</script>
+<script charset="utf-8" type="text/javascript" src="/js/jquery1.js"></script>
+<script charset="utf-8" type="text/javascript" src="/js/theme1.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/theme1.css">
+
+
+<div id="log_History">
+
+    <a href="javascript:cancel_shield11()" class="md-close" style="margin-left:450px;margin-top: 10px;"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <div class="display detail_header_img0">张吴</div>
+            <strong class="display detail_header_word0" style="color: #000;" id="hsTitle">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display" id="hsCreated">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display" id="hsExpired">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:400px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word" id="hsPlanDesc">
+                实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...
+            </div>
+
+        </div>
+
+        <div>
+            <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                    class="display  detail_title_word">老师初评</span><span style="vertical-align: middle"
+                                                                        class="preJudgeWord" id="hsCreated1"></span>
+            </div>
+            <div class="detail_word" id="hsFjContent">老师还没进行初评哦~_~</div>
+        </div>
+
+        <div>
+            <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
+                    style="vertical-align: middle;" class="display  detail_title_word">总评</span><span
+                    style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
+                    id="hsGrade">A</span><span style="vertical-align: middle" class="preJudgeWord"
+                                               id="hsCreated2"></span></div>
+            <div class="detail_word" id="hsSjContent">
+                挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
+            </div>
+        </div>
+        <div>
+            <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
+                    style="vertical-align: middle;" class="display  detail_title_word">自评</span><span
+                    style="vertical-align: middle" class="preJudgeWord" id="hsCreated3"></span>
+                <div class="detail_word" id="hsSelfContent" style="margin-left: 56px;">
+                    挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function planDtClick(){
+        $(".dtPlanClass").each(function (i) {
+            var planId=$(".planIdClass").eq(i).attr("value");
+            $(this).click(function () {
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/allAssess/"+planId,
+                    success:function (data) {
+                        $("#hsTitle").text(data.title);
+                        var created=dateFormat(new Date(data.created));
+                        var expired=dateFormat(new Date(data.expired));
+                        var created1=dateFormat(new Date(data.created1));
+                        var created2=dateFormat(new Date(data.created2));
+                        var created3=dateFormat(new Date(data.created3));
+                        $("#hsCreated").text(created+"开始");
+                        $("#hsExpired").text(expired+"截止");
+                        $("#hsCreated1").text(created1);
+                        $("#hsCreated2").text(created2);
+                        $("#hsSelfContent").text(data.selfJudge);
+                        $("#hsGrade").text(data.grade);
+                        $("#hsCreated3").text(created3);
+                        $("#hsFjContent").text(data.assess1);
+                        $("#hsSjContent").text(data.assess2);
+                        $("#hsPlanDesc").text(data.planDesc);
+                        shield1();
+                    }
+                })
+            })
+        })
+    }
+    $(function () {
+        planDtClick();
+    })
+</script>
+<div id="test1111">
+
+</div>
+
+</body>
+</html>

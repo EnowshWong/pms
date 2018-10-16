@@ -1,0 +1,2231 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="/css/stu_task_style.css">
+    <script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
+    <!--    <script type="text/javascript" src="/js/addLi.js"></script>-->
+    <style type="text/css">
+        a, img {
+            border: 0;
+        }
+
+        b {
+            color: #000;
+        }
+    </style>
+    <style type="text/css">
+        /* tablescroll */
+        .tablescroll {
+            font: 12px normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        .tablescroll td, .tablescroll_wrapper, .tablescroll_head, .tablescroll_foot {
+            border: 1px solid #ccc;
+        }
+
+        .tablescroll td {
+            padding: 5px;
+        }
+
+        .tablescroll_wrapper {
+            border-left: 0;
+        }
+
+        .tablescroll_head {
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #eee;
+            border-left: 0;
+            border-top: 0;
+            margin-bottom: 3px;
+        }
+
+        .tablescroll thead td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        .tablescroll tbody td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        .tablescroll tbody tr.first td {
+            border-top: 0;
+        }
+
+        .tablescroll_foot {
+            font-weight: bold;
+            background-color: #eee;
+            border-left: 0;
+            border-top: 0;
+            margin-top: 3px;
+        }
+
+        .tablescroll tfoot td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_select.css">
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".test1").manhuaDialog({
+                Event: "click",								//触发响应事件
+                title: "什么是任务",					            //弹出层的标题
+                type: "id",									//弹出层类型(text、容器ID、URL、Iframe)
+                content: "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+                width: 590,									//弹出层的宽度
+                height: 660,									//弹出层的高度
+                scrollTop: 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+                isAuto: false,									//是否自动弹出
+                time: 2000,									//设置弹出层时间，前提是isAuto=true
+                isClose: false,  								//是否自动关闭
+                timeOut: 5000									//设置自动关闭时间，前提是isClose=true
+            });
+        });
+        $(function () {
+            $(".test0").manhuaDialog({
+                Event: "click",								//触发响应事件
+                title: "什么是任务",					            //弹出层的标题
+                type: "id",									//弹出层类型(text、容器ID、URL、Iframe)
+                content: "self_judge",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+                width: 590,									//弹出层的宽度
+                height: 660,									//弹出层的高度
+                scrollTop: 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+                isAuto: false,									//是否自动弹出
+                time: 2000,									//设置弹出层时间，前提是isAuto=true
+                isClose: false,  								//是否自动关闭
+                timeOut: 5000									//设置自动关闭时间，前提是isClose=true
+            });
+        });
+    </script>
+    <style type="text/css">
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <style>
+        /*  body{padding: 20px;}*/
+        .demo-input {
+            padding-left: 10px;
+            height: 38px;
+            min-width: 162px;
+            line-height: 38px;
+            border: 1px solid #e6e6e6;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .demo-footer {
+            padding: 50px 0;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .demo-footer a {
+            padding: 0 5px;
+            color: #01AAED;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/component.css"/>
+    <script src="/js/modernizr.custom.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            var sear = document.getElementById("search_tea");
+            var plot = document.getElementById("sear_around");
+//			var sear=document.getElementById("search_tea");
+            sear.onclick = function () {
+                plot.style.display = "block";
+            }
+
+        })
+
+
+    </script>
+    <style>
+        #test1111 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+
+        #test2222 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test3333 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test4444 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test5555 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #log_window1 {
+            width:540px;
+            height:400px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_window2 {
+            width:540px;
+            height:400px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_window3 {
+            width:540px;
+            height:600px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_window4 {
+            width:540px;
+            height:600px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_window5 {
+            width:540px;
+            height:600px;
+            border-radius: 10px;
+            background-color:#fff;
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+    </style>
+    <script>
+        function dateFormat(date) {
+            return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+        }
+        function shield1(){
+            var s = document.getElementById("test1111");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window1");
+            l.style.display = "block";
+        }
+
+        function shield2(){
+
+            var s = document.getElementById("test2222");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window2");
+            l.style.display = "block";
+        }
+
+        function shield3(){
+
+            var s = document.getElementById("test3333");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window3");
+            l.style.display = "block";
+        }
+
+        function cancel_shield3(){
+            var s = document.getElementById("test3333");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window3");
+            l.style.display = "none";
+        }
+        function shield4(){
+
+            var s = document.getElementById("test4444");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window4");
+            l.style.display = "block";
+        }
+
+        function shield5(){
+
+            var s = document.getElementById("test5555");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window5");
+            l.style.display = "block";
+        }
+
+        function cancel_shield5(){
+            var s = document.getElementById("test5555");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window5");
+            l.style.display = "none";
+        }
+
+        function cancel_shield4(){
+            var s = document.getElementById("test4444");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window4");
+            l.style.display = "none";
+        }
+    </script>
+    <style>
+        .icon_temp{
+            margin-top: -2px;
+        }
+        .judge{
+            margin-top: 5px;
+            margin-left: 33px;
+        }
+    </style>
+    <script>
+
+        function cancel_shield11(){
+
+            var s = document.getElementById("test1111");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window1");
+            l.style.display = "none";
+        }
+        function cancel_shield22(){
+
+            var s = document.getElementById("test2222");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window2");
+            l.style.display = "none";
+        }
+        function cancel_shield5(){
+            var s = document.getElementById("test5555");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window5");
+            l.style.display = "none";
+        }
+    </script>
+    <script>
+        $(function(){
+
+            function cancel_shield1(){
+
+
+
+                    var s = document.getElementById("test1111");
+                    s.style.display = "none";
+
+                    var l = document.getElementById("log_window1");
+                    l.style.display = "none";
+                    return true;
+
+            }
+
+            function cancel_shield2(){
+
+
+                    var s = document.getElementById("test2222");
+                    s.style.display = "none";
+
+                    var l = document.getElementById("log_window2");
+                    l.style.display = "none";
+
+            }
+            // function cancel_shield5(){
+            //     var s = document.getElementById("test5555");
+            //     s.style.display = "none";
+            //
+            //     var l = document.getElementById("log_window5");
+            //     l.style.display = "none";
+            // }
+            var tmp1=document.getElementById("tempBut1");
+            var tmp2=document.getElementById("tempBut2");
+
+            var sub1=document.getElementById("submitBut1");
+            var sub2=document.getElementById("submitBut2");
+            var sub3=document.getElementById("submitBtn");
+            tmp1.onclick=function(){
+                cancel_shield1();
+            }
+            sub1.onclick=function(){
+                cancel_shield1();
+
+            }
+            tmp2.onclick=function(){
+                cancel_shield2();
+            }
+            sub2.onclick=function(){
+                cancel_shield2();
+
+            }
+            sub3.onclick=function(){
+                selfJudgeSubmitClick();
+                cancel_shield5();
+            }
+        })
+    </script>
+    <script src="/js/BeAlert.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/BeAlert.css">
+    <style>
+        .main_style_tip{
+            overflow:hidden;
+            float:left;
+            position:relative;
+        }
+        .text1{
+            width:100%;
+            height:0;
+            overflow:hidden;
+            position:absolute; left:0; bottom:0;
+            background:rgba(0,0,0,0.5);
+
+            font-size:12px;
+            color:#fff;}
+        /*#wraper ul li .text p{*/
+        /*text-align:left;*/
+        /*color:#fff;*/
+        /*line-height:180%;*/
+        /*!*            padding:5px 10px;*!*/
+        /*clear:both*/
+        /*}*/
+        /*#wraper ul li .text b{*/
+        /*display:block;*/
+        /*!*            padding:5px 10px;*!*/
+        /*float:left;*/
+        /*background:#333;*/
+        /*!*            margin-bottom:5px;*!*/
+        /*}*/
+    </style>
+    <script>
+        $(function(){
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            var sear = document.getElementById("self_info_a");
+            var plot = document.getElementById("self_around");
+//			var sear=document.getElementById("search_tea");
+            sear.onclick = function () {
+                plot.style.display = "block";
+            }
+
+        })
+
+
+    </script>
+    <style>
+        a,a:link,a:hover,a:active,a:visited{
+            text-decoration: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function submitChange5(e){
+            var su1=document.getElementById('submitBtn');
+            var su2=document.getElementById('submitBtn_hid5');
+            var money=$('#selfJudgeContent').val();
+            // if(money==""){
+            //     su2.style.display='none';
+            //     su1.style.display='inline-block';
+            // }
+            if(money.length>0){
+                su1.style.display='inline-block';
+                su2.style.display='none';
+                su1.style.display='inline-block';
+                su2.style.display='none';
+            }
+            else{
+                su1.style.display='none';
+                su2.style.display='inline-block';
+                su1.style.display='none';
+                su2.style.display='inline-block';
+
+            }
+
+        };
+        function submitChange1(e){
+            var input11=$('#planTitle1').val();
+            var input12=$('#planDesc1').val();
+            var temp1=document.getElementById('tempBut1');
+            var temp_hid1=document.getElementById('tempBut1_hid');
+            var sub1=document.getElementById('submitBut1');
+            var sub_hid1=document.getElementById('submitBut1_hid');
+            // if(input11==""&&input12==""&&input13==""&&input14==""){
+            if(input11.length>0&&input12.length>0){
+                temp1.style.display='inline-block';
+                temp_hid1.style.display='none';
+                sub1.style.display='inline-block';
+                sub_hid1.style.display='none';
+            }
+            else{
+                temp1.style.display='none';
+                temp_hid1.style.display='inline-block';
+                sub1.style.display='none';
+                sub_hid1.style.display='block';
+
+            }
+
+        };
+        function submitChange2(e){
+            var input21=$('#planTitle2').val();
+            var input22=$('#planDesc2').val();
+            var temp21=document.getElementById('tempBut2');
+            var temp_hid21=document.getElementById('tempBut2_hid');
+            var sub21=document.getElementById('submitBut2');
+            var sub_hid21=document.getElementById('submitBut2_hid');
+            // if(input11==""&&input12==""&&input13==""&&input14==""){
+            if(input21.length>0&&input22.length>0){
+                temp21.style.display='inline-block';
+                temp_hid21.style.display='none';
+                sub21.style.display='inline-block';
+                sub_hid21.style.display='none';
+            }
+            else{
+                temp21.style.display='none';
+                temp_hid21.style.display='inline-block';
+                sub21.style.display='none';
+                sub_hid21.style.display='block';
+
+            }
+
+        };
+    </script>
+    <link href="/css/set_1.css/" rel="stylesheet">
+
+    <style>
+        #mine{
+            width:25px;
+            margin-left: 20px;
+            height: 90%;
+
+        }
+        #addLi1,#addLi2,#addLi3,#addLi3_none{
+            height:460px;
+        }
+        .md-close{
+            position: absolute;;
+        }
+    </style>
+
+
+    <link href="/daterangepicker/bootstrap.min-date.css" rel="stylesheet">
+    <link href="/daterangepicker/fon-awesome.min-date.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="/daterangepicker/daterangepicker-bs3-date.css" />
+    <script type="text/javascript" src="/daterangepicker/jquery-1.8.3.min-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/bootstrap.min-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/moment-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/daterangepicker-date.js"></script>
+
+</head>
+
+
+<body  id="body_back_stu">
+<div id="banner">
+    <div id="banner_left" class="display">
+        <div class="display" style="width: 70%;height: auto">
+            <form class="form form-group" name="" method="post" style="height: auto">
+                <!--<input class="display form-control" id="search_tea" style="border: 0px solid #ccc;" type="text"-->
+                <!--placeholder="搜索老师">-->
+
+                <div class="display searchTea" id="search_tea"  ><a href="#" class="set_1_btn Vbtn-4 ">申请加入实验室</a></div>
+                <div id="sear_around" style="display: none;height: auto">
+                    <div id="sear_float" class="display" style="box-shadow: 3px 3px 10px #686363;height: auto">
+                        <div class="content_left">
+                            <div class="left_nav">
+                                <ul  class="pre-scrollable" id="searchUl" style="height: 300px;">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <script type="text/javascript">
+                $b = $("#sear_around");
+                var sea=document.getElementById("sear_around")
+                $("#search_tea").on({
+                    "click": function(){
+                        $b.toggle();
+                        return false;
+                    }
+                });
+                $(document).bind('click', function(e) {
+                    var e = e || window.event;
+                    var elem = e.target || e.srcElement;
+                    while (elem) {
+                        if (elem.id && elem.id == 'sear_around') {
+                            return;
+                        }
+                        elem = elem.parentNode;
+                    }
+                    $('#sear_around').css('display', 'none');
+                });
+            </script>
+            <script type="text/javascript">
+                var stuId = null;
+                var mebu_length = 0;
+                $.ajax({
+                    type: "get",
+                    async: false, //同步请求
+                    url: "/tea/teaExpList",
+                    success: function (data) {
+                        var html = "";
+                        for (var i = 0; i < data.length; i++) {
+                            //拼凑html串
+                            html += " <li>\n" +
+                                "                <div class=\"t\"><i></i>\n" +
+                                "\t\t\t\t\n" +
+                                "\t\t\t\t\t\t\t\t<div class=\"float_li_img\"></div>\n" +
+                                "\t\t\t\t\t\t\t\t<span class=\"float_li_name\">" + data[i].nickname + "</span>\n" +
+                                "\t\t\t\t</div>\n" +
+                                "                <div class=\"txt\">";
+                            var expList = data[i].pmsExps;
+                            for (var j = 0; j < expList.length; j++) {
+                                html += "<p class='bnam'>" + expList[j].expName + "<input type='button' value='申请加入' class='bbut'>" +
+                                    "<input type='hidden' value='" + expList[j].id + "' class='expIdClass'/> </p>";
+                            }
+                            html += " </div>\n" +
+                                "            </li>";
+                        }
+                        $("#searchUl").html(html);
+                        // //给每一个button绑定点击事件
+                        // $(".float_li_btn").each(function (k) {
+                        //     $(this).click(function () {
+                        //         alert(k);
+                        //     })
+                        // })
+                    }
+                    // I_CLICK.addClick();
+                })
+            </script>
+        </div>
+        <div class="display" style="width: 10%">
+
+        </div>
+    </div>
+    <div class="display" style="width: 10%"></div>
+    <div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;">
+        <center>师生项目交互平台</center>
+    </div>
+    <div style="width: 6%" class="display"></div>
+    <div id="banner_right" style="padding: 0;" class="display">
+        <div class="display" style="width: 35%;">
+        </div>
+        <div style="width: 60%;" class="display">
+            <img src="/images/question.png" style="width:25px;margin-left: 20px;">
+            <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
+            <img src="/images/message.png" style="width:25px;margin-left: 20px;">
+            <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+
+        </div>
+        <div id="self_around" >
+            <div id="self_float" class="display">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="/showAccountStu" > <div class="self_mesg" id="self_account_set">
+                        <span id="account_set">账号设置</span>
+                    </div></a>
+                    <a href="/showIndex"><div class="self_mesg" id="self_turn_out">
+                        <span id="turn_out">退出登录</span>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            $b1 = $("#self_around");
+            var sea1=document.getElementById("self_around")
+            $("#self_info_a").on({
+                "click": function(){
+                    $b1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function(e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'self_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#self_around').css('display', 'none');
+            });
+        </script>
+    </div>
+</div>
+<div id="guidance" style="z-index: 1;">
+    <div id="left" class="display">
+    </div>
+    <div id="mid" class="display">
+        <!--			<span id="guidance_logo"><img src="#"></span>-->
+        <a href="/showTaskStu">
+            <div id="task" class="display"><span class="left_length"><span>任务</span></span></div>
+        </a>
+        <a href="#">
+            <div id="file" class="display"><span class="left_length"><span>文件</span></span></div>
+        </a>
+
+        <a href="#">
+            <div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div>
+        </a>
+        <a href="/showHistory">
+            <div id="history" class="display"><span class="left_length"><span>记录</span></span></div>
+        </a>
+
+    </div>
+    <div id="temp" class="display"></div>
+    <div id="right" class="display ">
+        <img src="/images/people.png" style="width: 20px;">
+        <span style="color: #808080;">1</span>
+        <img src="/images/menu.png" style="width: 20px;margin-left: 30px;">
+        <span style="color: #808080">菜单</span>
+    </div>
+</div>
+<div id="main thetable" style="z-index: 1;">
+    <div class="main_style_left display"></div>
+    <div class="main_style display " style="position: ;z-index: 1;">
+        <span style="width:40%;display: inline-block;margin-top: -20px;"></span>
+        <span class="title"><strong class="title_word" style="color: #000;">暂存</strong></span>
+        <ul  class="" id="addLi1" style="overflow-y: scroll">
+
+        </ul>
+        <script type="text/javascript">
+            //在页面加载时根据stuId查询暂存计划表
+            function getTempPlanList() {
+                var html="";
+                var stuId=GetCookie("COOKIE_ID");
+                $.ajax({
+                    type:"get",
+                    async:false, //同步请求
+                    url:"/templan/list/"+stuId,
+                    success:function (data) {
+                        for(var i=data.length-1;i>=0;i--){
+                            var exp=new Date(data[i].expired);
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var style="border-left: 10px solid #B3ACAD;";
+                            var now=new Date();
+                            var desc=data[i].planDesc;
+                            var title="周报("+created+"到"+expired+")";
+                            desc=desc.replace(/\r\n/g, '<br/>');
+                            desc=desc.replace(/\n/g, '<br/>');
+                            desc=desc.replace(/\s/g, ' ');
+                            //接近截至日期两天就提醒标红
+                            if (exp.getDate()-now.getDate()<=2)
+                                style="border-left: 10px solid #ef4e4e;";
+                            // var expired=dateFormat(new Date(data[i].expired));
+                            html+="<li class=\"main_style_tip\">\n" +
+                                "\t\t\t<span>\n" +
+                                "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
+                                "\t\t\t</span>\n" +
+                                "                <div class=\"main_style_tip_word\">\n" +
+                                "                    <p class=\"tip_word_title\">\n" +
+                                "                        <b>"+title+"</b>" +
+                                "<a></a>\n" +
+                                "                    </p>\n" +
+                                "                    <div class=\"main_style_belly\">\n" +
+                                "                        <div class='main_style_belly_word'>"+desc+"</div>\n" +
+                                "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                "\t\t\t\t\t\t\t<strong class='tempExpired'>"+expired+"截止</strong>" +
+                                "<input type='hidden' class='tempPlanId' value='"+data[i].id+"'/> \n" +
+                                "\t\t\t\t\t\t</div>\n" +"                <div class='text1'>"+
+                                "                        <div class=\"icon_temp display\" style=\"\">\n" +
+                                "\t\t\t\t\t\t\t\n" +
+                                "\t\t\t<a  href=\"javascript:shield2()\"><img src=\"/images/modify.png\" class='md-trigger'></a>\n" +
+                                "                            <button class=\"delete\" style=\"background:url('/images/delete.png') no-repeat;width: 50px;height: 32px;vertical-align: middle;margin-left:70%;margin-top: -68%;\"></button>\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "\n" +
+                                "                </div>\n" +
+                                "</div>"+
+                                "            </li>";
+                        }
+                        $('.main_style_tip').hover(function(){
+                            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                            });
+                        },function(){
+                            $('.text1',this).stop().animate({
+                                height:'0'
+                            });
+                        });
+                        // }
+                        $("#addLi1").html(html);
+                    }
+                })
+            }
+            getTempPlanList();
+        </script>
+        <div class="add_task">
+            <a  href="javascript:shield1()">
+                <img src="/images/add.png" class="add_icon">
+                <span class="add_task_word test2">创建计划</span>
+            </a>
+        </div>
+
+
+
+
+        <div id="log_window1" >
+            <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+            <div id="md-close1"><a href="javascript:cancel_shield11()"  class="md-close" style="position:relative;margin-left:500px;margin-top: 10px;"> </a></div>
+            <!--					<button class="md-close" style="margin-left:450px;margin-top: 10px;"> </button>-->
+
+            <div style="margin-top: 10px;">
+
+                <!--<div class="display" style="padding-top: 40px;"> <span class="detail_title_word display"   >计划标题</span></div>-->
+                <div class="input-prepend input-group display" style="margin-left: 0px;">
+                    <span class="display detail_title_word">起止时间</span>
+                    <!--<span class=" input-group-addon" style="">-->
+                    <!--</span>-->
+                    <input type="text" placeholder="请选择起止时间" readonly="readonly" style="width: 200px;position: absolute;background:#fff;border-radius:5px;margin-left: 152px;margin-top: -33px;" name="reservation"  id="reservation" class="form-control" value="" />
+                </div>
+                <script type="text/javascript">
+                    $('#reservation').daterangepicker({
+                        dateLimit : {
+                            days : 6
+                        },
+                    } , function(start, end, label) {
+                        console.log(start.toISOString(), stop.toISOString(), label);
+                    });
+                </script>
+
+            </div>
+
+
+            <div style="margin-top: 20px;">
+                <span class="detail_title_word display"   >计划标题</span>
+                <!--
+                                <form class="form-horizontal form-group" id="testForm1">
+                                    <input class="input-control" type="text" placeholder="请输入计划标题">
+                                </form>
+                -->
+                <form role="form" class="display">
+                    <div class="form-group">
+                        <input id="planTitle1" oninput="submitChange1(this)" type="input" class="form-control" style="width: 342px;margin-left: 50px;" placeholder="请输入计划标题" required="">
+                    </div>
+                </form>
+            </div>
+            <div style="margin-top: 5px;" >
+                <span class="detail_title_word display" style="margin-top: -250px;" >计划描述</span>
+                <form role="form" class="display">
+                    <div class="form-group" >
+                        <textarea id="planDesc1" oninput="submitChange1(this)" class="form-control" style="margin-left: 50px;" placeholder="请输入计划描述" rows="5" cols="35" required=""></textarea>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+            <script src="/laydate/laydate.js"></script> <!-- 改成你的路径 -->
+            <script>
+                lay('#version').html('-v'+ laydate.v);
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#test1' //指定元素
+                });
+            </script>
+            <button id="tempBut1" type="button" class="btn btn-info display" href="#" style="display: inline-block;margin-bottom: 10px;margin-left: 300px;">暂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</button>
+
+            <!--<input id="tempBut1" type="submit" class="btn btn-info display" href="#" value="暂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存"/>-->
+            <div id="tempBut1_hid"  style="margin-bottom: 10px;margin-left: 300px;color: #fff;display: none;">暂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</div>
+            <!--<input id="submitBut1" type="submit" class="btn btn-info display" href="#" value="确认提交">-->
+            <button id="submitBut1" type="button" class="btn btn-info display" href="#" style="display: inline-block;margin-top: -82px;margin-left:  400px;">确认提交</button>
+
+            <div id="submitBut1_hid"   style="margin-left:  400px;color: #fff;margin-top:-43px;display: none;">确认提交</div>
+
+            <script src="/js/jquery-2.2.4.min.js"></script>
+        </div>
+        <script>
+            var tmp=document.getElementById('tempBut1')
+            var tmp_hid=document.getElementById('tempBut1_hid')
+            var sub=document.getElementById('submitBut1')
+            var sub_hid=document.getElementById('submitBut1_hid')
+            tmp.style.display='none';
+            tmp_hid.style.display='inline-block';
+            sub.style.display='none';
+            sub_hid.style.display='block';
+        </script>
+        <div id="log_window2">
+            <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+            <a href="javascript:cancel_shield22()" class="md-close" style="position:relative;margin-left:500px;margin-top: 10px;"> </a>
+
+
+            <div style="margin-top: 10px;">
+
+                <!--<div class="display" style="padding-top: 40px;"> <span class="detail_title_word display"   >计划标题</span></div>-->
+                <div class="input-prepend input-group display" style="margin-left: 0px;">
+                    <span class="display detail_title_word">起止时间</span>
+                    <!--<span class=" input-group-addon" style="">-->
+                    <!--</span>-->
+                    <input type="text" placeholder="请选择起止时间" readonly="readonly" style="width: 200px;position: absolute;background:#fff;border-radius:5px;margin-left: 152px;margin-top: -33px;" name="reservation"  id="reservation1" class="form-control" value="" />
+                </div>
+                <script type="text/javascript">
+                    $('#reservation1').daterangepicker({
+                        dateLimit : {
+                            days : 6
+                        },
+                    } , function(start, end, label) {
+                        console.log(start.toISOString(), stop.toISOString(), label);
+                    });
+                </script>
+
+            </div>
+
+            <div style="margin-top: 20px;">
+                <span class="detail_title_word display">计划标题</span>
+                <!--
+                                <form class="form-horizontal form-group" id="testForm1">
+                                    <input class="input-control" type="text" placeholder="请输入计划标题">
+                                </form>
+                -->
+                <form role="form" class="display">
+                    <div class="form-group">
+                        <input id="planTitle2" oninput="submitChange2(this)" type="input" class="form-control" style="width: 342px;margin-left: 50px;"
+                               placeholder="请输入计划标题" required="">
+                    </div>
+                </form>
+            </div>
+            <div style="margin-top: 5px;">
+                <span class="detail_title_word display" style="margin-top: -250px;">计划描述</span>
+                <form role="form" class="display">
+                    <div class="form-group">
+                        <textarea id="planDesc2" class="form-control" oninput="submitChange2(this)" style="margin-left: 50px;" placeholder="请输入计划描述" rows="5"
+                                  cols="35" required=""></textarea>
+                        <input type="hidden" id="templanId2" />
+                    </div>
+                </form>
+            </div>
+
+            <button id="tempBut2" type="button" class="btn btn-info display" href="#" style="margin-bottom: 10px;margin-left: 300px;">
+                暂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存
+            </button>
+            <div id="tempBut2_hid" style="margin-bottom: 10px;margin-left: 300px;color: #fff;display: none;">暂&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存</div>
+            <button id="submitBut2" type="button" class="btn btn-info display" href="#" style="margin-top: -82px;margin-left:  400px;">
+                确认提交
+            </button>
+            <!--<input id="submitBut1" type="submit" class="btn btn-info display" href="#" value="确认提交">-->
+
+            <div id="submitBut2_hid" style="margin-left:  400px;color: #fff;margin-top:-43px;display: none;" >确认提交</div>
+
+        </div>
+        <div id="log_window3" >
+            <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+            <a href="javascript:cancel_shield3()" class="md-close" style="margin-left:500px;margin-top: 10px;"> </a>
+
+            <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+                <div class="display" id="detail_header0">
+                    <strong class="display" id="detail_header_word0" style="color: #000;">
+                        嫦娥三号着陆计划</strong>
+                    <div class="display" id="header_img00" style="vertical-align: middle">
+                        <div   class="display header_img01"><strong id="detailCreated" style="margin-left: 10px;"
+                                                                    class="display">2018-5-18开始</strong></div>
+                        <div   class="display header_img02"><strong id="detailedExpired" style="margin-left: 10px;"
+                                                                    class="display">2018-6-18截止</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div  style="height:400px;" class="pre-scrollable">
+                <div id="task_detail1">
+                    <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                            class="display detail_title_word">任务详情</span></div>
+                    <div class="detail_word" style="position: relative;" id="detailedPlanDesc">实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...</div>
+
+                </div>
+                <div id="tea_preJudge1">
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                            class="display  detail_title_word" style="vertical-align: middle">老师初评</span>
+                        <span style="vertical-align: middle" class="preJudgeWord" id="detailedAssessCreated"></span></div>
+                    <div class="detail_word" id="detailedAssess1">老师还没有进行初评哦~_~</div>
+                </div>
+
+            </div>
+        </div>
+        <div id="log_window4" >
+            <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+            <a href="javascript:cancel_shield4()" class="md-close" style="margin-left:500px;margin-top: 10px;"> </a>
+
+            <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+                <div class="display detail_header0">
+                    <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle">
+                        嫦娥三号着陆计划</strong>
+                    <div class="display header_img00"  style="vertical-align: middle">
+                        <div  class="display header_img01"><strong style="margin-left: 10px;"
+                                                                   class="display" id="detailedExpiredCreated">2018-5-18开始</strong></div>
+                        <div  class="display header_img02"><strong style="margin-left: 10px;"
+                                                                   class="display" id="detailedExpiredExpired">2018-6-18截止</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div  style="height:400px;" class="pre-scrollable">
+                <div class="task_detail1">
+                    <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                            class="display detail_title_word">任务详情</span></div>
+                    <div class="detail_word" id="detailedExpiredPlanDesc">实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...</div>
+
+                </div>
+                <div >
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                            class="display  detail_title_word">老师初评</span><span style="vertical-align: middle" class="preJudgeWord" id="detailedExpiredCreated1"></span></div>
+                    <div class="detail_word" id="detailedExpiredAssess1">老师还没进行初评哦~_~</div>
+                </div>
+                <div >
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                            class="display  detail_title_word">学生自评</span><span style="vertical-align: middle" class="preJudgeWord" id="detailedExpiredSJCreated"></span></div>
+                    <div class="detail_word" id="detailedExpiredSelfJudge">学生自评学生自评学生自评学生自评~_~</div>
+                </div>
+                <div id="conclusion1">
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
+                            style="vertical-align: middle;" class="display  detail_title_word">总评</span><span
+                            style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;" id="detailedExpiredGrade"></span><span style="vertical-align: middle" class="preJudgeWord" id="detailedExpiredCreated2"></span></div>
+                    <div class="detail_word" id="detailedExpiredAssess2">
+                        老师还没进行总评哦~_~
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="log_window5" >
+            <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+            <a href="javascript:cancel_shield5()" class="md-close" style="margin-left:500px;margin-top: 10px;"> </a>
+
+            <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+                <div class="display detail_header0">
+                    <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle0">
+                        嫦娥三号着陆计划</strong>
+                    <div class="display header_img00"  style="vertical-align: middle">
+                        <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                                  class="display" id="detailedExpiredCreated0">2018-5-18开始</strong></div>
+                        <div  class="display header_img02"><strong style="margin-left: 10px;"
+                                                                   class="display" id="detailedExpiredExpired0">2018-6-18截止</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div  style="height:400px;" class="pre-scrollable">
+                <div class="task_detail1">
+                    <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                            class="display detail_title_word">任务详情</span></div>
+                    <div class="detail_word" id="detailedExpiredPlanDesc0">实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...</div>
+
+                </div>
+                <div>
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                            class="display  detail_title_word" >老师初评</span><span style="vertical-align: middle" class="preJudgeWord" id="detailedExpiredCreated01"></span></div>
+                    <div class="detail_word" id="detailedExpiredAssess01">老师还没进行初评哦~_~</div>
+                </div>
+                <div id="stu_self1">
+                    <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                            class="display  detail_title_word">学生自评</span></div>
+                    <form role="form">
+                        <div class="form-group">
+                    <textarea class="form-control" rows="5" style="width: 80%;margin-left: 75px;margin-top: 10px;"
+                              placeholder="请输入自评" id="selfJudgeContent" oninput="submitChange5(this)"></textarea>
+                            <input type="hidden" id="detailedExpiredPlanId"/>
+                        </div>
+                    </form>
+                </div>
+                <button class="btn btn-info" id="submitBtn" href="#" style="margin-left: 400px;display:none;">确认提交</button>
+                <div class="" id="submitBtn_hid5" href="#" style="margin-left: 400px;">确认提交</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main_style_leng display"></div>
+    <div class="main_style display " style="position: ;margin-top: -20px;">
+
+        <span style="width:37%;display: inline-block;"></span>
+        <span class="title" style=""><strong class="title_word" style="color: #000;">进行中</strong></span>
+        <ul class="" id="addLi2" style="overflow-y: scroll">
+
+
+        </ul>
+
+        <script type="text/javascript">
+            //在页面加载时根据stuId查询进行计划表
+            function getPlanList() {
+                var html="";
+                var stuId=GetCookie("COOKIE_ID");
+                $.ajax({
+                    type:"get",
+                    async:false, //同步请求
+                    url:"/plan/getDoingListByStuId/"+stuId,
+                    success:function (data) {
+                        for(var i=data.length-1;i>=0;i--){
+                            var exp=new Date(data[i].expired);
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
+                            var style="border-left: 10px solid #B3ACAD;";
+                            var now=new Date();
+                            //接近截至日期两天就提醒标红
+                            if (exp.getDate()-now.getDate()<=2)
+                                style="border-left: 10px solid #ef4e4e;";
+                            html+=" <li class=\"main_style_tip\">\n" +
+                                "\t\t\t<span>\n" +
+                                "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
+                                "\t\t\t</span>\n" +
+                                "                <div class=\"main_style_tip_word\">\n" +
+                                "                    <p class=\"tip_word_title\">\n" +
+                                "                        <b>"+title +"</b>\n" +
+                                "                        <a href='#'\">\n" +
+                                "                        </a>\n" +
+                                "                    </p>\n" +
+                                "                    <div class=\"main_style_belly\">\n" +
+                                "                        <div class=\"main_style_belly_word\">"+data[i].planDesc+"</div>\n"
+                            if (data[i].status1==0){
+                                html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                    "<div class=\"display icon_time_check\" style=\" \" >未审核</div>"+
+                                    "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
+                                    "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "                <div class='text1'>"+
+                                    "                        <div class=\"icon_temp_doing display\" style=\"\">"+
+                                    "                        <a href='#' class='detailedInf'\">\n" +
+                                    " <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;;margin-left: 10%;display:inline-block\" ></div>\n"+
+                                    "                        </a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>"+
+                                    "</li>"
+                                // if (data[i].assess==null){
+                                //     html+=" <div class=\"judge\" >未审核</div>\n" +
+                                //         "                        </div>\n" +
+                                //         "                    </div>\n" +
+                                //         "                </div>\n" +
+                                //         "            </li>";
+                            }
+                            else {  html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                "<div class=\"display icon_time_check\" style=\" \" >已审核</div>"+
+                                "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
+                                "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
+                                "\t\t\t\t\t\t</div>\n" +
+                                "                <div class='text1'>"+
+                                "                        <div class=\"icon_temp_doing display\" style=\"\">"+
+                                // " <div style=\"background: url('/images/judge.png') no-repeat;width: 50px;height:32px;margin-left: -10px;display:inline-block\" ></div>\n" +
+                                "                        <a href='#' class='detailedInf'\">\n" +
+                                " <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left: 10px;display:inline-block\" ></div>\n"+
+                                "                        </a>\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                // "                <div class='text1'></div>"
+                                "</div>"+
+                                "            </li>";
+                            }
+                            $('.main_style_tip').hover(function(){
+                                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                                });
+                            },function(){
+                                $('.text1',this).stop().animate({
+                                    height:'0'
+                                });
+                            });
+
+                        }
+                        $("#addLi2").html(html);
+                    }
+                })
+            }
+            getPlanList();
+        </script>
+
+        <div class="add_task">
+            <div class="" data-modal="">
+                <!--				<img src="/images/add.png" class="add_icon">-->
+                <span class="add_task_word test2">&nbsp;</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="main_style_leng display"></div>
+    <div class="main_style display " style="position: ">
+
+        <span style="width:37%;display: inline-block;"></span>
+        <span class="title" style=""><strong class="title_word" style="color: #000;">已结束</strong></span>
+        <ul class="" id="addLi3" style="overflow-y: scroll;display: none">
+
+        </ul>
+
+        <ul class="" id="addLi3_none" style="overflow-y: scroll;">
+
+
+        </ul>
+
+
+        <div class="display" id="swap">
+            <span class="display" id="wrap_none">
+                <div class="wrap_none_word">未自评</div>
+                <div class="display" id="tri1"><div id="tri11"></div></div>
+            </span>
+            <span class="display" id="wrap_judge">
+                <div class="wrap_none_word">已自评</div>
+                <div class="display" id="tri2"><div id="tri22" style="display: none;"></div></div>
+            </span>
+        </div>
+        <script>
+            var judge=document.getElementById('wrap_judge');
+            var judge_none=document.getElementById('wrap_none');
+            var add_judge=document.getElementById('addLi3');
+            var add_none=document.getElementById('addLi3_none');
+            var tri1=document.getElementById('tri11');
+            var tri2=document.getElementById('tri22');
+            judge.onclick=function (ev) {
+                add_judge.style.display="";
+                add_none.style.display="none";
+                tri1.style.display="none";
+                tri2.style.display="inline-block";
+            }
+            judge_none.onclick=function (ev) {
+                add_judge.style.display="none";
+                add_none.style.display="";
+                tri1.style.display="inline-block";
+                tri2.style.display="none";
+            }
+        </script>
+        <script type="text/javascript">
+            function getNoneSelfJudge() {
+                var stuId=GetCookie("COOKIE_ID");
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/getNoneSJByStuId/"+stuId,
+                    success:function (data) {
+                        var html="";
+                        for(var i=0;i<data.length;i++){
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
+                            var desc=data[i].planDesc;
+                            desc=desc.replace(/\r\n/g, '<br/>');
+                            desc=desc.replace(/\n/g, '<br/>');
+                            desc=desc.replace(/\s/g, ' ');
+                            data[i].planDesc=desc;
+                            html += " <li class=\"main_style_tip\">\n" +
+                                "\t\t\t<span>\n" +
+                                "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
+                                "\t\t\t</span>\n" +
+                                "                <div class=\"main_style_tip_word\">\n" +
+                                "                    <p class=\"tip_word_title\">\n" +
+                                "                        <b>" + title + "</b>\n" +
+                                "                        <a   href=\"#\" class=''>\n" +
+                                "                        </a>\n" +
+                                "                    </p>\n" +
+                                "                    <div class=\"main_style_belly\">\n" +
+                                "                        <div class=\"main_style_belly_word\">" + data[i].planDesc + "</div>\n";
+                            if (data[i].status2 != 0) {
+                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                    // "<div class=\"display icon_time_check\" style=\" \" >已初评</div>" +
+                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
+                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                    "<input type='hidden' class='sjPlanId' value='"+data[i].id+"' /> " +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "<div class='text1'>" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                     "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
+                                     "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:16%;vertical-align: middle;display:inline-block;\"></button>\n" +
+                                    // "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>" +
+                                    "</li>";
+                            }
+                            else
+                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                    // "<div class=\"display icon_time_check\" style=\" \" >未初评</div>" +
+                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
+                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                    "<input type='hidden' class='sjPlanId' value='"+data[i].id+"' /> " +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "                <div class='text1'>" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                    //"                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
+                                    "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:16%;vertical-align: middle;display:inline-block;\"></button>\n" +
+                                    // "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>" +
+                                    "</li>";
+                        }
+                        $("#addLi3_none").html(html);
+                    }
+                })
+            }
+            getNoneSelfJudge();
+        </script>
+        <script type="text/javascript">
+            function getHistory() {
+                var html="";
+                var stuId=GetCookie("COOKIE_ID");
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/getHistoryListByStuId/"+stuId,
+                    success:function (data) {
+                        for(var i=data.length-1;i>=0;i--) {
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
+                            html += " <li class=\"main_style_tip\">\n" +
+                                "\t\t\t<span>\n" +
+                                "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
+                                "\t\t\t</span>\n" +
+                                "                <div class=\"main_style_tip_word\">\n" +
+                                "                    <p class=\"tip_word_title\">\n" +
+                                "                        <b>" + title + "</b>\n" +
+                                "                        <a   href=\"#\" class=''>\n" +
+                                "                        </a>\n" +
+                                "                    </p>\n" +
+                                "                    <div class=\"main_style_belly\">\n" +
+                                "                        <div class=\"main_style_belly_word\">" + data[i].planDesc + "</div>\n";
+                            if (data[i].status2 != 0) {
+                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                    "<div class=\"display icon_time_check\" style=\" \" >已评价</div>" +
+                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
+                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                    "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "<div class='text1'>" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                    // "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
+                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:16%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>" +
+                                    "</li>"
+                                // if (data[i].assess!=null) {
+                                //     html+="                        <div class=\"icon_temp\">\n" +
+                                //     "                            <div class=\"assess\" >已总评</div>\n" +
+                                //     "                            <a  href=\"#\"><button class=\"judge_self\" style=\"margin-top:5px;\" type=\"button\">自评</button></a>\n" +
+                                //     "                        </div>\n" +
+                                //     "                    </div>\n" +
+                                //     "                </div>\n" +
+                                //     "            </li>";
+                            }
+                            else
+                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                    "<div class=\"display icon_time_check\" style=\" \" >未总评</div>" +
+                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
+                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                    "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "                <div class='text1'>" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                    // "                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
+                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:16%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>" +
+                                    "</li>"
+                            // else html+="                        <div class=\"icon_temp\">\n" +
+                            //     "                            <div class=\"assess\" >未总评</div>\n" +
+                            //     "                            <a  href=\"#\"><button class=\"judge_self\" style=\"margin-top:5px;\" type=\"button\">自评</button></a>\n" +
+                            //     "                        </div>\n" +
+                            //     "                    </div>\n" +
+                            //     "                </div>\n" +
+                            //     "            </li>";
+                        }
+                        $("#addLi3").html(html);
+
+                        $('.main_style_tip').hover(function(){
+                            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                            });
+                        },function(){
+                            $('.text1',this).stop().animate({
+                                height:'0'
+                            });
+                        });
+                    }
+                })
+            }
+            getHistory();
+        </script>
+
+        <div class="add_task">
+            <div class="" data-modal="">
+                <!--				<img src="/images/add.png" class="add_icon">-->
+                <span class="add_task_word test2">&nbsp;</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="main_style_left display"></div>
+
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var zindex = 10;
+
+        $("div.main_style_tip").click(function (e) {
+            e.preventDefault();
+
+            var isShowing = false;
+
+            if ($(this).hasClass("show")) {
+                isShowing = true
+            }
+
+            if ($("div.main").hasClass("showing")) {
+                // a card is already in view
+                $("div.main_style_tip.show")
+                    .removeClass("show");
+
+                if (isShowing) {
+                    // this card was showing - reset the grid
+                    $("div.main_style_tip")
+                        .removeClass("showing");
+                } else {
+                    // this card isn't showing - get in with it
+                    $(this)
+                        .css({zIndex: zindex})
+                        .addClass("show");
+
+                }
+
+                zindex++;
+
+            } else {
+                // no cards in view
+                $("div.main_style_tip")
+                    .addClass("showing");
+                $(this)
+                    .css({zIndex: zindex})
+                    .addClass("show");
+
+                zindex++;
+            }
+
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    //绑定暂存列表的修改和删除按钮事件
+    function updateClick(){
+        //绑定修改按钮
+        $(".md-trigger").each(function (i) {
+            var temPlanId=$(".tempPlanId").eq(i).attr("value");
+            $(this).click(function () {
+                //需要将已有信息显示到修改div
+                //根据id查询templan
+                $.ajax({
+                    type:"get",
+                    //async:false,
+                    url:"/templan/get/"+temPlanId,
+                    success:function (data) {
+                        var created=dateFormat(new Date(data.created));
+                        var expired=dateFormat(new Date(data.expired));
+                        var time=created+" - "+expired;
+                        $("#templanId2").attr("value",temPlanId);
+                        $("#planTitle2").attr("value",data.title);
+                        var setContent=data.planDesc;
+                        setContent= setContent.replace(/<br\/>/g, "\n");
+                        $("#reservation1").attr("value",time);
+                        $("#planDesc2").attr("value",setContent);
+                        $("#test1").attr("value",created);
+                        $("#test2").attr("value",expired);
+                    }
+                })
+                // $("#planTitle2").attr("value",planTitle);
+                // $("#planDesc2").attr("value",planDesc);
+                // $("#test1").attr("value",created);
+                // $("#test2").attr("value",expired);
+            })
+        });
+        //绑定删除按钮
+        $(".delete").each(function (i) {
+            var temPlanId=$(".tempPlanId").eq(i).attr("value");
+            $(this).click(function () {
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/templan/del/"+temPlanId,
+                    success:function (data) {
+                        if (data.status==200)
+                            alert("删除成功!", "", function () {
+                            }, {type: 'success', confirmButtonText: 'OK'});
+                    }
+                });
+                //刷新暂存页面
+                getTempPlanList();
+                //重新绑定按钮
+                updateClick();
+
+                $('.main_style_tip').hover(function(){
+                    $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                        //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                        height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                    });
+                },function(){
+                    $('.text1',this).stop().animate({
+                        height:'0'
+                    });
+                });
+            });
+        });
+    }
+
+    $(function () {
+        updateClick();
+        $('.main_style_tip').hover(function(){
+            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+            });
+        },function(){
+            $('.text1',this).stop().animate({
+                height:'0'
+            });
+        });
+    })
+</script>
+
+<script type="text/javascript">
+    function clearWindow1() {
+        $("#planTitle1").attr("value","");
+        $("#planDesc1").attr("value","");
+    }
+    function clearWindow2() {
+        $("#planTitle2").attr("value","");
+        $("#planDesc2").attr("value","");
+        $("#test1").attr("value","");
+        $("#test2").attr("value","");
+    }
+    function clearWindow5(){
+        $("#selfJudgeContent").attr("value","");
+
+    }
+    window.onload=function (ev) {
+        clearWindow1();
+        clearWindow2();
+        clearWindow5();
+    }
+</script>
+<script type="text/javascript">
+    function submitPlanForm(url,message) {
+        var planTitle=$("#planTitle1").attr("value");
+        var planDesc=$("#planDesc1").attr("value");
+        var time=$("#reservation").attr("value");
+        var created=time.substring(0,10);
+        var expired=time.substring(13,time.length);
+        planDesc = planDesc.replace(/\r\n/g, '<br/>');
+        planDesc = planDesc.replace(/\n/g, '<br/>');
+        planDesc = planDesc.replace(/\s/g, ' ');
+        var stuId=GetCookie("COOKIE_ID");
+        //异步提交表单
+        $.ajax({
+            type:"post",
+            async:false,
+            url:url,
+            data:{title:planTitle,planDesc:planDesc,stuId:stuId,created:created,expired:expired},
+            success:function (data) {
+                if(data.status==200){
+                    //
+                    // alert(message, "", function () {
+                    // }, {type: 'success', confirmButtonText: 'OK'});
+                    return true;
+                }
+            }
+        })
+
+        clearWindow1();
+    }
+    $(function () {
+        //绑定暂存按钮
+        $("#tempBut1").click(function () {
+            submitPlanForm("/templan/create","暂存成功");
+            //刷新暂存页面
+            getTempPlanList();
+            //重新绑定修改按钮
+            updateClick();
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        });
+        //绑定提交按钮
+        $("#submitBut1").click(function () {
+            submitPlanForm("/plan/create","提交成功");
+            //刷新提交页面
+            getPlanList();
+            //重新绑定查看详情按钮
+            detailedInfClick();
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        })
+
+    })
+</script>
+<script type="text/javascript">
+    function submitPlanForm2(flag) {
+        var planTitle=$("#planTitle2").attr("value");
+        var planDesc=$("#planDesc2").attr("value");
+        var time=$("#reservation1").attr("value");
+        var created=time.substring(0,10);
+        var expired=time.substring(13,time.length);
+        var planId=$("#templanId2").attr("value");
+        var stuId=GetCookie("COOKIE_ID");
+        //如果flag==1，则保存
+        if (flag==1){
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"/templan/update",
+                data:{id:planId,title:planTitle,created:created,expired:expired,planDesc:planDesc},
+                success:function (data) {
+                    if (data.status==200){
+                        if(Date.parse($('#test1').val())>Date.parse($('#test2').val())){
+                            alert('请正确填写时间')
+                            return false;
+                        }
+                        else if($('#test1').val()==""){
+                            alert('请填写开始时间')
+                            return false;
+                        }
+                        else if($('#test2').val()==""){
+                            alert('请填写截止时间')
+                            return false;
+                        }
+                        else{
+
+                            alert("更新成功！", "", function () {
+                            }, {type: 'success', confirmButtonText: 'OK'});
+                            clearWindow2();
+                            return true;
+                        }
+                    }
+                }
+            });
+            //刷新暂存栏
+            getTempPlanList();
+            //重新绑定按钮事件
+            updateClick();
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        }
+        else{//提交任务，先在进行栏添加该任务，再在暂存栏删去该任务，
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"/plan/create",
+                data:{title:planTitle,created:created,expired:expired,planDesc:planDesc,stuId:stuId},
+                success:function (data) {
+                    if (data.status==200){
+
+                        if(Date.parse($('#test1').val())>Date.parse($('#test2').val())){
+                            alert('请正确填写时间')
+                            return false;
+                        }
+                        else if($('#test1').val()==""){
+                            alert('请填写开始时间')
+                            return false;
+                        }
+                        else if($('#test2').val()==""){
+                            alert('请填写截止时间')
+                            return false;
+                        }else{
+
+                            alert("已成功添加！", "", function () {
+                            }, {type: 'success', confirmButtonText: 'OK'});
+                            clearWindow2();
+                            return true;
+                        }
+                    }
+                }
+            })
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/templan/del/"+planId,
+                success:function (data) {
+                    if (data.status==200){
+
+                        // alert("已从暂存栏删除!", "", function () {
+                        // }, {type: 'success', confirmButtonText: 'OK'});
+                    }
+                }
+            });
+            //刷新暂存栏与进行栏
+            getTempPlanList();
+            getPlanList();
+            //重新绑定按钮事件
+            updateClick();
+            //重新绑定查看事件
+            detailedInfClick();
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        }
+    }
+    //绑定按钮事件
+    $(function () {
+        //暂存按钮
+        $("#tempBut2").click(function () {
+            submitPlanForm2(1);
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        });
+        //提交按钮
+        $("#submitBut2").click(function () {
+            submitPlanForm2(2);
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+        })
+    })
+</script>
+<script type="text/javascript">
+    //给每一个button绑定点击事件
+    $(function () {
+        $(".bbut").each(function (i) {
+            $(this).click(function () {
+                var expId = $(".expIdClass").eq(i).attr("value");
+                var stuId = GetCookie("COOKIE_ID");
+                var stuName;
+                //首先通过stuId查询学生信息
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/user/getStuById/"+stuId,
+                    success:function (data) {
+                        stuName=data.username;
+                    }
+                });
+                // alert(stuName);
+                //发送post请求
+                $.post("/stu/join", {stuId: stuId, expId: expId, stuName: stuName}, function (data) {
+                    if (data.status == 200){
+
+                        alert("申请加入成功!", "", function () {
+                        }, {type: 'success', confirmButtonText: 'OK'});
+                    }
+                })
+            })
+
+            $('.main_style_tip').hover(function(){
+                $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                    //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                    height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                });
+            },function(){
+                $('.text1',this).stop().animate({
+                    height:'0'
+                });
+            });
+            // $.get("/stu/join?stuId="+stuId+"&expId="+expId+"&stuName="+stuName,function (data) {
+            //      if (data.status==200)
+            //          alert("申请加入成功");
+            // })
+        })
+    });
+</script>
+<script type="text/javascript">
+    //绑定查看详情按钮
+    function detailedInfClick() {
+        $(".detailedInf").each(function (i) {
+            var planId=$(".planId").eq(i).attr("value");
+            //ie浏览器不支持中文COOKIE，如何解决,直接通过EL表达式
+            var stuName=GetCookie("COOKIE_NICKNAME");
+            var decoderStuName=decodeURIComponent(stuName);
+            $(this).click(function () {
+                // alert(stuName);
+                // alert(decoderStuName);
+                //动态渲染页面数据
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/andAssess1ById/"+planId,
+                    success:function (data) {
+                        var created=dateFormat(new Date(data.created));
+                        var expired=dateFormat(new Date(data.expired));
+                        var assessDate=dateFormat(new Date(data.assessDate));
+                        var title="周报("+created+"到"+expired+")";
+                        $("#detail_header_img0").text(stuName);
+                        $("#detail_header_word0").text(title);
+                        $("#detailCreated").text(created+"开始");
+                        $("#detailedExpired").text(expired+"截止");
+                        var strContent=data.planDesc;
+                        var det=document.getElementById('detailedPlanDesc');
+                        det.innerHTML=strContent;
+                        if (data.assess!=null)
+                            $("#detailedAssess1").text(data.assess);
+                        else $("#detailedAssess1").text("老师还没进行初评哦~_~");
+                        if (data.assessDate!=null)
+                            $("#detailedAssessCreated").text(assessDate);
+                        else $("#detailedAssessCreated").text("");
+                    }
+                })
+                shield3();
+            })
+        })
+    }
+    $(function () {
+        detailedInfClick();
+        $('.main_style_tip').hover(function(){
+            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+            });
+        },function(){
+            $('.text1',this).stop().animate({
+                height:'0'
+            });
+        });
+    })
+</script>
+<script type="text/javascript">
+    //绑定查看详情按钮
+    function detailedExpiredPlanClick() {
+        $(".detailedExpiredPlan").each(function (i) {
+            var planId=$(".expiredPlanId").eq(i).attr("value");
+            var stuName=GetCookie("COOKIE_NICKNAME");
+            $(this).click(function () {
+                //动态渲染页面数据
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/allAssess/"+planId,
+                    success:function (data) {
+                        var created=dateFormat(new Date(data.created));
+                        var expired=dateFormat(new Date(data.expired));
+                        var title="周报("+created+"到"+expired+")";
+                        var created1=dateFormat(new Date(data.created1));
+                        var created2=dateFormat(new Date(data.created2));
+                        var created3=dateFormat(new Date(data.created3));
+                        $("#detailedExpiredStuName").text(stuName);
+                        $("#detailedExpiredTitle").text(title);
+                        $("#detailedExpiredCreated").text(created+"开始");
+                        $("#detailedExpiredExpired").text(expired+"截止");
+                        $("#detailedExpiredPlanDesc").text(data.planDesc);
+                        if (data.assess1!=null) {
+                            $("#detailedExpiredAssess1").text(data.assess1);
+                            $("#detailedExpiredCreated1").text(created1);
+                        }
+                        else {
+                            $("#detailedExpiredAssess1").text("老师还没进行初评哦~_~");
+                            $("#detailedExpiredCreated1").text("");
+                        }
+                        if (data.assess2!=null) {
+                            $("#detailedExpiredAssess2").text(data.assess2);
+                            $("#detailedExpiredCreated2").text(created2);
+                            $("#detailedExpiredGrade").text(data.grade);
+                        }
+                        else {
+                            $("#detailedExpiredAssess2").text("老师还没进行总评哦~_~");
+                            $("#detailedExpiredCreated2").text("");
+                            $("#detailedExpiredGrade").text("");
+                        }
+                        if (data.selfJudge != null){
+                            $("#detailedExpiredSelfJudge").text(data.selfJudge);
+                            $("#detailedExpiredSJCreated").text(created3);
+                        }
+                        else {
+                            $("#detailedExpiredSelfJudge").text("学生还没有自评哦~_~");
+                            $("#detailedExpiredSJCreated").text("");
+                        }
+                    }
+                })
+                shield4();
+            })
+        })
+    }
+    $(function () {
+        detailedExpiredPlanClick();
+        $('.main_style_tip').hover(function(){
+            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+            });
+        },function(){
+            $('.text1',this).stop().animate({
+                height:'0'
+            });
+        });
+    })
+</script>
+<script type="text/javascript">
+    //绑定自评按钮
+    function selfJudgeClick() {
+        $(".judge_self").each(function (i) {
+            $(this).click(function () {
+                //动态渲染页面数据
+                var planId=$(".sjPlanId").eq(i).attr("value");
+                var stuName=GetCookie("COOKIE_NICKNAME");
+                $.ajax({
+                    type:"get",
+                    async:false,
+                    url:"/plan/andAssess2ById/"+planId,
+                    success:function (data) {
+                        var created=dateFormat(new Date(data.created));
+                        var expired=dateFormat(new Date(data.expired));
+                        var title="周报("+created+"到"+expired+")";
+                        var created1=dateFormat(new Date(data.created1));
+                        var created2=dateFormat(new Date(data.created2));
+                        $("#detailedExpiredStuName0").text(stuName);
+                        $("#detailedExpiredStuName0").text(stuName);
+                        $("#detailedExpiredTitle0").text(title);
+                        $("#detailedExpiredCreated0").text(created+"开始");
+                        $("#detailedExpiredExpired0").text(expired+"截止");
+                        $("#detailedExpiredPlanDesc0").text(data.planDesc);
+                        $("#detailedExpiredPlanId").attr("value",planId);
+                        if (data.assess1!=null){
+                            $("#detailedExpiredAssess01").text(data.assess1);
+                            $("#detailedExpiredCreated01").text(created1);
+                        }
+                        else{
+                            $("#detailedExpiredAssess01").text("老师好像忘记初评了哦~_~");
+                            $("#detailedExpiredCreated01").text("");
+                        }
+                        if (data.assess2!=null){
+                            $("#detailedExpiredAssess02").text(data.assess2);
+                            $("#detailedExpiredCreated02").text(created2);
+                            $("#detailedExpiredGrade0").text(data.grade);
+                        }
+                        else {
+                            $("#detailedExpiredAssess02").text("老师好像忘记总评了哦~_~");
+                            $("#detailedExpiredCreated02").text("");
+                            $("#detailedExpiredGrade0").text("");
+                        }
+
+                        shield5();
+                    }
+                })
+            })
+        })
+    }
+    $(function () {
+        selfJudgeClick();
+        $('.main_style_tip').hover(function(){
+            $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+            });
+        },function(){
+            $('.text1',this).stop().animate({
+                height:'0'
+            });
+        });
+    })
+</script>
+<script type="text/javascript">
+    //绑定自评提交按钮
+    function selfJudgeSubmitClick(){
+        var stuId=GetCookie("COOKIE_ID");
+        var planId=$("#detailedExpiredPlanId").attr("value");
+        alert(planId);
+        var selfJudge=$("#selfJudgeContent").attr("value");
+        $("#selfJudgeContent").text("");
+        $.post("/stu_assess/create",{planId:planId,stuId:stuId,selfJudge:selfJudge},function (data) {
+            // if (data.status==200){
+            //     alert("已完成自评!", "", function () {
+            //     }, {type: 'success', confirmButtonText: 'OK'});
+            //     // swal("已完成自评！", "","success")
+            // }
+        });
+        //设置该条记录状态为已自评过
+        $.ajax({
+            type:"post",
+            async:false,
+            url:"/plan/update",
+            data:{id:planId,status:1},
+            success:function (data) {
+                if (data.status==200) {
+
+                    alert("已设置状态为已自评!", "", function () {
+                    }, {type: 'success', confirmButtonText: 'OK'});
+                }
+            }
+        });
+        //刷新已结束栏
+        getNoneSelfJudge();
+        getHistory();
+        //重新绑定按钮
+        detailedExpiredPlanClick();
+        selfJudgeClick();
+        clearWindow5();
+        $('.main_style_tip').hover(function () {
+            $('.text1', this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                height: '100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+            });
+        }, function () {
+            $('.text1', this).stop().animate({
+                height: '0'
+            });
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $('#thetable').tableScroll({
+            width: 80,
+            height: 250
+        });
+    });
+</script>
+<script charset="utf-8" type="text/javascript" src="/js/jquery1.js"></script>
+<script charset="utf-8" type="text/javascript" src="/js/theme1.js"></script>
+<link type="text/css" rel="stylesheet" href="/css/theme1.css">
+
+
+<script src="/js/classie.js"></script>
+<script src="/js/modalEffects.js"></script>
+
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
+</script>
+<script src="/js/cssParser.js"></script>
+<script src="/js/css-filters-polyfill.js"></script>
+
+<div id="test1111"></div>
+<div id="test2222"></div>
+<div id="test3333"></div>
+<div id="test4444"></div>
+<div id="test5555"></div>
+</body>
+
+</html>

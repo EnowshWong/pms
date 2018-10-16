@@ -64,4 +64,10 @@ public class ExpServiceImpl implements ExpService {
         List<PmsJoin> list = pmsJoinMapper.selectByExample(example);
         return list;
     }
+
+    @Override
+    public PmsExp getExpById(long expId) {
+        PmsExp pmsExp = pmsExpMapper.selectByPrimaryKey(expId);
+        return pmsExp;
+    }
 }

@@ -11,6 +11,27 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="findStuPlanListByExpIdResultMap" type="com.pms.pojo.StuPlan">
+    <id column="id" property="id"  jdbcType="BIGINT"/>
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <collection property="plans" ofType="com.pms.pojo.PmsPlan">
+      <id property="id" column="planId" jdbcType="BIGINT"/>
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="created" property="created" jdbcType="TIMESTAMP" />
+      <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+      <result column="status" property="status" jdbcType="TINYINT" />
+      <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+      <result column="status1" property="status1" jdbcType="TINYINT" />
+      <result column="status2" property="status2" jdbcType="TINYINT" />
+    </collection>
+  </resultMap>
+  <resultMap id="stuInfoResultMap" type="com.pms.pojo.StuInfo">
+    <id column="id" property="id"  jdbcType="BIGINT"/>
+    <result column="stu_name" property="stuName" jdbcType="VARCHAR" />
+    <result column="tea_name" property="teaName" jdbcType="VARCHAR" />
+    <result column="exp_name" property="expName" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -72,6 +93,41 @@
   <sql id="Base_Column_List" >
     id, username, password, nickname, exp_id, tutor_id, created, updated
   </sql>
+  <select id="findStuInfoById" parameterType="java.lang.Long" resultMap="stuInfoResultMap">
+    SELECT DISTINCT
+pms_user_stu.id,
+pms_user_stu.nickname as stu_name,
+pms_user_stu.created,
+pms_exp.exp_name,
+pms_user_tea.nickname as tea_name
+FROM
+pms_user_stu
+LEFT JOIN pms_user_tea ON pms_user_stu.tutor_id=pms_user_tea.id
+LEFT JOIN pms_exp ON pms_user_stu.exp_id=pms_exp.id
+WHERE pms_user_stu.id=#{id,jdbcType=BIGINT}
+
+
+  </select>
+  <select id="findStuPlanListByExpId" parameterType="java.lang.Long" resultMap="findStuPlanListByExpIdResultMap">
+SELECT DISTINCT
+pms_user_stu.nickname,
+pms_user_stu.id,
+pms_plan.id AS planId,
+pms_plan.title,
+pms_plan.plan_desc,
+pms_plan.created,
+pms_plan.expired,
+pms_plan.`status`,
+pms_plan.status1,
+pms_plan.status2
+FROM
+pms_user_stu
+LEFT JOIN pms_plan ON pms_user_stu.id = pms_plan.stu_id AND pms_plan.expired >= CURDATE()
+WHERE
+pms_user_stu.exp_id = #{expId,jdbcType=BIGINT}
+
+
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.pms.pojo.PmsUserStuExample" >
     select
     <if test="distinct" >
@@ -109,6 +165,17 @@
     values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{expId,jdbcType=BIGINT}, #{tutorId,jdbcType=BIGINT}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertReturnId" parameterType="com.pms.pojo.PmsUserStu">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into pms_user_stu (id, username, password,
+    nickname, exp_id, tutor_id,
+    created, updated)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+    #{nickname,jdbcType=VARCHAR}, #{expId,jdbcType=BIGINT}, #{tutorId,jdbcType=BIGINT},
+    #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.pms.pojo.PmsUserStu" >
     insert into pms_user_stu

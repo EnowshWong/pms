@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding:0;
+
+}
+.main_style_left_down{
+    /*border: 1px solid red;*/
+    display: inline-block;
+    width: 100px;
+    height: 500px;
+}
+.name{
+    margin-top: 20px;
+    margin-left: 20%;
+}
+.yearPlan{
+    margin-top:30px;
+}
+.yearPlanTip{
+    height: 50px;
+    border:1px solid red;
+    width: 70%;
+    margin:20px auto;
+    background: #e7fff1;
+}
+.tipYear{
+    font-size: 1.2em;
+    color: #000;
+}
+.detail_pic{
+    border-radius:50%;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    color: #c5c5c5;
+    font-size: 2.2em;
+    text-align: center;
+    line-height: 60px;
+    /*border: 1px solid red;*/
+}
+.yearPlanChange{
+    height: 140px;
+    width: 80%;
+    border: 1px solid red;
+    margin: 20px auto;
+}
+.name_right{
+    margin-left: 20px;
+    vertical-align: top;
+}
+.detail_name{
+    font-size: 1.4em;
+    color: #000;
+}
+.detail_grade{
+
+    color: #000;
+}
+.detail_lab{
+    margin-top: 10px;
+    color: #000;
+    /*position: absolute;*/
+    margin-left: 20%;
+    font-size: 1.2em;
+}
+.lab_tit{
+    color: #808080;
+}
+.detail_junior{
+
+    margin-top: 10px;
+    color: #000;
+    margin-left: 20%;
+    font-size: 1.2em;
+}
+.junior_tit{
+    color: #808080;
+}
+.detail_mail{
+
+    margin-top: 10px;
+    color: #000;
+    margin-left: 20%;
+    font-size: 1.2em;
+}
+.mail_tit{
+    color: #808080;
+}
+.detail_tel{
+
+    margin-top: 10px;
+    color: #000;
+    margin-left: 20%;
+    /*position: absolute;*/
+    font-size: 1.2em;
+}
+.tel_tit{
+    color: #808080;
+}

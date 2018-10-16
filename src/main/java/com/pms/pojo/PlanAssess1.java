@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author:wong
  */
-public class PlanAssess1 extends PmsPlan {
+public class   PlanAssess1 extends PmsPlan {
     private String assess;
     private Date assessDate;
 

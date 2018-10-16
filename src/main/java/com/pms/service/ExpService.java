@@ -15,4 +15,5 @@ public interface ExpService {
     List<PmsExp> getPmsList();
     List<PmsExp> getExpByTeaId(long id);
     List<PmsJoin> getJoin(long expId);
+    PmsExp getExpById(long expId);
 }

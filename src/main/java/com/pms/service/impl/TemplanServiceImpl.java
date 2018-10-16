@@ -4,6 +4,7 @@ import com.pms.common.pojo.PmsResult;
 import com.pms.mapper.PmsTempPlanMapper;
 import com.pms.pojo.PmsTempPlan;
 import com.pms.pojo.PmsTempPlanExample;
+import com.pms.pojo.PmsTempPlanWithBLOBs;
 import com.pms.service.TemplanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,17 +23,17 @@ public class TemplanServiceImpl implements TemplanService {
     private PmsTempPlanMapper pmsTempPlanMapper;
 
     @Override
-    public PmsResult createTemplan(PmsTempPlan pmsTempPlan) {
+    public PmsResult createTemplan(PmsTempPlanWithBLOBs pmsTempPlan) {
         pmsTempPlanMapper.insert(pmsTempPlan);
         return PmsResult.ok();
     }
 
     @Override
-    public List<PmsTempPlan> getTempPlanListByStuId(long stuId) {
+    public List<PmsTempPlanWithBLOBs> getTempPlanListByStuId(long stuId) {
         PmsTempPlanExample example=new PmsTempPlanExample();
         PmsTempPlanExample.Criteria criteria=example.createCriteria();
         criteria.andStuIdEqualTo(stuId);
-        List<PmsTempPlan> list = pmsTempPlanMapper.selectByExampleWithBLOBs(example);
+        List<PmsTempPlanWithBLOBs> list = pmsTempPlanMapper.selectByExampleWithBLOBs(example);
         return list;
     }
 
@@ -43,14 +44,14 @@ public class TemplanServiceImpl implements TemplanService {
     }
 
     @Override
-    public PmsResult updateTemplan(PmsTempPlan pmsTempPlan) {
+    public PmsResult updateTemplan(PmsTempPlanWithBLOBs pmsTempPlan) {
         pmsTempPlanMapper.updateByPrimaryKeySelective(pmsTempPlan);
         return PmsResult.ok();
     }
 
     @Override
-    public PmsTempPlan getById(long id) {
-        PmsTempPlan pmsTempPlan = pmsTempPlanMapper.selectByPrimaryKey(id);
+    public PmsTempPlanWithBLOBs getById(long id) {
+        PmsTempPlanWithBLOBs pmsTempPlan = pmsTempPlanMapper.selectByPrimaryKey(id);
         return pmsTempPlan;
     }
 }

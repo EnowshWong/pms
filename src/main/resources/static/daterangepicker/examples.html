@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+   <head>
+      <meta charset="UTF-8" />
+      <title>A date range picker for Bootstrap</title>
+      <link href="bootstrap.min-date.css" rel="stylesheet">
+      <link href="fon-awesome.min-date.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" media="all" href="daterangepicker-bs3-date.css" />
+	   
+      <script type="text/javascript" src="jquery-1.8.3.min-date.js"></script>
+      <script type="text/javascript" src="bootstrap.min-date.js"></script>
+      <script type="text/javascript" src="moment-date.js"></script>
+      <script type="text/javascript" src="daterangepicker-date.js"></script>
+   </head>
+   <body>
+
+
+
+<!--                    <div class="controls">-->
+                     <div class="input-prepend input-group">
+                       <span class="add-on input-group-addon">
+						   <i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+						 <input type="text" readonly="readonly" style="width: 200px" name="reservation" id="reservation" class="form-control" value="" />
+                     </div>
+<!--                    </div>-->
+               <script type="text/javascript">
+				   
+               $(document).ready(function() {
+                  $('#reservation').daterangepicker({
+					dateLimit : {
+						days : 6
+					},
+					  
+				  
+				  } , function(start, end, label) {
+					  
+                    console.log(start.toISOString(), stop.toISOString(), label);
+					  
+                  });
+               });
+               </script>
+
+
+
+
+   </body>
+</html>

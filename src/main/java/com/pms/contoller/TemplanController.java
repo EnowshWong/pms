@@ -2,6 +2,7 @@ package com.pms.contoller;
 
 import com.pms.common.pojo.PmsResult;
 import com.pms.pojo.PmsTempPlan;
+import com.pms.pojo.PmsTempPlanWithBLOBs;
 import com.pms.service.TemplanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +22,15 @@ public class TemplanController {
 
     @RequestMapping("/templan/create")
     @ResponseBody
-    public PmsResult createTemplan(PmsTempPlan pmsTempPlan){
+    public PmsResult createTemplan(PmsTempPlanWithBLOBs pmsTempPlan){
         PmsResult pmsResult = templanService.createTemplan(pmsTempPlan);
         return pmsResult;
     }
 
     @RequestMapping("/templan/list/{stuId}")
     @ResponseBody
-    public List<PmsTempPlan> getTempPlanByStuId(@PathVariable long stuId){
-        List<PmsTempPlan> list = templanService.getTempPlanListByStuId(stuId);
+    public List<PmsTempPlanWithBLOBs> getTempPlanByStuId(@PathVariable long stuId){
+        List<PmsTempPlanWithBLOBs> list = templanService.getTempPlanListByStuId(stuId);
         return list;
     }
 
@@ -42,15 +43,15 @@ public class TemplanController {
 
     @RequestMapping("/templan/update")
     @ResponseBody
-    public PmsResult updateTemplanById(PmsTempPlan pmsTempPlan){
+    public PmsResult updateTemplanById(PmsTempPlanWithBLOBs pmsTempPlan){
         PmsResult pmsResult = templanService.updateTemplan(pmsTempPlan);
         return pmsResult;
     }
 
     @RequestMapping("/templan/get/{id}")
     @ResponseBody
-    public PmsTempPlan getById(@PathVariable long id){
-        PmsTempPlan byId = templanService.getById(id);
+    public PmsTempPlanWithBLOBs getById(@PathVariable long id){
+        PmsTempPlanWithBLOBs byId = templanService.getById(id);
         return byId;
     }
 }

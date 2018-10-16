@@ -414,6 +414,246 @@ public class PmsPlanExample {
             addCriterion("expired not between", value1, value2, "expired");
             return (Criteria) this;
         }
+
+        public Criteria andStatus1IsNull() {
+            addCriterion("status1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1IsNotNull() {
+            addCriterion("status1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1EqualTo(Byte value) {
+            addCriterion("status1 =", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1NotEqualTo(Byte value) {
+            addCriterion("status1 <>", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1GreaterThan(Byte value) {
+            addCriterion("status1 >", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1GreaterThanOrEqualTo(Byte value) {
+            addCriterion("status1 >=", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1LessThan(Byte value) {
+            addCriterion("status1 <", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1LessThanOrEqualTo(Byte value) {
+            addCriterion("status1 <=", value, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1In(List<Byte> values) {
+            addCriterion("status1 in", values, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1NotIn(List<Byte> values) {
+            addCriterion("status1 not in", values, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1Between(Byte value1, Byte value2) {
+            addCriterion("status1 between", value1, value2, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus1NotBetween(Byte value1, Byte value2) {
+            addCriterion("status1 not between", value1, value2, "status1");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2IsNull() {
+            addCriterion("status2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2IsNotNull() {
+            addCriterion("status2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2EqualTo(Byte value) {
+            addCriterion("status2 =", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2NotEqualTo(Byte value) {
+            addCriterion("status2 <>", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2GreaterThan(Byte value) {
+            addCriterion("status2 >", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2GreaterThanOrEqualTo(Byte value) {
+            addCriterion("status2 >=", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2LessThan(Byte value) {
+            addCriterion("status2 <", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2LessThanOrEqualTo(Byte value) {
+            addCriterion("status2 <=", value, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2In(List<Byte> values) {
+            addCriterion("status2 in", values, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2NotIn(List<Byte> values) {
+            addCriterion("status2 not in", values, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2Between(Byte value1, Byte value2) {
+            addCriterion("status2 between", value1, value2, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatus2NotBetween(Byte value1, Byte value2) {
+            addCriterion("status2 not between", value1, value2, "status2");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusEqualTo(Byte value) {
+            addCriterion("status =", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotEqualTo(Byte value) {
+            addCriterion("status <>", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThan(Byte value) {
+            addCriterion("status >", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
+            addCriterion("status >=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThan(Byte value) {
+            addCriterion("status <", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusLessThanOrEqualTo(Byte value) {
+            addCriterion("status <=", value, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusIn(List<Byte> values) {
+            addCriterion("status in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotIn(List<Byte> values) {
+            addCriterion("status not in", values, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusBetween(Byte value1, Byte value2) {
+            addCriterion("status between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
+            addCriterion("status not between", value1, value2, "status");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeIsNull() {
+            addCriterion("optime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeIsNotNull() {
+            addCriterion("optime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeEqualTo(Date value) {
+            addCriterion("optime =", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeNotEqualTo(Date value) {
+            addCriterion("optime <>", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeGreaterThan(Date value) {
+            addCriterion("optime >", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("optime >=", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeLessThan(Date value) {
+            addCriterion("optime <", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeLessThanOrEqualTo(Date value) {
+            addCriterion("optime <=", value, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeIn(List<Date> values) {
+            addCriterion("optime in", values, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeNotIn(List<Date> values) {
+            addCriterion("optime not in", values, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeBetween(Date value1, Date value2) {
+            addCriterion("optime between", value1, value2, "optime");
+            return (Criteria) this;
+        }
+
+        public Criteria andOptimeNotBetween(Date value1, Date value2) {
+            addCriterion("optime not between", value1, value2, "optime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

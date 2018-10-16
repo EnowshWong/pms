@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/css/stu_task_style.css">
+    <script type="text/javascript" src="/js/jquery-2.2.4.min.js"></script>
+    <!--    <script type="text/javascript" src="/js/addLi.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_select.css">
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+
+    <!--<html lang="en" class="no-ie" style="overflow:hidden;">-->
+
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/component.css"/>
+
+    <script src="/js/modernizr.custom.js"></script>
+
+
+
+
+    <!--<link href="/css/sweet-alert.css" type="text/css" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="/js/sweet-alert.min.js"></script>-->
+    <script src="/js/BeAlert.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/BeAlert.css">
+
+    <link rel="stylesheet" href="/css/history.css">
+
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/account.css">
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <style>
+        a,a:link,a:hover,a:active,a:visited{
+            text-decoration: none;
+            color: #000;
+        }
+        #msg,#msg0{
+            color: #009bdb;
+        }
+        #conf_rain_hid{
+            margin-top: -80px;
+            /*display: inline-block;;*/
+        }
+        #conf_rain{
+            margin-top: 3px;
+        }
+
+        .input_style{
+            margin-top: -17px;
+        }
+    </style>
+
+    <script>
+        function clearWindow1() {
+            $("#name_text").attr("value","");
+            $("#lab_text").attr("value","");
+            $("#jun_text").attr("value","");
+            $("#pad1").attr("value","");
+            $("#pad_rep1").attr("value","");
+            // $("#test20").attr("value","");
+        }
+        window.onload=function (ev){
+            // alert('1')
+            clearWindow1();
+            $("#name_text").attr("value","");
+            $("#lab_text").attr("value","");
+            $("#jun_text").attr("value","");
+            $("#mail_text").attr("value","");
+            $("#phone_text").attr("value","");
+            $("#birth_text").attr("value","");
+            $("#addr_text").attr("value","");
+
+        }
+    </script>
+    <script type="text/javascript">
+        function submitChange1(e){
+            var input11=$('#psd1').val();
+            var input12=$('#psd_rep1').val();
+            var temp1=document.getElementById('conf_rain');
+            var temp_hid1=document.getElementById('conf_rain_hid');
+            // if(input11==""&&input12==""&&input13==""&&input14==""){
+            if(input11.length>0&&input12.length>0){
+                temp1.style.display='inline-block';
+                temp_hid1.style.display='none';
+            }
+            else{
+                temp1.style.display='none';
+                temp_hid1.style.display='inline-block';
+
+            }
+
+        };
+    </script>
+    <script>
+        $(function () {
+            var input11=document.getElementById("psd1");
+            var input12=document.getElementById("psd_rep1");
+            var temp1=document.getElementById('conf_rain');
+            temp1.onclick=function (){
+
+                if(input11.value!=input12.value){
+                    alert("两次密码不一致", function () {
+                        //after click the confirm button, will run this callback function
+                    }, {type: 'warning', confirmButtonText: 'OK'});
+                }
+                // else{
+                //
+                //     // alert("已成功修改密码", function () {
+                //     //     //after click the confirm button, will run this callback function
+                //     // }, {type: 'success', confirmButtonText: 'OK'});
+                // }
+            }
+
+        })
+    </script>
+    <script charset="utf-8" type="text/javascript" src="/js/jquery1.js"></script>
+    <script charset="utf-8" type="text/javascript" src="/js/theme1.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/theme1.css">
+
+
+    <script src="/js/classie.js"></script>
+    <script src="/js/modalEffects.js"></script>
+    <style>
+        #mine{
+            width:25px;
+            margin-left: 20px;
+            height: 90%;
+
+        }
+    </style>
+
+    <style>
+        .searchTea{
+            color: #000;
+            /*border:#ebebeb solid 1px;*/
+            width: 160px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .banner_height{
+            height: 60px;
+            line-height: 60px;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/stu_home_css.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/style3.css" />
+
+    <script src="/js/modernizr.custom.63321.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body >
+
+<div id="banner" class="banner_height" >
+    <div id="banner_left" class="display1 ">
+
+    </div>
+    <div class="display1" style="width: 10%"></div>
+    <div id="banner_mid" class="display1" style="font-weight:500;font-size: 1.3em;">
+        <center>师生项目交互平台</center>
+    </div>
+    <div style="width: 6%" class="display1"></div>
+    <div id="banner_right" style="padding: 0;" class="display1">
+        <div class="display1" style="width: 35%;">
+        </div>
+        <div style="width: 60%;" class="display1">
+            <img src="/images/question.png" style="width:25px;margin-left: 20px;">
+            <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
+            <img src="/images/message.png" style="width:25px;margin-left: 20px;">
+            <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+        </div>
+        <div id="self_around" >
+            <div id="self_float" class="display1">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="/showAccountStu"> <div class="self_mesg" id="self_account_set">
+                        <span id="account_set">账号设置</span>
+                    </div></a>
+                    <a href="/showIndex"><div class="self_mesg" id="self_turn_out">
+                        <span id="turn_out">退出登录</span>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            $b1 = $("#self_around");
+            var sea1=document.getElementById("self_around")
+            $("#self_info_a").on({
+                "click": function(){
+                    $b1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function(e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'self_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#self_around').css('display', 'none');
+            });
+        </script>
+    </div>
+</div>
+<div id="main" class="">
+    <div id="main_div">
+        <div id="main_div_tea"  class="display">
+            <select id="cd-dropdown1" class="cd-select" onchange="dropdown1Change()">
+
+                <!--<option value="-1" selected>请选择老师</option>-->
+
+                <!--<option value="1" >老师一</option>-->
+                <!--<option value="2" >老师二</option>-->
+                <!--<option value="3" >老师三</option>-->
+                <!--<option value="4" >老师四</option>-->
+                <!--<option value="5" >老师五</option>-->
+
+
+            </select>
+            <script type="text/javascript">
+                function getTeaList() {
+                    $.ajax({
+                        type:"get",
+                        url:"/user/getTeaList",
+                        async:false,
+                        success:function (data) {
+                            var html="<option value=\"-1\" selected>请选择老师</option>";
+                            for(var i=0;i<data.length;i++){
+                                html+="<option value=\""+data[i].id+"\" >"+data[i].nickname+"</option>";
+                            }
+                            $("#cd-dropdown1").html(html);
+                        }
+                    })
+                }
+                getTeaList();
+
+            </script>
+        </div>
+        <div  id="main_div_lab" class="display">
+            <select id="cd-dropdown2" class="cd-select">
+
+                <option value="-1" selected >请选择实验室</option>
+
+                <!--<option value="1" >实验室一</option>-->
+                <!--<option value="2" >实验室二</option>-->
+                <!--<option value="3" >实验室三</option>-->
+                <!--<option value="4" >实验室四</option>-->
+                <!--<option value="5" >实验室五</option>-->
+
+            </select>
+            <script type="text/javascript">
+                function dropdown1Change(){
+                    var teaId=$("#cd-dropdown1").val();
+                    if (teaId==-1)
+                        return;
+                    $.ajax({
+                        type:"get",
+                        url:"/exp/getByTeaId/"+teaId,
+                        async:false,
+                        success:function (data) {
+                            var html="<option value=\"-1\" selected >请选择实验室</option>";
+                            for (var i=0;i<data.length;i++){
+                                html+="<option value=\""+data[i].id+"\" >"+data[i].expName+"</option>";
+                            }
+                            $("#cd-dropdown2").html(html);
+                        }
+                    });
+                    $("#cd-dropdown2").val(-1);
+                }
+            </script>
+        </div>
+
+        <script type="text/javascript" src="/js/jquery.dropdown.js"></script>
+
+        <div id="main_div_btn" >
+        <a href="#"> <button type="button" id="main_btn" class="btn btn-info" onclick="joinSubmit()">加入</button></a>
+        <script type="text/javascript">
+            function joinSubmit() {
+                //var stuName=$("#stuName").val();
+                var stuId=GetCookie("COOKIE_ID");
+                var expId=$("#cd-dropdown2").val();
+                var tutorId=$("#cd-dropdown1").val();
+                $.post("/user/sucJoin", {stuId: stuId, expId: expId, tutorId: tutorId},function (data) {
+                    if (data.status==200){
+                        window.location.href="/showTaskStu";
+                    }
+                });
+            }
+        </script>
+        </div>
+        <input type="hidden" id="stuName"/>
+        <script type="text/javascript">
+            function getStuInfById() {
+                var stuId=GetCookie("COOKIE_ID");
+                $.ajax({
+                    type:"get",
+                    url:"/user/getStuById/"+stuId,
+                    success:function (data) {
+                        $("#stuName").attr("value",data.nickname);
+                    }
+                })
+            }
+            $(function () {
+                getStuInfById();
+            })
+        </script>
+    </div>
+</div>
+</body>
+</html>

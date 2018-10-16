@@ -8,8 +8,9 @@
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
     <result column="stu_id" property="stuId" jdbcType="BIGINT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsTempPlan" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsTempPlanWithBLOBs" extends="BaseResultMap" >
     <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="fadeback" property="fadeback" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +74,7 @@
     id, title, created, expired, stu_id
   </sql>
   <sql id="Blob_Column_List" >
-    plan_desc
+    plan_desc, fadeback
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsTempPlanExample" >
     select
@@ -123,15 +124,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pms.pojo.PmsTempPlan" >
+  <insert id="insert" parameterType="com.pms.pojo.PmsTempPlanWithBLOBs" >
     insert into pms_temp_plan (id, title, created, 
-      expired, stu_id, plan_desc
-      )
+      expired, stu_id, plan_desc, 
+      fadeback)
     values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, 
-      #{expired,jdbcType=TIMESTAMP}, #{stuId,jdbcType=BIGINT}, #{planDesc,jdbcType=LONGVARCHAR}
-      )
+      #{expired,jdbcType=TIMESTAMP}, #{stuId,jdbcType=BIGINT}, #{planDesc,jdbcType=LONGVARCHAR}, 
+      #{fadeback,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.pms.pojo.PmsTempPlan" >
+  <insert id="insertSelective" parameterType="com.pms.pojo.PmsTempPlanWithBLOBs" >
     insert into pms_temp_plan
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -152,6 +153,9 @@
       <if test="planDesc != null" >
         plan_desc,
       </if>
+      <if test="fadeback != null" >
+        fadeback,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -171,6 +175,9 @@
       </if>
       <if test="planDesc != null" >
         #{planDesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fadeback != null" >
+        #{fadeback,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -201,6 +208,9 @@
       <if test="record.planDesc != null" >
         plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR},
       </if>
+      <if test="record.fadeback != null" >
+        fadeback = #{record.fadeback,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +223,8 @@
       created = #{record.created,jdbcType=TIMESTAMP},
       expired = #{record.expired,jdbcType=TIMESTAMP},
       stu_id = #{record.stuId,jdbcType=BIGINT},
-      plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR}
+      plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR},
+      fadeback = #{record.fadeback,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -229,7 +240,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pms.pojo.PmsTempPlan" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.pms.pojo.PmsTempPlanWithBLOBs" >
     update pms_temp_plan
     <set >
       <if test="title != null" >
@@ -247,16 +258,20 @@
       <if test="planDesc != null" >
         plan_desc = #{planDesc,jdbcType=LONGVARCHAR},
       </if>
+      <if test="fadeback != null" >
+        fadeback = #{fadeback,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pms.pojo.PmsTempPlan" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.pms.pojo.PmsTempPlanWithBLOBs" >
     update pms_temp_plan
     set title = #{title,jdbcType=VARCHAR},
       created = #{created,jdbcType=TIMESTAMP},
       expired = #{expired,jdbcType=TIMESTAMP},
       stu_id = #{stuId,jdbcType=BIGINT},
-      plan_desc = #{planDesc,jdbcType=LONGVARCHAR}
+      plan_desc = #{planDesc,jdbcType=LONGVARCHAR},
+      fadeback = #{fadeback,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pms.pojo.PmsTempPlan" >

@@ -7,6 +7,10 @@
     <result column="stu_id" property="stuId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="status1" property="status1" jdbcType="TINYINT" />
+    <result column="status2" property="status2" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="optime" property="optime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap id="planAssess1ResultMap" type="com.pms.pojo.PlanAssess1">
     <id column="id" property="id"/>
@@ -14,9 +18,35 @@
     <result column="stu_id" property="stuId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
     <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
     <result column="assessCreated" property="assessDate" jdbcType="TIMESTAMP"/>
     <result column="assess" property="assess" jdbcType="LONGVARCHAR"/>
+    <result column="optime" property="optime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="planAssess2ResultMap" type="com.pms.pojo.PlanAssess2">
+    <id column="id" property="id"/>
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="assess" property="assess" jdbcType="LONGVARCHAR"/>
+    <result column="optime" property="optime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="planFJAndSelfJResultMap" type="com.pms.pojo.PlanFJAndSelfJ">
+    <id column="id" property="id"/>
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="stu_id" property="stuId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="expired" property="expired" jdbcType="TIMESTAMP" />
+    <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status1" property="status1" jdbcType="TINYINT" />
+    <result column="status2" property="status2" jdbcType="TINYINT" />
+    <result column="firstJudge" property="firstJudge" jdbcType="LONGVARCHAR"/>
+    <result column="selfJudge" property="selfJudge" jdbcType="LONGVARCHAR"/>
   </resultMap>
   <resultMap id="planAllAssessResultMap" type="com.pms.pojo.PlanAllAssess">
     <id column="id" property="id"/>
@@ -25,6 +55,9 @@
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="expired" property="expired" jdbcType="TIMESTAMP" />
     <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status1" property="status1" jdbcType="TINYINT" />
+    <result column="status2" property="status2" jdbcType="TINYINT" />
     <result column="assess1" property="assess1" jdbcType="LONGVARCHAR"/>
     <result column="assess2" property="assess2" jdbcType="LONGVARCHAR"/>
     <result column="self_judge" property="selfJudge" jdbcType="LONGVARCHAR"/>
@@ -32,7 +65,20 @@
     <result column="created2" property="created2" jdbcType="TIMESTAMP"/>
     <result column="created3" property="created3" jdbcType="TIMESTAMP"/>
     <result column="grade" property="grade" jdbcType="TINYINT"/>
-
+    <result column="optime" property="optime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="teaTaskResultMap" type="com.pms.pojo.TeaTaskData">
+    <id column="stu_id" property="stuId"/>
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status1" property="status1" jdbcType="TINYINT" />
+    <result column="status2" property="status2" jdbcType="TINYINT" />
+    <result column="optime" property="optime" jdbcType="TIMESTAMP" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+    <result column="enroll_date" property="enrollDate" jdbcType="TIMESTAMP" />
+    <result column="plan_id" property="planId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="expired" property="expired" jdbcType="TIMESTAMP"/>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.pms.pojo.PmsPlan" extends="BaseResultMap" >
     <result column="plan_desc" property="planDesc" jdbcType="LONGVARCHAR" />
@@ -95,12 +141,34 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, title, stu_id, created, expired
-  </sql>
-  <sql id="Blob_Column_List" >
-    plan_desc
-  </sql>
+  <select id="findTeaTaskData" resultMap="teaTaskResultMap">
+SELECT
+	*
+FROM
+	(
+		SELECT DISTINCT
+			pms_plan.id AS plan_id,
+			pms_plan.title,
+			pms_plan.status1,
+			pms_plan.status2,
+			pms_plan.`status`,
+			pms_plan.created,
+			pms_plan.expired,
+			pms_plan.optime,
+			pms_user_stu.id AS stu_id,
+			pms_user_stu.nickname,
+			pms_user_stu.created AS enroll_date
+		FROM
+			pms_user_stu
+		LEFT JOIN pms_plan ON pms_user_stu.id = pms_plan.stu_id
+		WHERE
+			pms_user_stu.exp_id = #{expId,jdbcType=BIGINT}
+		ORDER BY
+			pms_plan.optime DESC
+	) as m
+GROUP BY
+	m.stu_id
+  </select>
   <select id="findPlanAssess1ById" parameterType="java.lang.Long" resultMap="planAssess1ResultMap">
 SELECT DISTINCT
 pms_plan.title,
@@ -109,6 +177,7 @@ pms_plan.created,
 pms_plan.expired,
 pms_plan.stu_id,
 pms_plan.id,
+pms_plan.optime,
 pms_tut_assess1.created AS assessCreated,
 pms_tut_assess1.assess
 FROM
@@ -116,7 +185,27 @@ pms_plan
 LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
 WHERE pms_plan.id=#{id,jdbcType=BIGINT}
   </select>
-  <select id="findPlanAllAssessByStuId" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
+  <select id="findPlanAssess2ById" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
+SELECT DISTINCT
+    pms_plan.id,
+    pms_plan.title,
+    pms_plan.stu_id,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_plan.optime,
+    pms_tut_assess1.assess AS assess1,
+    pms_tut_assess1.created AS created1,
+    pms_tut_assess2.assess AS assess2,
+    pms_tut_assess2.grade,
+    pms_tut_assess2.created AS created2
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+    LEFT JOIN pms_tut_assess2 ON pms_plan.id=pms_tut_assess2.plan_id
+    WHERE pms_plan.id=#{id,jdbcType=BIGINT}
+  </select>
+  <select id="findRecentPlanByStuId" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
     SELECT DISTINCT
     pms_plan.id,
     pms_plan.title,
@@ -124,6 +213,41 @@ WHERE pms_plan.id=#{id,jdbcType=BIGINT}
     pms_plan.plan_desc,
     pms_plan.created,
     pms_plan.expired,
+    pms_plan.status,
+    pms_plan.status1,
+    pms_plan.status2,
+    pms_plan.optime,
+    pms_tut_assess1.assess AS assess1,
+    pms_tut_assess1.created AS created1,
+    pms_tut_assess2.assess AS assess2,
+    pms_tut_assess2.grade,
+    pms_tut_assess2.created AS created2,
+    pms_stu_assess.self_judge,
+    pms_stu_assess.created AS created3
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+    LEFT JOIN pms_tut_assess2 ON pms_plan.id=pms_tut_assess2.plan_id
+    LEFT JOIN pms_stu_assess ON pms_plan.id=pms_stu_assess.plan_id
+    WHERE pms_plan.stu_id=#{stuId,jdbcType=BIGINT}
+    AND pms_plan.expired&lt;=CURDATE()
+    AND DATE_SUB(CURDATE(), INTERVAL  1 MONTH) &lt;= DATE(pms_plan.expired)
+    AND pms_plan.`status`=1
+    AND pms_plan.status1=1
+    AND pms_plan.status2=1
+  </select>
+  <select id="findAllPlanByStuId" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
+    SELECT DISTINCT
+    pms_plan.id,
+    pms_plan.title,
+    pms_plan.stu_id,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_plan.status,
+    pms_plan.status1,
+    pms_plan.status2,
+    pms_plan.optime,
     pms_tut_assess1.assess AS assess1,
     pms_tut_assess1.created AS created1,
     pms_tut_assess2.assess AS assess2,
@@ -138,7 +262,52 @@ WHERE pms_plan.id=#{id,jdbcType=BIGINT}
     LEFT JOIN pms_stu_assess ON pms_plan.id=pms_stu_assess.plan_id
     WHERE pms_plan.stu_id=#{stuId,jdbcType=BIGINT}
     AND pms_plan.expired&lt;CURDATE()
-
+    AND pms_plan.`status`=1
+    AND pms_plan.status1=1
+    AND pms_plan.status2=1
+  </select>
+  <select id="findPlanAllAssessById" parameterType="java.lang.Long" resultMap="planAllAssessResultMap">
+    SELECT DISTINCT
+    pms_plan.id,
+    pms_plan.title,
+    pms_plan.stu_id,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_plan.status,
+    pms_plan.status1,
+    pms_plan.status2,
+    pms_plan.optime,
+    pms_tut_assess1.assess AS assess1,
+    pms_tut_assess1.created AS created1,
+    pms_tut_assess2.assess AS assess2,
+    pms_tut_assess2.grade,
+    pms_tut_assess2.created AS created2,
+    pms_stu_assess.self_judge,
+    pms_stu_assess.created AS created3
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+    LEFT JOIN pms_tut_assess2 ON pms_plan.id=pms_tut_assess2.plan_id
+    LEFT JOIN pms_stu_assess ON pms_plan.id=pms_stu_assess.plan_id
+    WHERE pms_plan.id=#{id,jdbcType=BIGINT}
+  </select>
+  <select id="findPlanAssess2ByStuId" parameterType="java.lang.Long" resultMap="planAssess2ResultMap">
+    SELECT DISTINCT
+    pms_plan.title,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_plan.stu_id,
+    pms_plan.optime,
+    pms_plan.id,
+    pms_plan.`status`,
+    pms_tut_assess2.assess
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess2 ON pms_plan.id=pms_tut_assess2.plan_id
+    WHERE pms_plan.stu_id = #{stuId,jdbcType=BIGINT}
+    AND pms_plan.expired&lt;CURDATE()
   </select>
   <select id="findPlanAssess1ByStuId" parameterType="java.lang.Long" resultMap="planAssess1ResultMap">
 SELECT DISTINCT
@@ -146,6 +315,7 @@ pms_plan.title,
 pms_plan.plan_desc,
 pms_plan.created,
 pms_plan.expired,
+pms_plan.optime,
 pms_plan.stu_id,
 pms_plan.id,
 pms_tut_assess1.created AS assessCreated,
@@ -156,6 +326,32 @@ LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
 WHERE pms_plan.stu_id = #{stuId,jdbcType=BIGINT}
 AND pms_plan.expired>=CURDATE()
   </select>
+  <select id="findFJAndSelfJById" parameterType="java.lang.Long" resultMap="planFJAndSelfJResultMap">
+     SELECT DISTINCT
+    pms_plan.id,
+    pms_plan.title,
+    pms_plan.stu_id,
+    pms_plan.plan_desc,
+    pms_plan.created,
+    pms_plan.expired,
+    pms_plan.status,
+    pms_plan.status1,
+    pms_plan.status2,
+    pms_plan.optime,
+    pms_tut_assess1.assess AS firstJudge,
+    pms_stu_assess.self_judge AS selfJudge
+    FROM
+    pms_plan
+    LEFT JOIN pms_tut_assess1 ON pms_plan.id=pms_tut_assess1.plan_id
+    LEFT JOIN pms_stu_assess ON pms_plan.id=pms_stu_assess.plan_id
+    WHERE pms_plan.id=#{id,jdbcType=BIGINT}
+  </select>
+  <sql id="Base_Column_List" >
+    id, title, stu_id, created, expired, status1, status2, status, optime
+  </sql>
+  <sql id="Blob_Column_List" >
+    plan_desc
+  </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsPlanExample" >
     select
     <if test="distinct" >
@@ -187,7 +383,7 @@ AND pms_plan.expired>=CURDATE()
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -205,12 +401,14 @@ AND pms_plan.expired>=CURDATE()
     </if>
   </delete>
   <insert id="insert" parameterType="com.pms.pojo.PmsPlan" >
-    insert into pms_plan (id, title, stu_id, 
-      created, expired, plan_desc
-      )
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{stuId,jdbcType=BIGINT}, 
-      #{created,jdbcType=TIMESTAMP}, #{expired,jdbcType=TIMESTAMP}, #{planDesc,jdbcType=LONGVARCHAR}
-      )
+    insert into pms_plan (id, title, stu_id,
+      created, expired, status1,
+      status2, status, optime,
+      plan_desc)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{stuId,jdbcType=BIGINT},
+      #{created,jdbcType=TIMESTAMP}, #{expired,jdbcType=TIMESTAMP}, #{status1,jdbcType=TINYINT},
+      #{status2,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{optime,jdbcType=TIMESTAMP},
+      #{planDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pms.pojo.PmsPlan" >
     insert into pms_plan
@@ -229,6 +427,18 @@ AND pms_plan.expired>=CURDATE()
       </if>
       <if test="expired != null" >
         expired,
+      </if>
+      <if test="status1 != null" >
+        status1,
+      </if>
+      <if test="status2 != null" >
+        status2,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="optime != null" >
+        optime,
       </if>
       <if test="planDesc != null" >
         plan_desc,
@@ -249,6 +459,18 @@ AND pms_plan.expired>=CURDATE()
       </if>
       <if test="expired != null" >
         #{expired,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status1 != null" >
+        #{status1,jdbcType=TINYINT},
+      </if>
+      <if test="status2 != null" >
+        #{status2,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="optime != null" >
+        #{optime,jdbcType=TIMESTAMP},
       </if>
       <if test="planDesc != null" >
         #{planDesc,jdbcType=LONGVARCHAR},
@@ -279,6 +501,18 @@ AND pms_plan.expired>=CURDATE()
       <if test="record.expired != null" >
         expired = #{record.expired,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.status1 != null" >
+        status1 = #{record.status1,jdbcType=TINYINT},
+      </if>
+      <if test="record.status2 != null" >
+        status2 = #{record.status2,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.optime != null" >
+        optime = #{record.optime,jdbcType=TIMESTAMP},
+      </if>
       <if test="record.planDesc != null" >
         plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR},
       </if>
@@ -290,11 +524,15 @@ AND pms_plan.expired>=CURDATE()
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update pms_plan
     set id = #{record.id,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      stu_id = #{record.stuId,jdbcType=BIGINT},
-      created = #{record.created,jdbcType=TIMESTAMP},
-      expired = #{record.expired,jdbcType=TIMESTAMP},
-      plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR}
+    title = #{record.title,jdbcType=VARCHAR},
+    stu_id = #{record.stuId,jdbcType=BIGINT},
+    created = #{record.created,jdbcType=TIMESTAMP},
+    expired = #{record.expired,jdbcType=TIMESTAMP},
+    status1 = #{record.status1,jdbcType=TINYINT},
+    status2 = #{record.status2,jdbcType=TINYINT},
+    status = #{record.status,jdbcType=TINYINT},
+    optime = #{record.optime,jdbcType=TIMESTAMP},
+    plan_desc = #{record.planDesc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,10 +540,14 @@ AND pms_plan.expired>=CURDATE()
   <update id="updateByExample" parameterType="map" >
     update pms_plan
     set id = #{record.id,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      stu_id = #{record.stuId,jdbcType=BIGINT},
-      created = #{record.created,jdbcType=TIMESTAMP},
-      expired = #{record.expired,jdbcType=TIMESTAMP}
+    title = #{record.title,jdbcType=VARCHAR},
+    stu_id = #{record.stuId,jdbcType=BIGINT},
+    created = #{record.created,jdbcType=TIMESTAMP},
+    expired = #{record.expired,jdbcType=TIMESTAMP},
+    status1 = #{record.status1,jdbcType=TINYINT},
+    status2 = #{record.status2,jdbcType=TINYINT},
+    status = #{record.status,jdbcType=TINYINT},
+    optime = #{record.optime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -325,6 +567,18 @@ AND pms_plan.expired>=CURDATE()
       <if test="expired != null" >
         expired = #{expired,jdbcType=TIMESTAMP},
       </if>
+      <if test="status1 != null" >
+        status1 = #{status1,jdbcType=TINYINT},
+      </if>
+      <if test="status2 != null" >
+        status2 = #{status2,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="optime != null" >
+        optime = #{optime,jdbcType=TIMESTAMP},
+      </if>
       <if test="planDesc != null" >
         plan_desc = #{planDesc,jdbcType=LONGVARCHAR},
       </if>
@@ -337,6 +591,10 @@ AND pms_plan.expired>=CURDATE()
       stu_id = #{stuId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
       expired = #{expired,jdbcType=TIMESTAMP},
+      status1 = #{status1,jdbcType=TINYINT},
+      status2 = #{status2,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      optime = #{optime,jdbcType=TIMESTAMP},
       plan_desc = #{planDesc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -345,7 +603,11 @@ AND pms_plan.expired>=CURDATE()
     set title = #{title,jdbcType=VARCHAR},
       stu_id = #{stuId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
-      expired = #{expired,jdbcType=TIMESTAMP}
+      expired = #{expired,jdbcType=TIMESTAMP},
+      status1 = #{status1,jdbcType=TINYINT},
+      status2 = #{status2,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      optime = #{optime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

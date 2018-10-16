@@ -1,0 +1,146 @@
+.geo{
+	width: 60%;
+}
+.box {
+	/*background-color:#ECD9D9;*/
+	/*width: 200%;*/
+	width: 100%;
+	margin-left: 25%;
+	height: 30px;
+	/*border: 1px solid blue;*/
+}
+.doing{
+	margin-left:5%;
+	height: 30px;
+}
+.done,.doing,.history{
+	text-shadow: 3px 3px 7px #333;
+
+
+	width:30%;
+	/*background: url("../images/back1.jpg");*/
+
+}
+.f-nav {
+	height: 40px;
+	width: 90%;
+	overflow: hidden;
+	/*	display: block;*/
+	/*position: relative;*/
+	/*	padding: 0;*/
+}
+.f-nav li {
+	height: 70px;
+	line-height: 30px;
+	/*border: 1px solid blue;*/
+	/*position: relative;*/
+	display: inline-block;
+	list-style-type: none;
+	/*	width: 100px;*/
+	color: #fff;
+	text-align: center;
+	/*overflow:hidden;*/
+	float:left;
+	/*position:relative;*/
+	/*position:relative;*/
+	/*cursor: pointer;*/
+}
+.triangle{
+	overflow:hidden;
+	border: 13px solid transparent;
+	border-bottom-color: #19a800;
+	border-left-width: 7px;
+	border-right-width:7px;
+	margin-left: 40%;
+	margin-top: -15px;
+	width: 0;
+	/*height: '0';*/
+}
+#main{
+	margin-left: 5px;
+}
+.main_style_left{
+	width: 1%;
+}
+.title_word{
+	vertical-align: middle;
+	text-align: center;
+	padding: 0 auto;
+/*	margin-left:200px;*/
+}
+.main_style_tip_img{
+	width:50px;
+	margin-top: -5px;
+	display:none;
+}
+.main_style_tip_word{
+	margin-top: 15px;
+	display: inline-block;
+	
+	margin-left: 5%;
+/*	font-size: 1.2em;*/
+/*	font-weight: 590;*/
+	vertical-align: middle;
+/*	position: absolute;*/
+	z-index: 1;
+}
+.tip_word_title{
+	font-size: 1.2em;
+	font-weight: 150;
+}
+.judge_self{
+	background:url('../images/modify.png') no-repeat;
+	width: 50px;height: 32px;
+	margin-top: 0.4em;
+	/*float: right;*/
+	line-height: 18px;
+	-webkit-border-radius:6px;
+	color: #fff;
+	text-align: center;
+	font-size: 0.9em;
+	margin-top: -1px;
+	margin-left:20%;
+
+}
+.judge_self1{background:url('../images/modify.png') no-repeat;width: 50px;height: 32px;
+	margin-top: 0.4em;
+	/*float: right;*/
+	line-height: 18px;
+	margin-left:20%;
+	-webkit-border-radius:6px;
+	color: #fff;
+
+	text-align: center;
+	font-size: 0.9em;
+	margin-top: -1px;
+
+}
+.main_style_tip{
+	height:130px;
+}
+.main_style_tip span{
+	margin-left: 5px;
+	margin-top: 10px;
+	border:1px solid red;
+	display:none;
+}
+.title{
+	display: inline-block;
+	text-align: center;
+	margin-left: -2%;
+	width: 30%;
+	height: 30px;
+	margin-top: 20px;
+	font-size: 1.8em;
+}
+.log_div{
+	width: 24%;
+	border: 1px solid #E5E2E2;
+}
+.log_div li{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-bottom: 1px solid #E5E2E2;
+
+}

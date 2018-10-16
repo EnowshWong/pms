@@ -1,9 +1,6 @@
 package com.pms.mapper;
 
-import com.pms.pojo.PlanAllAssess;
-import com.pms.pojo.PlanAssess1;
-import com.pms.pojo.PmsPlan;
-import com.pms.pojo.PmsPlanExample;
+import com.pms.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -39,7 +36,19 @@ public interface PmsPlanMapper {
 
     List<PlanAssess1> findPlanAssess1ByStuId(Long stuId);
 
-    List<PlanAllAssess> findPlanAllAssessByStuId(Long stuId);
+    PlanAllAssess findPlanAllAssessById(Long id);
+
+    List<PlanAllAssess> findRecentPlanByStuId(Long stuId);
+
+    List<PlanAllAssess> findAllPlanByStuId(Long stuId);
 
     PlanAssess1 findPlanAssess1ById(Long id);
+
+    PlanAllAssess findPlanAssess2ById(Long id);
+
+    List<PlanAssess2> findPlanAssess2ByStuId(Long stuId);
+
+    List<TeaTaskData> findTeaTaskData(Long expId);
+
+    PlanFJAndSelfJ findFJAndSelfJById(Long id);
 }
