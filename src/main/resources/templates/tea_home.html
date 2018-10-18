@@ -213,7 +213,7 @@
                             var created = dateFormat(new Date(data.created));
                             for(var i=0;i<data.length;i++){
                                 //已经能去到数据了，下一步解决数据如何嵌入html代码
-                                html+="<a href='/#'>\n" +
+                                html+="<a href='/tea_assist_page?expId="+data[i].id+"\'>\n" +
                                     "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(/images/1.png)\">\n" +
                                     "\t\t\t\t\t\t<h4 >"+data[i].expName+"</h4>\n" +
                                     "\t\t\t\t\t</div>" +

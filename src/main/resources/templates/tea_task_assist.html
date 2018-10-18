@@ -1,0 +1,3029 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" href="/css/task_style.css">
+    <link type="text/css" rel="stylesheet" href="/css/theme1.css">
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <style type="text/css">
+        /**{margin:0;padding:0;list-style-type:none;}*/
+        /**{margin:0;padding:0;list-style-type:none;}*/
+        a, img {
+            border: 0;
+        }
+    </style>
+    <script type="text/javascript" src="/js/addLi.js"></script>
+
+    <style type="text/css">
+        /* tablescroll */
+        .tablescroll {
+            font: 12px normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        .tablescroll td, .tablescroll_wrapper, .tablescroll_head, .tablescroll_foot {
+            border: 1px solid #ccc;
+        }
+
+        .tablescroll td {
+            padding: 5px;
+        }
+
+        .tablescroll_wrapper {
+            border-left: 0;
+        }
+
+        .tablescroll_head {
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #eee;
+            border-left: 0;
+            border-top: 0;
+            margin-bottom: 3px;
+        }
+
+        .tablescroll thead td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        .tablescroll tbody td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+
+        .tablescroll tbody tr.first td {
+            border-top: 0;
+        }
+
+        .tablescroll_foot {
+            font-weight: bold;
+            background-color: #eee;
+            border-left: 0;
+            border-top: 0;
+            margin-top: 3px;
+        }
+
+        .tablescroll tfoot td {
+            border-right: 0;
+            border-bottom: 0;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_select.css">
+    <script type="text/javascript" src="/js/common.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".test1").manhuaDialog({
+                Event: "click",								//触发响应事件
+                title: "什么是任务",					            //弹出层的标题
+                type: "id",									//弹出层类型(text、容器ID、URL、Iframe)
+                content: "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+                width: 490,									//弹出层的宽度
+                height: 610,									//弹出层的高度
+                scrollTop: 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+                isAuto: false,									//是否自动弹出
+                time: 2000,									//设置弹出层时间，前提是isAuto=true
+                isClose: false,  								//是否自动关闭
+                timeOut: 5000									//设置自动关闭时间，前提是isClose=true
+            });
+        });
+    </script>
+    <style type="text/css">
+        ul, li {
+            list-style: none;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ll1 = document.getElementById("task");
+            ll1.style.borderBottom = "3px solid #4eb0f6";
+            var ll2 = document.getElementById("file");
+            ll2.onmouseover = function () {
+                ll2.style.borderBottom = "3px solid #4eb0f6";
+            }
+            ll2.onmouseout = function () {
+                ll2.style.borderBottom = "0px";
+            }
+            var ll3 = document.getElementById("resource");
+            ll3.onmouseover = function () {
+                ll3.style.borderBottom = "3px solid #4eb0f6";
+            }
+            ll3.onmouseout = function () {
+                ll3.style.borderBottom = "0px";
+            }
+            var ll4 = document.getElementById("searchTitle");
+            ll4.onmouseover = function () {
+                ll4.style.borderBottom = "3px solid #4eb0f6";
+            }
+            ll4.onmouseout = function () {
+                ll4.style.borderBottom = "0px";
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var disp1 = document.getElementById("main_disp");
+            var disp2 = document.getElementById("main_none");
+            var num = document.getElementsByClassName("main_style").length;
+            if (num == 0) {
+                disp1.style.display = "none";
+                disp2.style.display = "";
+            }
+            else {
+                disp1.style.display = "";
+                disp2.style.display = "none";
+            }
+        })
+    </script>
+    <style>
+
+        #test4444 {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #testPreJud {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #testLastJud {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #testDoing {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #testDone {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #testHistory {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            opacity: 0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display: none;
+        }
+
+        #log_window4 {
+            width: 700px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            /*			font-size: 1em;*/
+        }
+
+        #log_First_Jud {
+            width: 540px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        #log_Last_Jud {
+            width: 540px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        #log_Doing {
+            width: 540px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        #log_Done {
+            width: 540px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        #log_History {
+            width: 540px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: #fff;
+            margin: auto;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        function dateFormat(date) {
+            return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        }
+
+        function shield4() {
+
+            var s = document.getElementById("test4444");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_window4");
+            l.style.display = "block";
+        }
+
+        function cancel_shield4() {
+            var s = document.getElementById("test4444");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_window4");
+            l.style.display = "none";
+        }
+
+        function shieldPreJudge() {
+
+            var s = document.getElementById("testPreJud");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_First_Jud");
+            l.style.display = "block";
+        }
+
+        function cancel_shieldPreJudge() {
+            var s = document.getElementById("testPreJud");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_First_Jud");
+            l.style.display = "none";
+        }
+
+        function shieldLastJudge() {
+
+
+            var s = document.getElementById("testLastJud");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_Last_Jud");
+            l.style.display = "block";
+        }
+
+        function cancel_shieldLastJudge() {
+            var s = document.getElementById("testLastJud");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_Last_Jud");
+            l.style.display = "none";
+        }
+
+        function shieldDoing() {
+
+            var s = document.getElementById("testDoing");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_Doing");
+            l.style.display = "block";
+        }
+
+        function cancel_shieldDoing() {
+            var s = document.getElementById("testDoing");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_Doing");
+            l.style.display = "none";
+        }
+
+        function shieldDone() {
+
+
+            var s = document.getElementById("testDone");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_Done");
+            l.style.display = "block";
+        }
+
+        function cancel_shieldDone() {
+            var s = document.getElementById("testDone");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_Done");
+            l.style.display = "none";
+        }
+
+        function shieldHistory() {
+
+
+            var s = document.getElementById("testHistory");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_History");
+            l.style.display = "block";
+        }
+
+        function cancel_shieldHistory() {
+            var s = document.getElementById("testHistory");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_History");
+            l.style.display = "none";
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="/css/style123.css">
+    <script type="text/javascript">
+        $(function () {
+            var fn = document.getElementsByClassName("f-nav");
+//					var don=document.getElementsByClassName("done");
+//					var hi=document.getElementsByClassName("history");
+//					alert("a")
+            function showDoing(ii) {
+                var di = document.getElementsByClassName("doing");
+                var co = document.getElementsByClassName("cont");
+                di[ii].onclick = function () {
+                    co[ii].style.display = "block";
+                    return false;
+                }
+                return true;
+            }
+
+            function showDone(ii) {
+                var don = document.getElementsByClassName("done");
+                var co = document.getElementsByClassName("cont");
+                don[ii].onclick = function () {
+                    co[ii].style.display = "block";
+                    return false;
+                }
+                return true;
+            }
+
+            function showHistory(ii) {
+                var hi = document.getElementsByClassName("history");
+                var co = document.getElementsByClassName("cont");
+                hi[ii].onclick = function () {
+                    co[ii].style.display = "block";
+                    return false;
+                }
+                return true;
+            }
+
+            for (var i = 0; i < fn.length; i++) {
+                showDoing(i);
+                if (showDoing(i) == false) {
+                    break;
+                }
+                showDone(i);
+                if (showDone(i) == false) {
+                    break;
+                }
+                showHistory(i);
+                if (showHistory(i) == false) {
+                    break;
+                }
+
+            }
+
+
+        })
+
+    </script>
+    <script src="/js/BeAlert1.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/BeAlert.css">
+    <style>
+        .main_style_tip {
+            overflow: hidden;
+            float: left;
+            position: relative;
+        }
+
+        .text1 {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /*#wraper ul li .text p{*/
+        /*text-align:left;*/
+        /*color:#fff;*/
+        /*line-height:180%;*/
+        /*!*            padding:5px 10px;*!*/
+        /*clear:both*/
+        /*}*/
+        /*#wraper ul li .text b{*/
+        /*display:block;*/
+        /*!*            padding:5px 10px;*!*/
+        /*float:left;*/
+        /*background:#333;*/
+        /*!*            margin-bottom:5px;*!*/
+        /*}*/
+    </style>
+    <style type="text/css">
+        .list2 {
+            vertical-align: middle;
+            margin-left: 12%;
+            margin-top: 10px;
+        }
+
+        .star22 {
+            background: url("/images/star2.png") no-repeat;
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+        }
+
+        #remark {
+            margin-left: 10%;
+            vertical-align: middle;
+            font-size: 30px;
+        }
+    </style>
+    <script type="text/javascript">
+        // 确认提交
+        var sub1 = document.getElementById('submitBtn');
+        var sub2 = document.getElementById('sjSubmitBut');
+        sub1.onclick = function () {
+            var s = document.getElementById("testPreJud");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_First_Jud");
+            l.style.display = "none";
+
+        }
+        sub2.onclick = function () {
+            var s = document.getElementById("testLastJud");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_Last_Jud");
+            l.style.display = "none";
+
+        }
+
+    </script>
+    <style>
+
+        .main_style_belly_word {
+            /*	width: */
+            height: 40px;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+        }
+
+        .main_style_belly {
+            width: 90%;
+            height: 2em;
+            color: #a5a5a5;
+            /*	margin-bottom: 3em;*/
+            display: inline-block;
+            /*	position: relative;*/
+            margin-top: -35px;
+        }
+    </style>
+    <style>
+        a, a:hover, a:visited, a:active, a:link {
+            text-decoration: none;
+        }
+    </style>
+
+    <style>
+        #mine {
+            width: 25px;
+            margin-left: 20px;
+            height: 90%;
+
+        }
+    </style>
+    <style>
+        #people_float {
+
+            box-shadow: 3px 3px 10px #686363;
+            height: auto;
+
+            z-index: 5;
+            background: #fff;
+            position: absolute;
+            margin: 10px;
+            width: 16%;
+            border-radius: 5px;
+            float: left;
+
+        }
+
+        #people_around {
+            display: none;
+            height: auto;
+            margin-left: 80%;
+        }
+
+        .people_set:hover {
+            background: #f5f5f5;
+        }
+
+        .people_set_word {
+            vertical-align: top;;
+            font-size: 1.2em;
+            height: 50px;
+            line-height: 50px;
+            margin-left: 30px;
+        }
+
+        .people_set_head {
+            border-radius: 50%;
+            margin-left: 30px;
+            font-size: 2em;
+            color: #fff;
+
+            /*border: 1px solid red;*/
+            background: #e5e5e5;
+        }
+    </style>
+    <script>
+
+        function submitChange1(e){
+            var input11=$('#backArea0').val();
+            var temp1=document.getElementById('backBtn');
+            var temp_hid1=document.getElementById('backBtn_hid');
+            if(input11.length>0){
+                temp1.style.display='inline-block';
+                temp_hid1.style.display='none';
+            }
+            else{
+                temp1.style.display='none';
+                temp_hid1.style.display='inline-block';
+
+            }
+
+        };
+    </script>
+
+    <script>
+
+        function submitChange1(e){
+            var input11=$('#backArea0').val();
+            var temp1=document.getElementById('backBtn');
+            var temp_hid1=document.getElementById('backBtn_hid');
+            var backArea=document.getElementById('backArea0');
+            if(input11.length>0){
+                temp1.style.display='inline-block';
+                temp_hid1.style.display='none';
+                backArea.style.width='418px';
+            }
+            else{
+                temp1.style.display='none';
+                temp_hid1.style.display='inline-block';
+                backArea.style.width='418px';
+
+            }
+
+        };
+    </script>
+
+    <style>
+
+        #test1111 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test2222 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test3333 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test4444 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+
+        #log_add {
+            width:840px;
+            height:500px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_stu {
+            width:840px;
+            height:500px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_register {
+            width:300px;
+            height:200px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_choose {
+            width:300px;
+            height:150px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+    </style>
+    <script>
+
+        function shield1(){
+            var s = document.getElementById("test1111");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "block";
+        }
+
+        function cancel_shield1(){
+
+            var s = document.getElementById("test1111");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "none";
+        }
+
+        function cancel_shield2(){
+
+            var s = document.getElementById("test2222");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "none";
+        }
+
+        function cancel_shield3(){
+
+            var s = document.getElementById("test3333");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "none";
+        }
+        function shield4(){
+            var s = document.getElementById("test4444");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "block";
+        }
+
+        function cancel_shield4(){
+
+            var s = document.getElementById("test4444");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "none";
+        }
+        function shield2(){
+            var s = document.getElementById("test2222");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "block";
+            cancel_shield4();
+        }
+        function shield3(){
+            var s = document.getElementById("test3333");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "block";
+            cancel_shield4();
+        }
+    </script>
+
+</head>
+
+
+<body id="body_back_tea"  >
+<script>
+    function clearPreWindow5() {
+        $("#fjContent").attr("value", "");
+        $("#backArea0").attr("value","");
+    }
+
+
+    function clearLastWindow5() {
+        $("#sjContent").attr("value", "");
+
+    }
+    function clearFeedback(){
+        $("#backArea0").attr("value", "");
+
+    }
+</script>
+<div id="log_window4">
+    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <div class="display log_div pre-scrollable">
+        <ul>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+            <li>计划一</li>
+        </ul>
+
+    </div>
+    <div class="display" style="width: 75%">
+        <a href="javascript:cancel_shield4()" class="md-close" style="margin-left:450px;margin-top: 10px;"></a>
+
+        <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+            <div class="display detail_header0">
+                <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle">
+                    嫦娥三号着陆计划</strong>
+                <div class="display header_img00" style="vertical-align: middle">
+                    <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                              class="display"
+                                                              id="detailedExpiredCreated">2018-5-18开始</strong></div>
+                    <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                              class="display"
+                                                              id="detailedExpiredExpired">2018-6-18截止</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height:400px;" class="pre-scrollable">
+            <div class="task_detail1">
+                <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                        class="display detail_title_word">任务详情</span></div>
+                <div class="detail_word" id="detailedExpiredPlanDesc">
+                    实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...
+                </div>
+
+            </div>
+            <div>
+                <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                        class="display  detail_title_word">老师初评</span><span style="vertical-align: middle"
+                                                                            class="preJudgeWord"
+                                                                            id="detailedExpiredCreated1"></span></div>
+                <div class="detail_word" id="detailedExpiredAssess1">老师还没进行初评哦~_~</div>
+            </div>
+            <div id="conclusion1">
+                <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
+                        style="vertical-align: middle;" class="display  detail_title_word">总评</span><span
+                        style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
+                        id="detailedExpiredGrade"></span><span style="vertical-align: middle" class="preJudgeWord"
+                                                               id="detailedExpiredCreated2"></span></div>
+                <div class="detail_word" id="detailedExpiredAssess2">
+                    老师还没进行总评哦~_~
+                </div>
+            </div>
+            <div>
+                <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                        class="display  detail_title_word">学生自评</span></div>
+
+                <div class="detail_word">学生自评学生自评学生自评学生自评学生自评学生自评学生自评学生自评学生自评</div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="log_First_Jud">
+
+    <a href="javascript:cancel_shieldPreJudge()" class="md-close"
+       style="margin-left:500px;margin-top: 10px;position: absolute"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <strong class="display detail_header_word0" style="color: #000;" id="fjTitle">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display" id="fjCreated">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display" id="fjExpired">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:450px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word" id="fjPlanDesc">
+                实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...
+            </div>
+
+        </div>
+        <div>
+            <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                    class="display  detail_title_word">老师初评</span>
+
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" style="width: 80%;margin-left: 75px;margin-top: 10px;"
+                              placeholder="请输入初评" id="fjContent"></textarea>
+                    <input type="hidden" id="fjPlanId"/>
+                    <input type="hidden" id="fjStuId"/>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-info display" id="submitBtn" onclick="fjSubmit()" style="margin-left:380px;display: none;">确认提交</button>
+        <div class="display" id="submitBtn_hid" style="margin-left:380px;height: 34px;line-height: 34px;">确认提交</div>
+        <script>
+
+            $("#backArea0").attr("value", "");
+
+        </script>
+
+        <div  style="margin-top: -20px;">
+            <div class="detail_title"><img class="display detail_title_img " src="/images/judgeBack.png">
+                <span  class="display  detail_title_word">驳回信息</span>
+
+            </div>
+            <div class="display" id="back_area">
+
+                <textarea class="form-control" id="backArea0" oninput="submitChange1(this)" rows="3" style="width:418px;margin-left: 75px;margin-top: 10px;" placeholder="请输入驳回信息"></textarea>
+                <button class="btn btn-info display" id="backBtn" style="margin-left:380px;margin-top: 20px;display:none" onclick="fadebackBtn()">确认提交</button>
+                <div class="display" id="backBtn_hid" style="height: 34px;line-height: 34px;">确认提交</div>
+            </div>
+
+        </div>
+        <script>
+            function fadebackBtn() {
+                var planId=$("#fjPlanId").val();
+                //首先讲该plan添加到temp_plan表
+                var title=$("#fjTitle").text();
+
+
+                // var strContent=data.planDesc;
+                // var det=document.getElementById('detailedPlanDesc');
+                // det.innerHTML=strContent;
+                var planDesc=$("#fjPlanDesc").text();
+                //截取字符串
+                var createdString=$("#fjCreated").text();
+                var expiredString= $("#fjExpired").text();
+                var created=createdString.substring(0,createdString.length-2);
+                var expired=expiredString.substring(0,expiredString.length-2);
+                var stuId=$("#fjStuId").val();
+                var backArea=$("#backArea0").val();
+                //撤回到templan
+                $.post("/templan/create",{title:title,planDesc:planDesc,created:created,expired:expired,stuId:stuId,fadeback:backArea});
+                //从plan表删除plan
+                $.get("/plan/delById/"+planId,function (data) {
+                    if (data.status==200){
+                        alert("已驳回");
+                        //刷新
+                        getStuPlanList();
+                        getPlanInfByStageClick();
+                        cancel_shieldPreJudge();
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            // $(function () {
+
+            var su1q = document.getElementById('submitBtn');
+            var su2q = document.getElementById('submitBtn_hid');
+            // var su2=document.getElementById('submitBtn_hid5');
+            var sjc = $('#back_area').val();
+            // alert(sjc);
+            // alert(sjc.length)
+            if (sjc.length == 0) {
+                su1q.style.display = 'none';
+                su2q.style.display = 'inline-block';
+            }
+            $('#back_area').keyup(function () {
+                var sjc = $('#back_area').val();
+                if (sjc.length <= 0) {
+                    // alert('1');
+                    su1q.style.display = 'none';
+                    su2q.style.display = 'inline-block'
+                    // alert('1')
+                }
+                else {
+                    su2q.style.display = 'none';
+                    su1q.style.display = 'inline-block';
+                    // alert('2')
+                }
+            })
+            // })
+        </script>
+
+        <script>
+            // $(function () {
+
+            var su1q = document.getElementById('submitBtn');
+            var su2q = document.getElementById('submitBtn_hid');
+            // var su2=document.getElementById('submitBtn_hid5');
+            var sjc = $('#fjContent').val();
+            // alert(sjc);
+            // alert(sjc.length)
+            if (sjc.length == 0) {
+                su1q.style.display = 'none';
+                su2q.style.display = 'inline-block';
+            }
+            $('#fjContent').keyup(function () {
+                var sjc = $('#fjContent').val();
+                if (sjc.length <= 0) {
+                    // alert('1');
+                    su1q.style.display = 'none';
+                    su2q.style.display = 'inline-block'
+                    // alert('1')
+                }
+                else {
+                    su2q.style.display = 'none';
+                    su1q.style.display = 'inline-block';
+                    // alert('2')
+                }
+            })
+            // })
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    function fjSubmit() {
+        var planId = $("#fjPlanId").attr("value");
+        var tutorId = GetCookie("COOKIE_ID");
+        var assess = $("#fjContent").attr("value");
+        var stuId = $("#fjStuId").attr("value");
+        $.post("/tut_assess1/create", {planId: planId, tutorId: tutorId, assess: assess}, function (data) {
+            if (data.status == 200) {
+
+                alert("评价完成!", "", function () {
+                }, {type: 'success', confirmButtonText: 'OK'});
+            }
+        });
+        //更新plan表status1字段
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/plan/update",
+            data: {id: planId, status1: 1},
+            success: function (data) {
+                if (data.status == 200) {
+                    // alert("更新status1字段");
+                    // //刷新列表
+                    // getPlanList();
+                    // //重新绑定自评按钮
+                    // firstJudgeClick();
+                    cancel_shieldPreJudge();
+                    getStuPlanList();
+                    getPlanInfByStageClick();
+                }
+            }
+        })
+    }
+
+    function firstJudgeInf(planId) {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/plan/getById/" + planId,
+            success: function (data) {
+                var created = dateFormat(new Date(data.created));
+                var expired = dateFormat(new Date(data.expired));
+                var title="周报("+created+"到"+expired+")";
+                $("#fjTitle").text(title);
+                $("#fjCreated").text(created + "开始");
+                $("#fjExpired").text(expired + "截止");
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#fjPlanDesc").text(data.planDesc);
+                $("#fjPlanId").attr("value", planId);
+                $("#fjStuId").attr("value", data.stuId);
+                clearPreWindow5();
+            }
+        });
+    }
+
+</script>
+<div id="log_Last_Jud">
+
+    <a href="javascript:cancel_shieldLastJudge()" class="md-close"
+       style="margin-left:500px;margin-top: 10px;position: absolute"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <strong class="display detail_header_word0" id="sjTitle" style="color: #000;">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display" id="sjCreated">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display" id="sjExpired">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:450px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word" id="sjPlanDesc" style="height: 3em;overflow: hidden">
+                实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...
+            </div>
+
+        </div>
+        <div>
+            <div class="detail_title" style="margin-top: 10px;"><img class="display detail_title_img "
+                                                                     src="/images/write.png"><span
+                    class="display  detail_title_word">老师初评</span><span style="vertical-align: middle"
+                                                                        class="preJudgeWord"></span></div>
+            <div class="detail_word" id="sjFjContent" style="height: 3em;overflow: hidden">
+                老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦老师还没进行初评哦~_~
+            </div>
+        </div>
+        <div>
+            <div class="detail_title" style="margin-top: 10px;"><img class="display detail_title_img "
+                                                                     src="/images/write.png"><span
+                    class="display  detail_title_word">学生自评</span><span style="vertical-align: middle"
+                                                                        class="preJudgeWord"></span></div>
+            <div class="detail_word" id="sjSelfJudge" style="height: 3em;overflow: hidden">学生自评学生自评学生自评学生自评学生自评学生自评~_~</div>
+        </div>
+
+        <div>
+            <div class="detail_title" style="margin-top: 10px;"><img class="display detail_title_img "
+                                                                     src="/images/star0.png"> <span
+                    style="vertical-align: middle;" class="display  detail_title_word">总评</span>
+
+
+                <div class="box2">
+                    <div class="list2 display">
+                        <div href="#" class="star22" id="star21"><span id="star11" class="star22"></span></div>
+                        <div href="#" class="star22" id="star22"><span id="star12" class="star22"></span></div>
+                        <div href="#" class="star22" id="star23"><span id="star13" class="star22"></span></div>
+                        <div href="#" class="star22" id="star24"><span id="star14" class="star22"></span></div>
+                        <div href="#" class="star22" id="star25"><span id="star15" class="star22"></span></div>
+                    </div>
+                    <span class="remark1 display" id="remark">0</span>
+                </div>
+                <script>
+                    var rem = document.getElementById("remark");
+                    var s1 = document.getElementById("star21");
+                    var s11 = document.getElementById("star11");
+                    var s2 = document.getElementById("star22");
+                    var s22 = document.getElementById("star12");
+                    var s3 = document.getElementById("star23");
+                    var s33 = document.getElementById("star13");
+                    var s4 = document.getElementById("star24");
+                    var s44 = document.getElementById("star14");
+                    var s5 = document.getElementById("star25");
+                    var s55 = document.getElementById("star15");
+
+                    s1.onmouseover = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                    }
+                    s1.onmouseout = function () {
+                        s1.style.background = "url(\"/images/star2.png\") no-repeat";
+                    }
+                    s1.onclick = function () {
+                        s11.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s22.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s33.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s44.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s55.style.background = "url(\"/images/star2.png\") no-repeat";
+                        rem.innerHTML = "1";
+                    }
+                    s2.onmouseover = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                    }
+                    s2.onmouseout = function () {
+                        s1.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star2.png\") no-repeat";
+                    }
+                    s2.onclick = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s11.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s22.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s33.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s44.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s55.style.background = "url(\"/images/star2.png\") no-repeat";
+                        rem.innerHTML = "2";
+                    }
+                    s3.onmouseover = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star1.png\") no-repeat";
+                    }
+                    s3.onmouseout = function () {
+                        s1.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star2.png\") no-repeat";
+                    }
+                    s3.onclick = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s11.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s22.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s33.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s44.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s55.style.background = "url(\"/images/star2.png\") no-repeat";
+                        rem.innerHTML = "3";
+                    }
+                    s4.onmouseover = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star1.png\") no-repeat";
+                    }
+                    s4.onmouseout = function () {
+                        s1.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star2.png\") no-repeat";
+                    }
+                    s4.onclick = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s11.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s22.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s33.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s44.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s55.style.background = "url(\"/images/star2.png\") no-repeat";
+                        rem.innerHTML = "4";
+                    }
+                    s5.onmouseover = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star1.png\") no-repeat";
+                    }
+                    s5.onmouseout = function () {
+                        s1.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star2.png\") no-repeat";
+                        s5.style.background = "url(\"/images/star2.png\") no-repeat";
+                    }
+                    s5.onclick = function () {
+                        s1.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s11.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s2.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s22.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s3.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s33.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s4.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s44.style.background = "url(\"/images/star1.png\") no-repeat";
+                        s55.style.background = "url(\"/images/star1.png\") no-repeat";
+                        rem.innerHTML = "5";
+                    }
+
+                </script>
+
+            </div>
+            <form role="form">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" style="width: 80%;margin-left: 75px;margin-top: 10px;"
+                              placeholder="请输入总评" id="sjContent"></textarea>
+                    <input type="hidden" id="sjPlanId"/>
+                    <input type="hidden" id="sjStuId"/>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-info" href="#" style="margin-left: 400px;display: none" id="sjSubmitBut" onclick="sjJudgeSumbitButClick()">确认提交</button>
+        <div class="" href="#" style="margin-left: 400px;" id="sjSubmitBut_hid">确认提交</div>
+
+        <script>
+            var su1 = document.getElementById('sjSubmitBut');
+            var su2 = document.getElementById('sjSubmitBut_hid');
+            // var su2=document.getElementById('submitBtn_hid5');
+            var sjc = $('#sjContent').val();
+            // alert(sjc);
+            // alert(sjc.length)
+            if (sjc.length == 0) {
+                su1.style.display = 'none';
+                su2.style.display = 'inline-block';
+            }
+            $('#sjContent').keyup(function () {
+                var sjc = $('#sjContent').val();
+                if (sjc.length <= 0) {
+                    // alert('1')
+                    su1.style.display = 'none';
+                    su2.style.display = 'inline-block';
+                }
+                else {
+                    su2.style.display = 'none';
+                    su1.style.display = 'inline-block';
+                }
+            })
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    function lastJudge(planId) {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/plan/getFJAndSelfJById/" + planId,
+            success: function (data) {
+                var created = dateFormat(new Date(data.created));
+                var expired = dateFormat(new Date(data.expired));
+                var title="周报("+created+"到"+expired+")";
+                $("#sjTitle").text(title);
+                $("#sjCreated").text(created + "开始");
+                $("#sjExpired").text(expired + "截止");
+                var strContent=data.planDesc;
+                var det=document.getElementById('sjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#sjPlanDesc").text(data.planDesc);
+                $("#sjStuId").attr("value", data.stuId);
+                if (data.firstJudge != null) {
+                    var strContent1=data.firstJudge;
+                    var det1=document.getElementById('sjFjContent');
+                    det1.innerHTML=strContent1;
+                    // $("#sjFjContent").text(data.firstJudge);
+                }
+                else {
+                    $("#sjFjContent").text("老师还没进行初评哦~_~");
+                }
+                if (data.status == 1) {
+                    var strContent2=data.selfJudge;
+                    var det2=document.getElementById('sjSelfJudge');
+                    det2.innerHTML=strContent2;
+                    // $("#sjSelfJudge").text(data.selfJudge);
+                }
+                else {
+                    $("#sjSelfJudge").text("学生好像还没有自评哦~_~");
+                }
+                $("#sjPlanId").attr("value", planId);
+                clearLastWindow5();
+            },
+            error:function (XMLHttpRequest,textStatus,errorThrown) {
+                alert(XMLHttpRequest.responseText);
+            }
+        })
+    }
+
+    function sjJudgeSumbitButClick() {
+        var planId = $("#sjPlanId").attr("value");
+        var tutorId = GetCookie("COOKIE_ID");
+        var assess = $("#sjContent").attr("value");
+
+        assess = assess.replace(/\r\n/g, '<br/>');
+        assess = assess.replace(/\n/g, '<br/>');
+        assess = assess.replace(/\s/g, ' ');
+        var grade = $("#remark").text();
+        var stuId = $("#sjStuId").attr("value");
+        $.post("/tut_assess2/create", {
+            planId: planId,
+            tutorId: tutorId,
+            grade: grade,
+            assess: assess
+        }, function (data) {
+            if (data.status == 200 && assess != "") {
+
+                alert("添加评价记录成功!", "", function () {
+                }, {type: 'success', confirmButtonText: 'OK'});
+            }
+            // alert("添加评价记录成功");
+        });
+        //更新plan表status2字段
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/plan/update",
+            data: {id: planId, status2: 1},
+            success: function (data) {
+                if (data.status == 200 && assess != "")
+                    alert("更新status2成功");
+            }
+        });
+        cancel_shieldLastJudge();
+        getStuPlanList();
+        getPlanInfByStageClick();
+        // var s = document.getElementById("testLastJud");
+        // s.style.display = "none";
+        //
+        // var l = document.getElementById("log_Last_Jud");
+        // l.style.display = "none";
+    }
+</script>
+<div id="log_Doing">
+
+    <a href="javascript:cancel_shieldDoing()" class="md-close" style="margin-left:450px;margin-top: 10px;"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <strong class="display detail_header_word0" style="color: #000;">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:400px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word">实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...</div>
+
+        </div>
+
+    </div>
+</div>
+<div id="log_Done">
+
+    <a href="javascript:cancel_shieldDone()" class="md-close" style="position:absolute;margin-left:450px;margin-top: 10px;"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <strong class="display detail_header_word0" style="color: #000;" id="fjinfTitle">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display" id="fjinfCreated">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display" id="fjinfExpired">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:400px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word" id="fjinfDesc">实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...</div>
+
+        </div>
+
+        <div>
+            <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
+                    class="display  detail_title_word">老师初评</span><span style="vertical-align: middle"
+                                                                        class="preJudgeWord"></span></div>
+            <div class="detail_word" id="fjinfAssess">老师初评老师初评老师初评老师初评老师初评老师初评~_~</div>
+            <input type="hidden" id="fjinfStuId"/>
+            <input type="hidden" id="fjinfPlanId"/>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    function fjCatInf(planId) {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/plan/andAssess1ById/" + planId,
+            success: function (data) {
+                var created = dateFormat(new Date(data.created));
+                var expired = dateFormat(new Date(data.expired));
+                var title="周报("+created+"到"+expired+")";
+                $("#fjinfTitle").text(title);
+                $("#fjinfCreated").text(created + "开始");
+                $("#fjinfExpired").text(expired + "截止");
+
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjinfDesc');
+                det.innerHTML=strContent;
+
+                // $("#fjinfDesc").text(data.planDesc);
+                $("#fjinfStuId").attr("value", data.stuId);
+                if (data.assess != null) {
+                    var strContent1=data.assess;
+                    var det1=document.getElementById('fjinfAssess');
+                    det1.innerHTML=strContent1;
+                    // $("#fjinfAssess").text(data.assess);
+                }
+                else {
+                    $("#fjinfAssess").text("老师还没进行初评哦~_~");
+                }
+                $("#fjinfPlanId").attr("value", planId);
+                clearLastWindow5();
+            }
+        })
+    }
+
+    // function sjJudgeSumbitButClick() {
+    //     $("#sjSubmitBut").click(function () {
+    //         var planId = $("#sjPlanId").attr("value");
+    //         var tutorId = GetCookie("COOKIE_ID");
+    //         var assess = $("#sjContent").attr("value");
+    //         var grade = $("#remark").text();
+    //         var stuId = $("#sjStuId").attr("value");
+    //         $.post("/tut_assess2/create", {
+    //             planId: planId,
+    //             tutorId: tutorId,
+    //             grade: grade,
+    //             assess: assess
+    //         }, function (data) {
+    //             if (data.status == 200 && assess != "") {
+    //
+    //                 alert("添加评价记录成功!", "", function () {
+    //                 }, {type: 'success', confirmButtonText: 'OK'});
+    //             }
+    //             // alert("添加评价记录成功");
+    //         });
+    //         //更新plan表status2字段
+    //         $.ajax({
+    //             type: "post",
+    //             async: false,
+    //             url: "/plan/update",
+    //             data: {id: planId, status2: 1},
+    //             success: function (data) {
+    //                 if (data.status == 200 && assess != "")
+    //                     alert("更新status2成功");
+    //             }
+    //         });
+    //         getDoneListByStuId(stuId);
+    //         // var s = document.getElementById("testLastJud");
+    //         // s.style.display = "none";
+    //         //
+    //         // var l = document.getElementById("log_Last_Jud");
+    //         // l.style.display = "none";
+    //
+    //     })
+    // }
+</script>
+<div id="log_History">
+
+    <a href="javascript:cancel_shieldHistory()" class="md-close"
+       style="margin-left:500px;margin-top: 10px;position: absolute"></a>
+
+    <div style="border-bottom: 1px solid #bfbfbf;width: 100%;">
+        <div class="display detail_header0">
+            <strong class="display detail_header_word0" style="color: #000;" id="hsTitle">
+                嫦娥三号着陆计划</strong>
+            <div class="display header_img00" style="vertical-align: middle">
+                <div class="display header_img01"><strong style="margin-left: 10px;"
+                                                          class="display" id="hsCreated">2018-5-18开始</strong></div>
+                <div class="display header_img02"><strong style="margin-left: 10px;"
+                                                          class="display" id="hsExpired">2018-6-18截止</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:400px;" class="pre-scrollable">
+        <div class="task_detail1">
+            <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
+                    class="display detail_title_word">任务详情</span></div>
+            <div class="detail_word" id="hsPlanDesc">
+                实装与本次改二舰娘相干的任务，可以从任务中获取新的装备以及改二所需的道具。并且开始上架与夏季相关的新家具，部分家具变换成夏季样式...
+            </div>
+
+        </div>
+
+        <div>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/write.png">
+                <span class="display  detail_title_word">老师初评</span>
+                <span class="preJudgeWord" id="hsCreated1"></span>
+            </div>
+            <div class="detail_word" id="hsFjContent">老师初评老师初评老师初评老师初评老师初评~_~</div>
+        </div>
+
+        <div>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/star0.png">
+                <span style="vertical-align: middle;" class="display  detail_title_word">自评</span>
+                <span  class="preJudgeWord" id="hsCreated3"></span>
+            </div>
+            <div class="detail_word" id="hsSelfContent">
+                挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
+            </div>
+        </div>
+        <div>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/star0.png">
+                <span style="vertical-align: middle;" class="display  detail_title_word">总评</span>
+                <span style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
+                      id="hsGrade">A</span>
+                <span class="preJudgeWord" id="hsCreated2">123</span></div>
+            <div class="detail_word" id="hsSjContent">
+                挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="log_add" >
+    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+    <div id="md-close1"><a href="javascript:cancel_shield1()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
+    <div  id="addSearchTea">
+        <input id="teaInput" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
+        <button id="teaInputBtn" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
+    </div>
+    <hr class="addHr"/>
+    <div class="addDetail" id="addDetailTea">
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addTeaClick() {
+        $(".addTeaClass").each(function (i) {
+            $(this).click(function () {
+                var teaId=$(".teaIdClass").eq(i).val();
+                var expId=GetCookie("COOKIE_EXPID");
+                $.post("/expTea/create",{tutorId:teaId,expId:expId},function (data) {
+                    if (data.status==200)
+                        alert("添加成功");
+                })
+            })
+        })
+    }
+    function openTeaSearch() {
+        var tutorId=GetCookie("COOKIE_ID");
+        $.ajax({
+            type:"get",
+            async:false,
+            url:"/user/getTeaList",
+            success:function (data) {
+                var html="";
+                for(var i=0;i<data.length;i++){
+                    if (data[i].id==tutorId)
+                        continue;
+                    var nickname=data[i].nickname;
+                    html+="<div class=\"addDetailTip \">\n" +
+                        "            <div class=\"addDetailTipImg display\">"+nickname[0]+"</div>\n" +
+                        "            <div class=\"addDetailTipWord display\">\n" +
+                        "                <div class=\"wordName display\">"+nickname+"</div>\n" +
+                        "<input type='hidden' class='teaIdClass' value='"+data[i].id+"' />" +
+                        "                <button class=\"wordBtn btn btn-info display addTeaClass\">添加</button>\n" +
+                        "            </div>\n" +
+                        "        </div>";
+                }
+                $("#addDetailTea").html(html);
+                //弹出窗口才绑定按钮
+                addTeaClick();
+                shield1();
+            }
+        })
+    }
+
+
+</script>
+
+<div id="log_add_stu" >
+    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+    <div id="md-close2"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
+    <div  id="addSearchStu">
+        <input id="teaInput_stu" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
+        <button id="teaInputBtn_stu" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
+        <span id="registerStu" class="display">
+            <!--<a href="javascript:shield3()">注册学生账号</a>-->
+        </span>
+    </div>
+    <hr id="addHr"/>
+    <div id="addDetailStu">
+        <div class="addDetailTip" >
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="log_add_choose">
+    <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+
+    <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <div class="chooseWord">请选择</div>
+    <div class="chooseCho">
+        <a href="#"> <button class="chooseChoSearch btn btn-info"  onclick="addStuClick()">添加学生</button></a>
+        <a href="javascript:shield3()"><button class="chooseChoAdd btn btn-info">注册账号</button></a>
+    </div>
+    <script>
+        function addStuClick() {
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/user/getStuListWithoutExp",
+                success:function (data) {
+                    var html="";
+                    for(var i=0;i<data.length;i++){
+                        var nickname=data[i].nickname;
+                        html+="<div class=\"addDetailTip \">\n" +
+                            "            <div class=\"addDetailTipImg display\">"+nickname[0]+"</div>\n" +
+                            "            <div class=\"addDetailTipWord display\">\n" +
+                            "                <div class=\"wordName display\">"+nickname+"</div>\n" +
+                            "                <button class=\"wordBtn btn btn-info display\">添加</button>\n" +
+                            "            </div>\n" +
+                            "        </div>";
+
+                    }
+                    $("#addDetailStu").html(html);
+                    shield2();
+                }
+            })
+        }
+    </script>
+
+</div>
+<div id="log_add_register" >
+    <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+
+    <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <input id="nickname" type="text" class="form-control registerName" style="width: 50%;margin-top: 30px;" placeholder="请输入学生姓名"/>
+    <input id="username" type="text" class="form-control registerName" style="width: 50%;" placeholder="请输入账号"/>
+    <a href="#" style="color: #fff;"><button id="registerBtn" type="button" class="btn btn-info" onclick="doRegisterStu()">确定</button></a>
+    <script>
+        function doRegisterStu() {
+            var nickname=$("#nickname").val();
+            var username=$("#username").val();
+            var expId=GetCookie("COOKIE_EXPID");
+            var tutorId=GetCookie("COOKIE_ID");
+            var passwordDef="123456";
+            if (nickname.length>5){
+                alert("姓名长度过长");
+                return;
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(username)){
+                alert("用户名输入非法，请重新输入");
+                return;
+            }
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"/user/stu/register",
+                data:{username:username,password:passwordDef,nickname:nickname,expId:expId,tutorId:tutorId},
+                success:function (data) {
+                    if (data.status==200){
+                        alert("添加学生成功");
+                    }
+                }
+            });
+            cancel_shield3();
+            //刷新
+            getStuPlanList();
+        }
+    </script>
+</div>
+<script type="text/javascript">
+    function historyInf(planId) {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/plan/allAssess/" + planId,
+            success: function (data) {
+                var created = dateFormat(new Date(data.created));
+                var expired = dateFormat(new Date(data.expired));
+                var created1 = dateFormat(new Date(data.created1));
+                var created2 = dateFormat(new Date(data.created2));
+                var created3 = dateFormat(new Date(data.created3));
+                var title="周报("+created+"到"+expired+")";
+                $("#hsTitle").text(title);
+                var strContent1=data.planDesc;
+                var det1=document.getElementById('hsPlanDesc');
+                det1.innerHTML=strContent1;
+                // $("#hsPlanDesc").text(data.planDesc);
+                $("#hsCreated").text(created + "开始");
+                $("#hsExpired").text(expired + "截止");
+                if (data.status1 == 1) {
+                    $("#hsCreated1").text("评价时间:" + created1);
+                    var strContent2=data.assess1;
+                    var det2=document.getElementById('hsFjContent');
+                    det2.innerHTML=strContent2;
+                    // $("#hsFjContent").text(data.assess1);
+                }
+                else {
+                    $("#hsCreated1").text("");
+                    $("#hsFjContent").text("老师好像忘记初评了哦~_~");
+                }
+                if (data.status2==1) {
+                    $("#hsCreated2").text("评价时间:" + created2);
+                    var strContent4=data.assess2;
+                    var det4=document.getElementById('hsSjContent');
+                    det4.innerHTML=strContent4;
+                    // $("#hsSjContent").text(data.assess2);
+                    $("#hsGrade").text(data.grade);
+                }
+                else {
+                    $("#hsCreated2").text("");
+                    $("#hsSjContent").text("老师好像忘记总评了哦~_~");
+                    $("#hsGrade").text("");
+                }
+                if (data.status == 1) {
+                    $("#hsCreated3").text("评价时间:" + created3);
+                    var strContent3=data.selfJudge;
+                    var det3=document.getElementById('hsSelfContent');
+                    det3.innerHTML=strContent3;
+                    // $("#hsSelfContent").text(data.selfJudge);
+                }
+                else {
+                    $("#hsCreated3").text("");
+                    $("#hsSelfContent").text("学生好像还没有自评哦~_~");
+                }
+            }
+        })
+    }
+</script>
+<div id="banner">
+    <div id="banner_left" class="display">
+        <div class="display" style="width: 70%">
+        </div>
+        <div class="display" style="width: 10%">
+
+        </div>
+    </div>
+    <div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;">
+        <center>  实验室科研计划管理平台</center>
+    </div>
+    <div style="width: 8%" class="display"></div>
+    <div id="banner_right" style="padding: 0;" class="display">
+        <div class="display" style="width: 0;">
+        </div>
+        <div style="width: 90%;padding-left: 26%;" class="display">
+            <img src="/images/question.png" style="width:25px;margin-left: 20px;">
+            <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
+            <!--<a href="#"> <img src="/images/addPerson.png" id="add_Person" style="width: 30px;margin-left: 20px;"></a>-->
+            <a class="test2" href="javascript:void(0)"><img id="search_tea" src="/images/message.png" style="width:25px;margin-left: 20px;"></a>
+            <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+        </div>
+        <div id="add_around">
+
+            <div id="add_float" class="display">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="javascript:openTeaSearch()">
+                        <div class="self_mesg" id="self_tea_set">
+                            <span id="addTea_set">老师</span>
+                        </div>
+                    </a>
+                    <a href="javascript:shield4()">
+                        <div class="self_mesg" id="self_stu_out">
+                            <span id="addStu_out">学生</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="self_around">
+            <div id="self_float" class="display">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="account_tea副本.html">
+                        <div class="self_mesg" id="self_account_set">
+                            <span id="account_set">账号设置</span>
+                        </div>
+                    </a>
+                    <a href="/showIndex">
+                        <div class="self_mesg" id="self_turn_out">
+                            <span id="turn_out">退出登录</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            $addb1 = $("#add_around");
+            var addsea1 = document.getElementById("add_around")
+            $("#add_Person").on({
+                "click": function () {
+                    $addb1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'add_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#add_around').css('display', 'none');
+            });
+        </script>
+
+        <script type="text/javascript">
+
+            $b1 = $("#self_around");
+            var sea1 = document.getElementById("self_around")
+            $("#self_info_a").on({
+                "click": function () {
+                    $b1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'self_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#self_around').css('display', 'none');
+            });
+        </script>
+    </div>
+    <div id="sear_around" style="display:none ;z-index: 10000;">
+        <div id="sear_float" class="display" style="box-shadow: 3px 3px 10px #686363;height: auto;z-index: 1000;">
+
+            <div id="message" style="z-index: 10000;">
+                <div class="mess_top">通知</div>
+                <ul id="getJoinByExpId">
+
+                </ul>
+            </div>
+            <script type="text/javascript">
+                function getJoinMessage() {
+                    //页面加载时查询pms_join表,需要stuName,stuId字段等
+                    var expId = GetCookie("COOKIE_EXPID");
+                    //同步ajax请求,因为页面执行完会绑定点击事件，必须等待该请求结束，才执行后面的代码
+                    $.ajax({
+                        type: "get",
+                        async: false, //同步请求
+                        url: "/exp/getJoin/" + expId,
+                        success: function (data) {
+                            var html = "";
+                            for (var i = 0; i < data.length; i++) {
+                                //如果该申请未被处理
+                                if (data[i].status == null) {
+                                    //需要先把data[i]的date属性转为js的Date对象
+                                    var cre = new Date(data[i].created);
+                                    html += " <li class=\"mess_cont\">\n" +
+                                        "                        <div class=\"mess_cont_word\">\n" +
+                                        "                            <span class=\"cont_word_pic1\"></span>\n" +
+                                        "                            <span class=\"cont_word\">" + data[i].stuName + "申请加入您的实验室</span>" +
+                                        "                            <input type=\"hidden\" class=\"stuIdJoin\" value='" + data[i].stuId + "'/>" +
+                                        "                            <input type='hidden' class='joinId' value='" + data[i].id + "'/>\n" +
+                                        "                        </div>\n" +
+                                        "                        <div class=\"mess_cont_btn\">\n" +
+                                        "                            <button class=\"cont_btn_agree\">同意</button>\n" +
+                                        "                            <button class=\"cont_btn_refuse\">拒绝</button>\n" +
+                                        "                        </div>\n" +
+                                        "                        <div class=\"divide_date\">\n" +
+                                        "                            &nbsp;" + cre.toLocaleDateString() + "\n" +
+                                        "                        </div>\n" +
+                                        "                    </li>";
+                                }
+                            }
+                            $("#getJoinByExpId").html(html);
+                        }
+                    });
+                }
+
+                getJoinMessage();
+            </script>
+        </div>
+    </div>
+    <script>
+        $b = $("#sear_around");
+        var sea = document.getElementById("sear_around")
+        $("#search_tea").on({
+            "click": function () {
+                $b.toggle();
+                return false;
+            }
+        });
+        $(document).bind('click', function (e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            while (elem) {
+                if (elem.id && elem.id == 'sear_around') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $('#sear_around').css('display', 'none');
+        });
+    </script>
+</div>
+<div id="guidance">
+    <div id="left" class="display">
+        <span id="left_origin"><a href="/showTeaHome">首页</a></span>
+        <img src="/images/bigger.png" style="width: 15px;">
+        <!--<span id="left_name"><div id="expName" class="display"></div></span>-->
+
+        <script type="text/javascript" th:inline="javascript">
+            //js通过thymeleaf取值
+            var expName = [[${expName}]];
+            //将expName显示到页面
+            $("#expName").text(expName);
+        </script>
+    </div>
+    <div id="mid" class="display">
+        <a href="/showTaskTea">
+            <div id="task" class="display"><span class="left_length"><span>任务</span></span></div>
+        </a>
+        <a href="tea_file.html">
+            <div id="file" class="display"><span class="left_length"><span>文件</span></span></div>
+        </a>
+        <a href="#">
+            <div id="searchTitle" class="display"><span class="left_length"><span>搜索</span></span></div>
+        </a>
+
+
+    </div>
+    <div id="temp" class="display"></div>
+    <div id="right" class="display ">
+        <div class="display" id="people">
+
+            <img id="test11" src="/images/people.png" style="width: 20px;">
+            <span style="color: #808080;">2</span>
+        </div>
+        <img src="/images/menu.png" style="width: 20px;margin-left: 30px;">
+        <span style="color: #808080">菜单</span>
+    </div>
+
+    <div id="people_around" class="display">
+        <div id="people_float" class="display">
+            <div style="margin-top: 5px;margin-bottom: 5px;">
+                <a href="tea_detail副本2.html">
+                    <div class="self_mesg people_set">
+                        <span class="people_set_head">张</span>
+                        <span class="people_set_word">张三</span>
+                    </div>
+                </a>
+                <a href="tea_detail副本2.html">
+                    <div class="self_mesg people_set">
+                        <span class="people_set_head">李</span>
+                        <span class="people_set_word">李四</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="stuPlanList" >
+
+    <div class="main_style display ">
+
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip  ">
+                <a href="tea_detail副本2.html">
+                    <div class="display new_tip_left">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </div>
+                </a>
+
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="main_style display ">
+
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip">
+                <div class="display new_tip_left">
+                    <a href="tea_detail副本.html">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三三丰</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </a>
+                </div>
+                <div class="display tip_right ">
+                    <div class="display new_tip_right">
+                        <!--<div class="  main_style_tip">-->
+                        <div class="display right_title">
+                            <a href="javascript:shieldPreJudge()">
+                                <b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b>
+                            </a>
+                        </div>
+                        <div class="right_state">
+                            <!--<div class=" right_state_running display"> </div>-->
+                            <div class="right_state_nonJudge display">未审核</div>
+                        </div>
+                    </div>
+                    <span class="time_ope">
+                        <!--<div class="display time_ope_line"></div>-->
+                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">
+                            最近更新：<span class="time_disp">2018-1-1</span>
+                        </div>
+                        <!--<div class="display time_ope_line"></div>-->
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main_style display ">
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip  ">
+                <a href="tea_detail副本2.html">
+                    <div class="display new_tip_left">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </div>
+                </a>
+                <div class="display tip_right ">
+                    <div class="display new_tip_right">
+                        <div class="display right_title"><a href="javascript:shieldDone()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
+                        </div>
+                        <div class="right_state">
+                            <!--<div class=" right_state_running display"> </div>-->
+                            <div class=" right_state_judge display">已审核</div>
+                        </div>
+                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
+                                class="time_disp">2018-1-1</span></div>
+                    </div>
+                </div>
+                <div class="text1">
+                    <div class="icon_temp">
+                        <a href="javascript:shieldLastJudge()">
+                            <div class="judge_self" style="margin-left: 10%;margin-top: -4%" type="div"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    function getStuPlanList() {
+        var expId=GetCookie("COOKIE_EXPID");
+        $.ajax({
+            type:"get",
+            url:"/plan/getTeaTaskData/"+expId,
+            async:false,
+            success:function (data) {
+                var html="";
+                for(var i=0;i<data.length;i++){
+                    var nickname=data[i].nickname;
+                    var year = new Date(data[i].enrollDate).getFullYear();
+                    var optime = dateFormat(new Date(data[i].optime));
+                    var created = dateFormat(new Date(data[i].created));
+                    var expiredd = dateFormat(new Date(data[i].expired));
+
+                    if (data[i].planId==null){
+                        html+=" <div class=\"main_style display \">\n" +
+                            "\n" +
+                            "        <input type='hidden' class='stuId' value=''/>\n" +
+                            "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
+                            "            <div class=\"left_grade\">"+year+"级</div>\n" +
+                            "            <li class=\"new_tip  \">\n" +
+                            "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
+                            "                    <div class=\"display new_tip_left\">\n" +
+                            "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
+                            "                        <div class=\"left_above display\">\n" +
+                            "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </a>"+
+                            "            </li>\n" +
+                            "        </ul>\n" +
+                            "    </div>";
+                    }
+                    else {
+                        var stage;
+                        var cls1 = "";
+                        var cls2 = "";
+                        var cls3 = "";
+                        var cls4 = "";
+                        var link="";
+                        var expired = new Date(data[i].expired);
+                        var now = new Date();
+                        if ( data[i].status1 == 0) {
+
+                            var cls1 = "liDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1 = " ";
+                            // stage2="未审核";
+                            // link="javascript:shieldPreJudge()";
+                            stage=1;
+                        } else if (data[i].status == 0 > now && data[i].status1 == 1) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1 = " ";
+                            // stage2="进行中";
+                            // link="javascript:shieldDone()";
+                            stage=2;
+                        } else if (data[i].status == 1 <= now && data[i].status2 == 0) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1="  ";
+                            // stage2="已自评";
+                            // link="javascript:shieldLastJudge()";
+                            stage=3;
+                        } else if (data[i].status2 == 1) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liDoing";
+                            // stage1="  ";
+                            // stage2="已总评";
+                            // link="javascript:shieldHistory()";
+                            stage=4;
+                        }
+                        html+=" <div class=\"main_style display \">\n" +
+                            "\n" +
+                            "        <input type='hidden' class='stuId' value=''/>\n" +
+                            "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
+                            "            <div class=\"left_grade\">"+year+"级</div>\n" +
+                                "\n" +
+                            "            <div class=\"liScroll display\">\n" +
+                            "                <div class=\""+cls1+"\">未审核</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls2+"\">进行中</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls3+"\">已自评</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls4+"\"> 已完结</div>\n" +
+                            "            </div>"+
+                            "            <li class=\"new_tip  \">\n" +
+                            "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
+                            "                    <div class=\"display new_tip_left\">\n" +
+                            "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
+                            "                        <div class=\"left_above display\">\n" +
+                            "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </a>"+
+                            // "    </div>"+
+                            "<div class=\"tip_right display\">\n" +
+                            "                    <div class=\"display new_tip_right\">\n" +
+                            "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报("+created+"到"+expiredd+")</b></a>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"right_state\">\n" +
+                            "<input type='hidden' class='planIdClass' value='"+data[i].planId+"'/> " +
+                            "<input type='hidden' class='planStage' value='"+stage+"' />"+
+                            // "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"display \" style=\"margin-top: 10px;color: #a5a5a5;\">最近更新：<span\n" +
+                            "                                class=\"time_disp\">"+optime+"</span></div>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n" +
+                            "            </li>\n" +
+                            "        </ul>\n" +
+                            "    </div>";
+                    }
+                }
+                $("#stuPlanList").html(html);
+            }
+        })
+    }
+    function getPlanInfByStageClick(){
+        $(".planInfClass").each(function (i) {
+            $(this).click(function () {
+                var stage= $(".planStage").eq(i).attr("value");
+                var planId=$(".planIdClass").eq(i).attr("value");
+                if (stage==1){
+                    //动态渲染
+                    firstJudgeInf(planId);
+                    shieldPreJudge();
+                } else if(stage==2){
+                    fjCatInf(planId);
+                    shieldDone();
+                } else if(stage==3){
+                    lastJudge(planId);
+                    shieldLastJudge()
+                }else if(stage==4){
+                    historyInf(planId);
+                    shieldHistory()
+                }
+            })
+        })
+    }
+    getStuPlanList();
+    getPlanInfByStageClick();
+</script>
+
+<div id="no_stu" style="display:none">
+    <div id="no_stu_word">
+        当前暂无学生，赶紧添加一个吧
+    </div>
+</div>
+<!--<script type="text/javascript" >-->
+<!--function getPlanList(){-->
+<!--var expId=GetCookie("COOKIE_EXPID");-->
+<!--$.ajax(({-->
+<!--type:"get",-->
+<!--async:false,-->
+<!--url:"/user/stuPlan/"+expId,-->
+<!--success:function (data) {-->
+<!--var html="";-->
+<!--for (var i=0;i<data.length;i++){-->
+<!--html+="<div class=\"main_style display \">\n" +-->
+<!--"\t\t\t<div>\n" +-->
+<!--"           \t \t<span class=\"title display\"><strong class=\"title_word\" ><div class=\"title_word_limit\"> "+data[i].nickname+"</div></strong></span>" +-->
+
+<!--"\t\t\t\t<div class=\"display geo\"  >\n" +-->
+<!--"\t\t\t\t\t\n" +-->
+<!--"\t\t\t\t\t<div class=\"box\">\n" +-->
+<!--"\t\t\t\t\t\t  <ul class=\"f-nav\">\n" +-->
+<!--"\t\t\t\t\t\t\t  <a  href=\"#\"><li class=\"doing\"> <div class=\"triangle\"></div></li></a>\n" +-->
+<!--"    <a  href=\"#\"><li>|</li></a>\n"+-->
+<!--"\t\t\t\t\t\t\t <a  href=\"#\"><li class=\"done\">已结束<div class=\"triangle\"></div></li></a>\n" +-->
+<!--"    <a  href=\"#\"><li>|</li></a>\n"+-->
+<!--"\t\t\t\t\t\t\t<a  href=\"#\"><li class=\"history\">记录<div class=\"triangle\"></div></li></a>\n" +-->
+<!--"\t\t\t\t\t\t</ul>\n" +-->
+<!--"\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t</div>\n" +-->
+<!--"\t\t\t</div>\n" +-->
+<!--"\t\t\t\n" +-->
+<!--"<input type='hidden' class='stuId' value='"+data[i].id+"'/>\n"+-->
+<!--"            <ul class=\"pre-scrollable cont addLi\" style=\"height: 240px;\" id='ul"+data[i].id+"'>";-->
+<!--var planList=data[i].plans;-->
+<!--for(var j=planList.length-1;j>=0;j&#45;&#45;) {-->
+<!--if (planList[j].status1 !=1) {-->
+<!--var expired = dateFormat(new Date(planList[j].expired));-->
+<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
+<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
+<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
+<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
+<!--"\t\t\t\t\t\t\t<b>" + planList[j].title + "</b>\n" +-->
+<!--"<a>\n" +-->
+<!--"    </a>\n" +-->
+<!--"\t\t\t\t\t\t</p>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"main_style_belly\">\n" +-->
+<!--"                        <div class=\"main_style_belly_word\">\n" +-->
+<!--"\t\t\t\t\t\t\t<div>" + planList[j].planDesc + "</div>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
+<!--"\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;\">" + expired + "截止</strong>" +-->
+<!--"              <input type='hidden' value='" + planList[j].id + "' class='planId'/>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"text1\">"+-->
+<!--"                        <div class=\"icon_temp\">\n" +-->
+<!--"                            <a  href=\"javascript:shieldPreJudge()\"><div class=\"judge_self\" style=\"margin-left: 10%;margin-top: -4%\"   type=\"div\"></div></a>\n" +-->
+<!--"                        </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                </li>";-->
+<!--}-->
+<!--}-->
+<!--html+="</ul>\n" +-->
+<!--"        </div>";-->
+<!--}-->
+<!--$("#stuPlanList").html(html);-->
+<!--$('.main_style_tip').hover(function(){-->
+<!--$('.text1',this).stop().animate({-->
+
+<!--//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，-->
+
+<!--//保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他-->
+
+<!--height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度-->
+<!--});-->
+<!--},function(){-->
+<!--$('.text1',this).stop().animate({-->
+<!--height:'0'-->
+<!--});-->
+<!--});-->
+<!--}-->
+<!--}))-->
+<!--}-->
+<!--function getDoingListByStuId(stuId) {-->
+<!--$.ajax({-->
+<!--type: "get",-->
+<!--async: false,-->
+<!--url: "/plan/getDoing/" + stuId,-->
+<!--success: function (data) {-->
+<!--var html = "";-->
+<!--for (var j = data.length - 1; j >= 0; j&#45;&#45;) {-->
+<!--var expired = dateFormat(new Date(data[j].expired));-->
+<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
+<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
+<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
+<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
+<!--"\t\t\t\t\t\t\t<b>" + data[j].title + "</b>" +-->
+<!--"<a></a>\n" +-->
+<!--"\t\t\t\t\t\t</p>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"main_style_belly\">\n" +-->
+<!--"                        <div class=\"main_style_belly_word\">\n" +-->
+<!--"\t\t\t\t\t\t\t<div>" + data[j].planDesc + "</div>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
+<!--"\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;\">" + expired + "截止</strong>" +-->
+<!--"              <input type='hidden' value='" + data[j].id + "' class='planId'/>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"text1\">"+-->
+<!--"                        <div class=\"icon_temp\">\n" +-->
+<!--"                            <a  href=\"#\"><div class=\"judge_self\" style=\"margin-left: 10%;margin-top: -4%\"   type=\"div\"></div></a>\n" +-->
+<!--"                        </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                </li>";-->
+<!--}-->
+<!--$("#ul" + stuId).html(html);-->
+<!--//绑定按钮-->
+<!--firstJudgeClick();clearPreWindow5();-->
+<!--$('.main_style_tip').hover(function(){-->
+<!--$('.text1',this).stop().animate({-->
+
+<!--//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，-->
+
+<!--//保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他-->
+
+<!--height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度-->
+<!--});-->
+<!--},function(){-->
+<!--$('.text1',this).stop().animate({-->
+<!--height:'0'-->
+<!--});-->
+<!--});-->
+<!--}-->
+<!--})-->
+<!--}-->
+<!--function getDoneListByStuId(stuId) {-->
+<!--$.ajax({-->
+<!--type: "get",-->
+<!--async: false,-->
+<!--url: "/plan/getDoneListByStuId/" + stuId,-->
+<!--success: function (data) {-->
+<!--var html = "";-->
+<!--for (var j = data.length - 1; j >= 0; j&#45;&#45;) {-->
+<!--var expired = dateFormat(new Date(data[j].expired));-->
+<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
+<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
+<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
+<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
+<!--"\t\t\t\t\t\t\t<b>" + data[j].title + "</b>" +-->
+<!--"<a></a>\n" +-->
+<!--"\t\t\t\t\t\t</p>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"main_style_belly\">\n" +-->
+<!--"                        <div class=\"main_style_belly_word\">\n" +-->
+<!--"\t\t\t\t\t\t\t<div>" + data[j].planDesc + "</div>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
+<!--"\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;\">" + expired + "截止</strong>" +-->
+<!--"              <input type='hidden' value='" + data[j].id + "' class='expiredPlanId'/>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"text1\">"+-->
+<!--"                        <div class=\"icon_temp\">\n" +-->
+<!--"                            <a  href=\"#\"><div class=\"judge_self1\" style=\"margin-left: 10%;margin-top: -4%\" type=\"div\"></div></a>\n" +-->
+<!--"                        </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                </li>";-->
+<!--}-->
+<!--$("#ul" + stuId).html(html);-->
+<!--//绑定新增的评价按钮-->
+<!--secondJudgeClick();clearLastWindow5();-->
+<!--$('.main_style_tip').hover(function(){-->
+<!--$('.text1',this).stop().animate({-->
+
+<!--//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，-->
+
+<!--//保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他-->
+
+<!--height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度-->
+<!--});-->
+<!--},function(){-->
+<!--$('.text1',this).stop().animate({-->
+<!--height:'0'-->
+<!--});-->
+<!--});-->
+<!--}-->
+<!--})-->
+<!--}-->
+<!--function getHistoryListByStuId(stuId) {-->
+<!--$.ajax({-->
+<!--type: "get",-->
+<!--async: false,-->
+<!--url: "/plan/getHistoryListByStuId/" + stuId,-->
+<!--success: function (data) {-->
+<!--var html = "";-->
+<!--for (var j = 0;j<data.length; j++) {-->
+<!--var expired = dateFormat(new Date(data[j].expired));-->
+<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
+<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
+<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
+<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
+<!--"\t\t\t\t\t\t\t<b>" + data[j].title + "</b>\n" +-->
+<!--"\t\t\t\t\t\t\t<a class=\"tip_word_a\"  href=\"#\">\n" +-->
+<!--"\t\t\t\t\t\t\t\t<img class=\"word_title_img\" style=\"margin-top: -55px;\" src=\"/images/document.png\" alt=\"查看详情\">\n" +-->
+<!--"\t\t\t\t\t\t\t</a>\n" +-->
+<!--"\t\t\t\t\t\t</p>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    <div class=\"main_style_belly\">\n" +-->
+<!--"                        <div class=\"main_style_belly_word\">\n" +-->
+<!--"\t\t\t\t\t\t\t<div>" + data[j].planDesc + "</div>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
+<!--"\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;\">" + expired + "截止</strong>" +-->
+<!--"              <input type='hidden' value='" + data[j].id + "' class='historyPlanId'/>\n" +-->
+<!--"\t\t\t\t\t\t</div>\n" +-->
+<!--"\t\t\t\t\t\t\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                    </div>\n" +-->
+<!--"                </li>";-->
+<!--}-->
+<!--$("#ul" + stuId).html(html);-->
+
+<!--}-->
+<!--})-->
+<!--}-->
+
+<!--function doingClick() {-->
+<!--//绑定进行按钮-->
+<!--$(".doing").each(function (i) {-->
+<!--$(this).click(function () {-->
+<!--var stuId=$(".stuId").eq(i).attr("value");-->
+<!--getDoingListByStuId(stuId,i);-->
+<!--})-->
+<!--})-->
+<!--}-->
+<!--function doneClick() {-->
+<!--//绑定已结束按钮-->
+<!--$(".done").each(function (i) {-->
+<!--$(this).click(function () {-->
+<!--var stuId = $(".stuId").eq(i).attr("value");-->
+<!--getDoneListByStuId(stuId, i);-->
+<!--})-->
+<!--})-->
+<!--}-->
+<!--function historyClick() {-->
+<!--//绑定记录按钮-->
+<!--$(".history").each(function (i) {-->
+<!--$(this).click(function () {-->
+<!--var stuId = $(".stuId").eq(i).attr("value");-->
+<!--getHistoryListByStuId(stuId, i);-->
+<!--dtClick();-->
+<!--})-->
+<!--})-->
+<!--}-->
+<!--//-->
+<!--// function doneClick() {-->
+<!--//     //绑定已结束按钮-->
+<!--//     $(".done").each(function (i) {-->
+<!--//         $(this).click(function () {-->
+<!--//             alert(i);-->
+<!--//             var stuId=$(".stuId").eq(i).attr("value");-->
+<!--//             alert(stuId);-->
+<!--//             //点击已结束，动态渲染html-->
+<!--//             $.ajax({-->
+<!--//                 type:"get",-->
+<!--//                 async:false,-->
+<!--//                 url:"/plan/getExpiredList/"+stuId,-->
+<!--//                 success:function (data) {-->
+<!--//                     var html="";-->
+<!--//                     for(var j=data.length-1;j>=0;j&#45;&#45;){-->
+<!--//                         if (data[j].status2==0) {-->
+<!--//                             var expired = dateFormat(new Date(data[j].expired));-->
+<!--//                             html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
+<!--//                                 "                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
+<!--//                                 "                    <div class=\"main_style_tip_word display\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t<b>" + data[j].title + "</b>\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t<a class=\"tip_word_a\"  href=\"javascript:shield4()\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t\t<img class=\"word_title_img\" style=\"margin-top: -55px;\" src=\"/images/document.png\" alt=\"查看详情\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t</a>\n" +-->
+<!--//                                 "\t\t\t\t\t\t</p>\n" +-->
+<!--//                                 "\t\t\t\t\t\t\n" +-->
+<!--//                                 "                    <div class=\"main_style_belly\">\n" +-->
+<!--//                                 "                        <div class=\"main_style_belly_word\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t<div>" + data[j].planDesc + "</div>\n" +-->
+<!--//                                 "\t\t\t\t\t\t</div>\n" +-->
+<!--//                                 "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
+<!--//                                 "\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;color: #fff;font-size: 0.9em;\">" + expired + "截止</strong>" +-->
+<!--//                                 "              <input type='hidden' value='" + data[j].id + "' class='expiredPlanId'/>\n" +-->
+<!--//                                 "\t\t\t\t\t\t</div>\n" +-->
+<!--//                                 "\t\t\t\t\t\t\n" +-->
+<!--//                                 "                        <div class=\"icon_temp\">\n" +-->
+<!--//                                 "                            <a  href=\"javascript:shieldPreJudge()\"><button class=\"judge_self1\" style=\"margin-top:5px;\" type=\"button\">评价</button></a>\n" +-->
+<!--//                                 "                        </div>\n" +-->
+<!--//                                 "                    </div>\n" +-->
+<!--//                                 "                    </div>\n" +-->
+<!--//                                 "                </li>";-->
+<!--//                         }-->
+<!--//                     }-->
+<!--//                     $("#ul"+i).html(html);-->
+<!--//                 }-->
+<!--//             })-->
+<!--//         })-->
+<!--//     })-->
+<!--// }-->
+<!--//-->
+<!--getPlanList();-->
+<!--</script>-->
+<script>
+    window.onload = function () {
+        // alert('a')
+
+        $('.triangle').stop().animate({
+            height: '100%'
+        });
+    }
+    $('.f-nav li').click(function () {
+
+        $('.triangle', this).stop().animate({
+            height: '0'
+        });
+    })
+    $('.f-nav li').hover(function () {
+        $('.triangle', this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+            //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+            // $('.triangle').css('display','')
+
+            height: '0'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+        });
+    }, function () {
+        $('.triangle', this).stop().animate({
+            height: '100%'
+        });
+    });
+</script>
+<script>
+    var man = document.getElementsByClassName("main_style");
+    for (var i = 0; i < man.length; i++) {
+
+        man[i].onmouseover = function () {
+            // alert(i);
+            break;
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var zindex = 10;
+
+        $("div.main_style_tip").click(function (e) {
+            e.preventDefault();
+
+            var isShowing = false;
+
+            if ($(this).hasClass("show")) {
+                isShowing = true
+            }
+
+            if ($("div.main").hasClass("showing")) {
+                // a card is already in view
+                $("div.main_style_tip.show")
+                    .removeClass("show");
+
+                if (isShowing) {
+                    // this card was showing - reset the grid
+                    $("div.main_style_tip")
+                        .removeClass("showing");
+                } else {
+                    // this card isn't showing - get in with it
+                    $(this)
+                        .css({zIndex: zindex})
+                        .addClass("show");
+
+                }
+
+                zindex++;
+
+            } else {
+                // no cards in view
+                $("div.main_style_tip")
+                    .addClass("showing");
+                $(this)
+                    .css({zIndex: zindex})
+                    .addClass("show");
+
+                zindex++;
+            }
+
+        });
+    });
+</script>
+<script type="text/javascript" th:inline="javascript">
+    clickJoinAgree();
+    clickJoinRefuse();
+
+    function clickJoinAgree() {
+        $(".cont_btn_agree").each(function (i) {
+            $(this).click(function () {
+                var stuId = $(".stuIdJoin").eq(i).attr("value");
+                var expId = [[${expId}]];
+                var tutorId = GetCookie("COOKIE_ID");
+                //更新pms_user_stu表
+                $.post("/user/sucJoin", {stuId: stuId, expId: expId, tutorId: tutorId});
+                //更新pms_join表status字段
+                var id = $(".joinId").eq(i).attr("value");
+                $.post("/stu/updateJoinStatus", {id: id, status: 1});
+                alert("已同意该学生加入实验室!", "", function () {
+                }, {type: 'success', confirmButtonText: 'OK'});
+                //再次执行script代码刷新标签
+                getJoinMessage();
+                //标签刷新
+                //$("#getJoinByExpId").location.reload();
+                //递归绑定
+                getPlanList();
+                clickJoinAgree();
+                clickJoinRefuse();
+            })
+        });
+    }
+
+    function clickJoinRefuse() {
+        $(".cont_btn_refuse").each(function (i) {
+            $(this).click(function () {
+                //拒绝逻辑，更新pms_join表status字段
+                var id = $(".joinId").eq(i).attr("value");
+                $.post("/stu/updateJoinStatus", {id: id, status: 2});
+                alert("您已拒绝该申请!", "", function () {
+                }, {type: 'info', confirmButtonText: 'OK'});
+                //再次执行script代码刷新标签
+                getJoinMessage();
+                //标签刷新
+                //$("#getJoinByExpId").location.reload();
+                clickJoinRefuse(); //递归绑定
+                clickJoinAgree();
+            })
+        })
+    }
+</script>
+<!--<script type="text/javascript">-->
+<!--submitBtnClick();-->
+<!--sjJudgeSumbitButClick();-->
+<!--historyClick();-->
+<!--doingClick();-->
+<!--</script>-->
+<script charset="utf-8" type="text/javascript" src="/js/jquery1.js"></script>
+<script charset="utf-8" type="text/javascript" src="/js/theme1.js"></script>
+<div id="test4444"></div>
+<div id="testPreJud"></div>
+<div id="testLastJud"></div>
+<div id="testDoing"></div>
+<div id="testDone"></div>
+<div id="testHistory"></div>
+<script>
+    $('.main_style_tip').hover(function () {
+        $('.text1', this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+            //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+            height: '220px'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+        });
+    }, function () {
+        $('.text1', this).stop().animate({
+            height: '0'
+        });
+    });
+</script>
+<script>
+
+    var test = document.getElementsByClassName('main_style');
+    var have = document.getElementById('stuPlanList');
+    var none = document.getElementById('no_stu');
+    if (test.length == 0) {
+        have.style.display = "none";
+        none.style.display = "";
+    }
+</script>
+<script>
+    var test = document.getElementsByClassName('main_style');
+    var back = document.getElementById('body_back_tea');
+    if (test.length <= 3) {
+        back.style.height = '100%';
+    }
+    else {
+        back.style.height = '';
+
+    }
+</script>
+
+<!--<script type="text/javascript">-->
+<!--// 确认提交-->
+<!--var sub1 = document.getElementById('submitBtn');-->
+<!--var sub2 = document.getElementById('sjSubmitBut');-->
+<!--sub1.onclick = function () {-->
+<!---->
+<!---->
+<!---->
+<!--var s = document.getElementById("testPreJud");-->
+<!--s.style.display = "none";-->
+
+<!--var l = document.getElementById("log_First_Jud");-->
+<!--l.style.display = "none";-->
+
+<!--}-->
+<!--sub2.onclick = function () {-->
+<!--var s = document.getElementById("testLastJud");-->
+<!--s.style.display = "none";-->
+
+<!--var l = document.getElementById("log_Last_Jud");-->
+<!--l.style.display = "none";-->
+
+<!--}-->
+
+<!--</script>-->
+<script>
+    var searTea = document.getElementById('search_tea');
+    var sear_around = document.getElementById('sear_around');
+    var self_info = document.getElementById('self_info');
+    var self_around = document.getElementById('self_around');
+    searTea.onclick = function () {
+        // sear_around.style.display='inline-block';
+        self_around.style.display = 'none';
+    }
+    self_info.onclick = function () {
+        sear_around.style.display = 'none';
+        // self_around.style.display='block';
+    }
+
+</script>
+
+<div id="test1111"></div>
+<div id="test2222"></div>
+<div id="test3333"></div>
+<div id="test4444"></div>
+</body>
+</html>

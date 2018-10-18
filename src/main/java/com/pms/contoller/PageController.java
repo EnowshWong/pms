@@ -39,4 +39,16 @@ public class PageController {
         model.addAttribute("expName",pmsExp.getExpName());
         return "tea_task";
     }
+
+    @RequestMapping("/tea_assist_page")
+    public String showTeaAsssisPage(HttpServletRequest request,HttpServletResponse response,Model model,long expId){
+        //根据实验室id查询实验室具体信息
+        PmsExp pmsExp = expService.getExpById(expId);
+        //将实验室id写入Cookie
+
+        CookieUtils.setCookie(request, response,COOKIE_EXPID, expId+"");
+        model.addAttribute("expId",expId);
+        model.addAttribute("expName",pmsExp.getExpName());
+        return "tea_task_assist";
+    }
 }

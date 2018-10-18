@@ -617,13 +617,13 @@
     </style>
 
 
-    <link href="../static/daterangepicker/bootstrap.min-date.css" rel="stylesheet">
-    <link href="../static/daterangepicker/fon-awesome.min-date.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="all" href="../static/daterangepicker/daterangepicker-bs3-date.css" />
-    <script type="text/javascript" src="../static/daterangepicker/jquery-1.8.3.min-date.js"></script>
-    <script type="text/javascript" src="../static/daterangepicker/bootstrap.min-date.js"></script>
-    <script type="text/javascript" src="../static/daterangepicker/moment-date.js"></script>
-    <script type="text/javascript" src="../static/daterangepicker/daterangepicker-date.js"></script>
+    <link href="/daterangepicker/bootstrap.min-date.css" rel="stylesheet">
+    <link href="/daterangepicker/fon-awesome.min-date.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="/daterangepicker/daterangepicker-bs3-date.css" />
+    <script type="text/javascript" src="/daterangepicker/jquery-1.8.3.min-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/bootstrap.min-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/moment-date.js"></script>
+    <script type="text/javascript" src="/daterangepicker/daterangepicker-date.js"></script>
 
 </head>
 
@@ -1165,26 +1165,38 @@
 
             <li class="main_style_tip">
                 <span>
-                                    <img class="main_style_tip_img" src="../static/images/tip.png">
-                                 </span>
+                    <img class="main_style_tip_img" src="../static/images/tip.png">
+                 </span>
                 <div class="main_style_tip_word">
                     <p class="tip_word_title">
-                        <b>计划标题</b>
+                        <b class="weeekTime">
+                            周报(2018/1/1--2018/2/2)
+                        </b>
                         <a   href="#" class=''>
                         </a>
                     </p>
                     <div class="main_style_belly">
                         <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
+
+                        <div class="liScroll display">
+                            <div class="liDoing">未审核</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">进行中</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已截止</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已自评</div>
+                        </div>
                         <div class="icon_time display">
-                            <div class="display icon_time_check" style="" >已评价</div>
-                            <strong  class="display icon_time_deadline">2018-4-4截止</strong>
+                            <!--<div class="display icon_time_check" style="" >已评价</div>-->
+                            <!--<strong  class="display icon_time_deadline">2018-4-4截止</strong>-->
                             <input type='hidden' class='expiredPlanId' value=""/>
                             <input type='hidden' class='expiredPlanStatus2' value="" />
                         </div>
                         <div class='text1'>
                             <div class="icon_temp_done">
-                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:15%;vertical-align: middle;display:inline-block;"></button>-->
-                                <a href='javascript:shield4()' class='detailedExpiredPlan'>
+                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>-->
+                                <a href='#' class='detailedInf'>
                                     <div style="background: url('../static/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;" >
 
                                     </div>
@@ -1193,8 +1205,140 @@
                         </div>
                     </div>
                 </div>
-            </li>
 
+            </li>
+            <li class="main_style_tip">
+                <span>
+                    <img class="main_style_tip_img" src="../static/images/tip.png">
+                 </span>
+                <div class="main_style_tip_word">
+                    <p class="tip_word_title">
+                        <b class="weeekTime">
+                            周报(2018/1/1--2018/2/2)
+                        </b>
+                        <a   href="#" class=''>
+                        </a>
+                    </p>
+                    <div class="main_style_belly">
+                        <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
+
+                        <div class="liScroll display">
+                            <div class="liUnDoing">未审核</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liDoing">进行中</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已截止</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已自评</div>
+                        </div>
+                        <div class="icon_time display">
+                            <!--<div class="display icon_time_check" style="" >已评价</div>-->
+                            <!--<strong  class="display icon_time_deadline">2018-4-4截止</strong>-->
+                            <input type='hidden' class='expiredPlanId' value=""/>
+                            <input type='hidden' class='expiredPlanStatus2' value="" />
+                        </div>
+                        <div class='text1'>
+                            <div class="icon_temp_done">
+                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>-->
+                                <a href='javascript:shield3()' class='detailedInf'>
+                                    <div style="background: url('../static/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;" >
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li class="main_style_tip">
+                <span>
+                    <img class="main_style_tip_img" src="../static/images/tip.png">
+                 </span>
+                <div class="main_style_tip_word">
+                    <p class="tip_word_title">
+                        <b class="weeekTime">
+                            周报(2018/1/1--2018/2/2)
+                        </b>
+                        <a   href="#" class=''>
+                        </a>
+                    </p>
+                    <div class="main_style_belly">
+                        <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
+
+                        <div class="liScroll display">
+                            <div class="liUnDoing">未审核</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">进行中</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liDoing">已截止</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已自评</div>
+                        </div>
+                        <div class="icon_time display">
+                            <!--<div class="display icon_time_check" style="" >已评价</div>-->
+                            <!--<strong  class="display icon_time_deadline">2018-4-4截止</strong>-->
+                            <input type='hidden' class='expiredPlanId' value=""/>
+                            <input type='hidden' class='expiredPlanStatus2' value="" />
+                        </div>
+                        <div class='text1'>
+                            <div class="icon_temp_done">
+                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>-->
+                                <a href='javascript:shield5()' class='judge_self'>
+                                    <div style="background: url('../static/images/modify.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;" >
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li class="main_style_tip">
+                <span>
+                    <img class="main_style_tip_img" src="../static/images/tip.png">
+                 </span>
+                <div class="main_style_tip_word">
+                    <p class="tip_word_title">
+                        <b class="weeekTime">
+                            周报(2018/1/1--2018/2/2)
+                        </b>
+                        <a   href="#" class=''>
+                        </a>
+                    </p>
+                    <div class="main_style_belly">
+                        <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
+
+                        <div class="liScroll display">
+                            <div class="liUnDoing">未审核</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">进行中</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liUnDoing">已截止</div>
+                            <div class="liWid display">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            <div class="liDoing">已自评</div>
+                        </div>
+                        <div class="icon_time display">
+                            <!--<div class="display icon_time_check" style="" >已评价</div>-->
+                            <!--<strong  class="display icon_time_deadline">2018-4-4截止</strong>-->
+                            <input type='hidden' class='expiredPlanId' value=""/>
+                            <input type='hidden' class='expiredPlanStatus2' value="" />
+                        </div>
+                        <div class='text1'>
+                            <div class="icon_temp_done">
+                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>-->
+                                <a href='#' class='detailedExpiredPlan'>
+                                    <div style="background: url('../static/images/modify.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;" >
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
 
         </ul>
 
@@ -1307,26 +1451,47 @@
 
         <span style="width:37%;display: inline-block;"></span>
         <span class="title" style=""><strong class="title_word" style="color: #000;">已完结</strong></span>
-        <ul class="" id="addLi3" style="overflow-y: scroll;display: none">
+        <ul class="" id="addLi3" style="overflow-y: scroll;">
 
+            <li class="main_style_tip">
+                <span>
+                    <img class="main_style_tip_img" src="../static/images/tip.png">
+                 </span>
+                <div class="main_style_tip_word">
+                    <p class="tip_word_title">
+                        <b class="weeekTime">
+                            周报(2018/1/1--2018/2/2)
+                        </b>
+                        <a   href="#" class=''>
+                        </a>
+                    </p>
+                    <div class="main_style_belly">
+                        <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
+
+                        <div class="icon_time display">
+                            <!--<div class="display icon_time_check" style="" >已评价</div>-->
+                            <!--<strong  class="display icon_time_deadline">2018-4-4截止</strong>-->
+                            <input type='hidden' class='expiredPlanId' value=""/>
+                            <input type='hidden' class='expiredPlanStatus2' value="" />
+                        </div>
+                        <div class='text1'>
+                            <div class="icon_temp_done">
+                                <!--<button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>-->
+                                <a href='#' class='detailedExpiredPlan'>
+                                    <div style="background: url('../static/images/modify.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;" >
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
         </ul>
 
-        <ul class="" id="addLi3_none" style="overflow-y: scroll;">
 
 
-        </ul>
-
-
-        <div class="display" id="swap">
-            <span class="display" id="wrap_none">
-                <div class="wrap_none_word">未自评</div>
-                <div class="display" id="tri1"><div id="tri11"></div></div>
-            </span>
-            <span class="display" id="wrap_judge">
-                <div class="wrap_none_word">已自评</div>
-                <div class="display" id="tri2"><div id="tri22" style="display: none;"></div></div>
-            </span>
-        </div>
         <script>
             var judge=document.getElementById('wrap_judge');
             var judge_none=document.getElementById('wrap_none');
