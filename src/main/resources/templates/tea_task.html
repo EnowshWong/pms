@@ -688,6 +688,193 @@
 
         };
     </script>
+
+    <style>
+
+        #test1111 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test2222 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test3333 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+        #test4444 {
+            width:100%;
+            height:100%;
+            background-color:#000;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:2;
+            opacity:0.3;
+            /*兼容IE8及以下版本浏览器*/
+            filter: alpha(opacity=30);
+            display:none;
+        }
+
+        #log_add {
+            width:840px;
+            height:500px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_stu {
+            width:840px;
+            height:500px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_register {
+            width:300px;
+            height:200px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display:none;
+        }
+        #log_add_choose {
+            width:300px;
+            height:150px;
+            border-radius: 10px;
+            background-color:#fff;
+            /*border: 1px solid red;*/
+            margin: auto;
+            position: absolute;
+            z-index:3;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+    </style>
+    <script>
+
+        function shield1(){
+            var s = document.getElementById("test1111");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "block";
+        }
+
+        function cancel_shield1(){
+
+            var s = document.getElementById("test1111");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "none";
+        }
+
+        function cancel_shield2(){
+
+            var s = document.getElementById("test2222");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "none";
+        }
+
+        function cancel_shield3(){
+
+            var s = document.getElementById("test3333");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "none";
+        }
+        function shield4(){
+            var s = document.getElementById("test4444");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "block";
+        }
+
+        function cancel_shield4(){
+
+            var s = document.getElementById("test4444");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "none";
+        }
+        function shield2(){
+            var s = document.getElementById("test2222");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "block";
+            cancel_shield4();
+        }
+        function shield3(){
+            var s = document.getElementById("test3333");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "block";
+            cancel_shield4();
+        }
+    </script>
+
 </head>
 
 
@@ -840,7 +1027,7 @@
         <div class="display" id="submitBtn_hid" style="margin-left:380px;height: 34px;line-height: 34px;">确认提交</div>
         <script>
 
-                $("#backArea0").attr("value", "");
+            $("#backArea0").attr("value", "");
 
         </script>
 
@@ -851,7 +1038,7 @@
             </div>
             <div class="display" id="back_area">
 
-            <textarea class="form-control" id="backArea0" oninput="submitChange1(this)" rows="3" style="width:418px;margin-left: 75px;margin-top: 10px;" placeholder="请输入驳回信息"></textarea>
+                <textarea class="form-control" id="backArea0" oninput="submitChange1(this)" rows="3" style="width:418px;margin-left: 75px;margin-top: 10px;" placeholder="请输入驳回信息"></textarea>
                 <button class="btn btn-info display" id="backBtn" style="margin-left:380px;margin-top: 20px;display:none" onclick="fadebackBtn()">确认提交</button>
                 <div class="display" id="backBtn_hid" style="height: 34px;line-height: 34px;">确认提交</div>
             </div>
@@ -1514,13 +1701,232 @@
                 <img class="display detail_title_img " src="/images/star0.png">
                 <span style="vertical-align: middle;" class="display  detail_title_word">总评</span>
                 <span style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
-                    id="hsGrade">A</span>
+                      id="hsGrade">A</span>
                 <span class="preJudgeWord" id="hsCreated2">123</span></div>
             <div class="detail_word" id="hsSjContent">
                 挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
             </div>
         </div>
     </div>
+</div>
+
+<div id="log_add" >
+    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+    <div id="md-close1"><a href="javascript:cancel_shield1()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
+    <div  id="addSearchTea">
+        <input id="teaInput" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
+        <button id="teaInputBtn" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
+    </div>
+    <hr class="addHr"/>
+    <div class="addDetail" id="addDetailTea">
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addTeaClick() {
+        $(".addTeaClass").each(function (i) {
+            $(this).click(function () {
+                var teaId=$(".teaIdClass").eq(i).val();
+                var expId=GetCookie("COOKIE_EXPID");
+                $.post("/expTea/create",{tutorId:teaId,expId:expId},function (data) {
+                    if (data.status==200)
+                        alert("添加成功");
+                })
+            })
+        })
+    }
+    function openTeaSearch() {
+        var tutorId=GetCookie("COOKIE_ID");
+        $.ajax({
+            type:"get",
+            async:false,
+            url:"/user/getTeaList",
+            success:function (data) {
+                var html="";
+                for(var i=0;i<data.length;i++){
+                    if (data[i].id==tutorId)
+                        continue;
+                    var nickname=data[i].nickname;
+                    html+="<div class=\"addDetailTip \">\n" +
+                        "            <div class=\"addDetailTipImg display\">"+nickname[0]+"</div>\n" +
+                        "            <div class=\"addDetailTipWord display\">\n" +
+                        "                <div class=\"wordName display\">"+nickname+"</div>\n" +
+                        "<input type='hidden' class='teaIdClass' value='"+data[i].id+"' />" +
+                        "                <button class=\"wordBtn btn btn-info display addTeaClass\">添加</button>\n" +
+                        "            </div>\n" +
+                        "        </div>";
+                }
+                $("#addDetailTea").html(html);
+                //弹出窗口才绑定按钮
+                addTeaClick();
+                shield1();
+            }
+        })
+    }
+
+
+</script>
+
+<div id="log_add_stu" >
+    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+    <div id="md-close2"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
+    <div  id="addSearchStu">
+        <input id="teaInput_stu" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
+        <button id="teaInputBtn_stu" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
+        <span id="registerStu" class="display">
+            <!--<a href="javascript:shield3()">注册学生账号</a>-->
+        </span>
+    </div>
+    <hr id="addHr"/>
+    <div id="addDetailStu">
+        <div class="addDetailTip" >
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="log_add_choose">
+    <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+
+    <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <div class="chooseWord">请选择</div>
+    <div class="chooseCho">
+        <a href="#"> <button class="chooseChoSearch btn btn-info"  onclick="addStuClick()">添加学生</button></a>
+        <a href="javascript:shield3()"><button class="chooseChoAdd btn btn-info">注册账号</button></a>
+    </div>
+    <script>
+        function addStuClick() {
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/user/getStuListWithoutExp",
+                success:function (data) {
+                    var html="";
+                    for(var i=0;i<data.length;i++){
+                        var nickname=data[i].nickname;
+                        html+="<div class=\"addDetailTip \">\n" +
+                            "            <div class=\"addDetailTipImg display\">"+nickname[0]+"</div>\n" +
+                            "            <div class=\"addDetailTipWord display\">\n" +
+                            "                <div class=\"wordName display\">"+nickname+"</div>\n" +
+                            "                <button class=\"wordBtn btn btn-info display\">添加</button>\n" +
+                            "            </div>\n" +
+                            "        </div>";
+
+                    }
+                    $("#addDetailStu").html(html);
+                    shield2();
+                }
+            })
+        }
+    </script>
+
+</div>
+<div id="log_add_register" >
+    <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+
+    <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <input id="nickname" type="text" class="form-control registerName" style="width: 50%;margin-top: 30px;" placeholder="请输入学生姓名"/>
+    <input id="username" type="text" class="form-control registerName" style="width: 50%;" placeholder="请输入账号"/>
+    <a href="#" style="color: #fff;"><button id="registerBtn" type="button" class="btn btn-info" onclick="doRegisterStu()">确定</button></a>
+    <script>
+        function doRegisterStu() {
+            var nickname=$("#nickname").val();
+            var username=$("#username").val();
+            var expId=GetCookie("COOKIE_EXPID");
+            var tutorId=GetCookie("COOKIE_ID");
+            var passwordDef="123456";
+            if (nickname.length>5){
+                alert("姓名长度过长");
+                return;
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(username)){
+                alert("用户名输入非法，请重新输入");
+                return;
+            }
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"/user/stu/register",
+                data:{username:username,password:passwordDef,nickname:nickname,expId:expId,tutorId:tutorId},
+                success:function (data) {
+                    if (data.status==200){
+                        alert("添加学生成功");
+                    }
+                }
+            });
+            cancel_shield3();
+            //刷新
+            getStuPlanList();
+        }
+    </script>
 </div>
 <script type="text/javascript">
     function historyInf(planId) {
@@ -1592,18 +1998,34 @@
     <div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;">
         <center>  实验室科研计划管理平台</center>
     </div>
-    <div style="width: 6%" class="display"></div>
+    <div style="width: 8%" class="display"></div>
     <div id="banner_right" style="padding: 0;" class="display">
-        <div class="display" style="width: 35%;">
+        <div class="display" style="width: 0;">
         </div>
-        <div style="width: 60%;" class="display">
+        <div style="width: 90%;padding-left: 14%;" class="display">
             <img src="/images/question.png" style="width:25px;margin-left: 20px;">
             <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
+            <a href="#"> <img src="/images/addPerson.png" id="add_Person" style="width: 30px;margin-left: 20px;"></a>
             <a class="test2" href="javascript:void(0)"><img id="search_tea" src="/images/message.png"
                                                             style="width:25px;margin-left: 20px;"></a>
-
-
             <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+        </div>
+        <div id="add_around">
+
+            <div id="add_float" class="display">
+                <div style="margin-top: 5px;margin-bottom: 5px;">
+                    <a href="javascript:openTeaSearch()">
+                        <div class="self_mesg" id="self_tea_set">
+                            <span id="addTea_set">老师</span>
+                        </div>
+                    </a>
+                    <a href="javascript:shield4()">
+                        <div class="self_mesg" id="self_stu_out">
+                            <span id="addStu_out">学生</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
         <div id="self_around">
             <div id="self_float" class="display">
@@ -1621,6 +2043,28 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+
+            $addb1 = $("#add_around");
+            var addsea1 = document.getElementById("add_around")
+            $("#add_Person").on({
+                "click": function () {
+                    $addb1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'add_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#add_around').css('display', 'none');
+            });
+        </script>
 
         <script type="text/javascript">
 
@@ -1778,6 +2222,104 @@
 </div>
 <div id="stuPlanList" >
 
+    <div class="main_style display ">
+
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip  ">
+                <a href="tea_detail副本2.html">
+                    <div class="display new_tip_left">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </div>
+                </a>
+
+            </li>
+
+
+        </ul>
+    </div>
+    <div class="main_style display ">
+
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip">
+                <div class="display new_tip_left">
+                    <a href="tea_detail副本.html">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三三丰</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </a>
+                </div>
+                <div class="display tip_right ">
+                    <div class="display new_tip_right">
+                        <!--<div class="  main_style_tip">-->
+                        <div class="display right_title">
+                            <a href="javascript:shieldPreJudge()">
+                                <b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b>
+                            </a>
+                        </div>
+                        <div class="right_state">
+                            <!--<div class=" right_state_running display"> </div>-->
+                            <div class="right_state_nonJudge display">未审核</div>
+                        </div>
+                    </div>
+                    <span class="time_ope">
+                        <!--<div class="display time_ope_line"></div>-->
+                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">
+                            最近更新：<span class="time_disp">2018-1-1</span>
+                        </div>
+                        <!--<div class="display time_ope_line"></div>-->
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main_style display ">
+        <input type='hidden' class='stuId' value=''/>
+        <ul class=" cont addLi" style="height: 240px;">
+            <div class="left_grade">大三</div>
+            <li class="new_tip  ">
+                <a href="tea_detail副本2.html">
+                    <div class="display new_tip_left">
+                        <div class="left_pic display">张</div>
+                        <div class="left_above display">
+                            <strong class="left_name">张三</strong>
+                            <!--<div class="left_grade">大三</div>-->
+                        </div>
+                    </div>
+                </a>
+                <div class="display tip_right ">
+                    <div class="display new_tip_right">
+                        <div class="display right_title"><a href="javascript:shieldDone()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
+                        </div>
+                        <div class="right_state">
+                            <!--<div class=" right_state_running display"> </div>-->
+                            <div class=" right_state_judge display">已审核</div>
+                        </div>
+                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
+                                class="time_disp">2018-1-1</span></div>
+                    </div>
+                </div>
+                <div class="text1">
+                    <div class="icon_temp">
+                        <a href="javascript:shieldLastJudge()">
+                            <div class="judge_self" style="margin-left: 10%;margin-top: -4%" type="div"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
 
 
 </div>
@@ -1796,69 +2338,106 @@
                     var optime = dateFormat(new Date(data[i].optime));
                     var created = dateFormat(new Date(data[i].created));
                     var expiredd = dateFormat(new Date(data[i].expired));
-                    // alert(expired);
-                    //stage有5种状态
-                    //1.空           plan_id==null
-                    //2. -未审核 expired>curdate-status1==0
-                    //3. -已审核 expired>curdate-status1==1
-                    //4.截止-未总评   expired<curdate-status2==0
-                    //5.截止-已总评   expired<curdate-status2==1
-                    //学生信息
-                    html+=" <div class=\"main_style display \">\n" +
-                        "\n" +
-                        "        <input type='hidden' class='stuId' value=''/>\n" +
-                        "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
-                        "            <div class=\"left_grade\">"+year+"级</div>\n" +
-                        "            <li class=\"new_tip  \">\n" +
-                        "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
-                        "                    <div class=\"display new_tip_left\">\n" +
-                        "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
-                        "                        <div class=\"left_above display\">\n" +
-                        "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
-                        "                        </div>\n" +
-                        "                    </div>\n" +
-                        "                </a>";
+
                     if (data[i].planId==null){
-                        html+=" </li>\n" +
+                        html+=" <div class=\"main_style display \">\n" +
+                            "\n" +
+                            "        <input type='hidden' class='stuId' value=''/>\n" +
+                            "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
+                            "            <div class=\"left_grade\">"+year+"级</div>\n" +
+                            "            <li class=\"new_tip  \">\n" +
+                            "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
+                            "                    <div class=\"display new_tip_left\">\n" +
+                            "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
+                            "                        <div class=\"left_above display\">\n" +
+                            "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </a>"+
+                            "            </li>\n" +
                             "        </ul>\n" +
                             "    </div>";
                     }
                     else {
                         var stage;
-                        var stage1 = "";
-                        var stage2 = "";
+                        var cls1 = "";
+                        var cls2 = "";
+                        var cls3 = "";
+                        var cls4 = "";
                         var link="";
                         var expired = new Date(data[i].expired);
                         var now = new Date();
-                        if (expired > now && data[i].status1 == 0) {
-                            stage1 = " ";
-                            stage2="未审核";
-                            link="javascript:shieldPreJudge()";
+                        if ( data[i].status1 == 0) {
+
+                            var cls1 = "liDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1 = " ";
+                            // stage2="未审核";
+                            // link="javascript:shieldPreJudge()";
                             stage=1;
-                        } else if (expired > now && data[i].status1 == 1) {
-                            stage1 = " ";
-                            stage2="已审核";
-                            link="javascript:shieldDone()";
+                        } else if (data[i].status == 0 > now && data[i].status1 == 1) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1 = " ";
+                            // stage2="进行中";
+                            // link="javascript:shieldDone()";
                             stage=2;
-                        } else if (expired <= now && data[i].status2 == 0) {
-                            stage1="  ";
-                            stage2="未总评";
-                            link="javascript:shieldLastJudge()";
+                        } else if (data[i].status == 1 <= now && data[i].status2 == 0) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liDoing";
+                            var cls4 = "liUnDoing";
+                            // stage1="  ";
+                            // stage2="已自评";
+                            // link="javascript:shieldLastJudge()";
                             stage=3;
-                        } else if (expired <= now && data[i].status2 == 1) {
-                            stage1="  ";
-                            stage2="已总评";
-                            link="javascript:shieldHistory()";
+                        } else if (data[i].status2 == 1) {
+                            var cls1 = "liUnDoing";
+                            var cls2 = "liUnDoing";
+                            var cls3 = "liUnDoing";
+                            var cls4 = "liDoing";
+                            // stage1="  ";
+                            // stage2="已总评";
+                            // link="javascript:shieldHistory()";
                             stage=4;
                         }
-                        html += "<div class=\"tip_right display\">\n" +
+                        html+=" <div class=\"main_style display \">\n" +
+                            "\n" +
+                            "        <input type='hidden' class='stuId' value=''/>\n" +
+                            "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
+                            "            <div class=\"left_grade\">"+year+"级</div>\n" +
+                                "\n" +
+                            "            <div class=\"liScroll display\">\n" +
+                            "                <div class=\""+cls1+"\">未审核</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls2+"\">进行中</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls3+"\">已自评</div>\n" +
+                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            "                <div class=\""+cls4+"\"> 已完结</div>\n" +
+                            "            </div>"+
+                            "            <li class=\"new_tip  \">\n" +
+                            "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
+                            "                    <div class=\"display new_tip_left\">\n" +
+                            "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
+                            "                        <div class=\"left_above display\">\n" +
+                            "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </a>"+
+                            // "    </div>"+
+                            "<div class=\"tip_right display\">\n" +
                             "                    <div class=\"display new_tip_right\">\n" +
                             "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报("+created+"到"+expiredd+")</b></a>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"right_state\">\n" +
                             "<input type='hidden' class='planIdClass' value='"+data[i].planId+"'/> " +
                             "<input type='hidden' class='planStage' value='"+stage+"' />"+
-                            "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
+                            // "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"display \" style=\"margin-top: 10px;color: #a5a5a5;\">最近更新：<span\n" +
                             "                                class=\"time_disp\">"+optime+"</span></div>\n" +
@@ -2443,5 +3022,9 @@
 
 </script>
 
+<div id="test1111"></div>
+<div id="test2222"></div>
+<div id="test3333"></div>
+<div id="test4444"></div>
 </body>
 </html>

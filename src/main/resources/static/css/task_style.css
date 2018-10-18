@@ -270,7 +270,17 @@
 	height: auto;
 	margin-left:30% ;
 }
+#add_around{
+	display: none;
+	height: auto;
+	margin-left:30% ;
+}
 #account_set{
+	/*background: red;*/
+
+	margin-left: 30px;
+}
+#addTea_set{
 	/*background: red;*/
 
 	margin-left: 30px;
@@ -279,12 +289,166 @@
 
 	margin-left: 30px;
 }
+#addStu_out{
+
+	margin-left: 30px;
+}
 #self_account_set:hover{
+	background: #f5f5f5;
+}
+#self_tea_set:hover{
 	background: #f5f5f5;
 }
 #self_turn_out:hover{
 	background: #f5f5f5;
 }
+#self_stu_out:hover{
+	background: #f5f5f5;
+}
+#addSearchTea{
+	/*border: 1px solid blue;*/
+	height: 50px;
+	width: 100%;
+}
+#addSearchStu{
+	/*border: 1px solid blue;*/
+	height: 50px;
+	width: 100%;
+}
+#teaInput{
+	margin-left: 3%;
+	width: 20%;
+}
+#teaInputBtn{
+	margin-left: 1%;
+	width: 10%;
+	color: #fff;
+}
+#teaInput_stu{
+	margin-left: 3%;
+	width: 20%;
+}
+#teaInputBtn_stu{
+	margin-left: 1%;
+	width: 10%;
+	color: #fff;
+}
+.registerName{
+
+	/*width: 50%;*/
+	margin:0 auto;
+	margin-top: 15px;
+}
+.liScroll{
+	position: absolute;;
+	/*border: 1px solid red;*/
+	width: 28%;
+	margin-left: 8%;
+	margin-top: -25px;
+}
+.liDoing{
+	width: 13%;
+	background: #a1d4ac;
+	color: #fff;
+	font-size: 0.9em;
+	text-align: center;
+	border-radius: 5px;
+	display: inline-block;;
+	/*border: 1px solid red;*/
+}
+.liUnDoing{
+	width: 13%;
+	background: #d5d5d5;
+	font-size: 0.9em;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	display: inline-block;;
+
+}
+.liWid{
+	text-decoration:line-through;
+	color: #d5d5d5;
+}
+.chooseWord{
+	margin-top: 30px;
+	text-align: center;
+	font-size: 1.3em;
+}
+.chooseCho{
+	margin-top: 20px;
+
+}
+.chooseChoSearch{
+	width: 30%;
+	margin-left: 17%;
+}
+.chooseChoAdd{
+	margin-left: 5%;
+
+}
+#registerBtn{
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 20px;
+
+}
+.registerStu{
+	color: #a2a2a2;
+}
+
+.addHr{
+	width: 100%;
+	background-color: #fff;
+	 /*border: none;*/
+	 border:0.5px solid #cacaca;
+ }
+ .addDetail{
+	 margin:20px;
+	 /*border:1px solid red;*/
+ }
+ .addDetailTip{
+	 /*border:1px solid red;*/
+	 /*border:1px solid red;*/
+
+	 width: 23%;
+	 margin-left: 1.25%;
+	 height: 150px;
+	 display: inline-block;;
+ }
+ .addDetailTipWord{
+	 vertical-align: top;
+	 width: 35%;
+	 margin-left: 7%;
+	 text-align: center;
+	 font-weight: 500;
+	 /*border:1px solid red;*/
+ }
+ .wordName{
+	 /*margin-top: 10px;*/
+	 font-size: 1em;
+	 text-align: center;
+	 /*margin-left: 8px;*/
+	 margin-top: 5px;
+	 /*border:1px solid red;*/
+ }
+ .wordBtn{
+	 margin-top: 10px;
+	 height: 30px;
+	 line-height: 30px;
+
+ }
+ .addDetailTipImg{
+	 background:#d5d5d5;
+	 width: 70px;
+	 height: 70px;
+	 color: #fff;
+	 border-radius: 50%;
+	 font-size: 3em;
+	 text-align: center;
+
+	 line-height: 70px;
+ }
 .self_mesg{
 
 	height: 50px;
@@ -294,6 +458,18 @@
 	border-bottom: 1px solid #e5e5e5;
 }
 #self_float{
+	box-shadow: 3px 3px 10px #686363;
+	height: auto;
+
+	z-index: 5;
+	background: #fff;
+	position: absolute;
+	margin: 10px;
+	width: 16%;
+	border-radius: 5px;
+	float: left;
+}
+#add_float{
 	box-shadow: 3px 3px 10px #686363;
 	height: auto;
 

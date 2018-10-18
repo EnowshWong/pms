@@ -24,4 +24,5 @@ public interface UserService {
     List<PmsUserTea> getTeaList();
     PmsUserTea getTeaById(long id);
     StuInfo getStuInfoById(long id);
+    List<PmsUserStu> getStuListWithoutExp();
 }

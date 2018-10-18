@@ -55,4 +55,11 @@ public class ExpController {
         List<PmsJoin> list = expService.getJoin(expId);
         return list;
     }
+
+    @RequestMapping("/exp/getAssistTeaListByTeaId/{tutorId}")
+    @ResponseBody
+    public List<PmsExp> getAssistTeaListByTeaId(@PathVariable long tutorId){
+        List<PmsExp> list = expService.getAssistExpListByTeaId(tutorId);
+        return list;
+    }
 }

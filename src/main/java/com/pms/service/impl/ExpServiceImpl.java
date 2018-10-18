@@ -70,4 +70,10 @@ public class ExpServiceImpl implements ExpService {
         PmsExp pmsExp = pmsExpMapper.selectByPrimaryKey(expId);
         return pmsExp;
     }
+
+    @Override
+    public List<PmsExp> getAssistExpListByTeaId(long tutorId) {
+        List<PmsExp> list = pmsExpMapper.findAssistExpListByTeaId(tutorId);
+        return list;
+    }
 }

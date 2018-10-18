@@ -695,11 +695,16 @@
 <script>
     function clearPreWindow5() {
         $("#fjContent").attr("value", "");
-
+        $("#backArea0").attr("value","");
     }
+
 
     function clearLastWindow5() {
         $("#sjContent").attr("value", "");
+
+    }
+    function clearFeedback(){
+        $("#backArea0").attr("value", "");
 
     }
 </script>
@@ -833,7 +838,11 @@
         </div>
         <button class="btn btn-info display" id="submitBtn" onclick="fjSubmit()" style="margin-left:380px;display: none;">确认提交</button>
         <div class="display" id="submitBtn_hid" style="margin-left:380px;height: 34px;line-height: 34px;">确认提交</div>
+        <script>
 
+            $("#backArea0").attr("value", "");
+
+        </script>
 
         <div  style="margin-top: -20px;">
             <div class="detail_title"><img class="display detail_title_img " src="/images/judgeBack.png">
@@ -842,8 +851,7 @@
             </div>
             <div class="display" id="back_area">
 
-            <textarea class="form-control" id="backArea0" oninput="submitChange1(this)" rows="3" style="width:418px;margin-left: 75px;margin-top: 10px;" placeholder="请输入驳回信息">
-            </textarea>
+                <textarea class="form-control" id="backArea0" oninput="submitChange1(this)" rows="3" style="width:418px;margin-left: 75px;margin-top: 10px;" placeholder="请输入驳回信息"></textarea>
                 <button class="btn btn-info display" id="backBtn" style="margin-left:380px;margin-top: 20px;display:none" onclick="fadebackBtn()">确认提交</button>
                 <div class="display" id="backBtn_hid" style="height: 34px;line-height: 34px;">确认提交</div>
             </div>
@@ -854,6 +862,11 @@
                 var planId=$("#fjPlanId").val();
                 //首先讲该plan添加到temp_plan表
                 var title=$("#fjTitle").text();
+
+
+                // var strContent=data.planDesc;
+                // var det=document.getElementById('detailedPlanDesc');
+                // det.innerHTML=strContent;
                 var planDesc=$("#fjPlanDesc").text();
                 //截取字符串
                 var createdString=$("#fjCreated").text();
@@ -870,6 +883,7 @@
                         alert("已驳回");
                         //刷新
                         getStuPlanList();
+                        getPlanInfByStageClick();
                         cancel_shieldPreJudge();
                     }
                 });
@@ -983,7 +997,10 @@
                 $("#fjTitle").text(title);
                 $("#fjCreated").text(created + "开始");
                 $("#fjExpired").text(expired + "截止");
-                $("#fjPlanDesc").text(data.planDesc);
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#fjPlanDesc").text(data.planDesc);
                 $("#fjPlanId").attr("value", planId);
                 $("#fjStuId").attr("value", data.stuId);
                 clearPreWindow5();
@@ -1230,16 +1247,25 @@
                 $("#sjTitle").text(title);
                 $("#sjCreated").text(created + "开始");
                 $("#sjExpired").text(expired + "截止");
-                $("#sjPlanDesc").text(data.planDesc);
+                var strContent=data.planDesc;
+                var det=document.getElementById('sjPlanDesc');
+                det.innerHTML=strContent;
+                // $("#sjPlanDesc").text(data.planDesc);
                 $("#sjStuId").attr("value", data.stuId);
                 if (data.firstJudge != null) {
-                    $("#sjFjContent").text(data.firstJudge);
+                    var strContent1=data.firstJudge;
+                    var det1=document.getElementById('sjFjContent');
+                    det1.innerHTML=strContent1;
+                    // $("#sjFjContent").text(data.firstJudge);
                 }
                 else {
                     $("#sjFjContent").text("老师还没进行初评哦~_~");
                 }
                 if (data.status == 1) {
-                    $("#sjSelfJudge").text(data.selfJudge);
+                    var strContent2=data.selfJudge;
+                    var det2=document.getElementById('sjSelfJudge');
+                    det2.innerHTML=strContent2;
+                    // $("#sjSelfJudge").text(data.selfJudge);
                 }
                 else {
                     $("#sjSelfJudge").text("学生好像还没有自评哦~_~");
@@ -1257,6 +1283,10 @@
         var planId = $("#sjPlanId").attr("value");
         var tutorId = GetCookie("COOKIE_ID");
         var assess = $("#sjContent").attr("value");
+
+        assess = assess.replace(/\r\n/g, '<br/>');
+        assess = assess.replace(/\n/g, '<br/>');
+        assess = assess.replace(/\s/g, ' ');
         var grade = $("#remark").text();
         var stuId = $("#sjStuId").attr("value");
         $.post("/tut_assess2/create", {
@@ -1369,10 +1399,18 @@
                 $("#fjinfTitle").text(title);
                 $("#fjinfCreated").text(created + "开始");
                 $("#fjinfExpired").text(expired + "截止");
-                $("#fjinfDesc").text(data.planDesc);
+
+                var strContent=data.planDesc;
+                var det=document.getElementById('fjinfDesc');
+                det.innerHTML=strContent;
+
+                // $("#fjinfDesc").text(data.planDesc);
                 $("#fjinfStuId").attr("value", data.stuId);
                 if (data.assess != null) {
-                    $("#fjinfAssess").text(data.assess);
+                    var strContent1=data.assess;
+                    var det1=document.getElementById('fjinfAssess');
+                    det1.innerHTML=strContent1;
+                    // $("#fjinfAssess").text(data.assess);
                 }
                 else {
                     $("#fjinfAssess").text("老师还没进行初评哦~_~");
@@ -1453,28 +1491,31 @@
         </div>
 
         <div>
-            <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
-                    class="display  detail_title_word">老师初评</span><span style="vertical-align: middle"
-                                                                        class="preJudgeWord" id="hsCreated1"></span>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/write.png">
+                <span class="display  detail_title_word">老师初评</span>
+                <span class="preJudgeWord" id="hsCreated1"></span>
             </div>
             <div class="detail_word" id="hsFjContent">老师初评老师初评老师初评老师初评老师初评~_~</div>
         </div>
 
         <div>
-            <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
-                    style="vertical-align: middle;" class="display  detail_title_word">自评</span><span
-                    style="vertical-align: middle" class="preJudgeWord" id="hsCreated3"></span>
-                <div class="detail_word" id="hsSelfContent">
-                    挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
-                </div>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/star0.png">
+                <span style="vertical-align: middle;" class="display  detail_title_word">自评</span>
+                <span  class="preJudgeWord" id="hsCreated3"></span>
+            </div>
+            <div class="detail_word" id="hsSelfContent">
+                挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
             </div>
         </div>
         <div>
-            <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
-                    style="vertical-align: middle;" class="display  detail_title_word">总评</span><span
-                    style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
-                    id="hsGrade">A</span><span style="vertical-align: middle" class="preJudgeWord"
-                                               id="hsCreated2"></span></div>
+            <div class="detail_title">
+                <img class="display detail_title_img " src="/images/star0.png">
+                <span style="vertical-align: middle;" class="display  detail_title_word">总评</span>
+                <span style="font-size: 2em;color: red;vertical-align: middle;margin-left: 30px;"
+                      id="hsGrade">A</span>
+                <span class="preJudgeWord" id="hsCreated2">123</span></div>
             <div class="detail_word" id="hsSjContent">
                 挺好的，就是控制策略的地方需要注意要以燃耗为目标函数。挺好的，就是控制策略的地方需要注意要以燃耗为目标函数...
             </div>
@@ -1495,12 +1536,18 @@
                 var created3 = dateFormat(new Date(data.created3));
                 var title="周报("+created+"到"+expired+")";
                 $("#hsTitle").text(title);
-                $("#hsPlanDesc").text(data.planDesc);
+                var strContent1=data.planDesc;
+                var det1=document.getElementById('hsPlanDesc');
+                det1.innerHTML=strContent1;
+                // $("#hsPlanDesc").text(data.planDesc);
                 $("#hsCreated").text(created + "开始");
                 $("#hsExpired").text(expired + "截止");
                 if (data.status1 == 1) {
                     $("#hsCreated1").text("评价时间:" + created1);
-                    $("#hsFjContent").text(data.assess1);
+                    var strContent2=data.assess1;
+                    var det2=document.getElementById('hsFjContent');
+                    det2.innerHTML=strContent2;
+                    // $("#hsFjContent").text(data.assess1);
                 }
                 else {
                     $("#hsCreated1").text("");
@@ -1508,7 +1555,10 @@
                 }
                 if (data.status2==1) {
                     $("#hsCreated2").text("评价时间:" + created2);
-                    $("#hsSjContent").text(data.assess2);
+                    var strContent4=data.assess2;
+                    var det4=document.getElementById('hsSjContent');
+                    det4.innerHTML=strContent4;
+                    // $("#hsSjContent").text(data.assess2);
                     $("#hsGrade").text(data.grade);
                 }
                 else {
@@ -1518,7 +1568,10 @@
                 }
                 if (data.status == 1) {
                     $("#hsCreated3").text("评价时间:" + created3);
-                    $("#hsSelfContent").text(data.selfJudge);
+                    var strContent3=data.selfJudge;
+                    var det3=document.getElementById('hsSelfContent');
+                    det3.innerHTML=strContent3;
+                    // $("#hsSelfContent").text(data.selfJudge);
                 }
                 else {
                     $("#hsCreated3").text("");
@@ -1725,551 +1778,127 @@
 </div>
 <div id="stuPlanList" >
 
-    <div class="main_style display ">
 
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-
-            </li>
-
-
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title">
-                            <a href="javascript:shieldPreJudge()">
-                                <b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b>
-                            </a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class="right_state_nonJudge display">未审核</div>
-                        </div>
-                    </div>
-                    <span class="time_ope">
-                        <!--<div class="display time_ope_line"></div>-->
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">
-                            最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                        <!--<div class="display time_ope_line"></div>-->
-                    </span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <div class="display right_title"><a href="javascript:shieldDone()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class=" right_state_judge display">已审核</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
-                                class="time_disp">2018-1-1</span></div>
-                    </div>
-                </div>
-                <div class="text1">
-                    <div class="icon_temp">
-                        <a href="javascript:shieldLastJudge()">
-                            <div class="judge_self" style="margin-left: 10%;margin-top: -4%" type="div"></div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left" style="">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right" style="">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title"><a href="javascript:shieldLastJudge()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_over display">  </div>-->
-                            <div class="right_state_nonAbove display">未总评</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-
-            </li>
-
-
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title">
-                            <a href="javascript:shieldPreJudge()">
-                                <b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b>
-                            </a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class="right_state_nonJudge display">未审核</div>
-                        </div>
-                    </div>
-                    <span class="time_ope">
-                        <!--<div class="display time_ope_line"></div>-->
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">
-                            最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                        <!--<div class="display time_ope_line"></div>-->
-                    </span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <div class="display right_title"><a href="javascript:shieldDone()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class=" right_state_judge display">已审核</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
-                                class="time_disp">2018-1-1</span></div>
-                    </div>
-                </div>
-                <div class="text1">
-                    <div class="icon_temp">
-                        <a href="javascript:shieldLastJudge()">
-                            <div class="judge_self" style="margin-left: 10%;margin-top: -4%" type="div"></div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left" style="">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right" style="">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title"><a href="javascript:shieldLastJudge()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_over display">  </div>-->
-                            <div class="right_state_nonAbove display">未总评</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-                <div class="tip_right display">
-                    <div class="display new_tip_right">
-                        <div class="display right_title"><a href="javascript:shieldHistory()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_over display">  </div>-->
-                            <div class=" right_state_above display">已总评</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
-                                class="time_disp">2018-1-1</span></div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title">
-                            <a href="javascript:shieldPreJudge()">
-                                <b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b>
-                            </a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class="right_state_nonJudge display">未审核</div>
-                        </div>
-                    </div>
-                    <span class="time_ope">
-                        <!--<div class="display time_ope_line"></div>-->
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">
-                            最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                        <!--<div class="display time_ope_line"></div>-->
-                    </span>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right">
-                        <div class="display right_title"><a href="javascript:shieldDone()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_running display"> </div>-->
-                            <div class=" right_state_judge display">已审核</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
-                                class="time_disp">2018-1-1</span></div>
-                    </div>
-                </div>
-                <div class="text1">
-                    <div class="icon_temp">
-                        <a href="javascript:shieldLastJudge()">
-                            <div class="judge_self" style="margin-left: 10%;margin-top: -4%" type="div"></div>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip">
-                <div class="display new_tip_left" style="">
-                    <a href="tea_detail副本.html">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三丰</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </a>
-                </div>
-                <div class="display tip_right ">
-                    <div class="display new_tip_right" style="">
-                        <!--<div class="  main_style_tip">-->
-                        <div class="display right_title"><a href="javascript:shieldLastJudge()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_over display">  </div>-->
-                            <div class="right_state_nonAbove display">未总评</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span class="time_disp">2018-1-1</span>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="main_style display ">
-
-        <input type='hidden' class='stuId' value=''/>
-        <ul class=" cont addLi" style="height: 240px;">
-            <div class="left_grade">大三</div>
-            <li class="new_tip  ">
-                <a href="tea_detail副本2.html">
-                    <div class="display new_tip_left">
-                        <div class="left_pic display">张</div>
-                        <div class="left_above display">
-                            <strong class="left_name">张三</strong>
-                            <!--<div class="left_grade">大三</div>-->
-                        </div>
-                    </div>
-                </a>
-                <div class="tip_right display">
-                    <div class="display new_tip_right">
-                        <div class="display right_title"><a href="javascript:shieldHistory()"><b>周报(<span class="weekStart">2018/1/1</span>--<span class="weekOver">2018/2/2</span> )</b></a>
-                        </div>
-                        <div class="right_state">
-                            <!--<div class=" right_state_over display">  </div>-->
-                            <div class=" right_state_above display">已总评</div>
-                        </div>
-                        <div class="display " style="margin-top: 10px;color: #a5a5a5;">最近更新：<span
-                                class="time_disp">2018-1-1</span></div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <script type="text/javascript">
-        function getStuPlanList() {
-            var expId=GetCookie("COOKIE_EXPID");
-            $.ajax({
-                type:"get",
-                url:"/plan/getTeaTaskData/"+expId,
-                async:false,
-                success:function (data) {
-                    var html="";
-                    for(var i=0;i<data.length;i++){
-                        var nickname=data[i].nickname;
-                        var year = new Date(data[i].enrollDate).getFullYear();
-                        var optime = dateFormat(new Date(data[i].optime));
-                        var created = dateFormat(new Date(data[i].created));
-                        var expiredd = dateFormat(new Date(data[i].expired));
-                        // alert(expired);
-                        //stage有5种状态
-                        //1.空           plan_id==null
-                        //2. -未审核 expired>curdate-status1==0
-                        //3. -已审核 expired>curdate-status1==1
-                        //4.截止-未总评   expired<curdate-status2==0
-                        //5.截止-已总评   expired<curdate-status2==1
-                        //学生信息
-                        html+=" <div class=\"main_style display \">\n" +
-                            "\n" +
-                            "        <input type='hidden' class='stuId' value=''/>\n" +
-                            "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
-                            "            <div class=\"left_grade\">"+year+"级</div>\n" +
-                            "            <li class=\"new_tip  \">\n" +
-                            "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
-                            "                    <div class=\"display new_tip_left\">\n" +
-                            "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
-                            "                        <div class=\"left_above display\">\n" +
-                            "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
-                            "                        </div>\n" +
-                            "                    </div>\n" +
-                            "                </a>";
-                        if (data[i].planId==null){
-                            html+=" </li>\n" +
-                                "        </ul>\n" +
-                                "    </div>";
-                        }
-                        else {
-                            var stage;
-                            var stage1 = "";
-                            var stage2 = "";
-                            var link="";
-                            var expired = new Date(data[i].expired);
-                            var now = new Date();
-                            if (expired > now && data[i].status1 == 0) {
-                                stage1 = " ";
-                                stage2="未审核";
-                                link="javascript:shieldPreJudge()";
-                                stage=1;
-                            } else if (expired > now && data[i].status1 == 1) {
-                                stage1 = " ";
-                                stage2="已审核";
-                                link="javascript:shieldDone()";
-                                stage=2;
-                            } else if (expired <= now && data[i].status2 == 0) {
-                                stage1="  ";
-                                stage2="未总评";
-                                link="javascript:shieldLastJudge()";
-                                stage=3;
-                            } else if (expired <= now && data[i].status2 == 1) {
-                                stage1="  ";
-                                stage2="已总评";
-                                link="javascript:shieldHistory()";
-                                stage=4;
-                            }
-                            html += "<div class=\"tip_right display\">\n" +
-                                "                    <div class=\"display new_tip_right\">\n" +
-                                "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报("+created+"到"+expiredd+")</b></a>\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"right_state\">\n" +
-                                "<input type='hidden' class='planIdClass' value='"+data[i].planId+"'/> " +
-                                "<input type='hidden' class='planStage' value='"+stage+"' />"+
-                                "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"display \" style=\"margin-top: 10px;color: #a5a5a5;\">最近更新：<span\n" +
-                                "                                class=\"time_disp\">"+optime+"</span></div>\n" +
-                                "                    </div>\n" +
-                                "                </div>\n" +
-                                "            </li>\n" +
-                                "        </ul>\n" +
-                                "    </div>";
-                        }
-                    }
-                    $("#stuPlanList").html(html);
-                }
-            })
-        }
-        function getPlanInfByStageClick(){
-            $(".planInfClass").each(function (i) {
-                $(this).click(function () {
-                    var stage= $(".planStage").eq(i).attr("value");
-                    var planId=$(".planIdClass").eq(i).attr("value");
-                    if (stage==1){
-                        //动态渲染
-                        firstJudgeInf(planId);
-                        shieldPreJudge();
-                    } else if(stage==2){
-                        fjCatInf(planId);
-                        shieldDone();
-                    } else if(stage==3){
-                        lastJudge(planId);
-                        shieldLastJudge()
-                    }else if(stage==4){
-                        historyInf(planId);
-                        shieldHistory()
-                    }
-                })
-            })
-        }
-        getStuPlanList();
-        getPlanInfByStageClick();
-    </script>
 
 </div>
+<script type="text/javascript">
+    function getStuPlanList() {
+        var expId=GetCookie("COOKIE_EXPID");
+        $.ajax({
+            type:"get",
+            url:"/plan/getTeaTaskData/"+expId,
+            async:false,
+            success:function (data) {
+                var html="";
+                for(var i=0;i<data.length;i++){
+                    var nickname=data[i].nickname;
+                    var year = new Date(data[i].enrollDate).getFullYear();
+                    var optime = dateFormat(new Date(data[i].optime));
+                    var created = dateFormat(new Date(data[i].created));
+                    var expiredd = dateFormat(new Date(data[i].expired));
+                    // alert(expired);
+                    //stage有5种状态
+                    //1.空           plan_id==null
+                    //2. -未审核 expired>curdate-status1==0
+                    //3. -已审核 expired>curdate-status1==1
+                    //4.截止-未总评   expired<curdate-status2==0
+                    //5.截止-已总评   expired<curdate-status2==1
+                    //学生信息
+                    html+=" <div class=\"main_style display \">\n" +
+                        "\n" +
+                        "        <input type='hidden' class='stuId' value=''/>\n" +
+                        "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
+                        "            <div class=\"left_grade\">"+year+"级</div>\n" +
+                        "            <li class=\"new_tip  \">\n" +
+                        "                <a href=\"/showStuInfPage/"+data[i].stuId+"\">\n" +
+                        "                    <div class=\"display new_tip_left\">\n" +
+                        "                        <div class=\"left_pic display\">"+nickname[0]+"</div>\n" +
+                        "                        <div class=\"left_above display\">\n" +
+                        "                            <strong class=\"left_name\">"+nickname+"</strong>\n" +
+                        "                        </div>\n" +
+                        "                    </div>\n" +
+                        "                </a>";
+                    if (data[i].planId==null){
+                        html+=" </li>\n" +
+                            "        </ul>\n" +
+                            "    </div>";
+                    }
+                    else {
+                        var stage;
+                        var stage1 = "";
+                        var stage2 = "";
+                        var link="";
+                        var expired = new Date(data[i].expired);
+                        var now = new Date();
+                        if (expired > now && data[i].status1 == 0) {
+                            stage1 = " ";
+                            stage2="未审核";
+                            link="javascript:shieldPreJudge()";
+                            stage=1;
+                        } else if (expired > now && data[i].status1 == 1) {
+                            stage1 = " ";
+                            stage2="已审核";
+                            link="javascript:shieldDone()";
+                            stage=2;
+                        } else if (expired <= now && data[i].status2 == 0) {
+                            stage1="  ";
+                            stage2="未总评";
+                            link="javascript:shieldLastJudge()";
+                            stage=3;
+                        } else if (expired <= now && data[i].status2 == 1) {
+                            stage1="  ";
+                            stage2="已总评";
+                            link="javascript:shieldHistory()";
+                            stage=4;
+                        }
+                        html += "<div class=\"tip_right display\">\n" +
+                            "                    <div class=\"display new_tip_right\">\n" +
+                            "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报("+created+"到"+expiredd+")</b></a>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"right_state\">\n" +
+                            "<input type='hidden' class='planIdClass' value='"+data[i].planId+"'/> " +
+                            "<input type='hidden' class='planStage' value='"+stage+"' />"+
+                            "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"display \" style=\"margin-top: 10px;color: #a5a5a5;\">最近更新：<span\n" +
+                            "                                class=\"time_disp\">"+optime+"</span></div>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n" +
+                            "            </li>\n" +
+                            "        </ul>\n" +
+                            "    </div>";
+                    }
+                }
+                $("#stuPlanList").html(html);
+            }
+        })
+    }
+    function getPlanInfByStageClick(){
+        $(".planInfClass").each(function (i) {
+            $(this).click(function () {
+                var stage= $(".planStage").eq(i).attr("value");
+                var planId=$(".planIdClass").eq(i).attr("value");
+                if (stage==1){
+                    //动态渲染
+                    firstJudgeInf(planId);
+                    shieldPreJudge();
+                } else if(stage==2){
+                    fjCatInf(planId);
+                    shieldDone();
+                } else if(stage==3){
+                    lastJudge(planId);
+                    shieldLastJudge()
+                }else if(stage==4){
+                    historyInf(planId);
+                    shieldHistory()
+                }
+            })
+        })
+    }
+    getStuPlanList();
+    getPlanInfByStageClick();
+</script>
+
 <div id="no_stu" style="display:none">
     <div id="no_stu_word">
         当前暂无学生，赶紧添加一个吧
@@ -2773,31 +2402,6 @@
     }
 </script>
 
-<!--<script type="text/javascript">-->
-<!--// 确认提交-->
-<!--var sub1 = document.getElementById('submitBtn');-->
-<!--var sub2 = document.getElementById('sjSubmitBut');-->
-<!--sub1.onclick = function () {-->
-<!---->
-<!---->
-<!---->
-<!--var s = document.getElementById("testPreJud");-->
-<!--s.style.display = "none";-->
-
-<!--var l = document.getElementById("log_First_Jud");-->
-<!--l.style.display = "none";-->
-
-<!--}-->
-<!--sub2.onclick = function () {-->
-<!--var s = document.getElementById("testLastJud");-->
-<!--s.style.display = "none";-->
-
-<!--var l = document.getElementById("log_Last_Jud");-->
-<!--l.style.display = "none";-->
-
-<!--}-->
-
-<!--</script>-->
 <script>
     var searTea = document.getElementById('search_tea');
     var sear_around = document.getElementById('sear_around');

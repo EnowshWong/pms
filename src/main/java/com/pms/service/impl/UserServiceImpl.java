@@ -62,11 +62,11 @@ public class UserServiceImpl implements UserService {
         pmsUserStu.setUpdated(date);
         //密码md5加密
         pmsUserStu.setPassword(DigestUtils.md5DigestAsHex(pmsUserStu.getPassword().getBytes()));
-        //将新插入数据的主键返回到对象中
-        pmsUserStuMapper.insertReturnId(pmsUserStu);
-        System.out.println(pmsUserStu.getId());
-        //存入用户id
-        CookieUtils.setCookie(request, response, COOKIE_ID, pmsUserStu.getId() + "");
+//        //将新插入数据的主键返回到对象中
+        pmsUserStuMapper.insert(pmsUserStu);
+//        System.out.println(pmsUserStu.getId());
+//        //存入用户id
+//        CookieUtils.setCookie(request, response, COOKIE_ID, pmsUserStu.getId() + "");
         return PmsResult.ok();
     }
 
@@ -203,5 +203,17 @@ public class UserServiceImpl implements UserService {
     public StuInfo getStuInfoById(long id) {
         StuInfo stu = pmsUserStuMapper.findStuInfoById(id);
         return stu;
+    }
+
+    @Override
+    public List<PmsUserStu> getStuListWithoutExp() {
+        PmsUserStuExample example=new PmsUserStuExample();
+        PmsUserStuExample.Criteria criteria=example.createCriteria();
+        criteria.andExpIdIsNull();
+        List<PmsUserStu> list = pmsUserStuMapper.selectByExample(example);
+        //取8条数据
+        if (list.size()>=8)
+            return list.subList(0,7);
+        else return list;
     }
 }

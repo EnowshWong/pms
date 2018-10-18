@@ -1,52 +1,55 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<link rel="stylesheet" href="/css/style.css">
-	
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<link rel="stylesheet" href="/css/style.css">
+
 	<link rel="stylesheet" href="/css/task_style.css">
 	<script src="/js/jquery-2.2.4.min.js"></script>
 	<script type="text/javascript" src="/js/common.js"></script>
-		
-<style type="text/css">	
-a,img{border:0;}
-</style>
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
-<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-	
-<script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
-<script type="text/javascript">
-$(function (){
-	$("#test").manhuaDialog({					       
-		Event : "click",								//触发响应事件
-		title : "新建实验室",					            //弹出层的标题
-		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
-		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
-		width : 490,									//弹出层的宽度
-		height : 360,									//弹出层的高度	
-		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
-		isAuto : false,									//是否自动弹出
-		time : 2000,									//设置弹出层时间，前提是isAuto=true
-		isClose : false,  								//是否自动关闭		
-		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
-	});
-});
-</script>
+
+	<style type="text/css">
+		a,img{border:0;}
+	</style>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/manhuaDialog.1.0.css">
+	<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+
+	<script type="text/javascript" src="/js/manhuaDialog.1.0.js"></script>
+	<script type="text/javascript">
+        $(function (){
+            $("#test").manhuaDialog({
+                Event : "click",								//触发响应事件
+                title : "新建实验室",					            //弹出层的标题
+                type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+                content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+                width : 490,									//弹出层的宽度
+                height : 360,									//弹出层的高度
+                scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+                isAuto : false,									//是否自动弹出
+                time : 2000,									//设置弹出层时间，前提是isAuto=true
+                isClose : false,  								//是否自动关闭
+                timeOut : 5000									//设置自动关闭时间，前提是isClose=true
+            });
+        });
+	</script>
 	<script type="text/javascript" >
-		window.onload=function(){
-			var pic_hidden=document.getElementById("pic_hidden");
-			var engine=document.getElementById("engine");
-			engine.onclick=function(){
-				pic_hidden.style.display="";
-			}
+        window.onload=function(){
+            var pic_hidden=document.getElementById("pic_hidden");
+            var engine=document.getElementById("engine");
+            engine.onclick=function(){
+                pic_hidden.style.display="";
+            }
 //			engine.onclick=function(){
-//				
+//
 //				pic_hidden.style.display="none";
 //			}
-		}
-	
+        }
+        function dateFormat(date) {
+            return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        }
+
 	</script>
 
 	<style>
@@ -59,7 +62,7 @@ $(function (){
 	</style>
 </head>
 
-<body>
+<body style="height: 100%;">
 
 <div id="banner" style="z-index: 1000;">
 	<div id="banner_left" class="display"><div class="display" style="width: 70%">
@@ -83,179 +86,272 @@ $(function (){
 
 
 			<a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
+		</div>
 	</div>
 </div>
-</div>
-		
-	<div class="model" id="model">
-		<div class="program" style="padding-top: 30px;">
-			<span>我拥有的实验室</span>
-			<div class="pic">
-				<div id="expList">
 
-				</div>
-				<script type="text/javascript" th:inline="javascript" >
-					function getExpList() {
-					    var html="";
-                        var tea_id=GetCookie("COOKIE_ID");
-                        $.ajax({
-                            type:"get",
-							async:false,//同步请求
-                            url:"/exp/getByTeaId/"+tea_id,
-                            success:function (data,success) {
-                                var inf="";
-                                for(var i=0;i<data.length;i++){
-                                    //已经能去到数据了，下一步解决数据如何嵌入html代码
-									html+="<a href='/tea_page?expId="+data[i].id+"'>\n" +
-                                        "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(/images/1.png)\">\n" +
-                                        "\t\t\t\t\t\t<h4 >"+data[i].expName+"</h4>\n" +
-                                        "\t\t\t\t\t</div>" +
-                                        "\t\t\t\t</a>";
-                                }
-                                $("#expList").html(html);
-                            }
-                        });
-                    }
-                    getExpList();
-                    // function expButClick() {
-						// $(".expBut").each(function (i) {
-						// 	$(this).click(function () {
-						// 		var expId=$(".expIdClass").eq(i).attr("value");
-						// 		var expName=$(".expNameClass").eq(i).text();
-						// 		alert(expName);
-						// 		$.post("/tea_page",{expId:expId,expName:expName});
-                    //         })
-                    //     })
-                    // }
-                    // $(function () {
-                    //     //绑定实验室url
-						// expButClick();
-                    // })
-				</script>
-			</div>
-
-		</div>
-		<div class="program " > 
-			<span >新建</span>
-			<div class="pic test">
-				<a id="test"  href="javascript:void(0)">
-				<div class="program_pic" style="background: url(/images/4.png)">
-						<h3></h3>
+<div class="model" id="model">
+	<div class="program" style="padding-top: 30px;">
+		<span>我管理的实验室</span>
+		<div class="pic">
+			<div id="manageExpList">
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/1.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/5.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
 					</div>
 				</a>
 			</div>
-			
-		</div>
-	</div>
-	<script>
-		$(document).ready(function(){
-		  var zindex = 10;
-
-		  $("div.test").click(function(e){
-			e.preventDefault();
-
-			var isShowing = false;
-
-			if ($(this).hasClass("show")) {
-			  isShowing = true
-			}
-
-			if ($("div.main").hasClass("showing")) {
-			  // a card is already in view
-			  $("div.test.show")
-				.removeClass("show");
-
-			  if (isShowing) {
-				// this card was showing - reset the grid
-				$("div.test")
-				  .removeClass("showing");
-			  } else {
-				// this card isn't showing - get in with it
-				$(this)
-				  .css({zIndex: zindex})
-				  .addClass("show");
-
-			  }
-
-			  zindex++;
-
-			} else {
-			  // no cards in view
-			  $("div.test")
-				.addClass("showing");
-			  $(this)
-				.css({zIndex:zindex})
-				.addClass("show");
-
-			  zindex++;
-			}
-
-		  });
-		});
-	</script>
-	
-	<div id="detail" style="display:none;z-index: 0;">
-		<div id="detailImage">
-			
-		</div>
-		<div id="detailForm">
-			
-<!--
-			<form role="form">
-  <div class="form-group">
-    <input type="email" class="form-control" placeholder="Enter email">
-    
-  </div>
-</form>  
--->
-
-			<form method="post" id="expForm" class="form form-group" role="form" onsubmit="return false">
-				<input type="text"  id="inputExpName" placeholder="实验室名称" class="form-control detailForm_cho">
-				<input type="text"  id="inputExpDesc" placeholder="实验室简介" class="form-control detailForm_cho">
-				<input id="expCreateSubmit" type="button" style="width: 100%;" value="完成并创建" class="btn btn-primary detailForm_cho">
-
-			</form>
-			<script type="text/javascript">
-				$(function () {
-                    var exp=document.getElementById("expCreateSubmit");
-                    var clo=document.getElementsByClassName('closeDialog');
-                    exp.onclick=function(){
-//					alert(clo.length)
-                        clo[0].click();
-//					alert("1")
-                    }
-                })
-			</script>
-			<script type="text/javascript">
-                function submitForm(){
-                    var tutorId=GetCookie("COOKIE_ID");
-                    var expName=$("#inputExpName").val();
-                    var expDesc=$("#inputExpDesc").val();
+			<script type="text/javascript" th:inline="javascript" >
+                function getManageExpList() {
+                    var html="";
+                    var tea_id=GetCookie("COOKIE_ID");
                     $.ajax({
-                        type:"post",
-                        async:false, //同步请求
-						url:"/exp/create",
-                        data:{expName:expName,expDesc:expDesc,tutorId:tutorId},
-                        error:function(XMLHttpRequest,textStatus,errorThrown){
-//                            alert(XMLHttpRequest.status);
-//                            alert("异常信息:"+XMLHttpRequest.responseText);
-						},
-						success:function (data) {
-                            if (data.status == 200) {
-//                                alert("创建成功");
+                        type:"get",
+                        async:false,//同步请求
+                        url:"/exp/getByTeaId/"+tea_id,
+                        success:function (data,success) {
+                            var created = dateFormat(new Date(data.created));
+                            var inf="";
+                            for(var i=0;i<data.length;i++){
+                                //已经能去到数据了，下一步解决数据如何嵌入html代码
+                                html+="<a href='/tea_page?expId="+data[i].id+"'>\n" +
+                                    "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(/images/1.png)\">\n" +
+                                    "\t\t\t\t\t\t<h4 >"+data[i].expName+"</h4>\n" +
+                                    "\t\t\t\t\t</div>" +
+                                    "\t\t\t\t</a>";
                             }
+                            $("#manageExpList").html(html);
                         }
                     });
-				}
-                //到dom文档加载完毕后执行$(function)
-                $(function () {
-					$("#expCreateSubmit").click(function () {
-						submitForm();
-                        getExpList();
-                    })
-                })
+                }
+                getManageExpList();
+                // function expButClick() {
+                // $(".expBut").each(function (i) {
+                // 	$(this).click(function () {
+                // 		var expId=$(".expIdClass").eq(i).attr("value");
+                // 		var expName=$(".expNameClass").eq(i).text();
+                // 		alert(expName);
+                // 		$.post("/tea_page",{expId:expId,expName:expName});
+                //         })
+                //     })
+                // }
+                // $(function () {
+                //     //绑定实验室url
+                // expButClick();
+                // })
 			</script>
 		</div>
+
 	</div>
+
+
+	<div class="program" style="padding-top: 30px;">
+		<span>我参与的实验室</span>
+		<div class="pic">
+			<div id="assistExpList">
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/1.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/5.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/1.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/5.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/1.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+				<a href='#'>
+					<div class="program_pic" style="background: url(/images/rootImg/5.png)">
+						<h4 >实验室一</h4>
+						<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+						<div class="programTime">2018-1-1创建</div>
+					</div>
+				</a>
+			</div>
+			<script type="text/javascript" th:inline="javascript" >
+                function getAssistExpList() {
+                    var html="";
+                    var tea_id=GetCookie("COOKIE_ID");
+                    $.ajax({
+                        type:"get",
+                        async:false,//同步请求
+                        url:"/exp/getAssistTeaListByTeaId/"+tea_id,
+                        success:function (data) {
+                            var created = dateFormat(new Date(data.created));
+                            for(var i=0;i<data.length;i++){
+                                //已经能去到数据了，下一步解决数据如何嵌入html代码
+                                html+="<a href='/#'>\n" +
+                                    "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(/images/1.png)\">\n" +
+                                    "\t\t\t\t\t\t<h4 >"+data[i].expName+"</h4>\n" +
+                                    "\t\t\t\t\t</div>" +
+                                    "\t\t\t\t</a>";
+                            }
+                            $("#assistExpList").html(html);
+                        }
+                    });
+                }
+                getAssistExpList();
+                // function expButClick() {
+                // $(".expBut").each(function (i) {
+                // 	$(this).click(function () {
+                // 		var expId=$(".expIdClass").eq(i).attr("value");
+                // 		var expName=$(".expNameClass").eq(i).text();
+                // 		alert(expName);
+                // 		$.post("/tea_page",{expId:expId,expName:expName});
+                //         })
+                //     })
+                // }
+                // $(function () {
+                //     //绑定实验室url
+                // expButClick();
+                // })
+			</script>
+		</div>
+
+	</div>
+</div>
+<script>
+    $(document).ready(function(){
+        var zindex = 10;
+
+        $("div.test").click(function(e){
+            e.preventDefault();
+
+            var isShowing = false;
+
+            if ($(this).hasClass("show")) {
+                isShowing = true
+            }
+
+            if ($("div.main").hasClass("showing")) {
+                // a card is already in view
+                $("div.test.show")
+                    .removeClass("show");
+
+                if (isShowing) {
+                    // this card was showing - reset the grid
+                    $("div.test")
+                        .removeClass("showing");
+                } else {
+                    // this card isn't showing - get in with it
+                    $(this)
+                        .css({zIndex: zindex})
+                        .addClass("show");
+
+                }
+
+                zindex++;
+
+            } else {
+                // no cards in view
+                $("div.test")
+                    .addClass("showing");
+                $(this)
+                    .css({zIndex:zindex})
+                    .addClass("show");
+
+                zindex++;
+            }
+
+        });
+    });
+</script>
+
+<div id="detail" style="display:none;z-index: 0;">
+	<div id="detailImage">
+
+	</div>
+	<div id="detailForm">
+
+		<!--
+                    <form role="form">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter email">
+
+          </div>
+        </form>
+        -->
+
+		<form method="post" id="expForm" class="form form-group" role="form" onsubmit="return false">
+			<input type="text"  id="inputExpName" placeholder="实验室名称" class="form-control detailForm_cho">
+			<input type="text"  id="inputExpDesc" placeholder="实验室简介" class="form-control detailForm_cho">
+			<input id="expCreateSubmit" type="button" style="width: 100%;" value="完成并创建" class="btn btn-primary detailForm_cho">
+
+		</form>
+		<script type="text/javascript">
+            $(function () {
+                var exp=document.getElementById("expCreateSubmit");
+                var clo=document.getElementsByClassName('closeDialog');
+                exp.onclick=function(){
+//					alert(clo.length)
+                    clo[0].click();
+//					alert("1")
+                }
+            })
+		</script>
+		<script type="text/javascript">
+            function submitForm(){
+                var tutorId=GetCookie("COOKIE_ID");
+                var expName=$("#inputExpName").val();
+                var expDesc=$("#inputExpDesc").val();
+                $.ajax({
+                    type:"post",
+                    async:false, //同步请求
+                    url:"/exp/create",
+                    data:{expName:expName,expDesc:expDesc,tutorId:tutorId},
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+//                            alert(XMLHttpRequest.status);
+//                            alert("异常信息:"+XMLHttpRequest.responseText);
+                    },
+                    success:function (data) {
+                        if (data.status == 200) {
+//                                alert("创建成功");
+                        }
+                    }
+                });
+            }
+            //到dom文档加载完毕后执行$(function)
+            $(function () {
+                $("#expCreateSubmit").click(function () {
+                    submitForm();
+                    getExpList();
+                })
+            })
+		</script>
+	</div>
+</div>
 </body>
 </html>

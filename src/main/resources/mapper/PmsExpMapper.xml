@@ -77,6 +77,18 @@
   <sql id="Blob_Column_List" >
     exp_desc
   </sql>
+  <select id="findAssistExpListByTeaId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+    SELECT DISTINCT
+pms_exp.id,
+pms_exp.exp_name,
+pms_exp.exp_desc,
+pms_exp.created
+FROM
+pms_exp
+LEFT JOIN pms_exp_assist_tea
+ON pms_exp.id=pms_exp_assist_tea.exp_id
+WHERE pms_exp_assist_tea.tutor_id=#{tutorId,jdbcType=BIGINT}
+  </select>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.pms.pojo.PmsExpExample" >
     select
     <if test="distinct" >

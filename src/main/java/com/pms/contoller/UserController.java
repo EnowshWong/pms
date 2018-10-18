@@ -128,4 +128,11 @@ public class UserController {
         StuInfo stu = userService.getStuInfoById(id);
         return stu;
     }
+
+    @RequestMapping("/user/getStuListWithoutExp")
+    @ResponseBody
+    public List<PmsUserStu> getStuListWithoutExp(){
+        List<PmsUserStu> list = userService.getStuListWithoutExp();
+        return list;
+    }
 }

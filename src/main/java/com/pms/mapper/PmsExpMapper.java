@@ -34,4 +34,6 @@ public interface PmsExpMapper {
     int updateByPrimaryKeyWithBLOBs(PmsExp record);
 
     int updateByPrimaryKey(PmsExp record);
+
+    List<PmsExp> findAssistExpListByTeaId(Long tutorId);
 }
