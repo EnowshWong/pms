@@ -135,8 +135,9 @@ public class PlanServiceImpl implements PlanService {
     public List<PmsPlan> getHistoryListByStuId(long stuId) {
         PmsPlanExample example=new PmsPlanExample();
         PmsPlanExample.Criteria criteria=example.createCriteria();
-        criteria.andExpiredLessThanOrEqualTo(new Date());
         criteria.andStatusEqualTo((byte) 1);
+        criteria.andStatus1EqualTo((byte) 1);
+        criteria.andStatus2EqualTo((byte) 1);
         criteria.andStuIdEqualTo(stuId);
         List<PmsPlan> list = pmsPlanMapper.selectByExampleWithBLOBs(example);
         return list;
@@ -180,6 +181,16 @@ public class PlanServiceImpl implements PlanService {
         Date date=new Date();
         criteria.andExpiredLessThanOrEqualTo(date);
         criteria.andStatusEqualTo((byte) 0);
+        List<PmsPlan> list = pmsPlanMapper.selectByExampleWithBLOBs(example);
+        return list;
+    }
+
+    @Override
+    public List<PmsPlan> getUnfinishedPlanListByStuId(long stuId) {
+        PmsPlanExample example=new PmsPlanExample();
+        PmsPlanExample.Criteria criteria=example.createCriteria();
+        criteria.andStatus2EqualTo((byte) 0);
+        criteria.andStuIdEqualTo(stuId);
         List<PmsPlan> list = pmsPlanMapper.selectByExampleWithBLOBs(example);
         return list;
     }

@@ -406,23 +406,23 @@
 
 
 
-                    var s = document.getElementById("test1111");
-                    s.style.display = "none";
+                var s = document.getElementById("test1111");
+                s.style.display = "none";
 
-                    var l = document.getElementById("log_window1");
-                    l.style.display = "none";
-                    return true;
+                var l = document.getElementById("log_window1");
+                l.style.display = "none";
+                return true;
 
             }
 
             function cancel_shield2(){
 
 
-                    var s = document.getElementById("test2222");
-                    s.style.display = "none";
+                var s = document.getElementById("test2222");
+                s.style.display = "none";
 
-                    var l = document.getElementById("log_window2");
-                    l.style.display = "none";
+                var l = document.getElementById("log_window2");
+                l.style.display = "none";
 
             }
             // function cancel_shield5(){
@@ -714,7 +714,7 @@
     </div>
     <div class="display" style="width: 10%"></div>
     <div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;">
-        <center>师生项目交互平台</center>
+        <center>实验室科研计划管理平台</center>
     </div>
     <div style="width: 6%" class="display"></div>
     <div id="banner_right" style="padding: 0;" class="display">
@@ -811,10 +811,12 @@
                     success:function (data) {
                         for(var i=data.length-1;i>=0;i--){
                             var exp=new Date(data[i].expired);
-                            var expired=dateFormat(exp);
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
                             var style="border-left: 10px solid #B3ACAD;";
                             var now=new Date();
                             var desc=data[i].planDesc;
+                            var title="周报("+created+"到"+expired+")";
                             desc=desc.replace(/\r\n/g, '<br/>');
                             desc=desc.replace(/\n/g, '<br/>');
                             desc=desc.replace(/\s/g, ' ');
@@ -828,7 +830,7 @@
                                 "\t\t\t</span>\n" +
                                 "                <div class=\"main_style_tip_word\">\n" +
                                 "                    <p class=\"tip_word_title\">\n" +
-                                "                        <b>"+data[i].title+"</b>" +
+                                "                        <b>"+title+"</b>" +
                                 "<a></a>\n" +
                                 "                    </p>\n" +
                                 "                    <div class=\"main_style_belly\">\n" +
@@ -1078,7 +1080,7 @@
                 </div>
             </div>
 
-            <div  style="height:400px;" class="pre-scrollable">
+            <div  style="height:400px;overflow-y: scroll;">
                 <div class="task_detail1">
                     <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
                             class="display detail_title_word">任务详情</span></div>
@@ -1092,8 +1094,8 @@
                 </div>
                 <div >
                     <div class="detail_title"><img class="display detail_title_img " src="/images/write.png"><span
-                            class="display  detail_title_word">学生自评</span><span style="vertical-align: middle" class="preJudgeWord" id=""></span></div>
-                    <div class="detail_word" id="">学生自评学生自评学生自评学生自评~_~</div>
+                            class="display  detail_title_word">学生自评</span><span style="vertical-align: middle" class="preJudgeWord" id="detailedExpiredSJCreated"></span></div>
+                    <div class="detail_word" id="detailedExpiredSelfJudge">学生自评学生自评学生自评学生自评~_~</div>
                 </div>
                 <div id="conclusion1">
                     <div class="detail_title"><img class="display detail_title_img " src="/images/star0.png"><span
@@ -1124,7 +1126,7 @@
                 </div>
             </div>
 
-            <div  style="height:400px;" class="pre-scrollable">
+            <div  style="height:400px;overflow-y: scroll;">
                 <div class="task_detail1">
                     <div class="detail_title"><img class="display detail_title_img" src="/images/detail.png"><span
                             class="display detail_title_word">任务详情</span></div>
@@ -1148,7 +1150,7 @@
                     </form>
                 </div>
                 <button class="btn btn-info" id="submitBtn" href="#" style="margin-left: 400px;display:none;">确认提交</button>
-                <div class="" id="submitBtn_hid5" href="#" style="margin-left: 400px;">确认提交</div>
+                <div class="" id="submitBtn_hid5" href="#" style="color: #fff;margin-left: 400px;">确认提交</div>
             </div>
         </div>
     </div>
@@ -1158,7 +1160,7 @@
     <div class="main_style display " style="position: ;margin-top: -20px;">
 
         <span style="width:37%;display: inline-block;"></span>
-        <span class="title" style=""><strong class="title_word" style="color: #000;">进行中</strong></span>
+        <span class="title" style=""><strong class="title_word" style="color: #000;">未完结</strong></span>
         <ul class="" id="addLi2" style="overflow-y: scroll">
 
 
@@ -1176,7 +1178,9 @@
                     success:function (data) {
                         for(var i=data.length-1;i>=0;i--){
                             var exp=new Date(data[i].expired);
-                            var expired=dateFormat(exp);
+                            var created = dateFormat(new Date(data[i].created));
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
                             var style="border-left: 10px solid #B3ACAD;";
                             var now=new Date();
                             //接近截至日期两天就提醒标红
@@ -1188,16 +1192,14 @@
                                 "\t\t\t</span>\n" +
                                 "                <div class=\"main_style_tip_word\">\n" +
                                 "                    <p class=\"tip_word_title\">\n" +
-                                "                        <b>"+data[i].title +"</b>\n" +
+                                "                        <b>"+title +"</b>\n" +
                                 "                        <a href='#'\">\n" +
                                 "                        </a>\n" +
                                 "                    </p>\n" +
                                 "                    <div class=\"main_style_belly\">\n" +
                                 "                        <div class=\"main_style_belly_word\">"+data[i].planDesc+"</div>\n"
                             if (data[i].status1==0){
-                                html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                    "<div class=\"display icon_time_check\" style=\" \" >未审核</div>"+
-                                    "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
+                                html+="<div class=\"icon_time display\">\n" +
                                     "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
                                     "\t\t\t\t\t\t</div>\n" +
                                     "                <div class='text1'>"+
@@ -1217,9 +1219,7 @@
                                 //         "                </div>\n" +
                                 //         "            </li>";
                             }
-                            else {  html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                "<div class=\"display icon_time_check\" style=\" \" >已审核</div>"+
-                                "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
+                            else {  html+="<div class=\"icon_time display\">\n" +
                                 "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
                                 "\t\t\t\t\t\t</div>\n" +
                                 "                <div class='text1'>"+
@@ -1270,43 +1270,13 @@
     <div class="main_style display " style="position: ">
 
         <span style="width:37%;display: inline-block;"></span>
-        <span class="title" style=""><strong class="title_word" style="color: #000;">已结束</strong></span>
+        <span class="title" style=""><strong class="title_word" style="color: #000;">已完结</strong></span>
         <ul class="" id="addLi3" style="overflow-y: scroll;display: none">
 
         </ul>
 
         <ul class="" id="addLi3_none" style="overflow-y: scroll;">
-            <li class="main_style_tip">
-                <span>
-                    <img class="main_style_tip_img" src="../static/images/tip.png">
-                 </span>
-                <div class="main_style_tip_word">
-                    <p class="tip_word_title">
-                        <b>计划标题</b>
-                        <a   href="#" class=''>
-                        </a>
-                    </p>
-                    <div class="main_style_belly">
-                        <div class="main_style_belly_word">计划描述计划描述计划描述计划描述计划描述计划描述计划描述</div>
-                        <div class="icon_time display">
-                            <div class="display icon_time_check" style="" >已评价</div>
-                            <strong  class="display icon_time_deadline">2018-4-4截止</strong>
-                            <input type='hidden' class='expiredPlanId' value=""/>
-                            <input type='hidden' class='expiredPlanStatus2' value="" />
-                        </div>
-                        <div class='text1'>
-                            <div class="icon_temp_done">
-                                <button  class="judge_self" style="background:url('../static/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:10%;vertical-align: middle;display:inline-block;"></button>
-                                <a href='#' class='detailedExpiredPlan'>
-                                    <div style="background: url('../static/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;" >
 
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
 
         </ul>
 
@@ -1351,7 +1321,9 @@
                     success:function (data) {
                         var html="";
                         for(var i=0;i<data.length;i++){
+                            var created = dateFormat(new Date(data[i].created));
                             var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
                             var desc=data[i].planDesc;
                             desc=desc.replace(/\r\n/g, '<br/>');
                             desc=desc.replace(/\n/g, '<br/>');
@@ -1363,7 +1335,7 @@
                                 "\t\t\t</span>\n" +
                                 "                <div class=\"main_style_tip_word\">\n" +
                                 "                    <p class=\"tip_word_title\">\n" +
-                                "                        <b>" + data[i].title + "</b>\n" +
+                                "                        <b>" + title + "</b>\n" +
                                 "                        <a   href=\"#\" class=''>\n" +
                                 "                        </a>\n" +
                                 "                    </p>\n" +
@@ -1378,8 +1350,8 @@
                                     "\t\t\t\t\t\t</div>\n" +
                                     "<div class='text1'>" +
                                     "                        <div class=\"icon_temp_done\">\n" +
-                                     "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
-                                     "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:16%;vertical-align: middle;display:inline-block;\"></button>\n" +
+                                    "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
+                                    "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:15%;vertical-align: middle;display:inline-block;\"></button>\n" +
                                     // "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
@@ -1397,7 +1369,7 @@
                                     "                <div class='text1'>" +
                                     "                        <div class=\"icon_temp_done\">\n" +
                                     //"                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
-                                    "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:16%;vertical-align: middle;display:inline-block;\"></button>\n" +
+                                    "                            <button  class=\"judge_self\" style=\"background:url('/images/modify.png') no-repeat;width: 50px;height: 32px;margin-left:15%;vertical-align: middle;display:inline-block;\"></button>\n" +
                                     // "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
@@ -1421,14 +1393,16 @@
                     url:"/plan/getHistoryListByStuId/"+stuId,
                     success:function (data) {
                         for(var i=data.length-1;i>=0;i--) {
+                            var created = dateFormat(new Date(data[i].created));
                             var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报("+created+"到"+expired+")";
                             html += " <li class=\"main_style_tip\">\n" +
                                 "\t\t\t<span>\n" +
                                 "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
                                 "\t\t\t</span>\n" +
                                 "                <div class=\"main_style_tip_word\">\n" +
                                 "                    <p class=\"tip_word_title\">\n" +
-                                "                        <b>" + data[i].title + "</b>\n" +
+                                "                        <b>" + title + "</b>\n" +
                                 "                        <a   href=\"#\" class=''>\n" +
                                 "                        </a>\n" +
                                 "                    </p>\n" +
@@ -1444,7 +1418,7 @@
                                     "<div class='text1'>" +
                                     "                        <div class=\"icon_temp_done\">\n" +
                                     // "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
-                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:16%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
                                     "                </div>\n" +
@@ -1460,7 +1434,7 @@
                                 //     "            </li>";
                             }
                             else
-                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                html += "<div class=\"icon_time display\">\n" +
                                     "<div class=\"display icon_time_check\" style=\" \" >未总评</div>" +
                                     "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
                                     "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
@@ -1469,7 +1443,7 @@
                                     "                <div class='text1'>" +
                                     "                        <div class=\"icon_temp_done\">\n" +
                                     // "                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
-                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:16%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
                                     "                </div>\n" +
@@ -1583,10 +1557,12 @@
                     success:function (data) {
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
+                        var time=created+" - "+expired;
                         $("#templanId2").attr("value",temPlanId);
                         $("#planTitle2").attr("value",data.title);
                         var setContent=data.planDesc;
                         setContent= setContent.replace(/<br\/>/g, "\n");
+                        $("#reservation1").attr("value",time);
                         $("#planDesc2").attr("value",setContent);
                         $("#test1").attr("value",created);
                         $("#test2").attr("value",expired);
@@ -1679,6 +1655,9 @@
     function submitPlanForm(url,message) {
         var planTitle=$("#planTitle1").attr("value");
         var planDesc=$("#planDesc1").attr("value");
+        var time=$("#reservation").attr("value");
+        var created=time.substring(0,10);
+        var expired=time.substring(13,time.length);
         planDesc = planDesc.replace(/\r\n/g, '<br/>');
         planDesc = planDesc.replace(/\n/g, '<br/>');
         planDesc = planDesc.replace(/\s/g, ' ');
@@ -1688,7 +1667,7 @@
             type:"post",
             async:false,
             url:url,
-            data:{title:planTitle,planDesc:planDesc,stuId:stuId},
+            data:{title:planTitle,planDesc:planDesc,stuId:stuId,created:created,expired:expired},
             success:function (data) {
                 if(data.status==200){
                     //
@@ -1753,8 +1732,9 @@
     function submitPlanForm2(flag) {
         var planTitle=$("#planTitle2").attr("value");
         var planDesc=$("#planDesc2").attr("value");
-        var created=$("#test1").attr("value");
-        var expired=$("#test2").attr("value");
+        var time=$("#reservation1").attr("value");
+        var created=time.substring(0,10);
+        var expired=time.substring(13,time.length);
         var planId=$("#templanId2").attr("value");
         var stuId=GetCookie("COOKIE_ID");
         //如果flag==1，则保存
@@ -1981,8 +1961,9 @@
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
                         var assessDate=dateFormat(new Date(data.assessDate));
+                        var title="周报("+created+"到"+expired+")";
                         $("#detail_header_img0").text(stuName);
-                        $("#detail_header_word0").text(data.title);
+                        $("#detail_header_word0").text(title);
                         $("#detailCreated").text(created+"开始");
                         $("#detailedExpired").text(expired+"截止");
                         var strContent=data.planDesc;
@@ -2029,17 +2010,24 @@
                 $.ajax({
                     type:"get",
                     async:false,
-                    url:"/plan/andAssess2ById/"+planId,
+                    url:"/plan/allAssess/"+planId,
                     success:function (data) {
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
+                        var title="周报("+created+"到"+expired+")";
                         var created1=dateFormat(new Date(data.created1));
                         var created2=dateFormat(new Date(data.created2));
+                        var created3=dateFormat(new Date(data.created3));
                         $("#detailedExpiredStuName").text(stuName);
-                        $("#detailedExpiredTitle").text(data.title);
+                        $("#detailedExpiredTitle").text(title);
                         $("#detailedExpiredCreated").text(created+"开始");
                         $("#detailedExpiredExpired").text(expired+"截止");
-                        $("#detailedExpiredPlanDesc").text(data.planDesc);
+
+                        var strContent=data.planDesc;
+                        var det=document.getElementById('detailedExpiredPlanDesc');
+                        det.innerHTML=strContent;
+
+                        // $("#detailedExpiredPlanDesc").text(data.planDesc);
                         if (data.assess1!=null) {
                             $("#detailedExpiredAssess1").text(data.assess1);
                             $("#detailedExpiredCreated1").text(created1);
@@ -2057,6 +2045,14 @@
                             $("#detailedExpiredAssess2").text("老师还没进行总评哦~_~");
                             $("#detailedExpiredCreated2").text("");
                             $("#detailedExpiredGrade").text("");
+                        }
+                        if (data.selfJudge != null){
+                            $("#detailedExpiredSelfJudge").text(data.selfJudge);
+                            $("#detailedExpiredSJCreated").text(created3);
+                        }
+                        else {
+                            $("#detailedExpiredSelfJudge").text("学生还没有自评哦~_~");
+                            $("#detailedExpiredSJCreated").text("");
                         }
                     }
                 })
@@ -2089,7 +2085,6 @@
             $(this).click(function () {
                 //动态渲染页面数据
                 var planId=$(".sjPlanId").eq(i).attr("value");
-                alert(planId);
                 var stuName=GetCookie("COOKIE_NICKNAME");
                 $.ajax({
                     type:"get",
@@ -2098,14 +2093,20 @@
                     success:function (data) {
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
+                        var title="周报("+created+"到"+expired+")";
                         var created1=dateFormat(new Date(data.created1));
                         var created2=dateFormat(new Date(data.created2));
                         $("#detailedExpiredStuName0").text(stuName);
                         $("#detailedExpiredStuName0").text(stuName);
-                        $("#detailedExpiredTitle0").text(data.title);
+                        $("#detailedExpiredTitle0").text(title);
                         $("#detailedExpiredCreated0").text(created+"开始");
                         $("#detailedExpiredExpired0").text(expired+"截止");
-                        $("#detailedExpiredPlanDesc0").text(data.planDesc);
+
+
+                        var strContent=data.planDesc;
+                        var det=document.getElementById('detailedExpiredPlanDesc0');
+                        det.innerHTML=strContent;
+                        // $("#detailedExpiredPlanDesc0").text(data.planDesc);
                         $("#detailedExpiredPlanId").attr("value",planId);
                         if (data.assess1!=null){
                             $("#detailedExpiredAssess01").text(data.assess1);

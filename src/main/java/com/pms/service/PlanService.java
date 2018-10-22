@@ -29,4 +29,5 @@ public interface PlanService {
     List<TeaTaskData> getTeaTaskData(Long expId);
     PlanFJAndSelfJ getFJAndSelfJById(Long id);
     List<PmsPlan> getNoneSelfJudgeByStuId(long stuId);
+    List<PmsPlan> getUnfinishedPlanListByStuId(long stuId);
 }

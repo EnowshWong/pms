@@ -13,6 +13,50 @@
 	height: auto;
 	
 }
+
+.liScroll{
+	/*position: absolute;;*/
+	/*border: 1px solid red;*/
+	width: 100%;
+	/*margin-left: 5%;*/
+	top:30px;
+	margin-top: 5px;
+}
+.liDoing{
+	width: 15%;
+	background: #a1d4ac;
+	color: #fff;
+	font-size: 0.9em;
+	text-align: center;
+	border-radius: 5px;
+	display: inline-block;;
+	/*border: 1px solid red;*/
+}
+.liUnDoing{
+	width: 15%;
+	background: #d5d5d5;
+	font-size: 0.9em;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	display: inline-block;;
+
+}
+.liWid{
+	background: url("../images/rightArrow.png") no-repeat;
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;;
+	/*text-decoration:line-through;*/
+	color: #d5d5d5;
+}
+.backLabel{
+	font-size: 0.9em;
+	margin-top: 5px;
+	color: #ef4e4e;
+
+}
 #banner{
 	border-bottom: 2px solid #e5e5e5;
 	/*margin-top: 20px;*/
@@ -379,11 +423,11 @@
 .main_style_tip span{
 	margin-left: 5px;
 	margin-top: 10px;
-	border:1px solid red;
+	/*border:1px solid red;*/
 	display:none;
 }
 .tip_judge{
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 	width: 10px;
 	height: 100px;
 	
@@ -401,9 +445,15 @@
 
 
 }
+.weekTime{
+	width: 100%;
+	/*border:1px solid red;*/
+}
 .tip_word_title{
 	font-size: 1.2em;
 	font-weight: 150;
+	width:390px;
+	/*border:1px solid red;*/
 }
 .main_style_footer_word{
 	margin-top: 15px;

@@ -690,7 +690,10 @@
     </script>
 
     <style>
-
+        #hsCreated1,#hsCreated2,#hsCreated3{
+            float: right;
+            right: 5em;
+        }
         #test1111 {
             width:100%;
             height:100%;
@@ -776,7 +779,7 @@
         }
         #log_add_register {
             width:300px;
-            height:200px;
+            height:220px;
             border-radius: 10px;
             background-color:#fff;
             /*border: 1px solid red;*/
@@ -934,14 +937,6 @@
             <div class="display detail_header0">
                 <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle">
                     嫦娥三号着陆计划</strong>
-                <div class="display header_img00" style="vertical-align: middle">
-                    <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                              class="display"
-                                                              id="detailedExpiredCreated">2018-5-18开始</strong></div>
-                    <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                              class="display"
-                                                              id="detailedExpiredExpired">2018-6-18截止</strong></div>
-                </div>
             </div>
         </div>
 
@@ -991,12 +986,6 @@
         <div class="display detail_header0">
             <strong class="display detail_header_word0" style="color: #000;" id="fjTitle">
                 嫦娥三号着陆计划</strong>
-            <div class="display header_img00" style="vertical-align: middle">
-                <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                          class="display" id="fjCreated">2018-5-18开始</strong></div>
-                <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                          class="display" id="fjExpired">2018-6-18截止</strong></div>
-            </div>
         </div>
     </div>
 
@@ -1180,10 +1169,8 @@
             success: function (data) {
                 var created = dateFormat(new Date(data.created));
                 var expired = dateFormat(new Date(data.expired));
-                var title="周报("+created+"到"+expired+")";
+                var title="周报( "+created+" 到 "+expired+" )";
                 $("#fjTitle").text(title);
-                $("#fjCreated").text(created + "开始");
-                $("#fjExpired").text(expired + "截止");
                 var strContent=data.planDesc;
                 var det=document.getElementById('fjPlanDesc');
                 det.innerHTML=strContent;
@@ -1205,12 +1192,6 @@
         <div class="display detail_header0">
             <strong class="display detail_header_word0" id="sjTitle" style="color: #000;">
                 嫦娥三号着陆计划</strong>
-            <div class="display header_img00" style="vertical-align: middle">
-                <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                          class="display" id="sjCreated">2018-5-18开始</strong></div>
-                <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                          class="display" id="sjExpired">2018-6-18截止</strong></div>
-            </div>
         </div>
     </div>
 
@@ -1430,10 +1411,8 @@
             success: function (data) {
                 var created = dateFormat(new Date(data.created));
                 var expired = dateFormat(new Date(data.expired));
-                var title="周报("+created+"到"+expired+")";
+                var title="周报( "+created+" 到 "+expired+" )";
                 $("#sjTitle").text(title);
-                $("#sjCreated").text(created + "开始");
-                $("#sjExpired").text(expired + "截止");
                 var strContent=data.planDesc;
                 var det=document.getElementById('sjPlanDesc');
                 det.innerHTML=strContent;
@@ -1518,12 +1497,6 @@
         <div class="display detail_header0">
             <strong class="display detail_header_word0" style="color: #000;">
                 嫦娥三号着陆计划</strong>
-            <div class="display header_img00" style="vertical-align: middle">
-                <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                          class="display">2018-5-18开始</strong></div>
-                <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                          class="display">2018-6-18截止</strong></div>
-            </div>
         </div>
     </div>
 
@@ -1545,12 +1518,6 @@
         <div class="display detail_header0">
             <strong class="display detail_header_word0" style="color: #000;" id="fjinfTitle">
                 嫦娥三号着陆计划</strong>
-            <div class="display header_img00" style="vertical-align: middle">
-                <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                          class="display" id="fjinfCreated">2018-5-18开始</strong></div>
-                <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                          class="display" id="fjinfExpired">2018-6-18截止</strong></div>
-            </div>
         </div>
     </div>
 
@@ -1582,10 +1549,8 @@
             success: function (data) {
                 var created = dateFormat(new Date(data.created));
                 var expired = dateFormat(new Date(data.expired));
-                var title="周报("+created+"到"+expired+")";
+                var title="周报( "+created+" 到 "+expired+" )";
                 $("#fjinfTitle").text(title);
-                $("#fjinfCreated").text(created + "开始");
-                $("#fjinfExpired").text(expired + "截止");
 
                 var strContent=data.planDesc;
                 var det=document.getElementById('fjinfDesc');
@@ -1658,12 +1623,6 @@
         <div class="display detail_header0">
             <strong class="display detail_header_word0" style="color: #000;" id="hsTitle">
                 嫦娥三号着陆计划</strong>
-            <div class="display header_img00" style="vertical-align: middle">
-                <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                          class="display" id="hsCreated">2018-5-18开始</strong></div>
-                <div class="display header_img02"><strong style="margin-left: 10px;"
-                                                          class="display" id="hsExpired">2018-6-18截止</strong></div>
-            </div>
         </div>
     </div>
 
@@ -1889,10 +1848,10 @@
 
 </div>
 <div id="log_add_register" >
-    <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+    <div id="md-close3"><a href="javascript:cancel_shield3()"  class="md-close" style="position:absolute;margin-left:230px;margin-top: 10px;"> </a></div>
 
     <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
-    <input id="nickname" type="text" class="form-control registerName" style="width: 50%;margin-top: 30px;" placeholder="请输入学生姓名"/>
+    <input id="nickname" type="text" class="form-control registerName" style="width: 50%;margin-top: 50px;" placeholder="请输入学生姓名"/>
     <input id="username" type="text" class="form-control registerName" style="width: 50%;" placeholder="请输入账号"/>
     <a href="#" style="color: #fff;"><button id="registerBtn" type="button" class="btn btn-info" onclick="doRegisterStu()">确定</button></a>
     <script>
@@ -1940,14 +1899,12 @@
                 var created1 = dateFormat(new Date(data.created1));
                 var created2 = dateFormat(new Date(data.created2));
                 var created3 = dateFormat(new Date(data.created3));
-                var title="周报("+created+"到"+expired+")";
+                var title="周报( "+created+" 到 "+expired+" )";
                 $("#hsTitle").text(title);
                 var strContent1=data.planDesc;
                 var det1=document.getElementById('hsPlanDesc');
                 det1.innerHTML=strContent1;
                 // $("#hsPlanDesc").text(data.planDesc);
-                $("#hsCreated").text(created + "开始");
-                $("#hsExpired").text(expired + "截止");
                 if (data.status1 == 1) {
                     $("#hsCreated1").text("评价时间:" + created1);
                     var strContent2=data.assess1;
@@ -2014,19 +1971,33 @@
 
             <div id="add_float" class="display">
                 <div style="margin-top: 5px;margin-bottom: 5px;">
-                    <a href="javascript:openTeaSearch()">
+                    <a id="clc1" href="javascript:openTeaSearch()">
                         <div class="self_mesg" id="self_tea_set">
-                            <span id="addTea_set">老师</span>
+                            <span id="addTea_set">添加老师</span>
                         </div>
                     </a>
-                    <a href="javascript:shield4()">
+                    <a id="clc2" href="javascript:shield4()">
                         <div class="self_mesg" id="self_stu_out">
-                            <span id="addStu_out">学生</span>
+                            <span id="addStu_out">添加学生</span>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
+
+        <script>
+            var clc1=document.getElementById('clc1');
+            var clc2=document.getElementById('clc2');
+            var clcAround1=document.getElementById('add_around');
+            clc1.onclick=function (ev) {
+                clcAround1.style.display='none';
+            }
+            clc2.onclick=function (ev) {
+                // alert('a')
+                clcAround1.style.display='none';
+            }
+        </script>
+
         <div id="self_around">
             <div id="self_float" class="display">
                 <div style="margin-top: 5px;margin-bottom: 5px;">
@@ -2354,6 +2325,9 @@
                             "                        </div>\n" +
                             "                    </div>\n" +
                             "                </a>"+
+                                "<div class=\"right_none display\">\n" +
+                            "                    该学生最近无动态更新\n" +
+                            "                </div>"+
                             "            </li>\n" +
                             "        </ul>\n" +
                             "    </div>";
@@ -2413,11 +2387,11 @@
                                 "\n" +
                             "            <div class=\"liScroll display\">\n" +
                             "                <div class=\""+cls1+"\">未审核</div>\n" +
-                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
                             "                <div class=\""+cls2+"\">进行中</div>\n" +
-                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
                             "                <div class=\""+cls3+"\">已自评</div>\n" +
-                            "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
+                            // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
                             "                <div class=\""+cls4+"\"> 已完结</div>\n" +
                             "            </div>"+
                             "            <li class=\"new_tip  \">\n" +
@@ -2432,15 +2406,15 @@
                             // "    </div>"+
                             "<div class=\"tip_right display\">\n" +
                             "                    <div class=\"display new_tip_right\">\n" +
-                            "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报("+created+"到"+expiredd+")</b></a>\n" +
+                            "                        <div class=\"display right_title\"><a href=\"#\"><b class='planInfClass weekTime'>周报(  "+created+"  到  "+expiredd+"  )</b></a>\n" +
                             "                        </div>\n" +
                             "                        <div class=\"right_state\">\n" +
                             "<input type='hidden' class='planIdClass' value='"+data[i].planId+"'/> " +
                             "<input type='hidden' class='planStage' value='"+stage+"' />"+
                             // "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
                             "                        </div>\n" +
-                            "                        <div class=\"display \" style=\"margin-top: 10px;color: #a5a5a5;\">最近更新：<span\n" +
-                            "                                class=\"time_disp\">"+optime+"</span></div>\n" +
+                            "                        <div class=\"display  \" style=\"width: 100%;margin-top: 10px;color: #a5a5a5;\"><div class=\"time_ope_width\"></div>&nbsp;最近更新：<span\n" +
+                            "                                class=\"time_disp\">"+optime+"</span>&nbsp;<div class=\"time_ope_width\"></div></div>\n" +
                             "                    </div>\n" +
                             "                </div>\n" +
                             "            </li>\n" +
@@ -2498,88 +2472,11 @@
 <!--"           \t \t<span class=\"title display\"><strong class=\"title_word\" ><div class=\"title_word_limit\"> "+data[i].nickname+"</div></strong></span>" +-->
 
 <!--"\t\t\t\t<div class=\"display geo\"  >\n" +-->
-<!--"\t\t\t\t\t\n" +-->
-<!--"\t\t\t\t\t<div class=\"box\">\n" +-->
-<!--"\t\t\t\t\t\t  <ul class=\"f-nav\">\n" +-->
-<!--"\t\t\t\t\t\t\t  <a  href=\"#\"><li class=\"doing\"> <div class=\"triangle\"></div></li></a>\n" +-->
-<!--"    <a  href=\"#\"><li>|</li></a>\n"+-->
-<!--"\t\t\t\t\t\t\t <a  href=\"#\"><li class=\"done\">已结束<div class=\"triangle\"></div></li></a>\n" +-->
-<!--"    <a  href=\"#\"><li>|</li></a>\n"+-->
-<!--"\t\t\t\t\t\t\t<a  href=\"#\"><li class=\"history\">记录<div class=\"triangle\"></div></li></a>\n" +-->
-<!--"\t\t\t\t\t\t</ul>\n" +-->
-<!--"\t\t\t\t\t</div>\n" +-->
-<!--"\t\t\t\t</div>\n" +-->
-<!--"\t\t\t</div>\n" +-->
-<!--"\t\t\t\n" +-->
-<!--"<input type='hidden' class='stuId' value='"+data[i].id+"'/>\n"+-->
-<!--"            <ul class=\"pre-scrollable cont addLi\" style=\"height: 240px;\" id='ul"+data[i].id+"'>";-->
-<!--var planList=data[i].plans;-->
-<!--for(var j=planList.length-1;j>=0;j&#45;&#45;) {-->
-<!--if (planList[j].status1 !=1) {-->
-<!--var expired = dateFormat(new Date(planList[j].expired));-->
-<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
-<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
-<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
-<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
-<!--"\t\t\t\t\t\t\t<b>" + planList[j].title + "</b>\n" +-->
-<!--"<a>\n" +-->
-<!--"    </a>\n" +-->
-<!--"\t\t\t\t\t\t</p>\n" +-->
-<!--"\t\t\t\t\t\t\n" +-->
-<!--"                    <div class=\"main_style_belly\">\n" +-->
-<!--"                        <div class=\"main_style_belly_word\">\n" +-->
-<!--"\t\t\t\t\t\t\t<div>" + planList[j].planDesc + "</div>\n" +-->
-<!--"\t\t\t\t\t\t</div>\n" +-->
-<!--"\t\t\t\t\t\t<div class=\"icon_time display\">\n" +-->
-<!--"\t\t\t\t\t\t\t<strong style=\"margin-left: 10px;\">" + expired + "截止</strong>" +-->
-<!--"              <input type='hidden' value='" + planList[j].id + "' class='planId'/>\n" +-->
-<!--"\t\t\t\t\t\t</div>\n" +-->
-<!--"\t\t\t\t\t\t\n" +-->
-<!--"                    <div class=\"text1\">"+-->
-<!--"                        <div class=\"icon_temp\">\n" +-->
-<!--"                            <a  href=\"javascript:shieldPreJudge()\"><div class=\"judge_self\" style=\"margin-left: 10%;margin-top: -4%\"   type=\"div\"></div></a>\n" +-->
-<!--"                        </div>\n" +-->
-<!--"                    </div>\n" +-->
-<!--"                    </div>\n" +-->
-<!--"                    </div>\n" +-->
-<!--"                </li>";-->
-<!--}-->
-<!--}-->
-<!--html+="</ul>\n" +-->
-<!--"        </div>";-->
-<!--}-->
-<!--$("#stuPlanList").html(html);-->
-<!--$('.main_style_tip').hover(function(){-->
-<!--$('.text1',this).stop().animate({-->
 
-<!--//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，-->
-
-<!--//保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他-->
-
-<!--height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度-->
-<!--});-->
-<!--},function(){-->
-<!--$('.text1',this).stop().animate({-->
-<!--height:'0'-->
-<!--});-->
-<!--});-->
-<!--}-->
-<!--}))-->
-<!--}-->
-<!--function getDoingListByStuId(stuId) {-->
 <!--$.ajax({-->
 <!--type: "get",-->
 <!--async: false,-->
-<!--url: "/plan/getDoing/" + stuId,-->
-<!--success: function (data) {-->
-<!--var html = "";-->
-<!--for (var j = data.length - 1; j >= 0; j&#45;&#45;) {-->
-<!--var expired = dateFormat(new Date(data[j].expired));-->
-<!--html += " <li class=\"main_style_tip\" style=\"border-left: 10px solid #ef4e4e;display: \">\n" +-->
-<!--"                    <span><img src=\"/images/tip.png\" style=\"width:20px; margin-top: -5px;\"></span>\n" +-->
-<!--"                    <div class=\"main_style_tip_word display\">\n" +-->
-<!--"\t\t\t\t\t\t<p class=\"tip_word_title\">\n" +-->
-<!--"\t\t\t\t\t\t\t<b>" + data[j].title + "</b>" +-->
+
 <!--"<a></a>\n" +-->
 <!--"\t\t\t\t\t\t</p>\n" +-->
 <!--"\t\t\t\t\t\t\n" +-->

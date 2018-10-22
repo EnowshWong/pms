@@ -417,10 +417,7 @@ a{
 	/*	border:1px solid red;*/
 	background: #fff;
 
-	width: 300px;
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow:ellipsis;
+	/*width: 320px;*/
 }
 
 .md-close{
@@ -442,11 +439,15 @@ a{
 /*	width: 94%;*/
 /*	border:1px solid red;*/
 	background: #fff;
-	
-	width: 300px;
-	overflow:hidden; 
-	white-space:nowrap;
-	text-overflow:ellipsis;
+
+}
+.right_none{
+	vertical-align: top;;
+	margin-top: 30px;
+	color: #a5a5a5;
+	font-size: 1.5em;
+	/*border: 1px solid red;*/
+
 }
 #detail_header_word{
 	margin-left: 25px;	
@@ -630,7 +631,7 @@ a{
 	margin-left: -270px;
 }
 .dead_time{
-	border:1px solid red;
+	/*border:1px solid red;*/
 	color: #454545;
 	font-size: 1.3em;
 	font-weight: 500;

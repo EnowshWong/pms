@@ -161,4 +161,11 @@ public class PlanController {
         List<PmsPlan> list = planService.getNoneSelfJudgeByStuId(stuId);
         return list;
     }
+
+    @RequestMapping("/plan/getUnfinishedPlanListByStuId/{stuId}")
+    @ResponseBody
+    public List<PmsPlan> getUnfinishedPlanListByStuId(@PathVariable long stuId){
+        List<PmsPlan> list = planService.getUnfinishedPlanListByStuId(stuId);
+        return list;
+    }
 }

@@ -695,6 +695,11 @@
     <link rel="stylesheet" href="/css/tea_detail.css"/>
 
 
+    <style>
+        .weekTime{
+            font-size: 0.9em;
+        }
+    </style>
 
 </head>
 
@@ -838,9 +843,6 @@
             <div id="file" class="display"><span class="left_length"><span>文件</span></span></div>
         </a>
 
-        <a href="#">
-            <div id="eye" class="display"><span class="left_length"><span>鹰眼</span></span></div>
-        </a>
         <a href="/showHistory">
             <div id="history" class="display"><span class="left_length"><span>记录</span></span></div>
         </a>
@@ -868,24 +870,12 @@
         <div>
             <div class="detail_junior display">
 
-                <strong class="junior_tit">导师：</strong>
+                <strong class="junior_tit">导&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师：</strong>
                 <span class="junior_name">汪星人</span>
             </div>
             <div class="detail_lab ">
                 <strong class="lab_tit">所属实验室：</strong>
                 <span class="lab_name">天空之城</span>
-            </div>
-            <!--<div class="grade"></div>-->
-            <div>
-                <div class="detail_mail display">
-
-                    <strong class="mail_tit">邮箱：</strong>
-                    <span class="mail_name">wdc@qq.com</span>
-                </div>
-                <div class="detail_tel ">
-                    <strong class="tel_tit">联系方式：</strong>
-                    <span class="tel_name">123456789</span>
-                </div>
             </div>
         </div>
         <script type="text/javascript" th:inline="javascript">
@@ -909,7 +899,7 @@
                             "\n" +
                             "        <div class=\"detail_junior display\">\n" +
                             "\n" +
-                            "            <strong class=\"junior_tit\">导师：</strong>\n" +
+                            "            <strong class=\"junior_tit\">导&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师：</strong>\n" +
                             "            <span class=\"junior_name\">"+data.teaName+"</span>\n" +
                             "        </div>\n" +
                             "        <div class=\"detail_lab \">\n" +
@@ -917,17 +907,6 @@
                             "            <span class=\"lab_name\">"+data.expName+"</span>\n" +
                             "        </div>\n" +
                             "        <!--<div class=\"grade\"></div>-->\n" +
-                            "        <div>\n" +
-                            "            <div class=\"detail_mail display\">\n" +
-                            "\n" +
-                            "                <strong class=\"mail_tit\">邮箱：</strong>\n" +
-                            "                <span class=\"mail_name\">wdc@qq.com</span>\n" +
-                            "            </div>\n" +
-                            "            <div class=\"detail_tel \">\n" +
-                            "                <strong class=\"tel_tit\">联系方式：</strong>\n" +
-                            "                <span class=\"tel_name\">123456789</span>\n" +
-                            "            </div>\n" +
-                            "        </div>\n" +
                             "\n" +
                             "        <div class=\"add_task\">\n" +
                             "            <a  href=\"#\">\n" +
@@ -1168,12 +1147,6 @@
             <div class="display" id="detail_header0">
                 <strong class="display" id="detail_header_word0" style="color: #000;">
                     嫦娥三号着陆计划</strong>
-                <div class="display" id="header_img00" style="vertical-align: middle">
-                    <div   class="display header_img01"><strong id="detailCreated" style="margin-left: 10px;"
-                                                                class="display">2018-5-18开始</strong></div>
-                    <div   class="display header_img02"><strong id="detailedExpired" style="margin-left: 10px;"
-                                                                class="display">2018-6-18截止</strong></div>
-                </div>
             </div>
         </div>
 
@@ -1202,12 +1175,6 @@
             <div class="display detail_header0">
                 <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle">
                     嫦娥三号着陆计划</strong>
-                <div class="display header_img00"  style="vertical-align: middle">
-                    <div  class="display header_img01"><strong style="margin-left: 10px;"
-                                                               class="display" id="detailedExpiredCreated">2018-5-18开始</strong></div>
-                    <div  class="display header_img02"><strong style="margin-left: 10px;"
-                                                               class="display" id="detailedExpiredExpired">2018-6-18截止</strong></div>
-                </div>
             </div>
         </div>
 
@@ -1248,12 +1215,6 @@
             <div class="display detail_header0">
                 <strong class="display detail_header_word0" style="color: #000;" id="detailedExpiredTitle0">
                     嫦娥三号着陆计划</strong>
-                <div class="display header_img00"  style="vertical-align: middle">
-                    <div class="display header_img01"><strong style="margin-left: 10px;"
-                                                              class="display" id="detailedExpiredCreated0">2018-5-18开始</strong></div>
-                    <div  class="display header_img02"><strong style="margin-left: 10px;"
-                                                               class="display" id="detailedExpiredExpired0">2018-6-18截止</strong></div>
-                </div>
             </div>
         </div>
 
@@ -1317,25 +1278,24 @@
         </ul>
         <script type="text/javascript" th:inline="javascript">
             //在页面加载时根据stuId查询进行计划表
-            function getPlanList() {
+            function getUnfinishedPlanList() {
                 var html="";
                 var stuId=[[${stuId}]];
                 $.ajax({
                     type:"get",
                     async:false, //同步请求
-                    url:"/plan/getDoingListByStuId/"+stuId,
+                    url:"/plan/getUnfinishedPlanListByStuId/"+stuId,
                     success:function (data) {
                         for(var i=data.length-1;i>=0;i--){
                             var exp=new Date(data[i].expired);
-                            var expired=dateFormat(exp);
-                            var style="border-left: 10px solid #B3ACAD;";
-                            var now=new Date();
                             var created = dateFormat(new Date(data[i].created));
                             var expired = dateFormat(new Date(data[i].expired));
-                            var title="周报("+created+"到"+expired+")";
+                            var title="周报(&nbsp;"+created+"&nbsp;到&nbsp;"+expired+"&nbsp;)";
+                            var style="border-left: 10px solid #B3ACAD;";
+                            var now=new Date();
                             //接近截至日期两天就提醒标红
-                            if (exp.getDate()-now.getDate()<=2)
-                                style="border-left: 10px solid #ef4e4e;";
+                            // if (exp.getDate()-now.getDate()<=2)
+                            //     style="border-left: 10px solid #ef4e4e;";
                             html+=" <li class=\"main_style_tip\">\n" +
                                 "\t\t\t<span>\n" +
                                 "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
@@ -1348,46 +1308,109 @@
                                 "                    </p>\n" +
                                 "                    <div class=\"main_style_belly\">\n" +
                                 "                        <div class=\"main_style_belly_word\">"+data[i].planDesc+"</div>\n"
+                            //给予查看操作
                             if (data[i].status1==0){
-                                html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                    "<div class=\"display icon_time_check\" style=\" \" >未审核</div>"+
-                                    "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
+                                html+="<div class=\"liScroll display\">\n" +
+                                    "                            <div class=\"liDoing\">未审核</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">进行中</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已截止</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已自评</div>\n" +
+                                    "                        </div>\n" +
+                                    "                            <div class=\"icon_time display\">\n" +
+                                    "                            <input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
+                                    "                            \t\t\t\t\t\t</div>\n" +
+                                    "                                            <div class='text1'>"+
+                                    "                                                    <div class=\"icon_temp_doing display\" style=\"\">"+
+                                    "                                                    <a href='#' class='detailedInf'\">\n" +
+                                    "                             <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;;margin-left: 10%;display:inline-block\" ></div>\n"+
+                                    "                                                    </a>\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                </div>\n" +
+                                    "                                            </div>\n" +
+                                    "                            </div>"+
+                                    "                            </li>"
+                            }
+                            //给与查看操作
+                            else if (data[i].status1==1&&exp>now) {
+                                html+=" <div class=\"liScroll display\">\n" +
+                                    "                            <div class=\"liUnDoing\">未审核</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liDoing\">进行中</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已截止</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已自评</div>\n" +
+                                    "                        </div>\n" +
+                                    "<div class=\"icon_time display\">\n" +
                                     "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
                                     "\t\t\t\t\t\t</div>\n" +
                                     "                <div class='text1'>"+
                                     "                        <div class=\"icon_temp_doing display\" style=\"\">"+
+                                    // " <div style=\"background: url('/images/judge.png') no-repeat;width: 50px;height:32px;margin-left: -10px;display:inline-block\" ></div>\n" +
                                     "                        <a href='#' class='detailedInf'\">\n" +
-                                    " <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;;margin-left: 10%;display:inline-block\" ></div>\n"+
+                                    " <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left: 10px;display:inline-block\" ></div>\n"+
                                     "                        </a>\n" +
                                     "                        </div>\n" +
                                     "                    </div>\n" +
                                     "                </div>\n" +
+                                    // "                <div class='text1'></div>"
                                     "</div>"+
-                                    "</li>"
-                                // if (data[i].assess==null){
-                                //     html+=" <div class=\"judge\" >未审核</div>\n" +
-                                //         "                        </div>\n" +
-                                //         "                    </div>\n" +
-                                //         "                </div>\n" +
-                                //         "            </li>";
+                                    "            </li>"
                             }
-                            else {  html+="\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                "<div class=\"display icon_time_check\" style=\" \" >已审核</div>"+
-                                "\t\t\t\t\t\t\t<strong class=\"display icon_time_deadline\">"+expired+"截止</strong>" +
-                                "<input type='hidden' class='planId' value='"+data[i].id+"'/> \n" +
-                                "\t\t\t\t\t\t</div>\n" +
-                                "                <div class='text1'>"+
-                                "                        <div class=\"icon_temp_doing display\" style=\"\">"+
-                                // " <div style=\"background: url('/images/judge.png') no-repeat;width: 50px;height:32px;margin-left: -10px;display:inline-block\" ></div>\n" +
-                                "                        <a href='#' class='detailedInf'\">\n" +
-                                " <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left: 10px;display:inline-block\" ></div>\n"+
-                                "                        </a>\n" +
-                                "                        </div>\n" +
-                                "                    </div>\n" +
-                                "                </div>\n" +
-                                // "                <div class='text1'></div>"
-                                "</div>"+
-                                "            </li>";
+                            //给与自评操作
+                            else if (exp<=now&&data[i].status==0){
+                                html+="<div class=\"liScroll display\">\n" +
+                                    "                            <div class=\"liUnDoing\">未审核</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">进行中</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liDoing\">已截止</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已自评</div>\n" +
+                                    "                        </div>\n" +
+                                    "                        <div class=\"icon_time display\">\n" +
+                                    "                            <!--<div class=\"display icon_time_check\" style=\"\" >已评价</div>-->\n" +
+                                    "                            <!--<strong  class=\"display icon_time_deadline\">2018-4-4截止</strong>-->\n" +
+                                    "<input type='hidden' class='sjPlanId' value='"+data[i].id+"' /> " +
+                                    "                        </div>\n" +
+                                    "                        <div class='text1'>\n" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                    //"                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
+                                    // "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "\n" +
+                                    "            </li>";
+                            }
+                            //给与查看操作
+                            else if(data[i].status==1){
+                                html+="<div class=\"liScroll display\">\n" +
+                                    "                            <div class=\"liUnDoing\">未审核</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">进行中</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liUnDoing\">已截止</div>\n" +
+                                    "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                    "                            <div class=\"liDoing\">已自评</div>\n" +
+                                    "                        </div>\n" +
+                                    "<div class=\"icon_time display\">\n" +
+                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                    "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
+                                    "\t\t\t\t\t\t</div>\n" +
+                                    "                <div class='text1'>" +
+                                    "                        <div class=\"icon_temp_done\">\n" +
+                                    // "                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
+                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>\n" +
+                                    "                </div>\n" +
+                                    "</div>" +
+                                    "</li>"
                             }
                             $('.main_style_tip').hover(function(){
                                 $('.text1',this).stop().animate({
@@ -1409,7 +1432,7 @@
                     }
                 })
             }
-            getPlanList();
+            getUnfinishedPlanList();
         </script>
         <script>
             var judge=document.getElementById('wrap_judge');
@@ -1451,12 +1474,12 @@
                 $.ajax({
                     type:"get",
                     async:false,
-                    url:"/plan/getExpiredList/"+stuId,
+                    url:"/plan/getHistoryListByStuId/"+stuId,
                     success:function (data) {
                         for(var i=data.length-1;i>=0;i--) {
-                            var expired = dateFormat(new Date(data[i].expired));
                             var created = dateFormat(new Date(data[i].created));
-                            var title="周报("+created+"到"+expired+")";
+                            var expired = dateFormat(new Date(data[i].expired));
+                            var title="周报(&nbsp;"+created+"&nbsp;到&nbsp;"+expired+"&nbsp;)";
                             html += " <li class=\"main_style_tip\">\n" +
                                 "\t\t\t<span>\n" +
                                 "\t\t\t\t<img class=\"main_style_tip_img\" src=\"/images/tip.png\">\n" +
@@ -1468,56 +1491,20 @@
                                 "                        </a>\n" +
                                 "                    </p>\n" +
                                 "                    <div class=\"main_style_belly\">\n" +
-                                "                        <div class=\"main_style_belly_word\">" + data[i].planDesc + "</div>\n";
-                            if (data[i].status2 != 0) {
-                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                    "<div class=\"display icon_time_check\" style=\" \" >已评价</div>" +
-                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
-                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
-                                    "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
-                                    "\t\t\t\t\t\t</div>\n" +
-                                    "<div class='text1'>" +
-                                    "                        <div class=\"icon_temp_done\">\n" +
-                                    // "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
-                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
-                                    "                        </div>\n" +
-                                    "                    </div>\n" +
-                                    "                </div>\n" +
-                                    "</div>" +
-                                    "</li>"
-                                // if (data[i].assess!=null) {
-                                //     html+="                        <div class=\"icon_temp\">\n" +
-                                //     "                            <div class=\"assess\" >已总评</div>\n" +
-                                //     "                            <a  href=\"#\"><button class=\"judge_self\" style=\"margin-top:5px;\" type=\"button\">自评</button></a>\n" +
-                                //     "                        </div>\n" +
-                                //     "                    </div>\n" +
-                                //     "                </div>\n" +
-                                //     "            </li>";
-                            }
-                            else
-                                html += "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
-                                    "<div class=\"display icon_time_check\" style=\" \" >未评价</div>" +
-                                    "\t\t\t\t\t\t\t<strong  class=\"display icon_time_deadline\">" + expired + "截止</strong>" +
-                                    "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
-                                    "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
-                                    "\t\t\t\t\t\t</div>\n" +
-                                    "                <div class='text1'>" +
-                                    "                        <div class=\"icon_temp_done\">\n" +
-                                    // "                            <img class=\"assess\" src=\"/images/judge1.png\"  style=\"margin-left: -10%;\">\n" +
-                                    "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:2%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
-                                    "                        </div>\n" +
-                                    "                    </div>\n" +
-                                    "                </div>\n" +
-                                    "</div>" +
-                                    "</li>"
-
-                            // else html+="                        <div class=\"icon_temp\">\n" +
-                            //     "                            <div class=\"assess\" >未总评</div>\n" +
-                            //     "                            <a  href=\"#\"><button class=\"judge_self\" style=\"margin-top:5px;\" type=\"button\">自评</button></a>\n" +
-                            //     "                        </div>\n" +
-                            //     "                    </div>\n" +
-                            //     "                </div>\n" +
-                            //     "            </li>";
+                                "                        <div class=\"main_style_belly_word\">" + data[i].planDesc + "</div>\n"+
+                                "\t\t\t\t\t\t<div class=\"icon_time display\">\n" +
+                                "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
+                                "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
+                                "\t\t\t\t\t\t</div>\n" +
+                                "<div class='text1'>" +
+                                "                        <div class=\"icon_temp_done\">\n" +
+                                // "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
+                                "                     <a href='#' class='detailedExpiredPlan'> <div style=\"background: url('/images/watch.png') no-repeat;width: 50px;height:32px;margin-left:15%;display:inline-block;vertical-align: middle;\" ></div></a>\n" +
+                                "                        </div>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n" +
+                                "</div>" +
+                                "</li>";
                         }
                         $("#addLi3").html(html);
 
@@ -1767,7 +1754,7 @@
         $("#submitBut1").click(function () {
             submitPlanForm("/plan/create","提交成功");
             //刷新提交页面
-            getPlanList();
+            getUnfinishedPlanList();
             //重新绑定查看详情按钮
             detailedInfClick();
             $('.main_style_tip').hover(function(){
@@ -1890,7 +1877,7 @@
             });
             //刷新暂存栏与进行栏
             getTempPlanList();
-            getPlanList();
+            getUnfinishedPlanList();
             //重新绑定按钮事件
             updateClick();
             //重新绑定查看事件
@@ -2019,11 +2006,9 @@
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
                         var assessDate=dateFormat(new Date(data.assessDate));
-                        var title="周报("+created+"到"+expired+")";
+                        var title="周报(&nbsp;"+created+"&nbsp;到&nbsp;"+expired+"&nbsp;)";
                         $("#detail_header_img0").text(stuName);
                         $("#detail_header_word0").text(title);
-                        $("#detailCreated").text(created+"开始");
-                        $("#detailedExpired").text(expired+"截止");
                         $("#detailedPlanDesc").text(data.planDesc);
                         if (data.assess!=null)
                             $("#detailedAssess1").text(data.assess);
@@ -2070,14 +2055,12 @@
                     success:function (data) {
                         var created=dateFormat(new Date(data.created));
                         var expired=dateFormat(new Date(data.expired));
-                        var title="周报("+created+"到"+expired+")";
+                        var title="周报( "+created+" 到 "+expired+" )";
                         var created1=dateFormat(new Date(data.created1));
                         var created2=dateFormat(new Date(data.created2));
                         var created3=dateFormat(new Date(data.created3));
                         $("#detailedExpiredStuName").text(stuName);
                         $("#detailedExpiredTitle").text(title);
-                        $("#detailedExpiredCreated").text(created+"开始");
-                        $("#detailedExpiredExpired").text(expired+"截止");
                         $("#detailedExpiredPlanDesc").text(data.planDesc);
                         if (data.assess1!=null) {
                             $("#detailedExpiredAssess1").text(data.assess1);
@@ -2151,8 +2134,6 @@
                             $("#detailedExpiredStuName0").text(stuName);
                             $("#detailedExpiredStuName0").text(stuName);
                             $("#detailedExpiredTitle0").text(data.title);
-                            $("#detailedExpiredCreated0").text(created+"开始");
-                            $("#detailedExpiredExpired0").text(expired+"截止");
                             $("#detailedExpiredPlanDesc0").text(data.planDesc);
                             $("#detailedExpiredPlanId").attr("value",planId);
                             if (data.assess1!=null){
