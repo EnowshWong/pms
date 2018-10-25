@@ -31,4 +31,8 @@ public interface PmsUserTeaMapper {
     int updateByPrimaryKey(PmsUserTea record);
 
     List<TeaExp> findTeaExpList();
+
+    PmsUserTea findTeaByExpId(Long expId);
+
+    List<PmsUserTea> findAssistTeaByExpId(Long expId);
 }

@@ -58,14 +58,96 @@
 
 }
 #banner{
-	border-bottom: 2px solid #e5e5e5;
-	/*margin-top: 20px;*/
+	height: 90px;
+	line-height: 90px;
+	margin-top: -40px;
+}
+.main_style_bottom{
+	height: 20px;
+	width: 70%;
+	/*border: 1px solid red;*/
+	font-size: 0.9em;
+	/*margin: 0 auto;*/
+}
+.main_style_over_bottom{
+	height: 20px;
+	width: 70%;
+	/*border: 1px solid red;*/
+	font-size: 0.9em;
+	margin-top: 25px;
+	/*margin: 0 auto;*/
+}
+.bottom_time_width{
+	/*width: 2em;*/
+	text-decoration: line-through;
 }
 #banner_left{
 	width: 22%;
 	margin-left: 20px;
 	margin-top: 10px;
 	
+}
+.identity_top{
+	height: 50px;
+	width: 100%;
+	/*border:1px solid red;*/
+	display: inline-block;;
+	padding-top: 20px;
+
+	margin-left: 10px;
+}
+.identity_head{
+	height: 50px;
+	width: 50px;
+	margin-top: -20px;
+	background: #d5d5d5;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 2em;
+	text-align: center;
+	line-height:50px;
+
+}
+.left_lab{
+	color:#000;
+	font-size: 1.1em;
+
+}
+.left_over{
+	color:#000;
+	font-size: 1.1em;
+	background:url("../images/bigger.png") no-repeat;
+	background-size: cover;
+	width: 15px;
+	height: 15px;
+
+}
+.left_tutor{
+	color:#000;
+	font-size: 1.1em;
+
+}
+.identity_name{
+	font-size: 1.5em;
+	/*position: absolute;*/
+	color: #000;
+	/*margin-left: 70px;*/
+	margin-top: -40px;
+	/*margin-top: -70px;*/
+
+	/*font-size: 1.5em;*/
+	/*position: absolute;*/
+	/*color: #000;*/
+	/*margin-left: 70px;*/
+}
+.identity_status{
+	font-size: 1.5em;
+	/*position: absolute;*/
+	color: #000;
+	/*margin-left: 30px;*/
+	margin-top: -40px;
 }
 #banner_mid{
 	width:33%;
@@ -78,9 +160,10 @@
 	
 }
 #guidance{
-	
+	margin-top: 15px;
 	height: 50px;
-	background: #f5f5f5;	
+	background: #f5f5f5;
+	border-top: 2px solid #e5e5e5;
 }
 #guidance_logo,#task,#file,#resource{
 	
@@ -447,6 +530,7 @@
 }
 .weekTime{
 	width: 100%;
+	margin-top: -2px;
 	/*border:1px solid red;*/
 }
 .tip_word_title{

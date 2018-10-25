@@ -13,4 +13,6 @@ public interface TeaService {
     PmsResult searchByName(String nickname);
     List<PmsUserTea> getList();
     List<TeaExp> findTeaExpList();
+    PmsUserTea findTeaByExpId(long expId);
+    List<PmsUserTea> findAssistTeaByExpId(long expId);
 }

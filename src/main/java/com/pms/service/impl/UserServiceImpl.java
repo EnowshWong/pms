@@ -116,7 +116,7 @@ public class UserServiceImpl implements UserService {
             //判断学生是否加入了实验室
             if (pmsUserStu.getExpId()==null)
                 return PmsResult.build(500,"未加入实验室");
-            return PmsResult.ok(identity);
+            return PmsResult.ok(pmsUserStu);
         } else if (identity == 2) {//教师登陆
             PmsUserTeaExample example = new PmsUserTeaExample();
             PmsUserTeaExample.Criteria criteria = example.createCriteria();
@@ -136,7 +136,7 @@ public class UserServiceImpl implements UserService {
             CookieUtils.setCookie(request, response, COOKIE_ID, pmsUserTea.getId() + "");
             //存入用户身份
             CookieUtils.setCookie(request, response, COOKIE_IDENTITY, String.valueOf(identity));
-            return PmsResult.ok(identity);
+            return PmsResult.ok(pmsUserTea);
         }
         return PmsResult.build(400, "未传入参数identity");
     }

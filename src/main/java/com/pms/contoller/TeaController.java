@@ -6,6 +6,7 @@ import com.pms.pojo.TeaExp;
 import com.pms.service.TeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,5 +40,19 @@ public class TeaController {
     public List<TeaExp> getTeaExpList(){
         List<TeaExp> teaExpList = teaService.findTeaExpList();
         return teaExpList;
+    }
+
+    @RequestMapping("/tea/getTeaByExpId/{expId}")
+    @ResponseBody
+    public PmsUserTea getTeaByExpId(@PathVariable long expId){
+        PmsUserTea tea = teaService.findTeaByExpId(expId);
+        return tea;
+    }
+
+    @RequestMapping("/tea/getAssistTeaByExpId/{expId}")
+    @ResponseBody
+    public List<PmsUserTea> getAssistTeaByExpId(@PathVariable long expId){
+        List<PmsUserTea> tea = teaService.findAssistTeaByExpId(expId);
+        return tea;
     }
 }

@@ -48,4 +48,16 @@ public class TeaServiceImpl implements TeaService {
         List<TeaExp> teaExpList = pmsUserTeaMapper.findTeaExpList();
         return teaExpList;
     }
+
+    @Override
+    public PmsUserTea findTeaByExpId(long expId) {
+        PmsUserTea tea = pmsUserTeaMapper.findTeaByExpId(expId);
+        return tea;
+    }
+
+    @Override
+    public List<PmsUserTea> findAssistTeaByExpId(long expId) {
+        List<PmsUserTea> tea = pmsUserTeaMapper.findAssistTeaByExpId(expId);
+        return tea;
+    }
 }

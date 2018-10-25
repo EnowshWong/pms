@@ -332,6 +332,8 @@
 
             var l = document.getElementById("log_window4");
             l.style.display = "block";
+            var add=document.getElementById('add_around');
+            add.style.display='none';
         }
 
         function cancel_shield4() {
@@ -850,6 +852,8 @@
 
             var l = document.getElementById("log_add_choose");
             l.style.display = "block";
+            var add=document.getElementById('add_around');
+            add.style.display='none';
         }
 
         function cancel_shield4(){
@@ -1669,53 +1673,7 @@
     </div>
 </div>
 
-<div id="log_add" >
-    <!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
 
-    <div id="md-close1"><a href="javascript:cancel_shield1()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
-    <div  id="addSearchTea">
-        <input id="teaInput" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
-        <button id="teaInputBtn" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
-    </div>
-    <hr class="addHr"/>
-    <div class="addDetail" id="addDetailTea">
-        <div class="addDetailTip ">
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
-        <div class="addDetailTip ">
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
-        <div class="addDetailTip ">
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
-        <div class="addDetailTip ">
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
-        <div class="addDetailTip ">
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
-    </div>
-</div>
 <script>
     function addTeaClick() {
         $(".addTeaClass").each(function (i) {
@@ -1766,21 +1724,18 @@
 
     <div id="md-close2"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
     <div  id="addSearchStu">
-        <input id="teaInput_stu" class="form-control display" style="display: inline-block" type="text" placeholder="请输入老师姓名"/>
+        <input id="teaInput_stu" class="form-control display" style="display: inline-block" type="text" placeholder="请输入姓名"/>
         <button id="teaInputBtn_stu" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
         <span id="registerStu" class="display">
             <!--<a href="javascript:shield3()">注册学生账号</a>-->
         </span>
     </div>
     <hr id="addHr"/>
-    <div id="addDetailStu">
-        <div class="addDetailTip" >
-            <div class="addDetailTipImg display">张</div>
-            <div class="addDetailTipWord display">
-                <div class="wordName display">张三</div>
-                <button class="wordBtn btn btn-info display">添加</button>
-            </div>
-        </div>
+    <div id="addDetailSelect" class="display">
+        <div id="detailTea" class="addDetailTea">搜索老师</div>
+        <div id="detailStu" class="addDetailStu">搜索学生</div>
+    </div>
+    <div id="addDetailStu" class="display">
         <div class="addDetailTip ">
             <div class="addDetailTipImg display">张</div>
             <div class="addDetailTipWord display">
@@ -1810,6 +1765,45 @@
             </div>
         </div>
     </div>
+    <div id="addDetailTea" class="display">
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+        <div class="addDetailTip ">
+            <div class="addDetailTipImg display">张</div>
+            <div class="addDetailTipWord display">
+                <div class="wordName display">张三</div>
+                <button class="wordBtn btn btn-info display">添加</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        var stuDe=document.getElementById('addDetailStu');
+        var teaDe=document.getElementById('addDetailTea');
+        var stu=document.getElementById('detailStu');
+        var tea=document.getElementById('detailTea');
+        stu.onclick=function () {
+            stuDe.style.display='inline-block';
+            teaDe.style.display='none';
+        }
+        tea.onclick=function () {
+            stuDe.style.display='none';
+            teaDe.style.display='inline-block';
+        }
+
+    </script>
 </div>
 <div id="log_add_choose">
     <!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
@@ -1817,7 +1811,7 @@
     <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
     <div class="chooseWord">请选择</div>
     <div class="chooseCho">
-        <a href="#"> <button class="chooseChoSearch btn btn-info"  onclick="addStuClick()">添加学生</button></a>
+        <a href="javascript:shield2()"> <button class="chooseChoSearch btn btn-info"  onclick="addStuClick()">添加成员</button></a>
         <a href="javascript:shield3()"><button class="chooseChoAdd btn btn-info">注册账号</button></a>
     </div>
     <script>
@@ -1946,7 +1940,10 @@
 </script>
 <div id="banner">
     <div id="banner_left" class="display">
-        <div class="display" style="width: 70%">
+
+        <div class="identity_top display">
+            <div class="identity_status display">学生：</div>
+            <div class="identity_name display">张三</div>
         </div>
         <div class="display" style="width: 10%">
 
@@ -1959,44 +1956,14 @@
     <div id="banner_right" style="padding: 0;" class="display">
         <div class="display" style="width: 0;">
         </div>
-        <div style="width: 90%;padding-left: 14%;" class="display">
+        <div style="width: 90%;padding-left: 30%;" class="display">
             <img src="/images/question.png" style="width:25px;margin-left: 20px;">
             <img src="/images/ring.png" style="width: 25px;margin-left: 20px;">
-            <a href="#"> <img src="/images/addPerson.png" id="add_Person" style="width: 30px;margin-left: 20px;"></a>
+            <!--<a href="#"> <img src="/images/addPerson.png" id="add_Person" style="width: 30px;margin-left: 20px;"></a>-->
             <a class="test2" href="javascript:void(0)"><img id="search_tea" src="/images/message.png"
                                                             style="width:25px;margin-left: 20px;"></a>
             <a href="#" id="self_info_a"> <img src="/images/mine.png" id="mine"> </a>
         </div>
-        <div id="add_around">
-
-            <div id="add_float" class="display">
-                <div style="margin-top: 5px;margin-bottom: 5px;">
-                    <a id="clc1" href="javascript:openTeaSearch()">
-                        <div class="self_mesg" id="self_tea_set">
-                            <span id="addTea_set">添加老师</span>
-                        </div>
-                    </a>
-                    <a id="clc2" href="javascript:shield4()">
-                        <div class="self_mesg" id="self_stu_out">
-                            <span id="addStu_out">添加学生</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            var clc1=document.getElementById('clc1');
-            var clc2=document.getElementById('clc2');
-            var clcAround1=document.getElementById('add_around');
-            clc1.onclick=function (ev) {
-                clcAround1.style.display='none';
-            }
-            clc2.onclick=function (ev) {
-                // alert('a')
-                clcAround1.style.display='none';
-            }
-        </script>
 
         <div id="self_around">
             <div id="self_float" class="display">
@@ -2135,8 +2102,8 @@
 </div>
 <div id="guidance">
     <div id="left" class="display">
-        <span id="left_origin"><a href="/showTeaHome">首页</a></span>
-        <img src="/images/bigger.png" style="width: 15px;">
+        <span id="left_origin"><a href="/showTeaHome">实验室</a></span>
+        <!--<img src="/images/bigger.png" style="width: 15px;">-->
         <!--<span id="left_name"><div id="expName" class="display"></div></span>-->
 
         <script type="text/javascript" th:inline="javascript">
@@ -2170,6 +2137,141 @@
         <span style="color: #808080">菜单</span>
     </div>
 
+
+    <div id="add_around" style="display: block">
+
+        <div id="add_float" style="" class="display">
+            <div class="add_float_top">
+                <div class="float_top_number display">项目成员</div>
+                <!--<div class="float_top_cancel display"></div>-->
+            </div>
+            <hr id="add_float_hr"/>
+            <a href="javascript:shield4()">
+                <div class="add_float_invite">
+                    <div class="float_invite display"></div>
+                    <div class="float_invite_word display">邀请新成员</div>
+                </div>
+            </a>
+            <div id="add_float_scroll">
+                <div class="add_float_invite">
+                    <div class="float_member display">汪</div>
+                    <div class="float_member_word display">汪五</div>
+                    <div class="float_member_identity_major display">主管老师</div>
+                    <a href="#"> <div class="float_member_icon display"></div></a>
+                </div>
+                <div class="add_float_invite">
+                    <div class="float_member display">汪</div>
+                    <div class="float_member_word display">汪五</div>
+                    <div class="float_member_identity_assist display">辅管老师</div>
+                    <a href="#"> <div class="float_member_icon display"></div></a>
+                </div>
+                <div class="add_float_invite">
+                    <div class="float_member display">汪</div>
+                    <div class="float_member_word display">汪五</div>
+                    <div class="float_member_identity_stu display">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生</div>
+                    <a href="#"> <div class="float_member_icon display"></div></a>
+                </div>
+            </div>
+            <div class="add_float_bottom" >
+                项目成员数量
+                <div class="add_float_num" id="memberCount">3</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getMembers() {
+            alert("click");
+            var html="";
+            var expId=GetCookie("COOKIE_EXPID");
+            var count=0;
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/tea/getTeaByExpId/"+expId,
+                success:function (data) {
+                    html+="<div class=\"add_float_invite\">\n" +
+                        "                    <div class=\"float_member display\">"+data.nickname[0]+"</div>\n" +
+                        "                    <div class=\"float_member_word display\">"+data.nickname+"</div>\n" +
+                        "                    <div class=\"float_member_identity_major display\">主管老师</div>\n" +
+                        "<input type='hidden' id='coreTeaId' value='"+data.id+"' />" +
+                        "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
+                        "                </div>";
+                    count++;
+                }
+            });
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/tea/getAssistTeaByExpId/"+expId,
+                success:function (data) {
+                    for(tea in data){
+                        html+="<div class=\"add_float_invite\">\n" +
+                            "                    <div class=\"float_member display\">"+tea.nickname[0]+"</div>\n" +
+                            "                    <div class=\"float_member_word display\">"+tea.nickname+"</div>\n" +
+                            "                    <div class=\"float_member_identity_assist display\">辅管老师</div>\n" +
+                            "<input type='hidden' class='assistTeaIdClass' value='"+tea.id+"'/>" +
+                            "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
+                            "                </div>"
+                        count++;
+                    }
+                }
+            });
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/user/stulist/"+expId,
+                success:function (data) {
+                    for (stu in data) {
+                        html += "<div class=\"add_float_invite\">\n" +
+                            "                    <div class=\"float_member display\">"+stu.nickname[0]+"</div>\n" +
+                            "                    <div class=\"float_member_word display\">"+stu.nickname+"</div>\n" +
+                            "<input type='hidden' class='stuMemberIdClass' value='"+stu.id+"' />" +
+                            "                    <div class=\"float_member_identity_stu display\">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生</div>\n" +
+                            "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
+                            "                </div>"
+                        count++;
+                    }
+                }
+            });
+            $("#add_float_scroll").html(html);
+            $("#memberCount").text(count);
+        }
+    </script>
+    <script type="text/javascript">
+
+        $addb1 = $("#add_around");
+        var addsea1 = document.getElementById("add_around")
+        $("#people").on({
+            "click": function () {
+                getMembers();
+                $addb1.toggle();
+                return false;
+            }
+        });
+        $(document).bind('click', function (e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            while (elem) {
+                if (elem.id && elem.id == 'add_around') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $('#add_around').css('display', 'none');
+        });
+    </script>
+    <script>
+        var clc1=document.getElementById('clc1');
+        var clc2=document.getElementById('clc2');
+        var clcAround1=document.getElementById('add_around');
+        clc1.onclick=function (ev) {
+            clcAround1.style.display='none';
+        }
+        clc2.onclick=function (ev) {
+            // alert('a')
+            clcAround1.style.display='none';
+        }
+    </script>
     <div id="people_around" class="display">
         <div id="people_float" class="display">
             <div style="margin-top: 5px;margin-bottom: 5px;">
@@ -2325,7 +2427,7 @@
                             "                        </div>\n" +
                             "                    </div>\n" +
                             "                </a>"+
-                                "<div class=\"right_none display\">\n" +
+                            "<div class=\"right_none display\">\n" +
                             "                    该学生最近无动态更新\n" +
                             "                </div>"+
                             "            </li>\n" +
@@ -2384,13 +2486,13 @@
                             "        <input type='hidden' class='stuId' value=''/>\n" +
                             "        <ul class=\" cont addLi\" style=\"height: 240px;\">\n" +
                             "            <div class=\"left_grade\">"+year+"级</div>\n" +
-                                "\n" +
+                            "\n" +
                             "            <div class=\"liScroll display\">\n" +
                             "                <div class=\""+cls1+"\">未审核</div>\n" +
                             // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
                             "                <div class=\""+cls2+"\">进行中</div>\n" +
                             // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
-                            "                <div class=\""+cls3+"\">已自评</div>\n" +
+                            "                <div class=\""+cls3+"\">未总评</div>\n" +
                             // "                <div class=\"liWid display\">&nbsp;&nbsp;</div>\n" +
                             "                <div class=\""+cls4+"\"> 已完结</div>\n" +
                             "            </div>"+
@@ -2413,7 +2515,7 @@
                             "<input type='hidden' class='planStage' value='"+stage+"' />"+
                             // "                            <div class=\" right_state_above display\">"+stage2+"</div>\n" +
                             "                        </div>\n" +
-                            "                        <div class=\"display  \" style=\"width: 100%;margin-top: 10px;color: #a5a5a5;\"><div class=\"time_ope_width\"></div>&nbsp;最近更新：<span\n" +
+                            "                        <div class=\"display  \" style=\"width: 100%;margin-top: 10px;color: #a5a5a5;\"><div class=\"time_ope_width\"></div>&nbsp;学生最近更新：<span\n" +
                             "                                class=\"time_disp\">"+optime+"</span>&nbsp;<div class=\"time_ope_width\"></div></div>\n" +
                             "                    </div>\n" +
                             "                </div>\n" +

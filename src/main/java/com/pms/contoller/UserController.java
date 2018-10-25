@@ -1,12 +1,14 @@
 package com.pms.contoller;
 
 import com.pms.common.pojo.PmsResult;
+import com.pms.common.utils.CookieUtils;
 import com.pms.pojo.PmsUserStu;
 import com.pms.pojo.PmsUserTea;
 import com.pms.pojo.StuInfo;
 import com.pms.pojo.StuPlan;
 import com.pms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,9 @@ import java.util.List;
  */
 @Controller
 public class UserController {
+
+    @Value("${COOKIE_EXPID}")
+    private String COOKIE_EXPID;
 
     @Autowired
     private UserService userService;
@@ -55,6 +60,10 @@ public class UserController {
         PmsResult pmsResult = userService.login(username, password, identity, request, response);
         if (pmsResult.getStatus() == 200) {
             if (identity == 1) {
+                PmsUserStu pmsUserStu= (PmsUserStu) pmsResult.getData();
+                model.addAttribute("stuName",pmsUserStu.getNickname());
+                //存储expId
+                CookieUtils.setCookie(request, response,COOKIE_EXPID, pmsUserStu.getExpId()+"");
                 return "stu_task4(1)";
             } else if (identity == 2) {
                 return "tea_home";

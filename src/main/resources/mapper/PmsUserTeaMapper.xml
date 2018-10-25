@@ -79,7 +79,28 @@
   <sql id="Base_Column_List" >
     id, username, password, nickname, email, created, updated
   </sql>
+  <select id="findAssistTeaByExpId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT
+pms_user_tea.id,
+pms_user_tea.nickname
+FROM
+pms_user_tea
+LEFT JOIN pms_exp_assist_tea
+ON pms_exp_assist_tea.tutor_id = pms_user_tea.id
+WHERE pms_exp_assist_tea.exp_id=#{expId,jdbcType=BIGINT}
 
+  </select>
+<select id="findTeaByExpId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  SELECT
+pms_user_tea.id,
+pms_user_tea.nickname
+FROM
+pms_user_tea
+LEFT JOIN pms_exp
+ON pms_exp.tutor_id=pms_user_tea.id
+WHERE pms_exp.id=#{expId,jdbcType=BIGINT}
+
+</select>
   <select id="findTeaExpList" resultMap="TeaExpListResultMap">
     SELECT DISTINCT
 pms_user_tea.id AS teaId,

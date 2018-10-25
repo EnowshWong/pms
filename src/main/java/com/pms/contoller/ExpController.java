@@ -62,4 +62,11 @@ public class ExpController {
         List<PmsExp> list = expService.getAssistExpListByTeaId(tutorId);
         return list;
     }
+
+    @RequestMapping("/exp/getById/{expId}")
+    @ResponseBody
+    public PmsExp getById(@PathVariable long expId){
+        PmsExp exp = expService.getExpById(expId);
+        return exp;
+    }
 }
