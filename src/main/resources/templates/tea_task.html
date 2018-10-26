@@ -2179,8 +2179,43 @@
         </div>
     </div>
     <script>
+        function removeCoreClick() {
+            $(".removeAssistTea").each(function (i) {
+                var assistTeaId=$(".assistTeaIdClass").eq(i).val();
+                $(this).click(function () {
+                    $.ajax({
+                        type:"get",
+                        url:"/expTea/deleteByTeaId/"+assistTeaId,
+                        success:function (data) {
+                            if (data.status==200) {
+                                alert("成功移除");
+                                //更新
+                            }
+                        }
+                    })
+                })
+            })
+        }
+        function removeStuClick() {
+            $(".removeStu").each(function (i) {
+                var stuId=$(".stuMemberIdClass").eq(i).val();
+                $(this).click(function () {
+                    alert("click");
+                    $.ajax({
+                        type:"post",
+                        url:"/user/stu/update",
+                        data:{expId:0,tutorId:0,id:stuId},
+                        success:function (data) {
+                            if (data.status==200) {
+                                alert("成功移除");
+                                getStuPlanList();
+                            }
+                        }
+                    })
+                })
+            })
+        }
         function getMembers() {
-            alert("click");
             var html="";
             var expId=GetCookie("COOKIE_EXPID");
             var count=0;
@@ -2194,7 +2229,6 @@
                         "                    <div class=\"float_member_word display\">"+data.nickname+"</div>\n" +
                         "                    <div class=\"float_member_identity_major display\">主管老师</div>\n" +
                         "<input type='hidden' id='coreTeaId' value='"+data.id+"' />" +
-                        "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
                         "                </div>";
                     count++;
                 }
@@ -2204,14 +2238,14 @@
                 async:false,
                 url:"/tea/getAssistTeaByExpId/"+expId,
                 success:function (data) {
-                    for(tea in data){
+                    for(var i=0;i<data.length;i++){
                         html+="<div class=\"add_float_invite\">\n" +
-                            "                    <div class=\"float_member display\">"+tea.nickname[0]+"</div>\n" +
-                            "                    <div class=\"float_member_word display\">"+tea.nickname+"</div>\n" +
+                            "                    <div class=\"float_member display\">"+data[i].nickname[0]+"</div>\n" +
+                            "                    <div class=\"float_member_word display\">"+data[i].nickname+"</div>\n" +
                             "                    <div class=\"float_member_identity_assist display\">辅管老师</div>\n" +
-                            "<input type='hidden' class='assistTeaIdClass' value='"+tea.id+"'/>" +
-                            "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
-                            "                </div>"
+                            "<input type='hidden' class='assistTeaIdClass' value='"+data[i].id+"'/>" +
+                            "                    <a href=\"#\"> <div class=\"float_member_icon display removeAssistTea\"></div></a>\n" +
+                            "                </div>";
                         count++;
                     }
                 }
@@ -2221,13 +2255,13 @@
                 async:false,
                 url:"/user/stulist/"+expId,
                 success:function (data) {
-                    for (stu in data) {
+                    for (var i=0;i<data.length;i++) {
                         html += "<div class=\"add_float_invite\">\n" +
-                            "                    <div class=\"float_member display\">"+stu.nickname[0]+"</div>\n" +
-                            "                    <div class=\"float_member_word display\">"+stu.nickname+"</div>\n" +
-                            "<input type='hidden' class='stuMemberIdClass' value='"+stu.id+"' />" +
-                            "                    <div class=\"float_member_identity_stu display\">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生</div>\n" +
-                            "                    <a href=\"#\"> <div class=\"float_member_icon display\"></div></a>\n" +
+                            "                    <div class=\"float_member display\">"+data[i].nickname[0]+"</div>\n" +
+                            "                    <div class=\"float_member_word display\">"+data[i].nickname+"</div>\n" +
+                            "<input type='hidden' class='stuMemberIdClass' value='"+data[i].id+"' />" +
+                            "                    <div class=\"float_member_identity_stu display \">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生</div>\n" +
+                            "                    <a href=\"#\"> <div class=\"float_member_icon display removeStu\"></div></a>\n" +
                             "                </div>"
                         count++;
                     }
@@ -2235,7 +2269,11 @@
             });
             $("#add_float_scroll").html(html);
             $("#memberCount").text(count);
+            //绑定按钮
+            removeCoreClick();
+            removeStuClick();
         }
+
     </script>
     <script type="text/javascript">
 

@@ -7,6 +7,9 @@
 .icon_time{
 	height: 20px;
 }
+#banner_identity{
+	margin-left: 15px;
+}
 #banner{
 	border-bottom: 2px solid #e5e5e5;
 	height: 60px;
@@ -387,7 +390,7 @@
 	-webkit-background-size: cover;
 	background-size: cover;
 	vertical-align: middle;
-	margin-left: 20%;
+	margin-left: 3%;
 }
 .add_float_bottom{
 	position: absolute;;
@@ -434,11 +437,25 @@
 	height: 50px;
 	width: 100%;
 }
+#addSearchLinkTea{
+	/*border: 1px solid blue;*/
+	height: 50px;
+	width: 100%;
+}
 #teaInput{
 	margin-left: 3%;
 	width: 20%;
 }
 #teaInputBtn{
+	margin-left: 1%;
+	width: 10%;
+	color: #fff;
+}
+#teaInput_LinkTea{
+	margin-left: 3%;
+	width: 20%;
+}
+#teaInputBtn_LinkTea{
 	margin-left: 1%;
 	width: 10%;
 	color: #fff;
@@ -456,6 +473,15 @@
 
 	/*width: 50%;*/
 	margin:0 auto;
+	margin-top: 15px;
+}
+.registerTeaName{
+
+	margin:0 auto;
+	margin-top: 15px;
+}
+#expDesc{
+	margin: 0 auto;
 	margin-top: 15px;
 }
 .liScroll{
@@ -545,7 +571,14 @@
 #addDetailStu{
 	/*border:1px solid red;*/
 	height: 100%;
-	width:70%; ;
+	width:90%; ;
+	position: absolute;
+	margin-left: 10px;
+}
+#addDetailLinkTea{
+	/*border:1px solid red;*/
+	height: 100%;
+	width:90%; ;
 	position: absolute;
 	margin-left: 10px;
 }
@@ -569,7 +602,22 @@
 .registerStu{
 	color: #a2a2a2;
 }
+.tea_ipt{
+	width: 90%;
+}
+.tea_name_ipt{
+	display: inline-block;
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 15px;
 
+}
+.tea_account_ipt{
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 15px;
+
+}
 .addHr{
 	width: 100%;
 	background-color: #fff;
@@ -584,7 +632,7 @@
 	 /*border:1px solid red;*/
 	 /*border:1px solid red;*/
 
-	 width: 31%;
+	 width: 23%;
 	 margin-left: 1.25%;
 	 height: 150px;
 	 display: inline-block;;

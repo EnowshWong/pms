@@ -5,6 +5,7 @@ import com.pms.pojo.PmsExpAssistTea;
 import com.pms.service.ExpAssistTeaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,6 +22,13 @@ public class ExpAssistTeaController {
     @ResponseBody
     public PmsResult createExpTea(PmsExpAssistTea pmsExpAssistTea){
         PmsResult pmsResult = expAssistTeaService.createExpTea(pmsExpAssistTea);
+        return pmsResult;
+    }
+
+    @RequestMapping("/expTea/deleteByTeaId/{teaId}")
+    @ResponseBody
+    public PmsResult deleteByTeaId(@PathVariable long teaId){
+        PmsResult pmsResult = expAssistTeaService.deleteExpTeaByTeaId(teaId);
         return pmsResult;
     }
 }

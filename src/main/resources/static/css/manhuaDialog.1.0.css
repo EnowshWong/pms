@@ -224,13 +224,37 @@ a{
 }
 .main_style_belly_word{    
 /*	width: */
-	height:50px;
+	height:30px;
+	width: 100%;
 	/*text-overflow: -o-ellipsis-lastline;*/
 	/*display: -webkit-box;*/
 	/*-webkit-line-clamp: 2;*/
 	/*-webkit-box-orient: vertical ;*/
 	overflow : hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
+	/*display: -webkit-box;*/
+	/*-webkit-line-clamp: 2;*/
+	/*-webkit-box-orient: vertical;*/
+	/*border: solid 1px gray;*/
+	/*width:180px;*/
+	/*overflow: hidden;*/
+	/*text-overflow: ellipsis;*/
+	/*white-space: nowrap;*/
+	/*course:hand;*/
+	
+}
+.main_style_belly_word_over{
+	/*	width: */
+	height:50px;
+	width: 100%;
+	/*text-overflow: -o-ellipsis-lastline;*/
+	/*display: -webkit-box;*/
+	/*-webkit-line-clamp: 2;*/
+	/*-webkit-box-orient: vertical ;*/
+	overflow : hidden;
+	text-overflow: ellipsis;
+	/*white-space: nowrap;*/
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -240,7 +264,7 @@ a{
 	/*text-overflow: ellipsis;*/
 	/*white-space: nowrap;*/
 	/*course:hand;*/
-	
+
 }
 .bnam{
 	color: #A8A1A1;

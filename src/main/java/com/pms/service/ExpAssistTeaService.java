@@ -8,4 +8,5 @@ import com.pms.pojo.PmsExpAssistTea;
  */
 public interface ExpAssistTeaService {
     PmsResult createExpTea(PmsExpAssistTea pmsExpAssistTea);
+    PmsResult deleteExpTeaByTeaId(long teaId);
 }

@@ -1,0 +1,785 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="../static/css/style.css">
+	
+	<link rel="stylesheet" href="../static/css/task_style.css">
+	<script src="../static/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="../static/js/common.js"></script>
+		
+<style type="text/css">	
+a,img{border:0;}
+</style>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../static/css/manhuaDialog.1.0.css">
+<script type="text/javascript" src="../static/js/jquery-1.7.2.min.js"></script>
+	
+<script type="text/javascript" src="../static/js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$("#test").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "新建实验室",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 490,									//弹出层的宽度
+		height : 400,									//弹出层的高度
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+});
+</script>
+	<script type="text/javascript" >
+		window.onload=function(){
+			var pic_hidden=document.getElementById("pic_hidden");
+			var engine=document.getElementById("engine");
+			engine.onclick=function(){
+				pic_hidden.style.display="";
+			}
+//			engine.onclick=function(){
+//				
+//				pic_hidden.style.display="none";
+//			}
+		}
+	
+	</script>
+
+	<style>
+		#mine{
+			width:25px;
+			margin-left: 20px;
+			height: 90%;
+
+		}
+	</style>
+
+	<style>
+		a, a:hover, a:visited, a:active, a:link {
+			text-decoration: none;
+		}
+	</style>
+
+	<style>
+
+		.text1{
+			width:100%;
+			height:0;
+			overflow:hidden;
+			position:absolute; left:0; bottom:0;
+			background:rgba(0,0,0,0.5);
+
+			font-size:12px;
+			color:#fff;}
+		#test1111 {
+			width:100%;
+			height:100%;
+			background-color:#000;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			opacity:0.3;
+			/*兼容IE8及以下版本浏览器*/
+			filter: alpha(opacity=30);
+			display:none;
+		}
+		#test2222 {
+			width:100%;
+			height:100%;
+			background-color:#000;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			opacity:0.3;
+			/*兼容IE8及以下版本浏览器*/
+			filter: alpha(opacity=30);
+			display:none;
+		}
+		#test3333 {
+			width:100%;
+			height:100%;
+			background-color:#000;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			opacity:0.3;
+			/*兼容IE8及以下版本浏览器*/
+			filter: alpha(opacity=30);
+			display:none;
+		}
+		#test4444 {
+			width:100%;
+			height:100%;
+			background-color:#000;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			opacity:0.3;
+			/*兼容IE8及以下版本浏览器*/
+			filter: alpha(opacity=30);
+			display:none;
+		}
+
+		#log_add {
+			width:840px;
+			height:500px;
+			border-radius: 10px;
+			background-color:#fff;
+			/*border: 1px solid red;*/
+			margin: auto;
+			position: absolute;
+			z-index:3;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display:none;
+		}
+		#log_add_stu {
+			width:840px;
+			height:500px;
+			border-radius: 10px;
+			background-color:#fff;
+			/*border: 1px solid red;*/
+			margin: auto;
+			position: absolute;
+			z-index:3;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display:none;
+		}
+		#log_add_register {
+
+			width:500px;
+			height:340px;
+			border-radius: 10px;
+			background-color:#fff;
+			/*border: 1px solid red;*/
+			margin: auto;
+			position: absolute;
+			z-index:3;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display:none;
+		}
+		#log_add_choose {
+			width:300px;
+			height:150px;
+			border-radius: 10px;
+			background-color:#fff;
+			/*border: 1px solid red;*/
+			margin: auto;
+			position: absolute;
+			z-index:3;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: none;
+		}
+	</style>
+
+	<script>
+
+        function shield1(){
+            var s = document.getElementById("test1111");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "block";
+        }
+
+        function cancel_shield1(){
+
+            var s = document.getElementById("test1111");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add");
+            l.style.display = "none";
+        }
+
+        function cancel_shield2(){
+
+            var s = document.getElementById("test2222");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "none";
+        }
+
+        function cancel_shield3(){
+
+            var s = document.getElementById("test3333");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "none";
+        }
+        function shield4(){
+            var s = document.getElementById("test4444");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "block";
+            var add=document.getElementById('add_around');
+            add.style.display='none';
+        }
+
+        function cancel_shield4(){
+
+            var s = document.getElementById("test4444");
+            s.style.display = "none";
+
+            var l = document.getElementById("log_add_choose");
+            l.style.display = "none";
+        }
+        function shield2(){
+            var s = document.getElementById("test2222");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_stu");
+            l.style.display = "block";
+            // var clcc1=document.getElementById('account_set');
+            var clcc2=document.getElementById('self_around');
+            // clcc1.onclick=function () {
+                clcc2.style.display='none';
+            // }
+            cancel_shield4();
+        }
+        function shield3(){
+            var s = document.getElementById("test3333");
+            s.style.display = "block";
+
+            var l = document.getElementById("log_add_register");
+            l.style.display = "block";
+            var clcc2=document.getElementById('self_around');
+            // clcc1.onclick=function () {
+            clcc2.style.display='none';
+            cancel_shield4();
+        }
+	</script>
+
+</head>
+
+<body id="rootBack">
+
+
+<div id="log_add_stu" >
+	<!--			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+
+	<div id="md-close2"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:770px;margin-top: 10px;"> </a></div>
+	<div  id="addSearchStu">
+		<input id="teaInput_stu" class="form-control display" style="display: inline-block" type="text" placeholder="请输入姓名"/>
+		<button id="teaInputBtn_stu" class="display btn btn-info" style="display: inline-block" type="button">查找</button>
+		<span id="registerStu" class="display">
+            <!--<a href="javascript:shield3()">注册学生账号</a>-->
+        </span>
+	</div>
+	<hr id="addHr"/>
+	<div id="addDetailStu" class="display">
+		<div class="addDetailTip ">
+			<div class="addDetailTipImg display">张</div>
+			<div class="addDetailTipWord display">
+				<div class="wordName display">张三</div>
+				<button class="wordBtn btn btn-info display">添加</button>
+			</div>
+		</div>
+		<div class="addDetailTip ">
+			<div class="addDetailTipImg display">张</div>
+			<div class="addDetailTipWord display">
+				<div class="wordName display">张三</div>
+				<button class="wordBtn btn btn-info display">添加</button>
+			</div>
+		</div>
+		<div class="addDetailTip ">
+			<div class="addDetailTipImg display">张</div>
+			<div class="addDetailTipWord display">
+				<div class="wordName display">张三</div>
+				<button class="wordBtn btn btn-info display">添加</button>
+			</div>
+		</div>
+		<div class="addDetailTip ">
+			<div class="addDetailTipImg display">张</div>
+			<div class="addDetailTipWord display">
+				<div class="wordName display">张三</div>
+				<button class="wordBtn btn btn-info display">添加</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="log_add_choose">
+	<!--<div id="md-close3"><a href="javascript:cancel_shield2()"  class="md-close" style="position:relative;margin-left:230px;margin-top: 10px;"> </a></div>-->
+
+	<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+	<div class="chooseWord">请选择</div>
+	<div class="chooseCho">
+		<a href="javascript:shield2()"> <button class="chooseChoSearch btn btn-info"  onclick="addStuClick()">添加成员</button></a>
+		<a href="javascript:shield3()"><button class="chooseChoAdd btn btn-info">注册账号</button></a>
+	</div>
+	<script>
+        function addStuClick() {
+            $.ajax({
+                type:"get",
+                async:false,
+                url:"/user/getStuListWithoutExp",
+                success:function (data) {
+                    var html="";
+                    for(var i=0;i<data.length;i++){
+                        var nickname=data[i].nickname;
+                        html+="<div class=\"addDetailTip \">\n" +
+                            "            <div class=\"addDetailTipImg display\">"+nickname[0]+"</div>\n" +
+                            "            <div class=\"addDetailTipWord display\">\n" +
+                            "                <div class=\"wordName display\">"+nickname+"</div>\n" +
+                            "                <button class=\"wordBtn btn btn-info display\">添加</button>\n" +
+                            "            </div>\n" +
+                            "        </div>";
+
+                    }
+                    $("#addDetailStu").html(html);
+                    shield2();
+                }
+            })
+        }
+	</script>
+
+</div>
+<div id="log_add_register" >
+	<div id="md-close3"><a href="javascript:cancel_shield3()"  class="md-close" style="position:absolute;margin-left:450px;margin-top: 10px;"> </a></div>
+
+	<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+	<input id="nickname" type="text" class="form-control registerName" style="width: 70%;margin-top: 50px;" placeholder="请输入实验室名称"/>
+	<input id="username" type="text" class="form-control registerName" style="width: 70%;" placeholder="请输入关联老师"/>
+	<textarea id="expDesc" class="form-control" placeholder="请输入实验室描述" rows="4" cols="20" style="width: 70%;"></textarea>
+	<a href="#" style="color: #fff;"><button id="registerBtn" type="button" class="btn btn-info" onclick="doRegisterStu()">确定</button></a>
+	<script>
+        function doRegisterStu() {
+            var nickname=$("#nickname").val();
+            var username=$("#username").val();
+            var expId=GetCookie("COOKIE_EXPID");
+            var tutorId=GetCookie("COOKIE_ID");
+            var passwordDef="123456";
+            if (nickname.length>5){
+                alert("姓名长度过长");
+                return;
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(username)){
+                alert("用户名输入非法，请重新输入");
+                return;
+            }
+            $.ajax({
+                type:"post",
+                async:false,
+                url:"/user/stu/register",
+                data:{username:username,password:passwordDef,nickname:nickname,expId:expId,tutorId:tutorId},
+                success:function (data) {
+                    if (data.status==200){
+                        alert("添加学生成功");
+                    }
+                }
+            });
+            cancel_shield3();
+            //刷新
+            getStuPlanList();
+        }
+	</script>
+</div>
+<div id="banner" style="z-index: 1000;">
+	<div id="banner_left" class="display">
+
+		<div id="banner_identity">当前身份：管理员</div>
+	</div>
+	<div id="banner_mid" class="display" style="font-weight:500;font-size: 1.3em;"><center>实验室科研计划管理平台</center></div>
+	<div  style="width: 6%" class="display"></div>
+	<div id="banner_right" style="padding: 0;" class="display">
+		<div class="display" style="width: 0;">
+		</div>
+		<div style="width: 90%;padding-left: 47%;" class="display">
+			<img src="../static/images/question.png" style="width:25px;margin-left: 20px;">
+			<img src="../static/images/ring.png" style="width: 25px;margin-left: 20px;">
+
+			<a href="#" id="self_info_a"> <img src="../static/images/mine.png" id="mine"> </a>
+		</div>
+
+		<div id="self_around">
+			<div id="self_float" class="display">
+				<div style="margin-top: 5px;margin-bottom: 5px;">
+					<a href="javascript:shield2()">
+						<div class="self_mesg" id="self_account_set">
+							<span id="account_set">添加老师</span>
+						</div>
+					</a>
+					<a href="javascript:shield3()">
+						<div class="self_mesg" id="self_turn_out">
+							<span id="turn_out">添加实验室</span>
+						</div>
+					</a>
+
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+
+            $addb1 = $("#add_around");
+            var addsea1 = document.getElementById("add_around")
+            $("#add_Person").on({
+                "click": function () {
+                    $addb1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'add_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#add_around').css('display', 'none');
+            });
+		</script>
+
+		<script type="text/javascript">
+
+            $b1 = $("#self_around");
+            var sea1 = document.getElementById("self_around")
+            $("#self_info_a").on({
+                "click": function () {
+                    $b1.toggle();
+                    return false;
+                }
+            });
+            $(document).bind('click', function (e) {
+                var e = e || window.event;
+                var elem = e.target || e.srcElement;
+                while (elem) {
+                    if (elem.id && elem.id == 'self_around') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $('#self_around').css('display', 'none');
+            });
+		</script>
+		<script>
+            // $(function () {
+
+            // })
+		</script>
+	</div>
+	<div id="sear_around" style="display:none ;z-index: 10000;">
+		<div id="sear_float" class="display" style="box-shadow: 3px 3px 10px #686363;height: auto;z-index: 1000;">
+
+			<div id="message" style="z-index: 10000;">
+				<div class="mess_top">通知</div>
+				<ul id="getJoinByExpId">
+
+				</ul>
+			</div>
+			<script type="text/javascript">
+                function getJoinMessage() {
+                    //页面加载时查询pms_join表,需要stuName,stuId字段等
+                    var expId = GetCookie("COOKIE_EXPID");
+                    //同步ajax请求,因为页面执行完会绑定点击事件，必须等待该请求结束，才执行后面的代码
+                    $.ajax({
+                        type: "get",
+                        async: false, //同步请求
+                        url: "/exp/getJoin/" + expId,
+                        success: function (data) {
+                            var html = "";
+                            for (var i = 0; i < data.length; i++) {
+                                //如果该申请未被处理
+                                if (data[i].status == null) {
+                                    //需要先把data[i]的date属性转为js的Date对象
+                                    var cre = new Date(data[i].created);
+                                    html += " <li class=\"mess_cont\">\n" +
+                                        "                        <div class=\"mess_cont_word\">\n" +
+                                        "                            <span class=\"cont_word_pic1\"></span>\n" +
+                                        "                            <span class=\"cont_word\">" + data[i].stuName + "申请加入您的实验室</span>" +
+                                        "                            <input type=\"hidden\" class=\"stuIdJoin\" value='" + data[i].stuId + "'/>" +
+                                        "                            <input type='hidden' class='joinId' value='" + data[i].id + "'/>\n" +
+                                        "                        </div>\n" +
+                                        "                        <div class=\"mess_cont_btn\">\n" +
+                                        "                            <button class=\"cont_btn_agree\">同意</button>\n" +
+                                        "                            <button class=\"cont_btn_refuse\">拒绝</button>\n" +
+                                        "                        </div>\n" +
+                                        "                        <div class=\"divide_date\">\n" +
+                                        "                            &nbsp;" + cre.toLocaleDateString() + "\n" +
+                                        "                        </div>\n" +
+                                        "                    </li>";
+                                }
+                            }
+                            $("#getJoinByExpId").html(html);
+                        }
+                    });
+                }
+
+                getJoinMessage();
+			</script>
+		</div>
+	</div>
+	<script>
+        $b = $("#rootBack");
+        var sea = document.getElementById("sear_around")
+        $("#search_tea").on({
+            "click": function () {
+                $b.toggle();
+                return false;
+            }
+        });
+        $(document).bind('click', function (e) {
+            var e = e || window.event;
+            var elem = e.target || e.srcElement;
+            while (elem) {
+                if (elem.id ) {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            // $('#sear_around').css('display', 'none');
+        });
+	</script>
+</div>
+		
+	<div class="model" id="model">
+		<div class="program" style="padding-top: 30px;width: 70%;">
+			<div class="program_hover" id="program_hover">
+			<span class="hover_word">导师一</span>
+			<div class="fold display"></div>
+			</div>
+			<div class="pic">
+				<div id="expList" style="display: none;">
+					<a href='#'>
+						<div class="program_pic" style="background: url(../static/images/rootImg/1.png)">
+							<h4 >实验室一</h4>
+							<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+							<div class="programTime">2018-1-1创建</div>
+							<div class='text1'>
+								<a href="javascript:shield2()"> <div class="txt_modify">
+								</div></a>
+							</div>
+						</div>
+
+					</a>
+					<a href='#'>
+						<div class="program_pic" style="background: url(../static/images/rootImg/5.png)">
+							<h4 >实验室一</h4>
+							<p class="programIntro">实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介实验室简介</p>
+							<div class="programTime">2018-1-1创建</div>
+							<div class='text1'>
+								<a href="javascript:shield2()"> <div class="txt_modify">
+								</div></a>
+							</div>
+						</div>
+					</a>
+				</div>
+				<script>
+
+                    $('.program_pic').hover(function(){
+                        $('.text1',this).stop().animate({
+
+//$('.text',this)指鼠标悬停的那个li的text,stop()解决鼠标悬停离开后，遮罩效果会自动多次出现，
+
+                            //保证图片的遮罩效果只有在鼠标悬停的对象上才出现，而停止其他
+
+                            height:'100%'//如果想让遮罩层充满整张图片，就把高度设置为图片高度
+                        });
+                    },function(){
+                        $('.text1',this).stop().animate({
+                            height:'0'
+                        });
+                    });
+				</script>
+				<script type="text/javascript" th:inline="javascript" >
+					function getExpList() {
+					    var html="";
+                        var tea_id=GetCookie("COOKIE_ID");
+                        $.ajax({
+                            type:"get",
+							async:false,//同步请求
+                            url:"/exp/getByTeaId/"+tea_id,
+                            success:function (data,success) {
+                                var inf="";
+                                for(var i=0;i<data.length;i++){
+                                    //已经能去到数据了，下一步解决数据如何嵌入html代码
+									html+="<a href='/tea_page?expId="+data[i].id+"'>\n" +
+                                        "\t\t\t\t\t<div class=\"program_pic\" style=\"background: url(../static/images/1.png)\">\n" +
+                                        "\t\t\t\t\t\t<h4 >"+data[i].expName+"</h4>\n" +
+                                        "\t\t\t\t\t</div>" +
+                                        "\t\t\t\t</a>";
+                                }
+                                $("#expList").html(html);
+                            }
+                        });
+                    }
+                    getExpList();
+                    // function expButClick() {
+						// $(".expBut").each(function (i) {
+						// 	$(this).click(function () {
+						// 		var expId=$(".expIdClass").eq(i).attr("value");
+						// 		var expName=$(".expNameClass").eq(i).text();
+						// 		alert(expName);
+						// 		$.post("/tea_page",{expId:expId,expName:expName});
+                    //         })
+                    //     })
+                    // }
+                    // $(function () {
+                    //     //绑定实验室url
+						// expButClick();
+                    // })
+				</script>
+			</div>
+
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+		  var zindex = 10;
+
+		  $("div.test").click(function(e){
+			e.preventDefault();
+
+			var isShowing = false;
+
+			if ($(this).hasClass("show")) {
+			  isShowing = true
+			}
+
+			if ($("div.main").hasClass("showing")) {
+			  // a card is already in view
+			  $("div.test.show")
+				.removeClass("show");
+
+			  if (isShowing) {
+				// this card was showing - reset the grid
+				$("div.test")
+				  .removeClass("showing");
+			  } else {
+				// this card isn't showing - get in with it
+				$(this)
+				  .css({zIndex: zindex})
+				  .addClass("show");
+
+			  }
+
+			  zindex++;
+
+			} else {
+			  // no cards in view
+			  $("div.test")
+				.addClass("showing");
+			  $(this)
+				.css({zIndex:zindex})
+				.addClass("show");
+
+			  zindex++;
+			}
+
+		  });
+		});
+	</script>
+	<!--<script>-->
+        <!--var exp=document.getElementById('expList');-->
+        <!--var hover=document.getElementById('program_hover');-->
+		<!--if(exp.style.display=='none'){-->
+
+            <!--hover.onclick=function () {-->
+                <!--exp.style.display='block';-->
+            <!--}-->
+		<!--}-->
+		<!--else{-->
+            <!--hover.onclick=function () {-->
+                <!--exp.style.display='none';-->
+            <!--}-->
+		<!--}-->
+
+
+<!--</script>-->
+<script type="text/javascript">
+
+    $addb1 = $("#expList");
+    var addsea1 = document.getElementById("expList")
+    $("#program_hover").on({
+        "click": function () {
+            $addb1.toggle();
+            return false;
+        }
+    });
+</script>
+	
+	<div id="detail" style="display:none;z-index: 0; border:1px solid red;">
+		<div id="detailImage">
+			
+		</div>
+		<div id="detailForm">
+			<form method="post" id="expForm" class="form form-group" role="form" onsubmit="return false">
+				<input type="text"  id="inputExpName" placeholder="实验室名称" class="form-control detailForm_cho">
+				<input type="text"  id="inputExpDesc" placeholder="实验室简介" class="form-control detailForm_cho">
+				<input type="text"  id="inputExpManager" placeholder="管理员设置" class="form-control detailForm_cho">
+				<input id="expCreateSubmit" type="button" style="width: 100%;" value="完成并创建" class="btn btn-primary detailForm_cho">
+			</form>
+			<script type="text/javascript">
+				$(function () {
+                    var exp=document.getElementById("expCreateSubmit");
+                    var clo=document.getElementsByClassName('closeDialog');
+                    exp.onclick=function(){
+//					alert(clo.length)
+                        clo[0].click();
+//					alert("1")
+                    }
+                })
+			</script>
+			<script type="text/javascript">
+                function submitForm(){
+                    var tutorId=GetCookie("COOKIE_ID");
+                    var expName=$("#inputExpName").val();
+                    var expDesc=$("#inputExpDesc").val();
+                    $.ajax({
+                        type:"post",
+                        async:false, //同步请求
+						url:"/exp/create",
+                        data:{expName:expName,expDesc:expDesc,tutorId:tutorId},
+                        error:function(XMLHttpRequest,textStatus,errorThrown){
+//                            alert(XMLHttpRequest.status);
+//                            alert("异常信息:"+XMLHttpRequest.responseText);
+						},
+						success:function (data) {
+                            if (data.status == 200) {
+//                                alert("创建成功");
+                            }
+                        }
+                    });
+				}
+                //到dom文档加载完毕后执行$(function)
+                $(function () {
+					$("#expCreateSubmit").click(function () {
+						submitForm();
+                        getExpList();
+                    })
+                })
+			</script>
+		</div>
+	</div>
+
+
+<div id="test1111"></div>
+<div id="test2222"></div>
+<div id="test3333"></div>
+<div id="test4444"></div>
+</body>
+</html>

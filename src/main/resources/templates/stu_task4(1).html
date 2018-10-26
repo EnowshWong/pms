@@ -1232,6 +1232,7 @@
                             var exp=new Date(data[i].expired);
                             var created = dateFormat(new Date(data[i].created));
                             var expired = dateFormat(new Date(data[i].expired));
+                            var optime = dateFormat(new Date(data[i].optime));
                             var title="周报(&nbsp;"+created+"&nbsp;到&nbsp;"+expired+"&nbsp;)";
                             var style="border-left: 10px solid #B3ACAD;";
                             var now=new Date();
@@ -1260,12 +1261,12 @@
                                     "                            <div class=\"liUnDoing\">未自评</div>\n" +
                                     "                            <div class=\"liWid display\">&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                            <div class=\"liUnDoing\">已自评</div>\n" +
-                                    "                        </div>\" +
+                                    "                        </div>\n" +
                                     "                       <div class=\"main_style_bottom\">\n" +
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                            最近更新：\n" +
                                     "                            <div class=\"bottom_time display\">\n" +
-                                    "                                2000-11-11\n" +
+                                    "                                "+optime+"\n" +
                                     "                            </div>\n" +
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                        </div>" +
@@ -1298,7 +1299,7 @@
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                            最近更新：\n" +
                                     "                            <div class=\"bottom_time display\">\n" +
-                                    "                                2000-11-11\n" +
+                                    "                                "+optime+"\n" +
                                     "                            </div>\n" +
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                        </div>" +
@@ -1333,7 +1334,7 @@
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                            最近更新：\n" +
                                     "                            <div class=\"bottom_time display\">\n" +
-                                    "                                2000-11-11\n" +
+                                    "                                "+optime+"\n" +
                                     "                            </div>\n" +
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                        </div>" +
@@ -1369,7 +1370,7 @@
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                            最近更新：\n" +
                                     "                            <div class=\"bottom_time display\">\n" +
-                                    "                                2000-11-11\n" +
+                                    "                                "+optime+"\n" +
                                     "                            </div>\n" +
                                     "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
                                     "                        </div>" +
@@ -1574,6 +1575,7 @@
                         for(var i=data.length-1;i>=0;i--) {
                             var created = dateFormat(new Date(data[i].created));
                             var expired = dateFormat(new Date(data[i].expired));
+                            var optime = dateFormat(new Date(data[i].optime));
                             var title="周报(&nbsp;"+created+"&nbsp;到&nbsp;"+expired+"&nbsp;)";
                             html += " <li class=\"main_style_tip\">\n" +
                                 "\t\t\t<span>\n" +
@@ -1591,6 +1593,14 @@
                                 "<input type='hidden' class='expiredPlanId' value='" + data[i].id + "'/>" +
                                 "<input type='hidden' class='expiredPlanStatus2' value='" + data[i].status2 + "' />\n" +
                                 "\t\t\t\t\t\t</div>\n" +
+                                "<div class=\"main_style_bottom\">\n" +
+                                "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                "                            最近更新：\n" +
+                                "                            <div class=\"bottom_time display\">\n" +
+                                "                                "+optime+"\n" +
+                                "                            </div>\n" +
+                                "                            <div class=\"bottom_time_width display\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>\n" +
+                                "                        </div>" +
                                 "<div class='text1'>" +
                                 "                        <div class=\"icon_temp_done\">\n" +
                                 // "                            <img class=\"assess\" src=\"/images/judge.png\"  style=\"margin-left: -10%;\">\n" +
